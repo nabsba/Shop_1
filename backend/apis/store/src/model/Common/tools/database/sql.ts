@@ -12,9 +12,6 @@ const sqlValuesToInsert = (object: any, keys: string[], sqlOperation: string) =>
   return columns.toString();
 };
 
-// Nested queries
-const generatorSQLSpecialCase: any = {};
-
 const generatorSQL: { [key: string]: any } = {
   custom: (object: TObjectSql) => {
     if (object.sql) return object.sql;
@@ -112,4 +109,4 @@ const generatorSQL: { [key: string]: any } = {
   },
 };
 
-export { generatorSQL, generatorSQLSpecialCase };
+export { generatorSQL };
