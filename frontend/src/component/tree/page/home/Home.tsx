@@ -8,11 +8,11 @@ import './style.css';
 const Home: React.FC = () => {
 	// To grab address.com/:id
 	const { id } = useParams();
-	const {
-		dataPages: {
-			data: { home },
-		},
-	} = useSelector((state: TReducers) => state);
+	// const {
+	// 	//todo: make sure you have a backup for dataNetflix
+	// 	dataPages,
+	// } = useSelector((state: TReducers) => state);
+	// console.log(dataPages);
 	return (
 		<div>
 			<h1> Hello </h1>

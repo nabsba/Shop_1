@@ -5,8 +5,9 @@ import { handleObject, Result } from '../model/Common';
 const router = Router();
 
 router.post('/', async (req: Request, res: Response): Promise<void> => {
-  const result: Result = await handleObject(req.body);
-  res.send(result);
+  console.log(req.body);
+  // const result: Result = await handleObject(req.body);
+  res.send(false);
 });
 
 export { router as data };

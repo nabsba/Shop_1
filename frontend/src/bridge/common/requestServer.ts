@@ -93,6 +93,7 @@ const serverPost = async (
 	let result: Result = { ...resultTemplate };
 	// let times = new Date().toLocaleTimeString();
 	try {
+		console.log(url, body);
 		result = await axios.post(url, body, { timeout: time ? time : 15000 });
 	} catch (error) {
 		console.log(

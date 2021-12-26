@@ -2,31 +2,31 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
 	resultTemplate,
 	serverGet,
+	serverPost,
 } from '../../../../bridge/common/requestServer';
 import URL_ADDRESSES from '../../../../bridge/url';
 import { Result } from '../../../../Common/type/type';
+import { OBJECT_SQL } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
-const initialState = {
-	pending: true,
-	state: false,
-	data: {},
-	error: '',
-	errorServer: '',
-};
 
-export const fetchDataPages = createAsyncThunk('dataPages', async () => {
+const initialState = {
+	home: {
+		allShoes: {
+			pending: true,
+			state: false,
+			data: {},
+			error: '',
+			errorServer: '',
+		},
+	},
+};
+export const fetchFirstProducts = createAsyncThunk('dataPages', async () => {
 	let result: Result = { ...resultTemplate };
 	try {
-		result = await serverGet(
-			URL_ADDRESSES.fileManager.data.read + '/data',
-			null,
-		);
-		if (!result.state) {
-			result.state = true;
-			result.data = JSON.parse(JSON.stringify(dataBackup));
-		}
+		const objectSql = OBJECT_SQL.ALL_SHOES;
+		result = await serverPost(URL_ADDRESSES.data.postObject, objectSql);
 		return result;
 	} catch (error) {
 		console.log(
@@ -42,21 +42,22 @@ const data = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(
-			fetchDataPages.fulfilled,
+			fetchFirstProducts.fulfilled,
 			/*eslint-disable-next-line  @typescript-eslint/no-explicit-any*/
 			(state, action: { payload: any }) => {
+				console.log(action.payload);
 				// Add user to the state array
-				state.state = true;
-				state.data = action.payload;
+				state.home.allShoes.state = true;
+				state.home.allShoes.data = action.payload;
 			},
 		);
-		builder.addCase(fetchDataPages.rejected, (state) => {
-			state.state = false;
-			state.pending = false;
+		builder.addCase(fetchFirstProducts.rejected, (state) => {
+			state.home.allShoes.state = false;
+			state.home.allShoes.pending = false;
 		});
-		builder.addCase(fetchDataPages.pending, (state) => {
-			state.state = false;
-			state.pending = true;
+		builder.addCase(fetchFirstProducts.pending, (state) => {
+			state.home.allShoes.state = false;
+			state.home.allShoes.pending = true;
 		});
 	},
 });

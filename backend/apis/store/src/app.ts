@@ -22,7 +22,8 @@ const options =
         cert: fs.readFileSync(path.join(__dirname, '../security/cert.pem')),
       }
     : {};
-
+// to receive post data from clients
+app.use(express.json());
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../../../../frontend/build/')));
 app.use(cors());

@@ -52,6 +52,7 @@ const getObject = async (objectSql: TObjectSql | undefined, isSQL?: string) => {
 const handleObject = async (objectSql: TObjectSql) => {
   let result: Result = { ...resultTemplate };
   try {
+    console.log(objectSql);
     const sql = generatorSQL.custom(objectSql);
     result = await queryDataBase(sql);
     if (result.state && result.data) {
