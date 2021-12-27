@@ -2,12 +2,12 @@ h1 {
 	font-size: 2.5rem;
 }
 
-@media only screen and (min-width: 500px) and (max-width: 1449px) {
+@media only screen and (min-width: 500px) {
 	h1 {
 		font-size: 3rem;
 	}
 }
-@media only screen and (min-width: 770px) and (max-width: 1449px) {
+@media only screen and (min-width: 770px) {
 	h1 {
 		font-size: 5rem;
 	}
