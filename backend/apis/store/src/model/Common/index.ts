@@ -5,11 +5,10 @@ import {
   generateObjectAsOneStringKeyValue,
   stringFromKeysObject,
 } from './tools/function/object';
-import { handleObject } from './tools/manager/data';
+
 import { Result, SQLParameter, TFolderPath, TObjectSql } from './type/type';
 
 export {
-  handleObject,
   deletePropretyFromObject,
   generateObjectAsOneStringKeyValue,
   mysql,

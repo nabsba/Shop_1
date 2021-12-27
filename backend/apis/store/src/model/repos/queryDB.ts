@@ -25,7 +25,6 @@ const queryDataBase = async (
     promisePool = pool.promise();
     //Query
     const query = await promisePool.query(sql);
-    console.log(query);
     result.state =
       query[0].length || (query[0] && query[0].affectedRows) || (query[0] && query[0].insertId)
         ? true

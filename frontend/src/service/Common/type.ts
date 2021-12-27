@@ -1,9 +1,4 @@
 export type TReducers = {
-	dataPages: {
-		pending: boolean;
-		data: {
-			home: any;
-			course: any;
-		};
-	};
+	dataPages: Record<string, unknown>;
+	informationDataBaseStore: Record<string, unknown>;
 };
