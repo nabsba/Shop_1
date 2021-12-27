@@ -98,7 +98,6 @@ const generatorSQL: { [key: string]: any } = {
       | { key: string; value: string; pagination?: number; paginationOrderType: string }
       | undefined,
   ) => {
-    console.log('pagination ', tableDefinition!.table);
     let sql;
     if (condition && condition.key) {
       sql = `select * from ${tableDefinition!.table} WHERE ${condition.key} > ${

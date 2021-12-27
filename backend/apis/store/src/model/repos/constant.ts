@@ -13,18 +13,34 @@ type TDataBase = {
   };
 };
 
+//Note: add password through process.env
 export const DATA_BASE: TDataBase = {};
 export const SQL_SELECT: { [key: string]: TObjectSql } = {
-  informationColor: {
+  INFORMATION_DATA_BASE_PART_ONE: {
     type: 'color',
     mode: 'select',
-    object: {},
+    object: ['color_id', 'name'],
+    condition: { key: 'active', value: 1 },
+  },
+  INFORMATION_DATA_BASE_PART_TWO: {
+    type: 'size',
+    mode: 'select',
+    object: ['size_id', 'size'],
+    condition: { key: 'active', value: 1 },
   },
 };
 
 const TABLE_DEFINITION: TTableDefintion = {
   product: {
     table: 'product',
+    dataBase: 'store',
+  },
+  color: {
+    table: 'color',
+    dataBase: 'store',
+  },
+  size: {
+    table: 'size',
     dataBase: 'store',
   },
 };

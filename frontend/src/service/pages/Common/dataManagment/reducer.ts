@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { stat } from 'fs';
 import {
 	resultTemplate,
 	serverPost,
@@ -7,21 +8,18 @@ import URL_ADDRESSES from '../../../../bridge/url';
 import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
 import { logMessage } from '../../../../Common/function';
 import { Result } from '../../../../Common/type/type';
-import { REDUCER, SQL_OBJECT } from '../../../dataBase/constant';
+import { SQL_OBJECT } from '../../../dataBase/constant';
 
 import * as dataBackup from '../../datas/backup/data.json';
+import { REDUCER } from '../constant';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
 
 const initialState = {
+	pending: false,
+	error: false,
 	home: {
-		allShoes: {
-			pending: true,
-			state: false,
-			data: {},
-			error: '',
-			errorServer: '',
-		},
+		data: {},
 	},
 };
 export const fetchFirstProducts = createAsyncThunk(REDUCER.NAME, async () => {
@@ -48,19 +46,21 @@ const data = createSlice({
 			fetchFirstProducts.fulfilled,
 			/*eslint-disable-next-line  @typescript-eslint/no-explicit-any*/
 			(state, action: { payload: any }) => {
-				console.log(action.payload);
 				// Add user to the state array
-				state.home.allShoes.state = true;
-				state.home.allShoes.data = action.payload;
+				state.pending = false;
+				if (action.payload.error) {
+					state.error = true;
+				} else {
+					state.home.data = action.payload.data;
+				}
 			},
 		);
 		builder.addCase(fetchFirstProducts.rejected, (state) => {
-			state.home.allShoes.state = false;
-			state.home.allShoes.pending = false;
+			state.pending = false;
+			state.error = true;
 		});
 		builder.addCase(fetchFirstProducts.pending, (state) => {
-			state.home.allShoes.state = false;
-			state.home.allShoes.pending = true;
+			state.pending = true;
 		});
 	},
 });
