@@ -12,6 +12,12 @@ const sqlValuesToInsert = (object: any, keys: string[], sqlOperation: string) =>
   return columns.toString();
 };
 
+const generatorSQLSpecialCase = {
+  informationProduct: (id: number) => `SELECT product.product_id,product.name, color_id
+FROM product
+INNER JOIN product_has_color ON product.product_id=product_has_color.product_id
+ WHERE product_has_color.product_id=${id};`,
+};
 const generatorSQL: { [key: string]: any } = {
   custom: (object: TObjectSql) => {
     if (object.sql) return object.sql;
@@ -109,4 +115,4 @@ const generatorSQL: { [key: string]: any } = {
   },
 };
 
-export { generatorSQL };
+export { generatorSQL, generatorSQLSpecialCase };

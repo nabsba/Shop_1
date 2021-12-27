@@ -1,3 +1,5 @@
+import { TObjectSql } from '../Common';
+
 type TTableDefintion = {
   [key: string]: {
     table: string;
@@ -12,6 +14,14 @@ type TDataBase = {
 };
 
 export const DATA_BASE: TDataBase = {};
+export const SQL_SELECT: { [key: string]: TObjectSql } = {
+  informationColor: {
+    type: 'color',
+    mode: 'select',
+    object: {},
+  },
+};
+
 const TABLE_DEFINITION: TTableDefintion = {
   product: {
     table: 'product',

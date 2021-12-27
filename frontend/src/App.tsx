@@ -12,7 +12,6 @@ const App: React.FC = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		console.log('fired');
 		dispatch(fetchFirstProducts());
 	}, [dispatch]);
 

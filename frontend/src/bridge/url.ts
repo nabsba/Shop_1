@@ -6,14 +6,15 @@ const URL_ADDRESS = 'https://localhost:3001';
 
 const URL_ADDRESSES: {
 	default: string;
-
 	data: {
-		postObject: string;
+		postData: string;
+		getData: (type: string, id: number | null) => string;
 	};
 } = {
 	default: URL_ADDRESS,
 	data: {
-		postObject: `${URL_ADDRESS}/data`,
+		postData: `${URL_ADDRESS}/data`,
+		getData: (type: string, id = null) => `${URL_ADDRESS}/data/${type}/${id}`,
 	},
 };
 

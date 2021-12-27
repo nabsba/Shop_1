@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
 	resultTemplate,
-	serverGet,
 	serverPost,
 } from '../../../../bridge/common/requestServer';
 import URL_ADDRESSES from '../../../../bridge/url';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
+import { logMessage } from '../../../../Common/function';
 import { Result } from '../../../../Common/type/type';
-import { OBJECT_SQL } from '../../../dataBase/constant';
+import { REDUCER, SQL_OBJECT } from '../../../dataBase/constant';
+
 import * as dataBackup from '../../datas/backup/data.json';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
@@ -22,22 +24,23 @@ const initialState = {
 		},
 	},
 };
-export const fetchFirstProducts = createAsyncThunk('dataPages', async () => {
+export const fetchFirstProducts = createAsyncThunk(REDUCER.NAME, async () => {
 	let result: Result = { ...resultTemplate };
 	try {
-		const objectSql = OBJECT_SQL.ALL_SHOES;
-		result = await serverPost(URL_ADDRESSES.data.postObject, objectSql);
+		const objectSql = SQL_OBJECT.ALL_SHOES;
+		result = await serverPost(URL_ADDRESSES.data.postData, objectSql);
 		return result;
 	} catch (error) {
-		console.log(
-			'*** file: redux/midleware, method: fetchDataPages, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
+			'dataManagment/reducer',
+			'fetchFirstProducts',
+		)},
+			${error}`);
 	}
 });
 
 const data = createSlice({
-	name: 'dataPages',
+	name: REDUCER.NAME,
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
