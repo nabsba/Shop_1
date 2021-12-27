@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../Common/constant';
+import { logMessage } from '../../Common/function';
 import { Result } from '../../Common/type/type';
 
 const resultTemplate: Result = {
@@ -43,10 +45,12 @@ const serverGetApi = async (
 			params,
 		});
 	} catch (error) {
-		console.log(
-			'file: bridge/requestServer, method: serverGet, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
+			'bridge/requestServer',
+			'serverGetApi',
+		)},
+			${error}`);
+
 		result.serverError = true;
 		result.errorMessage =
 			typeof error === 'string' ? error : JSON.stringify(error);
@@ -72,10 +76,8 @@ const serverGet = async (
 			params,
 		});
 	} catch (error) {
-		console.log(
-			'file: bridge/requestServer, method: serverGet, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE('bridge/requestServer', 'serverGet')},
+			${error}`);
 		result.serverError = true;
 		result.errorMessage =
 			typeof error === 'string' ? error : JSON.stringify(error);
@@ -95,10 +97,12 @@ const serverPost = async (
 	try {
 		result = await axios.post(url, body, { timeout: time ? time : 15000 });
 	} catch (error) {
-		console.log(
-			'file: bridge/requestServer, method: serverPost, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
+			'bridge/requestServer',
+			'serverPost',
+		)},
+			${error}`);
+
 		result.serverError = true;
 		result.errorCodeServer = '500';
 	} finally {

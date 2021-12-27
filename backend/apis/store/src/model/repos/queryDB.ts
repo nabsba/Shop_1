@@ -1,5 +1,7 @@
 import { Result } from '../Common/type/type';
 import { mysql, getConfig } from '../Common/config/sql';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../Common/constant';
+import { logMessage } from '../../Common/function';
 
 export const resultTemplate: Result = {
   state: false,
@@ -32,7 +34,8 @@ const queryDataBase = async (
     result.data = query[0];
     result.serverError = false;
   } catch (error: any) {
-    console.log('*** file: queryDB, method: queryDB, error: ', error);
+    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('repos/queryDB', 'queryDataBase')},
+			${error}`);
     result.state = false;
     result.serverError = true;
     result.errorMessage = error.sqlMessage ? error.sqlMessage : ' ';

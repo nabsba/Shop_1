@@ -1,4 +1,6 @@
 import { deleteDB, openDB } from 'idb';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
+import { logMessage } from '../../../Common/function';
 import { TAnyValues } from '../../../Common/type/type';
 
 const createDBIndexDB = (
@@ -7,7 +9,6 @@ const createDBIndexDB = (
 	store: string,
 	ref?: string,
 ): boolean => {
-	console.log(database);
 	const dataB = openDB(database, version, {
 		upgrade(db) {
 			db.createObjectStore(
@@ -29,10 +30,11 @@ const addDataToIndexDB = async (
 	try {
 		db.add(store, data);
 	} catch (error) {
-		console.log(
-			'*** file: webworker/commun, method:addDataToIndexDB , error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
+			'webworker/commun',
+			'addDataToIndexDB',
+		)},
+			${error}`);
 	} finally {
 		db.close();
 	}
@@ -55,10 +57,8 @@ const getAllDatas = async (
 				// 	// …
 			},
 		});
-		console.log(
-			'*** file: webworker/commun, method: getAllData, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE('webworker/commun', 'getAllData')},
+			${error}`);
 	}
 };
 const getDataFromID = async (
@@ -72,10 +72,8 @@ const getDataFromID = async (
 		const data = await db.get(store, ID);
 		return data;
 	} catch (error) {
-		console.log(
-			'*** file: webworker/commun, method: getAllData, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE('webworker/commun', 'getDataFromID')},
+			${error}`);
 	}
 };
 const getAllKeys = async (
@@ -88,10 +86,8 @@ const getAllKeys = async (
 		const allKeys = await db.getAllKeys(store);
 		return allKeys;
 	} catch (error) {
-		console.log(
-			'*** file: webworker/getAllKey, method: getAllKey, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE('webworker/commun', 'getAllKey')},
+			${error}`);
 	} finally {
 	}
 };
@@ -105,10 +101,8 @@ const updateData = async (
 	try {
 		db.put(store, data);
 	} catch (error) {
-		console.log(
-			'*** file: webworker/updateData, method:updateData, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE('webworker/commun', 'updateData')},
+			${error}`);
 	} finally {
 		db.close();
 	}

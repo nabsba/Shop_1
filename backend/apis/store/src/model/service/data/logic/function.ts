@@ -27,7 +27,7 @@ const handlePostData = async (objectSql: TObjectSql): Promise<Result> => {
       result.data = filterObject(result.data, objectSql.type, objectSql.mode);
     }
   } catch (error) {
-    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('managerData', 'handlePostData')}, error`);
+    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('managerData', 'handlePostData')}, ${error}`);
   } finally {
     return result;
   }

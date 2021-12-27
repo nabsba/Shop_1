@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
+import { LOG_MESSAGE } from './Common/constant';
+import { logMessage } from './Common/function';
 import './component/common/css/share.css';
 import { DATA_TYPE_SERVICE_WORKER, reducers } from './service';
 
@@ -15,10 +17,11 @@ if (
 		navigator.serviceWorker
 			.register('./service-worker.js')
 			.then(function (registration) {
+				logMessage(LOG_MESSAGE.SERVICE_WORKER_SUCCESS);
 				console.log('Service Worker Registered', registration);
 			})
 			.catch(function (err) {
-				console.log('Service Worker Failed to Register', err);
+				logMessage(LOG_MESSAGE.SERVICE_WORKER_FAILED);
 			});
 	});
 	navigator.serviceWorker.ready.then((registration) => {

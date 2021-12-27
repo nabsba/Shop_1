@@ -4,6 +4,8 @@ import fs from 'fs';
 import { promises as fsPromise } from 'fs';
 import { resultTemplate } from '../../../repos/queryDB';
 import { Result, TFolderPath } from '../..';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
+import { logMessage } from '../../../../Common/function';
 
 const paths: { [key: string]: string } = {
   ['data.json']: path.join(__dirname, '../../../../../../upload/data/adminDashboard/data.json'),
@@ -24,7 +26,8 @@ const createDirectoryIfNot = async (directory: string): Promise<boolean> => {
       result = true;
     }
   } catch (error) {
-    console.log('file: fileSystem.ts, method: createDirectoryIfNot, error: ', error);
+    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('manager/file.ts', 'createDirectoryIfNot')},
+			${error}`);
   } finally {
     return result;
   }
@@ -50,7 +53,8 @@ const isDirectoryCreated = async (folderPath: TFolderPath): Promise<boolean> => 
     const fullPath = subFolder ? directory + '/' + subFolder : directory + '/';
     result = await createDirectoryIfNot(fullPath);
   } catch (error) {
-    console.log('file: fileSystem.ts, method: createDirectoryIfNot, error: ', error);
+    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('manager/file.ts', 'createDirectoryIfNot')},
+			${error}`);
   } finally {
   }
   return result;
@@ -69,10 +73,9 @@ const readFileData = async (folderPath: TFolderPath) => {
   } catch (error) {
     result.serverError = true;
     result.errorMessage = error;
-    console.log(
-      'file: ~/Desktop/thenorthwestcollege/backend/apis/tnwc/src/model/service/dashboard, method: readpDataAdmin, error: ',
-      error,
-    );
+    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('manager/file.ts', 'readFileData')},
+			${error}`);
+
     return result;
   }
 };
@@ -87,10 +90,7 @@ const writeFileData = async (folderPath: TFolderPath, object: any): Promise<Resu
   } catch (error) {
     result.serverError = true;
     result.errorMessage = error;
-    console.log(
-      'file: ~/Desktop/thenorthwestcollege/backend/apis/tnwc/src/model/service/common/filesystem, method: writeDataAdmin, error: ',
-      error,
-    );
+    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('manager/file.ts', 'writeFileData')},${error}`);
   } finally {
     return result;
   }
