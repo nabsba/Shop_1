@@ -11,6 +11,8 @@ import https from 'https';
 import fs from 'fs';
 import { data } from './controler';
 import { queryDataBase } from './model/repos';
+import { logMessage } from './Common/function';
+import { LOG_MESSAGE } from './Common/constant';
 // yarn add socket.io --save
 
 //Config
@@ -50,5 +52,5 @@ const httpsServer =
 
 httpsServer.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log('server started on port' + PORT);
+  logMessage(LOG_MESSAGE.SERVER_ON);
 });

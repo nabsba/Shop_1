@@ -2,6 +2,8 @@
 import redis from 'redis';
 import connectRedis from 'connect-redis';
 import session from 'express-session';
+import { LOG_MESSAGE } from '../constant';
+import { logMessage } from '../../../Common/function';
 //Terminal: redis-cli/CONFIG SET requirepass yourpassword
 const redisStore = connectRedis(session);
 const redisClient = redis.createClient({
@@ -25,8 +27,8 @@ const redisConfig = {
   },
 };
 redisClient.on('connect', () => {
-  console.log('Redis client connected');
+  logMessage(LOG_MESSAGE.REDIS_ON_SUCCESS);
 });
-redisClient.on('err', (err) => {
-  console.log('Do not forget to start your server or' + err);
+redisClient.on('err', (error) => {
+  logMessage(`${LOG_MESSAGE.REDIS_ON_ERROR}, ${error}`);
 });

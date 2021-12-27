@@ -1,4 +1,8 @@
 const ERROR_LOG_ASYNC_MESSAGE = (path: string, method: string) =>
 	`*** file: ${path}, method: ${method}, error: `;
 
-export { ERROR_LOG_ASYNC_MESSAGE };
+const LOG_MESSAGE = {
+	SERVICE_WORKER_SUCCESS: 'SERVICE WORKER SUCCESS REGISTRATION',
+	SERVICE_WORKER_FAILED: 'SERVICE WORKER FAILED REGISTRATION',
+};
+export { ERROR_LOG_ASYNC_MESSAGE, LOG_MESSAGE };
