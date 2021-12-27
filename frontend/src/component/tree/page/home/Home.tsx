@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
+import { H1, H2, H3 } from '../../atom';
 import './style.css';
 // import THome from './type';
 
@@ -14,8 +15,9 @@ const Home: React.FC = () => {
 	// const { id } = useParams();
 	return (
 		<div>
-			<h1> Hello </h1>
-			<p> Bonjour ca va</p>
+			<H1 title="TITLE 1" />
+			<H2 title="TITLE 2" />
+			<H3 title="TITLE 3" />
 		</div>
 	);
 };
