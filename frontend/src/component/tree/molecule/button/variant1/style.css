@@ -3,8 +3,9 @@
 .button_variant1 {
 	padding: .7rem 4rem .7rem 4rem;
 	font-weight: 800;
-	background-color: var(--color-neutral-4);
-	color: var(--color-neutral-2);
+	background-color: var(--color-neutral-2);
+	color: var(--color-secondary-1);
+	border: none;
 
 }
 
