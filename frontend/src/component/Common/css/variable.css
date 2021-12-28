@@ -6,4 +6,13 @@
 	--color-neutral-5: #000000;
 	--border: 2px;
 	--border-radius: 5px;
+	--margin-bottom-h1: 1.3rem;
+	--margin-bottom-h2: 1rem;
+	--margin-bottom-h3:.7rem;
+	--margin-left-body: 1.2rem;
+	--margin-right-body: 1.2rem;
+	--padding-button-side: 1.3rem;
+	--padding-button-top-bottom: .7rem;
+	--line-height-paragraph: 1.3em;
+	--letter-spacing-titles: .3rem
 }
