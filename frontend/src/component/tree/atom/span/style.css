@@ -1,0 +1,21 @@
+span {
+font-size:1.2rem
+}
+
+
+@media only screen and (min-width: 500px) {
+	span {
+		font-size: 1.5rem;
+	}
+}
+@media only screen and (min-width: 770px) {
+	span {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (min-width: 1449px) {
+	span {
+		font-size: 2.5rem;
+	}
+}
