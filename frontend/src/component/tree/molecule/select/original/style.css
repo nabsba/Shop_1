@@ -1,0 +1,7 @@
+.select_original fieldset, .select_original label {
+	display:none;
+}
+
+.select_original > div {
+	border: 1px solid black;
+}

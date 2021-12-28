@@ -1,0 +1,9 @@
+@import'../../../../Common/css/variable.css';
+
+.select_variant1 label, .select_variant1  fieldset{
+	display:none;
+}
+.select_variant1 > div {
+	border-top: var(--border) solid var(--color-neutral-3);
+	border-bottom: var(--border) solid var(--color-neutral-3);
+}

@@ -17,7 +17,7 @@ const SelectOriginal: React.FC<Props> = ({ data: { menus, label } }) => {
 	};
 
 	return (
-		<div>
+		<div className="select_original">
 			<FormControl sx={{ m: 1, minWidth: 80 }}>
 				<InputLabel id="demo-simple-select-autowidth-label">{label}</InputLabel>
 				<Select
