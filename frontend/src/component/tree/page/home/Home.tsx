@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
-import { H1, H2, H3, Paragraph, Span } from '../../atom';
+import { H1, H2, H3, Paragraph, Span, SubText } from '../../atom';
 
 import './style.css';
 // import THome from './type';
@@ -21,6 +21,7 @@ const Home: React.FC = () => {
 			<H3 title="TITLE 3" />
 			<Paragraph data="Hello" />
 			<Span data="Span" />
+			<SubText data="Sub text" />
 		</div>
 	);
 };
