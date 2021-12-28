@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { TReducers } from '../../../../service';
 import getIcon from '../../../factory/Icon';
 import { H1, H2, H3, Paragraph, Span, SubText } from '../../atom';
-import { ButtonOriginal, ButtonVariant1 } from '../../molecule';
+import { ButtonOriginal, ButtonVariant1, SelectOriginal } from '../../molecule';
 
 import './style.css';
 // import THome from './type';
@@ -28,6 +28,7 @@ const Home: React.FC = () => {
 			<SubText data="Sub text" />
 			<ButtonOriginal data="more" />
 			<ButtonVariant1 data="bag" />
+			<SelectOriginal data={{ menus: [1, 2, 3], label: 'size' }} />
 			{IconTest}
 		</div>
 	);
