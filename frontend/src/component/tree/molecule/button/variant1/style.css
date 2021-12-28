@@ -1,0 +1,14 @@
+@import'../../../../Common/css/variable.css';
+
+.button_variant1 {
+	padding: .7rem 4rem .7rem 4rem;
+	font-weight: 800;
+	background-color: var(--color-neutral-4);
+	color: var(--color-neutral-2);
+
+}
+
+.button_variant1 span {
+	color: inherit;
+	text-transform: uppercase;
+}
