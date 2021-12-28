@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
+import getIcon from '../../../factory/Icon';
 import { H1, H2, H3, Paragraph, Span, SubText } from '../../atom';
 
 import './style.css';
@@ -14,6 +15,7 @@ const Home: React.FC = () => {
 
 	// // To grab address.com/:id
 	// const { id } = useParams();
+	const IconTest = getIcon('Twitter');
 	return (
 		<div>
 			<H1 title="TITLE 1" />
@@ -22,6 +24,7 @@ const Home: React.FC = () => {
 			<Paragraph data="Hello" />
 			<Span data="Span" />
 			<SubText data="Sub text" />
+			{IconTest}
 		</div>
 	);
 };
