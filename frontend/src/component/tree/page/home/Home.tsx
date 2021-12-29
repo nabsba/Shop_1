@@ -1,15 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import URL_ADDRESSES from '../../../../bridge/url';
 // import { useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
 import getIcon from '../../../factory/Icon';
-import { H1, H2, H3, Paragraph, Span, SubText } from '../../atom';
+import {
+	H1,
+	H2,
+	H3,
+	ImageAsComponent,
+	Paragraph,
+	Span,
+	SubText,
+} from '../../atom';
 import {
 	ButtonOriginal,
 	ButtonVariant1,
 	SelectVariant1,
 	SelectOriginal,
 	Stars,
+	Pub,
+	ArticleOriginal,
 } from '../../molecule';
 
 import './style.css';
@@ -22,6 +33,7 @@ const Home: React.FC = () => {
 
 	// // To grab address.com/:id
 	// const { id } = useParams();
+
 	const IconTest = getIcon('Stars');
 	return (
 		<div>
@@ -40,6 +52,31 @@ const Home: React.FC = () => {
 			/>
 			{/* {IconTest} */}
 			<Stars data={{ list: [1, 1, 1, 0] }} />
+			<Pub data="Hi" />
+			<div style={{ width: '100%', height: '50vh', position: 'relative' }}>
+				<ImageAsComponent
+					data={{
+						src: `${URL_ADDRESSES.fileManager.image.load(
+							'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						)}`,
+						alt: 'airzoom',
+					}}
+				/>
+			</div>
+			<ArticleOriginal
+				data={{
+					image: {
+						src: `${URL_ADDRESSES.fileManager.image.load(
+							'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						)}`,
+						alt: 'airzoom',
+					},
+					information: {
+						name: 'airzoom',
+						price: '50$',
+					},
+				}}
+			/>
 		</div>
 	);
 };

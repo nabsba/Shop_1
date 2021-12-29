@@ -1,3 +1,5 @@
+import ArticleOriginal from './article/articleOriginal/ArticleOriginal';
+import Pub from './banner/pub/Pub';
 import ButtonOriginal from './button/original/ButtonOriginal';
 import ButtonVariant1 from './button/variant1/ButtonVariant1';
 import SelectOriginal from './select/original/SelectOriginal';
@@ -10,4 +12,6 @@ export {
 	SelectOriginal,
 	SelectVariant1,
 	Stars,
+	Pub,
+	ArticleOriginal,
 };
