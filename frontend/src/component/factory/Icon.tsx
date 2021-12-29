@@ -8,7 +8,8 @@ import {
 	Medical,
 	Arrow,
 	Account,
-	Stars,
+	StarsEmpty,
+	StarsFill,
 	Heart,
 	Location,
 	Burger,
@@ -35,8 +36,10 @@ const getIcon = (indice: string): ReactElement => {
 			return <Arrow />;
 		case 'Account':
 			return <Account />;
-		case 'Stars':
-			return <Stars />;
+		case 'StarsEmpty':
+			return <StarsEmpty />;
+		case 'StarsFill':
+			return <StarsFill />;
 		case 'Heart':
 			return <Heart />;
 		case 'Location':

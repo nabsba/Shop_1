@@ -9,6 +9,7 @@ import {
 	ButtonVariant1,
 	SelectVariant1,
 	SelectOriginal,
+	Stars,
 } from '../../molecule';
 
 import './style.css';
@@ -21,7 +22,7 @@ const Home: React.FC = () => {
 
 	// // To grab address.com/:id
 	// const { id } = useParams();
-	const IconTest = getIcon('Twitter');
+	const IconTest = getIcon('Stars');
 	return (
 		<div>
 			<H1 title="TITLE 1" />
@@ -38,6 +39,7 @@ const Home: React.FC = () => {
 				data={{ menus: ['1', '2', '3'], label: 'size', isMultiple: false }}
 			/>
 			{/* {IconTest} */}
+			<Stars data={{ list: [1, 1, 1, 0] }} />
 		</div>
 	);
 };
