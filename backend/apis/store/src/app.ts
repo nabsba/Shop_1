@@ -9,7 +9,7 @@ import path from 'path';
 import { createServer } from 'http';
 import https from 'https';
 import fs from 'fs';
-import { data } from './controler';
+import { data, fileManager } from './controler';
 import { queryDataBase } from './model/repos';
 import { logMessage } from './Common/function';
 import { LOG_MESSAGE } from './Common/constant';
@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
 app.use('/data', data);
+app.use('/fileManager', fileManager);
 app.get('/test', (req, res) => {
   res.send('Your test has worked');
 });
@@ -45,12 +46,10 @@ app.use('*', function (req, res) {
 
 const PORT = process.env.DEVELOPMENT === 'true' ? 3001 : null; // => local : namecheap web hosted
 // const PORT = '8080'; // => Centos
-const httpsServer =
-  process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true'
-    ? https.createServer(options, app)
-    : createServer(app);
+const isHTTPS = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true';
+const httpsServer = isHTTPS ? https.createServer(options, app) : createServer(app);
 
 httpsServer.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  logMessage(LOG_MESSAGE.SERVER_ON);
+  logMessage(`${LOG_MESSAGE.SERVER_ON} ${PORT} using ${isHTTPS ? 'https' : 'http'}`);
 });
