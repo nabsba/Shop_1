@@ -23,7 +23,7 @@ const MenuProps = {
 	},
 };
 
-const SelectVariant1: React.FC<Props> = ({ data: { menus, isItMultiple } }) => {
+const SelectVariant1: React.FC<Props> = ({ data: { menus, isMultiple } }) => {
 	const [menu, setMenus] = React.useState<string[]>([]);
 	// const classes = useStyles();
 
@@ -44,7 +44,7 @@ const SelectVariant1: React.FC<Props> = ({ data: { menus, isItMultiple } }) => {
 				<Select
 					labelId="demo-multiple-checkbox-label"
 					id="demo-multiple-checkbox"
-					multiple={isItMultiple}
+					multiple={isMultiple}
 					value={menu}
 					onChange={handleChange}
 					input={<OutlinedInput label="Tag" />}
