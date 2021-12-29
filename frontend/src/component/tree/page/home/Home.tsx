@@ -1,9 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import URL_ADDRESSES from '../../../../bridge/url';
 // import { useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
 import getIcon from '../../../factory/Icon';
-import { H1, H2, H3, Paragraph, Span, SubText } from '../../atom';
+import {
+	H1,
+	H2,
+	H3,
+	ImageAsComponent,
+	Paragraph,
+	Span,
+	SubText,
+} from '../../atom';
+import {
+	ButtonOriginal,
+	ButtonVariant1,
+	SelectVariant1,
+	SelectOriginal,
+	Stars,
+	Pub,
+	ArticleOriginal,
+} from '../../molecule';
 
 import './style.css';
 // import THome from './type';
@@ -15,17 +33,50 @@ const Home: React.FC = () => {
 
 	// // To grab address.com/:id
 	// const { id } = useParams();
-	const IconTest = getIcon('Twitter');
+
+	const IconTest = getIcon('Stars');
 	return (
 		<div>
 			<H1 title="TITLE 1" />
-			<Paragraph data="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi tellus, molestie aliquam volutpat nec, dictum a eros. Praesent tempus ex sed augue luctus, et convallis eros suscipit. Nulla viverra enim in sem commodo vulputate. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed lobortis faucibus orci. Fusce ultricies metus in velit tempus aliquet euismod eget mauris. Aliquam ac mauris finibus, mollis nisi id, malesuada lacus. Nunc tristique elit dolor, at pulvinar felis vestibulum eget. Ut vel eros id velit dictum convallis. Aliquam sagittis tempus dui, ut porttitor sem aliquet id. Donec gravida, tortor ut efficitur maximus, mi massa pellentesque mauris, in sollicitudin augue turpis et quam. Phasellus interdum risus neque, a porta enim volutpat id. Fusce venenatis ipsum ligula, eu ultrices dui accumsan vitae. Mauris aliquet ornare urna. Sed ex purus, volutpat quis sapien at, porttitor scelerisque leo. Quisque scelerisque ex vitae arcu euismod, non malesuada lorem malesuada." />
+			<Paragraph data="tuscipit natoque penismod ege lacus. Nunc tristique elit dolor, at pulvinar felis vestibulum eget. Ut vel eros id velit dictum convallis. Aliquam sagittis tempus dui, ut porttitor sem aliquet id. Donec gravida, tortor ut efficitur maximus, mi massa pellentesque mauris, in sollicitudin augue turpis et quam. Phasellus interdum risus neque, a porta enim volutpat id. Fusce venenatis ipsum ligula, eu ultrices dui accumsan vitae. Mauris aliquet ornare urna. Sed ex purus, volutpat quis sapien at, porttitor scelerisque leo. Quisque scelerisque ex vitae arcu euismod, non malesuada lorem malesuada." />
 			<H2 title="TITLE 2" />
 			<H3 title="TITLE 3" />
 			<Paragraph data="Hello" />
 			<Span data="Span" />
 			<SubText data="Sub text" />
-			{IconTest}
+			<ButtonOriginal data="more" />
+			<ButtonVariant1 data="bag" />
+			<SelectOriginal data={{ menus: [1, 2, 3], label: 'size' }} />
+			<SelectVariant1
+				data={{ menus: ['1', '2', '3'], label: 'size', isMultiple: false }}
+			/>
+			{/* {IconTest} */}
+			<Stars data={{ list: [1, 1, 1, 0] }} />
+			<Pub data="Hi" />
+			<div style={{ width: '100%', height: '50vh', position: 'relative' }}>
+				<ImageAsComponent
+					data={{
+						src: `${URL_ADDRESSES.fileManager.image.load(
+							'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						)}`,
+						alt: 'airzoom',
+					}}
+				/>
+			</div>
+			<ArticleOriginal
+				data={{
+					image: {
+						src: `${URL_ADDRESSES.fileManager.image.load(
+							'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						)}`,
+						alt: 'airzoom',
+					},
+					information: {
+						name: 'airzoom',
+						price: '50$',
+					},
+				}}
+			/>
 		</div>
 	);
 };

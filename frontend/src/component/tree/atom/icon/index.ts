@@ -2,7 +2,8 @@ import {
 	AiOutlineTwitter as Twitter,
 	AiFillFacebook as Facebook,
 	AiOutlineCloseSquare as Close,
-	AiOutlineStar as Stars,
+	AiOutlineStar as StarsEmpty,
+	AiFillStar as StarsFill,
 } from 'react-icons/ai';
 import { HiOutlineShoppingBag as Bag } from 'react-icons/hi';
 import { BiSliderAlt as Filter } from 'react-icons/bi';
@@ -25,7 +26,8 @@ export {
 	Medical,
 	Arrow,
 	Account,
-	Stars,
+	StarsEmpty,
+	StarsFill,
 	Heart,
 	Location,
 	Burger,

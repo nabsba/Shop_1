@@ -1,9 +1,13 @@
 :root {
+	--color-primary-1: #9B3333;
+	--color-primary-2: #830101;
+	--color-primary-3: #5B0000;
+	--color-secondary-1: #f4f4f4;
+	--color-secondary-2: #d6d6d6;
+	--color-secondary-3: #a9a9a9;
 	--color-neutral-1: #ffffff;
-	--color-neutral-2: #f4f4f4;
-	--color-neutral-3: #d6d6d6;
-	--color-neutral-4: #a9a9a9;
-	--color-neutral-5: #000000;
+	--color-neutral-2: #a9a9a9;
+	--color-neutral-3: #000000;
 	--border: 2px;
 	--border-radius: 5px;
 	--margin-bottom-h1: 1.3rem;
@@ -13,6 +17,9 @@
 	--margin-right-body: 1.2rem;
 	--padding-button-side: 1.3rem;
 	--padding-button-top-bottom: .7rem;
+	--padding-button-variant1-side: 4rem;
+	--padding-button-variant1-top-bottom: .7rem;
 	--line-height-paragraph: 1.3em;
-	--letter-spacing-titles: .3rem
+	--letter-spacing-titles: .3rem;
+	--font-weight: 800;
 }
