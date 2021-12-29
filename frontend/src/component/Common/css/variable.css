@@ -17,6 +17,9 @@
 	--margin-right-body: 1.2rem;
 	--padding-button-side: 1.3rem;
 	--padding-button-top-bottom: .7rem;
+	--padding-button-variant1-side: 4rem;
+	--padding-button-variant1-top-bottom: .7rem;
 	--line-height-paragraph: 1.3em;
-	--letter-spacing-titles: .3rem
+	--letter-spacing-titles: .3rem;
+	--font-weight: 800;
 }
