@@ -1,0 +1,11 @@
+@import'../../../../Common/css/variable.css';
+
+.numberCircle {
+	line-height: 1rem;
+	border-radius: 50%;
+	text-align: center;
+	font-size: .9rem;
+	background-color: red;
+	width: var(--size-icon);
+	
+}
