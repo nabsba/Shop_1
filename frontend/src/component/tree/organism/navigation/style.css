@@ -1,0 +1,134 @@
+@import '../../../Common/css/variable.css';
+
+.navigation_header {
+	position: relative;
+	overflow: hidden;
+}
+.navigation_header_mobile {
+	height: 3rem;
+}
+
+.navigation_header_desktop {
+	display: none !important;
+	height: 5rem;
+	background-color: grey;
+}
+
+.navigation_on {
+	display: block;
+	height: 100vh;
+	width: 100%;
+	transform: translateX(0vw);
+	position: fixed;
+	z-index:100;
+	transition: 200ms;
+	background-color: var(--color-secondary-1);
+}
+
+.navigation_off {
+	width: 100%;
+	z-index: 100;
+	position: fixed;
+	height: 100vh;
+	background-color: var(--color-secondary-1);
+	transform: translateX(100vw);
+	transition: transform 200ms;
+}
+
+.sub_navigation_header_mobile_part_1 span {
+	margin-left: var(--margin-minor);
+}
+
+.sub_navigation_header_mobile_part_1 svg {
+	font-size: 3rem;
+}
+
+.sub_navigation_header_mobile_part_2 {
+	height: 40%;
+}
+
+.sub_navigation_header_desktop_part_1 li {
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
+.bag_and_number_circle
+  {
+	position: relative;
+}
+
+.bag_and_number_circle .numberCircle {
+	position: absolute;
+	top: -0.4rem;
+	left: -0.8rem;
+	z-index:2;
+}
+
+.bag_and_number_circle svg {
+	height: var(--size-icon);
+}
+
+@media only screen and (min-width: 760px) {
+	.navigation_header_mobile,
+	.navigation_off {
+		display: none !important;
+	}
+
+	.navigation_header_desktop {
+		display: flex !important;
+	}
+
+
+}
+
+/*NavigationOnClick*/
+.sub_navigation_on_part_1 {
+	flex: 2.5;
+}
+
+.sub_navigation_on_part_1_header {
+	padding-top: 1rem;
+}
+
+.sub_navigation_on_part_1_bottom {
+	flex: 4;
+	width: 100%;
+}
+
+.sub_navigation_on_part_1_bottom a {
+	text-transform: capitalize;
+}
+
+.sub_navigation_on_part_1_bottom_nav {
+	margin: auto;
+	height: 100%;
+}
+
+.sub_navigation_on_part_2 {
+	flex: 1;
+}
+
+.sub_navigation_on_part_2_header {
+	height: 1rem;
+}
+
+.sub_navigation_on_part_2_header svg:nth-child(1) {
+	width: 1rem;
+	fill: #5DA9DD;
+}
+
+.sub_navigation_on_part_2_header svg:nth-child(2) {
+	width: 1rem;
+	fill: #4867AA;
+}
+
+.sub_navigation_on_part_2_bottom {
+	height: 100%;
+}
+
+.sub_navigation_on_part_2_bottom a {
+	text-transform: uppercase;
+	margin-left: var(--margin-minor);
+}
+
+/*End NavigationOnClick*/

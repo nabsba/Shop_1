@@ -6,6 +6,7 @@ import { Home } from './component/tree/page';
 import { fetchFirstProducts } from './service/pages/Common/dataManagment/reducer';
 import fetchInformationDatabase from './service/dataBase/reducer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import './component/Common/css/share.css';
 // Reminder: https://medium.com/@jenniferdobak/react-router-vs-switch-components-2af3a9fc72e
 
 const theme = createTheme({

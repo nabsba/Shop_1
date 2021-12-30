@@ -9,6 +9,7 @@ import {
 	H2,
 	H3,
 	ImageAsComponent,
+	NavLinkAsComponent,
 	Paragraph,
 	Span,
 	SubText,
@@ -22,6 +23,7 @@ import {
 	Pub,
 	ArticleOriginal,
 } from '../../molecule';
+import { NavigationHeader } from '../../organism';
 
 import './style.css';
 // import THome from './type';
@@ -37,6 +39,7 @@ const Home: React.FC = () => {
 	const IconTest = getIcon('Stars');
 	return (
 		<div>
+			<NavigationHeader data={'dd'} />
 			<H1 title="TITLE 1" />
 			<Paragraph data="tuscipit natoque penismod ege lacus. Nunc tristique elit dolor, at pulvinar felis vestibulum eget. Ut vel eros id velit dictum convallis. Aliquam sagittis tempus dui, ut porttitor sem aliquet id. Donec gravida, tortor ut efficitur maximus, mi massa pellentesque mauris, in sollicitudin augue turpis et quam. Phasellus interdum risus neque, a porta enim volutpat id. Fusce venenatis ipsum ligula, eu ultrices dui accumsan vitae. Mauris aliquet ornare urna. Sed ex purus, volutpat quis sapien at, porttitor scelerisque leo. Quisque scelerisque ex vitae arcu euismod, non malesuada lorem malesuada." />
 			<H2 title="TITLE 2" />
@@ -53,7 +56,8 @@ const Home: React.FC = () => {
 			{/* {IconTest} */}
 			<Stars data={{ list: [1, 1, 1, 0] }} />
 			<Pub data="Hi" />
-			<div style={{ width: '100%', height: '50vh', position: 'relative' }}>
+			<NavLinkAsComponent data={{ text: 'about', href: '/about' }} />
+			{/* <div style={{ width: '100%', height: '50vh', position: 'relative' }}>
 				<ImageAsComponent
 					data={{
 						src: `${URL_ADDRESSES.fileManager.image.load(
@@ -62,8 +66,8 @@ const Home: React.FC = () => {
 						alt: 'airzoom',
 					}}
 				/>
-			</div>
-			<ArticleOriginal
+			</div> */}
+			{/* <ArticleOriginal
 				data={{
 					image: {
 						src: `${URL_ADDRESSES.fileManager.image.load(
@@ -76,7 +80,7 @@ const Home: React.FC = () => {
 						price: '50$',
 					},
 				}}
-			/>
+			/> */}
 		</div>
 	);
 };
