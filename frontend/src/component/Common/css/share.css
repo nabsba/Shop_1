@@ -37,6 +37,11 @@ ul {
 	justify-content: flex-end;
 }
 
+.flex_row_between {
+	display: flex;
+	justify-content: space-between;
+}
+
 .flex_column {
 	display: flex;
 	flex-direction: column;
@@ -45,11 +50,6 @@ ul {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-}
-
-.flex_row_between {
-	display: flex;
-	justify-content: space-between;
 }
 
 .flex_row_between_align_center {
