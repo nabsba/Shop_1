@@ -1,4 +1,3 @@
-const toggleBoolean = (entry: boolean) => !entry;
 const onPressEntry = (
 	event: React.KeyboardEvent,
 	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -10,4 +9,4 @@ const onPressEntry = (
 	}
 };
 
-export { toggleBoolean, onPressEntry };
+export { onPressEntry };
