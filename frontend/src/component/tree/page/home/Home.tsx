@@ -23,7 +23,7 @@ import {
 	Pub,
 	ArticleOriginal,
 } from '../../molecule';
-import { NavigationHeader, SliderOriginal } from '../../organism';
+import { NavigationHeader, Review, SliderOriginal } from '../../organism';
 
 import './style.css';
 // import THome from './type';
@@ -96,6 +96,13 @@ const Home: React.FC = () => {
 			<Pub data="Hi" />
 			<NavLinkAsComponent data={{ text: 'about', href: '/about' }} />
 			<SliderOriginal data={{ list: listComponent, className: 'slider_' }} />
+			<Review
+				data={{
+					title: 'Great news!',
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ',
+					list: [1, 1, 1, 0, 0],
+				}}
+			/>
 			{/* <div style={{ width: '100%', height: '50vh', position: 'relative' }}>
 				<ImageAsComponent
 					data={{
