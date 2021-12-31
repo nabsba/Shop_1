@@ -15,10 +15,13 @@ html {
 	box-sizing: border-box !important;
 }
 
+
 /* ----------------------------------------------*/
 /* 01 Body 			                            		 */
 /* ----------------------------------------------*/
-
+#root {
+	overflow: hidden;
+}
 /*tag*/
 ul {
 	list-style: none;
