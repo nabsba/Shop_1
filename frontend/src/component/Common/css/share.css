@@ -35,6 +35,16 @@ ul {
 	display: flex;
 }
 
+.flex_column {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex_row_wrap{
+	display: flex;
+	flex-wrap:wrap;
+}
+
 .flex_row_end {
 	display: flex;
 	justify-content: flex-end;
@@ -45,10 +55,6 @@ ul {
 	justify-content: space-between;
 }
 
-.flex_column {
-	display: flex;
-	flex-direction: column;
-}
 .flex_column_evenly {
 	display: flex;
 	flex-direction: column;
