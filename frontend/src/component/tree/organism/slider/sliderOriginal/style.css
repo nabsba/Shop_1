@@ -1,0 +1,53 @@
+@import'../../../../Common/css/variable.css';
+
+.slider_original {
+	position: relative;
+}
+.slick-dots {
+	bottom:1.5rem;
+}
+.slider_arrow_previous {
+	transform: rotate(90deg);
+}
+
+.slider_arrow_next {
+	transform: rotate(270deg);
+}
+
+.slider_original_control {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: var(--size-icon);
+}
+
+.slick-arrow {
+	opacity: 0;
+}
+
+.slick-prev,
+.slick-next {
+	z-index: 10 !important;
+	background-color: blue;
+}
+
+.slick-prev {
+	left: 0px !important;
+}
+
+.slick-next {
+	right: 0px !important;
+}
+
+.arrow_icon {
+	position: absolute;
+	z-index: 20;
+}
+
+.slider_ {
+	height: 80vh;
+	width: 100vw;
+	position: relative;
+}

@@ -23,7 +23,7 @@ import {
 	Pub,
 	ArticleOriginal,
 } from '../../molecule';
-import { NavigationHeader } from '../../organism';
+import { NavigationHeader, SliderOriginal } from '../../organism';
 
 import './style.css';
 // import THome from './type';
@@ -37,6 +37,44 @@ const Home: React.FC = () => {
 	// const { id } = useParams();
 
 	const IconTest = getIcon('Stars');
+	const listComponent = [
+		<ImageAsComponent
+			key={1}
+			data={{
+				src: `${URL_ADDRESSES.fileManager.image.load(
+					'product/shoes/medium/blue/airzoom/airzoom_1.png',
+				)}`,
+				alt: 'airzoom',
+			}}
+		/>,
+		<ImageAsComponent
+			key={2}
+			data={{
+				src: `${URL_ADDRESSES.fileManager.image.load(
+					'product/shoes/medium/blue/airzoom/airzoom_1.png',
+				)}`,
+				alt: 'airzoom',
+			}}
+		/>,
+		<ImageAsComponent
+			key={3}
+			data={{
+				src: `${URL_ADDRESSES.fileManager.image.load(
+					'product/shoes/medium/blue/airzoom/airzoom_1.png',
+				)}`,
+				alt: 'airzoom',
+			}}
+		/>,
+		<ImageAsComponent
+			key={4}
+			data={{
+				src: `${URL_ADDRESSES.fileManager.image.load(
+					'product/shoes/medium/blue/airzoom/airzoom_1.png',
+				)}`,
+				alt: 'airzoom',
+			}}
+		/>,
+	];
 	return (
 		<div>
 			<NavigationHeader data={'dd'} />
@@ -57,6 +95,7 @@ const Home: React.FC = () => {
 			<Stars data={{ list: [1, 1, 1, 0] }} />
 			<Pub data="Hi" />
 			<NavLinkAsComponent data={{ text: 'about', href: '/about' }} />
+			<SliderOriginal data={{ list: listComponent, className: 'slider_' }} />
 			{/* <div style={{ width: '100%', height: '50vh', position: 'relative' }}>
 				<ImageAsComponent
 					data={{
