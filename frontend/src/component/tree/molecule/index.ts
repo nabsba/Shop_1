@@ -1,4 +1,5 @@
 import ArticleOriginal from './article/articleOriginal/ArticleOriginal';
+import ArticleVariantBag from './article/articleVariantBag/ArticleVariantBag';
 import Pub from './banner/pub/Pub';
 import ButtonOriginal from './button/original/ButtonOriginal';
 import ButtonVariant1 from './button/variant1/ButtonVariant1';
@@ -14,4 +15,5 @@ export {
 	Stars,
 	Pub,
 	ArticleOriginal,
+	ArticleVariantBag,
 };

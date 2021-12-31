@@ -22,6 +22,7 @@ import {
 	Stars,
 	Pub,
 	ArticleOriginal,
+	ArticleVariantBag,
 } from '../../molecule';
 import { NavigationHeader, Review, SliderOriginal } from '../../organism';
 
@@ -36,6 +37,19 @@ const Home: React.FC = () => {
 	// // To grab address.com/:id
 	// const { id } = useParams();
 
+	const articleVariantBag = {
+		selectOriginal: {
+			menus: [1, 2, 3, 4, 5],
+			label: 'size',
+		},
+		list: ['PANT', 'BLACK/GREY', 'SIZE 10'],
+		imageAsComponent: {
+			src: `${URL_ADDRESSES.fileManager.image.load(
+				'product/shoes/medium/blue/airzoom/airzoom_1.png',
+			)}`,
+			alt: 'airzoom',
+		},
+	};
 	const IconTest = getIcon('Stars');
 	const listComponent = [
 		<ImageAsComponent
@@ -103,6 +117,7 @@ const Home: React.FC = () => {
 					list: [1, 1, 1, 0, 0],
 				}}
 			/>
+			<ArticleVariantBag data={articleVariantBag} />
 			{/* <div style={{ width: '100%', height: '50vh', position: 'relative' }}>
 				<ImageAsComponent
 					data={{
