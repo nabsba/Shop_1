@@ -13,11 +13,11 @@ const Stars: React.FC<Props> = ({ data: { list } }) => {
 
 	return (
 		<div className="stars">
-			{list.map((item) => {
+			{list.map((item: any, index: number) => {
 				if (item) {
-					return StarsFill;
+					return <span key={index}> {StarsFill} </span>;
 				} else {
-					return StarsEmpty;
+					return <span key={index}> {StarsEmpty} </span>;
 				}
 			})}
 		</div>
