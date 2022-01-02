@@ -23,15 +23,17 @@ import {
 	Pub,
 	ArticleOriginal,
 	ArticleVariantBag,
+	Review,
 } from '../../molecule';
 import {
 	FilterProduct,
 	Footer,
 	NavigationHeader,
-	Review,
 	SliderOriginal,
 } from '../../organism';
 import ArticleGroupBag from '../../organism/articleGroup/articleGroupBag/ArticleGroupBag';
+import DescriptionProduct from '../../organism/descriptionProduct/DescriptionProduct';
+import TDescriptionProduct from '../../organism/descriptionProduct/type';
 
 import './style.css';
 // import THome from './type';
@@ -40,6 +42,24 @@ const Home: React.FC = () => {
 	const { dataPages, informationDataBaseStore } = useSelector(
 		(state: TReducers) => state,
 	);
+	const descriptionProduct: TDescriptionProduct = {
+		menusDescription: ['description', 'detail', 'review'],
+		descriptionData: {
+			description: {
+				title: 'shoes name',
+				text: "From boot camp in the park to bodyweight exercises at the campground, these men's Reebok training shoes take you out of your routine and help make fitness fun wherever you are. Floatride Energy Foam in the forefoot gives you a lightweight feel and responsive ride. Raised lugs for better traction on any surface.",
+			},
+			detail: {
+				title: 'Specification',
+				list: ['Paragraph', 'Paragraph', 'Paragraph', 'Paragraph'],
+			},
+			review: {
+				title: 'Great purchase! no regrets',
+				list: [1, 1, 1, 1, 0],
+				text: "From boot camp in the park to bodyweight exercises at the campground, these men's Reebok training shoes take you out of your routine and help make fitness fun wherever you are. Floatride Energy Foam in the forefoot gives you a lightweight feel and responsive ride. Raised lugs for better traction on any surface.",
+			},
+		},
+	};
 
 	// // To grab address.com/:id
 	// const { id } = useParams();
@@ -178,6 +198,7 @@ const Home: React.FC = () => {
 					},
 				}}
 			/> */}
+			<DescriptionProduct data={descriptionProduct} />
 		</div>
 	);
 };

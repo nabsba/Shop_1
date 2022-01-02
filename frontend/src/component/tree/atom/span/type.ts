@@ -1,1 +1,1 @@
-export type TSpan = string;
+export type TSpan = string | number;

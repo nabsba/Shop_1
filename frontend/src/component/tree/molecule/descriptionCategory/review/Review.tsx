@@ -1,7 +1,8 @@
 import React from 'react';
-import { H3, Paragraph } from '../../../atom';
+import { H3, Paragraph, Span } from '../../../atom';
 import { Stars } from '../..';
 import './style.css';
+import '../style.css';
 import TReview from './type';
 
 type Props = {
@@ -11,9 +12,13 @@ type Props = {
 const Review: React.FC<Props> = ({ data: { title, list, text } }) => {
 	return (
 		<div className="review">
-			<H3 title={title} />
-			<Stars data={{ list }} />
-			<Paragraph data={text} />
+			<div className="description_category_bottom">
+				<div className="description_category_bottom_title">
+					<Span data={title} />
+					<Stars data={{ list }} />
+				</div>
+				<Paragraph data={text} />
+			</div>
 		</div>
 	);
 };
