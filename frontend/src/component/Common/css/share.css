@@ -67,6 +67,10 @@ ul {
 	align-items: center;
 }
 
+.flex_row_center {
+		display: flex;
+	justify-content: center;
+}
 .flex_row_center_align_center {
 	display: flex;
 	justify-content: center;

@@ -26,6 +26,7 @@ import {
 } from '../../molecule';
 import {
 	FilterProduct,
+	Footer,
 	NavigationHeader,
 	Review,
 	SliderOriginal,
@@ -57,6 +58,28 @@ const Home: React.FC = () => {
 		},
 	};
 	const IconTest = getIcon('Stars');
+	const footer = {
+		menusFooter: [
+			{
+				text: 'home',
+				href: '/home',
+			},
+			{
+				text: 'men',
+				href: '/men',
+			},
+			{
+				text: 'women',
+				href: '/women',
+			},
+			{
+				text: 'kids',
+				href: '/kids',
+			},
+		],
+		icons: ['Twitter', 'Facebook'],
+		copyRightSentence: 'Copyright © 2021 Nabil - All Rights Reserved',
+	};
 	const listComponent = [
 		<ImageAsComponent
 			key={1}
@@ -130,6 +153,7 @@ const Home: React.FC = () => {
 				}}
 			/>
 			<FilterProduct data="" />
+			<Footer data={footer} />
 			{/* <div style={{ width: '100%', height: '50vh', position: 'relative' }}>
 				<ImageAsComponent
 					data={{
