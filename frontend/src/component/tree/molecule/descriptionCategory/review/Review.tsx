@@ -1,6 +1,6 @@
 import React from 'react';
-import { H3, Paragraph } from '../../atom';
-import { Stars } from '../../molecule';
+import { H3, Paragraph } from '../../../atom';
+import { Stars } from '../..';
 import './style.css';
 import TReview from './type';
 
