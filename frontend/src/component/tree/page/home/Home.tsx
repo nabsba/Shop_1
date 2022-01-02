@@ -24,7 +24,12 @@ import {
 	ArticleOriginal,
 	ArticleVariantBag,
 } from '../../molecule';
-import { NavigationHeader, Review, SliderOriginal } from '../../organism';
+import {
+	FilterProduct,
+	NavigationHeader,
+	Review,
+	SliderOriginal,
+} from '../../organism';
 import ArticleGroupBag from '../../organism/articleGroup/articleGroupBag/ArticleGroupBag';
 
 import './style.css';
@@ -124,7 +129,7 @@ const Home: React.FC = () => {
 					list: [articleVariantBag, articleVariantBag, articleVariantBag],
 				}}
 			/>
-
+			<FilterProduct data="" />
 			{/* <div style={{ width: '100%', height: '50vh', position: 'relative' }}>
 				<ImageAsComponent
 					data={{
