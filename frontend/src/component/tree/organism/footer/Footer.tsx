@@ -15,14 +15,16 @@ const Footer: React.FC<Props> = ({
 		<div id="footer" className="flex_column">
 			<div className="sub_footer_part_one flex_row_center">
 				<ul>
-					{menusFooter.map((menu) => (
-						<li key={menu.text}>
+					{menusFooter.map((menu, index) => (
+						<li key={menu.text + index}>
 							<NavLinkAsComponent data={{ text: menu.text, href: menu.href }} />
 						</li>
 					))}
 				</ul>
 				<div className="sub_footer_part_one_wrapper_icon flex_column">
-					{icons.map((icon) => getIcon(icon))}
+					{icons.map((icon) => (
+						<div key={icon}> {getIcon(icon)} </div>
+					))}
 				</div>
 			</div>
 			<div className="sub_footer_part_two">{copyRightSentence}</div>
