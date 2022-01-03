@@ -16,6 +16,7 @@ import { VscAccount as Account } from 'react-icons/vsc';
 import { FiHeart as Heart } from 'react-icons/fi';
 import { GrLocation as Location } from 'react-icons/gr';
 import IconWrapper from './IconWrapper';
+import NumberCircle from './numberCircle/NumberCircle';
 
 export {
 	Twitter,
@@ -32,4 +33,5 @@ export {
 	Location,
 	Burger,
 	IconWrapper,
+	NumberCircle,
 };

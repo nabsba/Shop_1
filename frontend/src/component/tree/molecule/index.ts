@@ -1,7 +1,11 @@
 import ArticleOriginal from './article/articleOriginal/ArticleOriginal';
+import ArticleVariantBag from './article/articleVariantBag/ArticleVariantBag';
 import Pub from './banner/pub/Pub';
 import ButtonOriginal from './button/original/ButtonOriginal';
 import ButtonVariant1 from './button/variant1/ButtonVariant1';
+import Description from './descriptionCategory/description/Description';
+import Detail from './descriptionCategory/detail/Detail';
+import Review from './descriptionCategory/review/Review';
 import SelectOriginal from './select/original/SelectOriginal';
 import SelectVariant1 from './select/variant1/SelectVariant1';
 import Stars from './stars/Stars';
@@ -14,4 +18,8 @@ export {
 	Stars,
 	Pub,
 	ArticleOriginal,
+	ArticleVariantBag,
+	Review,
+	Detail,
+	Description,
 };

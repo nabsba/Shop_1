@@ -1,0 +1,16 @@
+@import '../../../Common/css/variable.css';
+
+.sub_description_product_top {
+	    text-transform: capitalize;
+    font-weight: bold;
+}
+.sub_description_product_top_menus_wrapper li {
+padding:1rem
+}
+
+.description_product_effect {
+	border-bottom: var(--border) solid var(--color-neutral-3);
+}
+.sub_description_product_bottom {
+	min-height:20vh;
+}

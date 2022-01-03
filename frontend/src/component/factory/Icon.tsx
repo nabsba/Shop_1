@@ -14,11 +14,12 @@ import {
 	Location,
 	Burger,
 	IconWrapper,
+	NumberCircle,
 } from '../tree/atom/icon';
 
 // https://react-icons.github.io/react-icons/icons?name=fa
 
-const getIcon = (indice: string): ReactElement => {
+const getIcon = (indice: string, value?: string | number): ReactElement => {
 	switch (indice) {
 		case 'Twitter':
 			return <IconWrapper Icon={<Twitter />} />;
@@ -46,6 +47,8 @@ const getIcon = (indice: string): ReactElement => {
 			return <Location />;
 		case 'Burger':
 			return <Burger />;
+		case 'NumberCircle':
+			if (value) return <NumberCircle data={value} />;
 		default:
 			return <span> {indice}</span>;
 	}

@@ -1,0 +1,67 @@
+@import '../../../Common/css/variable.css';
+
+.filter_product {
+    opacity: 1;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-secondary-1);
+}
+.filter_product h3 {
+	text-transform: uppercase;
+}
+
+.sub_filter_product_top svg {
+	opacity: 0;
+}
+.sub_filter_product_top {
+	width: 100%;
+}
+
+@media only screen and (min-width: 770px) {
+	.filter_product {
+		position:relative;
+		height:max-content;
+		height:100%;
+		top:0;
+	}
+.sub_filter_product_top svg {
+	opacity:1;
+	font-size: var(--size-icon);
+	transform: rotate(-180deg);
+}
+.apply_effects_sub_filter {
+max-height: 100% !important;
+
+}
+
+.sub_filter_product_bottom {
+	max-height: 0;
+	overflow: hidden;
+}
+
+.sub_filter_product_bottom div {
+	transform: translateY(-100%);
+	transition: all 200ms;
+}
+
+.apply_effects_sub_filter div {
+	transform: translateY(0%);
+		transition: all 200ms;
+}
+.apply_effects_sub_filter  svg{
+transform: rotate(0deg);
+}
+
+}
+
+
+
+
+
+
+
+
+
