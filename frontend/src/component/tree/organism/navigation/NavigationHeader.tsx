@@ -8,47 +8,10 @@ import { Navigate } from 'react-router-dom';
 type Props = {
 	data: TNavigationHeader;
 };
-const menusHeader = [
-	{
-		text: 'home',
-		href: '/home',
-	},
-	{
-		text: 'men',
-		href: '/men',
-	},
-	{
-		text: 'women',
-		href: '/women',
-	},
-	{
-		text: 'kids',
-		href: '/kids',
-	},
-];
-const menusBottom = [
-	{
-		text: 'my account',
-		href: '/my account',
-		icon: 'Account',
-	},
-	{
-		text: 'store location',
-		href: '/store location',
-		icon: 'Location',
-	},
-	{
-		text: 'customer care',
-		href: '/customer care',
-		icon: 'Heart',
-	},
-	{
-		text: 'united kingdom',
-		href: '/location',
-		icon: 'Location',
-	},
-];
-const NavigationHeader: React.FC<Props> = ({ data }) => {
+
+const NavigationHeader: React.FC<Props> = ({
+	data: { menusHeader, menusBottom },
+}) => {
 	const [isBurgerClicked, setIsBurgerClicked] = useState<boolean>(false);
 	const [isBagClicked, setIsBagClicked] = useState<boolean>(false);
 
