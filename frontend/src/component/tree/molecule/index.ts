@@ -1,6 +1,8 @@
 import ArticleOriginal from './article/articleOriginal/ArticleOriginal';
 import ArticleVariantBag from './article/articleVariantBag/ArticleVariantBag';
 import Pub from './banner/pub/Pub';
+import PubVariant1 from './banner/pubVariant1/PubVariant1';
+import PubVariant2 from './banner/pubVariant2/PubVariant2';
 import ButtonOriginal from './button/original/ButtonOriginal';
 import ButtonVariant1 from './button/variant1/ButtonVariant1';
 import Description from './descriptionCategory/description/Description';
@@ -22,4 +24,6 @@ export {
 	Review,
 	Detail,
 	Description,
+	PubVariant1,
+	PubVariant2,
 };
