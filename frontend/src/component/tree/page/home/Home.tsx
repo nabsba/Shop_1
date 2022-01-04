@@ -35,6 +35,7 @@ import ArticleGroupBag from '../../organism/articleGroup/articleGroupBag/Article
 import DescriptionProduct from '../../organism/descriptionProduct/DescriptionProduct';
 import TDescriptionProduct from '../../organism/descriptionProduct/type';
 import { Eridanus } from '../../template';
+import Cassiopeia from '../../template/cassiopeia/Cassiopeia';
 
 import './style.css';
 // import THome from './type';
@@ -79,28 +80,7 @@ const Home: React.FC = () => {
 		},
 	};
 	const IconTest = getIcon('Stars');
-	const footer = {
-		menusFooter: [
-			{
-				text: 'home',
-				href: '/home',
-			},
-			{
-				text: 'men',
-				href: '/men',
-			},
-			{
-				text: 'women',
-				href: '/women',
-			},
-			{
-				text: 'kids',
-				href: '/kids',
-			},
-		],
-		icons: ['Twitter', 'Facebook'],
-		copyRightSentence: 'Copyright © 2021 Nabil - All Rights Reserved',
-	};
+
 	const listComponent = [
 		<ImageAsComponent
 			key={1}
@@ -142,7 +122,9 @@ const Home: React.FC = () => {
 
 	return (
 		<div>
-			<Eridanus data={''} />
+			{/* <Eridanus data={''} /> */}
+			<Cassiopeia data={''} />
+
 			{/* <NavigationHeader data={'dd'} />
 			<H1 title="TITLE 1" />
 			<Paragraph data="tuscipit natoque penismod ege lacus. Nunc tristique elit dolor, at pulvinar felis vestibulum eget. Ut vel eros id velit dictum convallis. Aliquam sagittis tempus dui, ut porttitor sem aliquet id. Donec gravida, tortor ut efficitur maximus, mi massa pellentesque mauris, in sollicitudin augue turpis et quam. Phasellus interdum risus neque, a porta enim volutpat id. Fusce venenatis ipsum ligula, eu ultrices dui accumsan vitae. Mauris aliquet ornare urna. Sed ex purus, volutpat quis sapien at, porttitor scelerisque leo. Quisque scelerisque ex vitae arcu euismod, non malesuada lorem malesuada." />
