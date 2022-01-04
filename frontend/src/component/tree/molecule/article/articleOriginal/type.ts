@@ -1,7 +1,7 @@
 import { TImageAsComponent } from '../../../atom/image/type';
 
 type TArticleOriginal = {
-	image: TImageAsComponent;
+	imageAsComponent: TImageAsComponent;
 	information: {
 		name: string;
 		price: string;

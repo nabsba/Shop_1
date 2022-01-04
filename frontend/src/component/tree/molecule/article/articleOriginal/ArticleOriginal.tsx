@@ -8,10 +8,12 @@ type Props = {
 	data: TArticleOriginal;
 };
 
-const ArticleOriginal: React.FC<Props> = ({ data: { image, information } }) => {
+const ArticleOriginal: React.FC<Props> = ({
+	data: { imageAsComponent, information },
+}) => {
 	return (
 		<div className="articleOriginal">
-			<ImageAsComponent data={image} />
+			<ImageAsComponent data={imageAsComponent} />
 			<div className="article_original_information">
 				<Span data={information.name} />
 				<Span data={information.price} />
