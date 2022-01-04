@@ -44,7 +44,11 @@ ul {
 	display: flex;
 	flex-wrap:wrap;
 }
-
+.flex_row_wrap_evenly{
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: space-evenly;
+}
 .flex_row_end {
 	display: flex;
 	justify-content: flex-end;
@@ -53,6 +57,11 @@ ul {
 .flex_row_between {
 	display: flex;
 	justify-content: space-between;
+}
+.flex_row_between_wrap {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .flex_column_evenly {
