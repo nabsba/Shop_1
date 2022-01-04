@@ -1,5 +1,4 @@
 import React from 'react';
-import URL_ADDRESSES from '../../../../../bridge/url';
 import { ImageAsComponent, Span } from '../../../atom';
 import './style.css';
 import TArticleOriginal from './type';

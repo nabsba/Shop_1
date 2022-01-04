@@ -9,6 +9,17 @@
 
 }
 .article_original {
-
 		width:48vw;
+}
+
+@media only screen and (min-width: 770px) {
+.article_original {
+		width:30vw;
+}
+}
+
+@media only screen and (min-width: 1449px) {
+.article_original {
+		width:23vw;
+}
 }
