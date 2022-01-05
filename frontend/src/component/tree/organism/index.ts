@@ -1,4 +1,5 @@
 import ArticleGroupOriginal from './articleGroup/articleGroupOriginal/ArticleGroupOriginal';
+import DescriptionProduct from './descriptionProduct/DescriptionProduct';
 import HeaderProduct from './divers/headerProduct/HeaderProduct';
 import FilterProduct from './filterProduct/FilterProduct';
 import Footer from './footer/Footer';
@@ -12,4 +13,5 @@ export {
 	HeaderProduct,
 	ArticleGroupOriginal,
 	Footer,
+	DescriptionProduct,
 };
