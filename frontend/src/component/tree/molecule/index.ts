@@ -10,6 +10,7 @@ import Detail from './descriptionCategory/detail/Detail';
 import Review from './descriptionCategory/review/Review';
 import SelectOriginal from './select/original/SelectOriginal';
 import SelectVariant1 from './select/variant1/SelectVariant1';
+import SelectSize from './selectSize/SelectSize';
 import Stars from './stars/Stars';
 
 export {
@@ -26,4 +27,5 @@ export {
 	Description,
 	PubVariant1,
 	PubVariant2,
+	SelectSize,
 };
