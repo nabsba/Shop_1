@@ -44,6 +44,11 @@ ul {
 	display: flex;
 	flex-wrap:wrap;
 }
+.flex_row_wrap_center{
+	display: flex;
+	flex-wrap:wrap;
+	justify-content:center;
+}
 .flex_row_wrap_evenly{
 	display: flex;
 	flex-wrap:wrap;
