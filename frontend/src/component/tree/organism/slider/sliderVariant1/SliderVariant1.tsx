@@ -11,17 +11,40 @@ type Props = {
 
 const SliderVariant1: React.FC<Props> = ({ data: { list, title } }) => {
 	const settings = {
-		className: 'center',
+		// className: 'center',
 		centerMode: true,
-		infinite: false,
-		centerPadding: '60px',
-		slidesToShow: 1,
+		infinite: true,
+		draggable: true,
+		slidesToShow: 3,
+		slidesToScroll: 3,
 		speed: 500,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3,
+				},
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				},
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				},
+			},
+		],
 	};
 	return (
 		<div className="slider_variant_1">
 			{title && <H3 title={title} />}
-
 			<Slider {...settings}>
 				{list.map((element, index) => (
 					<div className={'slider_varian1_wrapper'} key={index}>
