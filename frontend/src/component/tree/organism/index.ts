@@ -1,3 +1,4 @@
+import ArticleGroupBag from './articleGroup/articleGroupBag/ArticleGroupBag';
 import ArticleGroupOriginal from './articleGroup/articleGroupOriginal/ArticleGroupOriginal';
 import DescriptionProduct from './descriptionProduct/DescriptionProduct';
 import HeaderProduct from './divers/headerProduct/HeaderProduct';
@@ -14,4 +15,5 @@ export {
 	ArticleGroupOriginal,
 	Footer,
 	DescriptionProduct,
+	ArticleGroupBag,
 };
