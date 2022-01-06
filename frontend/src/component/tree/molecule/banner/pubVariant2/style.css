@@ -1,0 +1,17 @@
+.pub_variant_2 {
+	position: relative;
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pub_variant_2 #image-container {
+	z-index: -2;
+}
+
+.pub_variant_2 .button_original{
+	    position: absolute;
+    bottom: 1rem;
+}

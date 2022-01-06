@@ -1,0 +1,17 @@
+.sub_header_product_top {
+width: 100%;
+margin-top:1rem;
+}
+
+.sub_header_product_bottom {
+	overflow:scroll;
+	margin-top:.5rem;
+}
+
+.sub_header_product_bottom ul {
+	display:flex;
+}
+.sub_header_product_bottom ul li {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}

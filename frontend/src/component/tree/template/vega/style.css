@@ -1,0 +1,30 @@
+	.vega  { 
+			grid-template-columns : repeat(4, 1fr); 
+			display:grid;
+	}
+
+
+
+
+.vega_section_1, .vega_section_2, .vega_section_3, .vega_section_5, .vega_section_6, .vega_section_7{
+	grid-column: 1/5;
+}
+
+.vega_section_4 {
+grid-column: 2/4;
+
+}
+
+.vega_section_5 .button_variant1 {
+	width:100%
+}
+
+
+@media only screen and (min-width: 770px) {
+	.vega  {
+	grid-template-columns : repeat(12, 1fr); 
+	}
+	.vega_section_1, .vega_section_2, .vega_section_3, .vega_section_4, .vega_section_5, .vega_section_6, .vega_section_7{
+			grid-column: 1/13;
+	}
+}
