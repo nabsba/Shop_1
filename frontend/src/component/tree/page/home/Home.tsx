@@ -34,7 +34,7 @@ import {
 import ArticleGroupBag from '../../organism/articleGroup/articleGroupBag/ArticleGroupBag';
 import DescriptionProduct from '../../organism/descriptionProduct/DescriptionProduct';
 import TDescriptionProduct from '../../organism/descriptionProduct/type';
-import { Eridanus, Vega } from '../../template';
+import { Achernar, Eridanus, Vega } from '../../template';
 import Cassiopeia from '../../template/cassiopeia/Cassiopeia';
 
 import './style.css';
@@ -124,7 +124,8 @@ const Home: React.FC = () => {
 		<div>
 			{/* <Eridanus data={''} /> */}
 			{/* <Cassiopeia data={''} /> */}
-			<Vega data={''} />
+			{/* <Vega data={''} /> */}
+			<Achernar data="" />
 
 			{/* <NavigationHeader data={'dd'} />
 			<H1 title="TITLE 1" />
