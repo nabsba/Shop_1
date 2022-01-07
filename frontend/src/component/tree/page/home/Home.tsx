@@ -123,8 +123,8 @@ const Home: React.FC = () => {
 	return (
 		<div>
 			{/* <Eridanus data={''} /> */}
-			<Cassiopeia data={''} />
-			{/* <Vega data={''} /> */}
+			{/* <Cassiopeia data={''} /> */}
+			<Vega data={''} />
 			{/* <Achernar data="" /> */}
 
 			{/* <NavigationHeader data={'dd'} />
