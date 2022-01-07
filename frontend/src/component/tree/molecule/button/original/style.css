@@ -9,3 +9,9 @@
 	box-shadow: var(--box-shadow);
 	border-radius: var(--border-radius);
 }
+
+@media only screen and (min-width: 1000px) {
+.button_original {
+	padding: 1rem 2rem 1rem 2rem;
+}
+}
