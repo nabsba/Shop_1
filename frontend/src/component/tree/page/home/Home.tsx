@@ -122,10 +122,10 @@ const Home: React.FC = () => {
 
 	return (
 		<div>
-			{/* <Eridanus data={''} /> */}
+			<Eridanus data={''} />
 			{/* <Cassiopeia data={''} /> */}
 			{/* <Vega data={''} /> */}
-			<Achernar data="" />
+			{/* <Achernar data="" /> */}
 
 			{/* <NavigationHeader data={'dd'} />
 			<H1 title="TITLE 1" />

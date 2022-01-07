@@ -20,11 +20,11 @@
 	width: max-content;
 }
 
-.sub_footer_part_one_wrapper_icon svg:nth-child(1) {
+.sub_footer_part_one_wrapper_icon div:nth-child(1) svg{
 	color: #5DA9DD;
 }
 
-.sub_footer_part_one_wrapper_icon svg:nth-child(2) {
+.sub_footer_part_one_wrapper_icon div:nth-child(2) svg{
 	fill: #4867AA;
 }
 
@@ -40,9 +40,16 @@
 
 .sub_footer_part_two {
 	margin-top: 4rem;
+	margin-bottom: 0.5rem;
 }
 
+	.sub_footer_part_two
+{
+	margin-left:var(--margin-section-side);
+}
 @media only screen and (min-width: 770px) {
+
+
 	.sub_footer_part_one {
 		flex-direction: column;
 		height: 15vh;
@@ -70,4 +77,5 @@
 	.sub_footer_part_one ul::after {
 		bottom: 0rem;
 	}
+
 }

@@ -41,7 +41,7 @@
 	transition: transform 200ms;
 }
 .sub_navigation_header_mobile_part_1 {
-	margin-left:var(--margin-section-size);
+	margin-left:var(--margin-section-side);
 }
 .sub_navigation_header_mobile_part_1 span {
 	margin-left: 3rem;
@@ -65,7 +65,7 @@
 
 .bag_and_number_circle {
 	position: relative;
-	margin-right: var(--margin-section-size);
+	margin-right: var(--margin-section-side);
 }
 
 .bag_and_number_circle .numberCircle {
@@ -90,7 +90,6 @@
 		display: flex !important;
 	}
 
-
 }
 
 /*NavigationOnClick*/
@@ -101,6 +100,7 @@
 
 .sub_navigation_on_part_1_header {
 	padding-top: 1rem;
+	padding-right: var(--margin-section-side);
 }
 
 .sub_navigation_on_part_1_bottom {
@@ -119,6 +119,10 @@
 
 .sub_navigation_on_part_2 {
 	flex: 1;
+	margin-left: var(--margin-section-side);
+	margin-right: var(--margin-section-side);
+	padding-bottom: var(--margin-section-side);
+	padding-top:var(--margin-section-side);
 }
 
 .sub_navigation_on_part_2_header {
