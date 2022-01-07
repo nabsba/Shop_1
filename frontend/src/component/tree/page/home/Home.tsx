@@ -122,8 +122,8 @@ const Home: React.FC = () => {
 
 	return (
 		<div>
-			<Eridanus data={''} />
-			{/* <Cassiopeia data={''} /> */}
+			{/* <Eridanus data={''} /> */}
+			<Cassiopeia data={''} />
 			{/* <Vega data={''} /> */}
 			{/* <Achernar data="" /> */}
 
