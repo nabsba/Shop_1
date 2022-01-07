@@ -3,9 +3,11 @@
 background-color: var(--color-secondary-3);
 font-weight: var(--font-weight);
 display:flex;
+padding:.5rem;
 padding-top: 5rem;
 padding-bottom: 5rem;
 }
 .pub h2 {
 	margin:auto;
+	color:white;
 }
