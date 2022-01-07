@@ -14,7 +14,7 @@ const PubVariant2: React.FC<Props> = ({
 	return (
 		<div className="pub_variant_2">
 			<H3 title={h3} />
-			<H2 title={h2} />
+			{/* <H2 title={h2} /> */}
 			<ImageAsComponent data={imageAsComponent} />
 			<ButtonOriginal data={span} />
 		</div>
