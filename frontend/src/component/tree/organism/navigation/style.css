@@ -9,10 +9,10 @@
 }
 
 .navigation_header_mobile, .navigation_header_desktop {
-	border: 1px solid var(--color-secondary-2);
+	border-bottom: 1px solid var(--color-secondary-2);
 }
 .navigation_header_mobile {
-	height: 3rem;
+	height: 4rem;
 }
 
 .navigation_header_desktop {
@@ -40,7 +40,9 @@
 	transform: translateX(100vw);
 	transition: transform 200ms;
 }
-
+.sub_navigation_header_mobile_part_1 {
+	margin-left:var(--margin-section-size);
+}
 .sub_navigation_header_mobile_part_1 span {
 	margin-left: 3rem;
 	text-transform: uppercase;
@@ -61,9 +63,9 @@
 	margin-right: 2rem;
 }
 
-.bag_and_number_circle
-  {
+.bag_and_number_circle {
 	position: relative;
+	margin-right: var(--margin-section-size);
 }
 
 .bag_and_number_circle .numberCircle {
