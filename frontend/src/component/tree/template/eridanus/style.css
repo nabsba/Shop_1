@@ -1,3 +1,4 @@
+	@import '../../../Common/css/variable.css';
 	.eridanus  { 
 			grid-template-columns : repeat(4, 1fr); 
 			display:grid;
@@ -5,9 +6,12 @@
 
 
 
-
 .eridanus_section_1, .eridanus_section_2, .eridanus_section_3, .eridanus_section_4, .eridanus_section_5, .eridanus_section_6{
 	grid-column: 1/5;
+	margin-top: var(--margin-section-top);
+}
+.eridanus_section_1, .eridanus_section_2 {
+	margin-top:0;
 }
 
 .eridanus_section_3 {
