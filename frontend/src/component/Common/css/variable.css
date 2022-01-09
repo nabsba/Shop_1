@@ -17,6 +17,8 @@
 	--margin-right-body: 1.2rem;
 	--margin-minor: .3rem;
 	--margin-minor-2: 1rem;
+	--margin-section-top: 2rem;
+	--margin-section-side: 1rem;
 	--padding-button-side: 1.3rem;
 	--padding-button-top-bottom: .7rem;
 	--padding-button-variant1-side: 4rem;
@@ -25,4 +27,5 @@
 	--letter-spacing-titles: .3rem;
 	--font-weight: 800;
 	--size-icon: 1.5rem;
+	--box-shadow:5px 5px 4px -4px #000000;
 }

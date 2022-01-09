@@ -1,24 +1,48 @@
-	.cassiopeia  { 
-			grid-template-columns : repeat(4, 1fr); 
-			display:grid;
+	@import'../../../Common/css/variable.css';
+
+	.cassiopeia {
+		grid-template-columns: repeat(4, 1fr);
+		display: grid;
 	}
 
-
-
-
-.cassiopeia_section_1, .cassiopeia_section_2, .cassiopeia_section_3, .cassiopeia_section_4, .cassiopeia_section_5, .cassiopeia_section_6{
-	grid-column: 1/5;
-}
-
-.cassiopeia_section_3 {
-position:relative;
-}
-
-@media only screen and (min-width: 770px) {
-	.cassiopeia  {
-	grid-template-columns : repeat(12, 1fr); 
+	.cassiopeia_section_1,
+	.cassiopeia_section_2,
+	.cassiopeia_section_3,
+	.cassiopeia_section_4,
+	.cassiopeia_section_5 {
+		grid-column: 1/5;
+		
 	}
-	.cassiopeia_section_1, .cassiopeia_section_2, .cassiopeia_section_3, .cassiopeia_section_4, .cassiopeia_section_5, .cassiopeia_section_6{
+	.cassiopeia_section_2,
+	.cassiopeia_section_3,
+	.cassiopeia_section_4 {
+  margin-top: var(--margin-section-top);
+	}
+
+	.cassiopeia_section_2,
+	.cassiopeia_section_3 {
+		margin-left: var(--margin-section-side);
+		margin-right: var(--margin-section-side);
+
+	}
+
+	@media only screen and (min-width: 770px) {
+		.cassiopeia {
+			grid-template-columns: repeat(12, 1fr);
+		}
+		.cassiopeia_section_2,
+		.cassiopeia_section_3 {
+			margin-left: Calc(var(--margin-section-side) + 2rem);
+			margin-right: Calc(var(--margin-section-side) + 2rem);
+		}
+		.cassiopeia_section_1,
+		.cassiopeia_section_2,
+			.cassiopeia_section_3,
+		.cassiopeia_section_4 {
 			grid-column: 1/13;
+		}
+
+		.cassiopeia_section_3 {
+			display:flex;
+		}
 	}
-}

@@ -7,6 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { useImmer } from 'use-immer';
 import getIcon from '../../../factory/Icon';
 import _ from 'lodash';
+import { H3, Span } from '../../atom';
 
 type Props = {
 	data: TFilterProduct;
@@ -102,7 +103,8 @@ const FilterProduct: React.FC<Props> = ({ data }) => {
 						className="sub_filter_product_top flex_row_between_align_center"
 						onClick={() => handleAppearance(element.title)}
 					>
-						<h3> {element.title} </h3>
+						{/* <H3 title={element.title} /> */}
+						<Span data={element.title} />
 						{IconArrow}
 					</div>
 					<div

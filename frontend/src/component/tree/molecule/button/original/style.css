@@ -1,5 +1,17 @@
+@import'../../../../Common/css/variable.css';
+
 .button_original {
-	padding: .7rem 1.3rem .7rem 1.3rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 	text-transform: capitalize;
 	width:max-content;
+	background-color:white;
+	border:none;
+	box-shadow: var(--box-shadow);
+	border-radius: var(--border-radius);
+}
+
+@media only screen and (min-width: 1000px) {
+.button_original {
+	padding: 1rem 2rem 1rem 2rem;
+}
 }

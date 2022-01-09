@@ -29,8 +29,8 @@ const SliderVariant1: React.FC<Props> = ({ data: { list, title } }) => {
 			{
 				breakpoint: 600,
 				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
+					slidesToShow: 3,
+					slidesToScroll: 3,
 				},
 			},
 			{

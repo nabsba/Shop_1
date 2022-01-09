@@ -11,7 +11,7 @@ const sizes = [7, 8, 9, 10, 11, 12, 13];
 const title = 'select size';
 const SelectSize: React.FC<Props> = ({ data }) => {
 	return (
-		<div className="select_size ">
+		<div className="select_size flex_column">
 			<H3 title={title} />
 			<div className="flex_row_wrap_center">
 				{sizes.map((size) => (

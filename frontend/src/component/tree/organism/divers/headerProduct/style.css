@@ -1,11 +1,16 @@
+@import'../../../../Common/css/variable.css';
+
 .sub_header_product_top {
 width: 100%;
 margin-top:1rem;
 }
-
+.sub_header_product_top svg {
+	font-size:2rem;
+}
 .sub_header_product_bottom {
 	overflow:scroll;
 	margin-top:.5rem;
+	margin-bottom:1rem;
 }
 
 .sub_header_product_bottom ul {

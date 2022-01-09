@@ -2,6 +2,8 @@
 
 h3 {
 	font-size: 1.5rem;
+	text-transform: capitalize;
+	font-weight: 200;
 }
 
 @media only screen and (min-width: 500px)  {

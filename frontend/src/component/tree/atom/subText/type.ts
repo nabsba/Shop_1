@@ -1,2 +1,2 @@
-type TSubText = string;
+type TSubText = string | number;
 export default TSubText;

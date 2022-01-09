@@ -22,6 +22,11 @@ const NavigationHeader: React.FC<Props> = ({
 	const FacebookIcon = getIcon('Facebook');
 	const NumberCircle = getIcon('NumberCircle', 1);
 
+	const handleScrollBar = (indice: boolean) => {
+		document.body.style.height = indice ? '100vh' : 'auto';
+		document.body.style.overflow = indice ? 'hidden' : 'unset';
+	};
+
 	const NavigationOnClick = (
 		<div
 			className={`flex_column ${
@@ -31,7 +36,10 @@ const NavigationHeader: React.FC<Props> = ({
 			<div className="sub_navigation_on_part_1 flex_column">
 				<div
 					className="sub_navigation_on_part_1_header flex_row_end"
-					onClick={() => setIsBurgerClicked(false)}
+					onClick={() => {
+						setIsBurgerClicked(false);
+						handleScrollBar(false);
+					}}
 				>
 					{CrossIcon}
 				</div>
@@ -95,7 +103,10 @@ const NavigationHeader: React.FC<Props> = ({
 			<div className="navigation_header_mobile flex_row_between_align_center">
 				<div
 					className="sub_navigation_header_mobile_part_1 flex_row_align_items_center"
-					onClick={() => setIsBurgerClicked(true)}
+					onClick={() => {
+						setIsBurgerClicked(true);
+						handleScrollBar(true);
+					}}
 				>
 					{BurgerIcon}
 					<Span data="menu" />

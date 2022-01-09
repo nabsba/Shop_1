@@ -1,3 +1,5 @@
+@import '../../../../Common/css/variable.css';
+
 .slider_variant_1 {
 	position:relative;
 }
@@ -6,7 +8,9 @@
 	position: relative;
 padding:1rem;
 }
-
+.slider_variant_1 h3 {
+margin-left:var(--margin-section-side);
+}
 
 .slider_varian1_wrapper #image-container {
 	padding:.5rem;
