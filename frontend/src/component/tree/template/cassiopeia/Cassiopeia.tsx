@@ -2,6 +2,7 @@ import React from 'react';
 import URL_ADDRESSES from '../../../../bridge/url';
 import {
 	ArticleGroupOriginal,
+	FilterProduct,
 	Footer,
 	HeaderProduct,
 	NavigationHeader,
@@ -173,6 +174,7 @@ const Cassiopeia: React.FC<Props> = ({ data }) => {
 				<HeaderProduct data={headerProduct} />
 			</section>
 			<section className="cassiopeia_section_3">
+				{/* <FilterProduct data="k" /> */}
 				<ArticleGroupOriginal data={articleGroupOriginal} />
 			</section>
 			<section className="cassiopeia_section_4">

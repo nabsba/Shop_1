@@ -8,7 +8,8 @@
 	.cassiopeia_section_1,
 	.cassiopeia_section_2,
 	.cassiopeia_section_3,
-	.cassiopeia_section_4 {
+	.cassiopeia_section_4,
+	.cassiopeia_section_5 {
 		grid-column: 1/5;
 		
 	}
@@ -16,9 +17,6 @@
 	.cassiopeia_section_3,
 	.cassiopeia_section_4 {
   margin-top: var(--margin-section-top);
-	}
-	.cassiopeia_section_3 {
-		position: relative;
 	}
 
 	.cassiopeia_section_2,
@@ -32,18 +30,19 @@
 		.cassiopeia {
 			grid-template-columns: repeat(12, 1fr);
 		}
-
-
 		.cassiopeia_section_2,
 		.cassiopeia_section_3 {
 			margin-left: Calc(var(--margin-section-side) + 2rem);
 			margin-right: Calc(var(--margin-section-side) + 2rem);
 		}
-
 		.cassiopeia_section_1,
 		.cassiopeia_section_2,
-		.cassiopeia_section_3,
+			.cassiopeia_section_3,
 		.cassiopeia_section_4 {
 			grid-column: 1/13;
+		}
+
+		.cassiopeia_section_3 {
+			display:flex;
 		}
 	}
