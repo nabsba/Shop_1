@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import URL_ADDRESSES from '../../../../bridge/url';
 // import { useParams } from 'react-router-dom';
@@ -13,9 +13,11 @@ import './style.css';
 // import THome from './type';
 
 const Home: React.FC = () => {
+	const [sliderVariant, setSliderVariant] = useState<any[]>([]);
+
 	const {
 		dataPages: {
-			home: { navigationHeader, footer, sliderOriginalData },
+			home: { navigationHeader, footer, sliderOriginalData, sliderVariant1 },
 			data,
 		},
 		informationDataBaseStore,
@@ -36,23 +38,46 @@ const Home: React.FC = () => {
 			),
 			className: sliderOriginalData.className,
 		},
-		sliderVariant1: [],
+		sliderVariant1: { list: [], title: sliderVariant1.title, display: false },
 		navigationHeader,
 		footer,
 	};
 	useEffect(() => {
-		if (informationDataBaseStore.color && data.newArriving.length > 0) {
-			const newArray: TNewObjectWithMatchingColor[] =
+		if (
+			informationDataBaseStore.color &&
+			data.newArriving &&
+			data.newArriving.length > 0
+		) {
+			const productsWithMatchingColor: TNewObjectWithMatchingColor[] =
 				generateNewArrayWithMatchingColor(
 					informationDataBaseStore.color,
 					data.newArriving,
 				);
-
-			console.log(newArray);
+			const sliderVariantComponents: React.SetStateAction<any[]> = [];
+			productsWithMatchingColor.map(
+				(product: TNewObjectWithMatchingColor, index: number) =>
+					sliderVariantComponents.push(
+						<ImageAsComponent
+							key={index}
+							data={{
+								src: `${URL_ADDRESSES.fileManager.image.load(
+									`product/shoes/medium/${product.color}/${product.name.replace(
+										/\s/g,
+										'',
+									)}/${product.name.replace(/\s/g, '')}_1.png`,
+								)}`,
+								alt: product.name,
+							}}
+						/>,
+					),
+			);
+			setSliderVariant(sliderVariantComponents);
 		}
-	}, [informationDataBaseStore, data]);
+	}, [informationDataBaseStore, data.newArriving]);
 
-	// useEffect(() => {}, [eridanusData, home]);
+	eridanusData.sliderVariant1.list = sliderVariant;
+	eridanusData.sliderVariant1.display =
+		sliderVariant && sliderVariant.length > 0;
 	// // To grab address.com/:id
 	// const { id } = useParams();
 

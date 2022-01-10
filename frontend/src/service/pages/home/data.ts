@@ -33,6 +33,11 @@ const homeData = {
 		],
 		className: 'slider_',
 	},
+	sliderVariant1: {
+		list: [],
+		title: 'new arriving',
+		display: false,
+	},
 };
 
 export default homeData;

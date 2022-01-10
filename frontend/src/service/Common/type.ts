@@ -10,7 +10,13 @@ export type TReducers = {
 				list: { src: string; alt: string }[];
 				className: string;
 			};
+			sliderVariant1: {
+				list: [];
+				title: string;
+				display: boolean;
+			};
 		};
+
 		data: any;
 	};
 	informationDataBaseStore: {

@@ -6,6 +6,6 @@ type TEridanus = {
 	navigationHeader: TNavigationHeader;
 	footer: TFooter;
 	sliderOriginal: TSliderOriginal;
-	sliderVariant1: any;
+	sliderVariant1: { list: any[]; title: string; display: boolean };
 };
 export default TEridanus;
