@@ -13,5 +13,10 @@ export type TReducers = {
 		};
 		data: any;
 	};
-	informationDataBaseStore: Record<string, unknown>;
+	informationDataBaseStore: {
+		error: boolean;
+		pending: boolean;
+		color?: { color_id: number; name: string }[];
+		size?: { size_id: number; size: number }[];
+	};
 };

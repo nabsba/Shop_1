@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import URL_ADDRESSES from '../../../../bridge/url';
 // import { useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
+import { generateNewArrayWithMatchingColor } from '../../../../service/pages/Common/logic/function';
+import { TNewObjectWithMatchingColor } from '../../../../service/pages/Common/type';
 import { ImageAsComponent } from '../../atom';
 
-import {
-	Achernar,
-	Eridanus,
-	Vega,
-	Cassiopeia,
-	TEridanus,
-} from '../../template';
+import { Eridanus, TEridanus } from '../../template';
 
 import './style.css';
 // import THome from './type';
@@ -39,9 +36,21 @@ const Home: React.FC = () => {
 			),
 			className: sliderOriginalData.className,
 		},
+		sliderVariant1: [],
 		navigationHeader,
 		footer,
 	};
+	useEffect(() => {
+		if (informationDataBaseStore.color && data.newArriving.length > 0) {
+			const newArray: TNewObjectWithMatchingColor[] =
+				generateNewArrayWithMatchingColor(
+					informationDataBaseStore.color,
+					data.newArriving,
+				);
+
+			console.log(newArray);
+		}
+	}, [informationDataBaseStore, data]);
 
 	// useEffect(() => {}, [eridanusData, home]);
 	// // To grab address.com/:id
