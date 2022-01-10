@@ -7,8 +7,18 @@ type TProps = {
 	data: TNavLink;
 };
 
-const NavLinkAsComponent: React.FC<TProps> = ({ data: { href, text } }) => {
-	return <NavLink to={href}>{text}</NavLink>;
+const NavLinkAsComponent: React.FC<TProps> = ({
+	data: { href, text, asComponent },
+}) => {
+	return (
+		<NavLink to={href}>
+			{asComponent ? (
+				asComponent
+			) : (
+				<div className="nav_link_as_component"> {text}</div>
+			)}
+		</NavLink>
+	);
 };
 
 export default NavLinkAsComponent;
