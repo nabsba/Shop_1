@@ -53,47 +53,6 @@ const eridanusData = {
 			},
 		],
 	},
-	sliderOriginal: {
-		list: [
-			<ImageAsComponent
-				key={1}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={2}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={3}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={4}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-		],
-		className: 'slider_',
-	},
 	sliderVariant1: {
 		list: [
 			<ImageAsComponent
@@ -180,15 +139,22 @@ const eridanusData = {
 		copyRightSentence: 'Copyright © 2021 Nabil - All Rights Reserved',
 	},
 };
-const Eridanus: React.FC<Props> = ({ data }) => {
-	const {
-		navigationHeader,
-		sliderOriginal,
-		sliderVariant1,
-		pubVariant1,
-		pubVariant2,
-		footer,
-	} = eridanusData;
+const { sliderVariant1, pubVariant1, pubVariant2 } = eridanusData;
+const Eridanus: React.FC<Props> = ({
+	data: { navigationHeader, footer, sliderOriginalData },
+}) => {
+	const sliderOriginal = {
+		list: sliderOriginalData.list.map((list: { url: string; alt: string }) => (
+			<ImageAsComponent
+				key={1}
+				data={{
+					src: list.url,
+					alt: list.alt,
+				}}
+			/>
+		)),
+		className: sliderOriginalData.className,
+	};
 	return (
 		<div className="eridanus">
 			<section className="eridanus_section_1">

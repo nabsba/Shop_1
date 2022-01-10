@@ -9,17 +9,17 @@ import './style.css';
 // import THome from './type';
 
 const Home: React.FC = () => {
-	const { dataPages, informationDataBaseStore } = useSelector(
+	const { dataPages:{home}, informationDataBaseStore } = useSelector(
 		(state: TReducers) => state,
 	);
-
+  
 	// // To grab address.com/:id
 	// const { id } = useParams();
 
 	return (
 		<div>
-			{/* <Eridanus data={''} /> */}
-			<Cassiopeia data={''} />
+			<Eridanus data={home} />
+			{/* <Cassiopeia data={''} /> */}
 			{/* <Vega data={''} /> */}
 			{/* <Achernar data="" /> */}
 		</div>

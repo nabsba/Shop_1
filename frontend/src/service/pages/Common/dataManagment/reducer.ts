@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { stat } from 'fs';
 import {
 	resultTemplate,
+	serverGet,
 	serverPost,
 } from '../../../../bridge/common/requestServer';
 import URL_ADDRESSES from '../../../../bridge/url';
@@ -9,8 +9,8 @@ import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
 import { logMessage } from '../../../../Common/function';
 import { Result } from '../../../../Common/type/type';
 import { SQL_OBJECT } from '../../../dataBase/constant';
-
 import * as dataBackup from '../../datas/backup/data.json';
+import homeData from '../../home/data';
 import { REDUCER } from '../constant';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
@@ -18,9 +18,7 @@ import { REDUCER } from '../constant';
 const initialState = {
 	pending: false,
 	error: false,
-	home: {
-		data: {},
-	},
+	home: homeData,
 };
 export const fetchFirstProducts = createAsyncThunk(REDUCER.NAME, async () => {
 	let result: Result = { ...resultTemplate };
@@ -51,7 +49,7 @@ const data = createSlice({
 				if (action.payload.error) {
 					state.error = true;
 				} else {
-					state.home.data = action.payload.data;
+					// state.home.data = action.payload.data;
 				}
 			},
 		);
