@@ -141,20 +141,8 @@ const eridanusData = {
 };
 const { sliderVariant1, pubVariant1, pubVariant2 } = eridanusData;
 const Eridanus: React.FC<Props> = ({
-	data: { navigationHeader, footer, sliderOriginalData },
+	data: { navigationHeader, footer, sliderOriginal },
 }) => {
-	const sliderOriginal = {
-		list: sliderOriginalData.list.map((list: { url: string; alt: string }) => (
-			<ImageAsComponent
-				key={1}
-				data={{
-					src: list.url,
-					alt: list.alt,
-				}}
-			/>
-		)),
-		className: sliderOriginalData.className,
-	};
 	return (
 		<div className="eridanus">
 			<section className="eridanus_section_1">

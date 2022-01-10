@@ -12,6 +12,7 @@ import { SQL_OBJECT } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import homeData from '../../home/data';
 import { REDUCER } from '../constant';
+import _ from 'lodash';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
 
@@ -19,12 +20,18 @@ const initialState = {
 	pending: false,
 	error: false,
 	home: homeData,
+	data: {
+		newArriving: [],
+	},
 };
 export const fetchFirstProducts = createAsyncThunk(REDUCER.NAME, async () => {
 	let result: Result = { ...resultTemplate };
 	try {
 		const objectSql = SQL_OBJECT.ALL_SHOES;
 		result = await serverPost(URL_ADDRESSES.data.postData, objectSql);
+		if (result.data) {
+			result.data = _.uniqBy(result.data, 'product_id');
+		}
 		return result;
 	} catch (error) {
 		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
@@ -49,7 +56,7 @@ const data = createSlice({
 				if (action.payload.error) {
 					state.error = true;
 				} else {
-					// state.home.data = action.payload.data;
+					state.data.newArriving = action.payload.data;
 				}
 			},
 		);
