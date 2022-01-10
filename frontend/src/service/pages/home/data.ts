@@ -38,6 +38,22 @@ const homeData = {
 		title: 'new arriving',
 		display: false,
 	},
+	pubVariant1: [
+		// `../../../../../asset/image/product/${type}/${sizePic}/general/${namePic}`,
+		{
+			imageAsComponent: {
+				src: `${URL_ADDRESSES.fileManager.image.load(
+					'product/shoes/medium/general/men.jpg',
+				)}`,
+				alt: 'men',
+			},
+			title: 'men',
+			link: {
+				text: 'men',
+				href: '/product/men',
+			},
+		},
+	],
 };
 
 export default homeData;
