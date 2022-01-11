@@ -10,17 +10,6 @@ type Props = {
 	data: TEridanus;
 };
 const eridanusData = {
-	pubVariant1: [
-		{
-			imageAsComponent: {
-				src: `${URL_ADDRESSES.fileManager.image.load(
-					'product/shoes/medium/blue/airzoom/airzoom_1.png',
-				)}`,
-				alt: 'airzoom',
-			},
-			title: 'men',
-		},
-	],
 	pubVariant2: {
 		imageAsComponent: {
 			src: `${URL_ADDRESSES.fileManager.image.load(
@@ -33,9 +22,15 @@ const eridanusData = {
 		span: 'read',
 	},
 };
-const { pubVariant1, pubVariant2 } = eridanusData;
+const { pubVariant2 } = eridanusData;
 const Eridanus: React.FC<Props> = ({
-	data: { navigationHeader, footer, sliderOriginal, sliderVariant1 },
+	data: {
+		navigationHeader,
+		footer,
+		sliderOriginal,
+		sliderVariant1,
+		pubVariant1,
+	},
 }) => {
 	return (
 		<div className="eridanus">

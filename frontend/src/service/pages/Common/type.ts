@@ -11,7 +11,9 @@ type TProduct = {
 type TNewObjectWithMatchingColor = {
 	product_id: number;
 	name: string;
+	gender: string;
 	color_id: number;
 	color: string;
+	price: number;
 };
 export type { TColor, TProduct, TNewObjectWithMatchingColor };

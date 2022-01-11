@@ -50,7 +50,7 @@ const homeData = {
 			title: 'men',
 			link: {
 				text: 'men',
-				href: '/product/men',
+				href: '/product/shoes/men',
 			},
 		},
 	],

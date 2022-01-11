@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import dataPages from '../pages/Common/dataManagment/reducer';
-import { informationDataBaseStore } from '../dataBase/reducer';
+import { informationDataBaseStore } from '../dataBase/dataManagment/reducer';
+import dataProducts from '../pages/products/dataManagment/reducer';
 // allReducers
 // import { persistReducer } from "redux-persist";
 // tell to redux you want want to use your storage as default
@@ -12,6 +13,7 @@ import { informationDataBaseStore } from '../dataBase/reducer';
 // Will define which reducer we want then to be persisted.
 const reducer = combineReducers({
 	dataPages,
+	dataProducts,
 	informationDataBaseStore,
 });
 

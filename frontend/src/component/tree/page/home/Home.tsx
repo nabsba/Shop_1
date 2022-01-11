@@ -17,7 +17,13 @@ const Home: React.FC = () => {
 
 	const {
 		dataPages: {
-			home: { navigationHeader, footer, sliderOriginalData, sliderVariant1 },
+			home: {
+				navigationHeader,
+				footer,
+				sliderOriginalData,
+				sliderVariant1,
+				pubVariant1,
+			},
 			data,
 		},
 		informationDataBaseStore,
@@ -39,6 +45,7 @@ const Home: React.FC = () => {
 			className: sliderOriginalData.className,
 		},
 		sliderVariant1: { list: [], title: sliderVariant1.title, display: false },
+		pubVariant1,
 		navigationHeader,
 		footer,
 	};
@@ -78,15 +85,10 @@ const Home: React.FC = () => {
 	eridanusData.sliderVariant1.list = sliderVariant;
 	eridanusData.sliderVariant1.display =
 		sliderVariant && sliderVariant.length > 0;
-	// // To grab address.com/:id
-	// const { id } = useParams();
 
 	return (
 		<div>
 			<Eridanus data={eridanusData} />
-			{/* <Cassiopeia data={''} /> */}
-			{/* <Vega data={''} /> */}
-			{/* <Achernar data="" /> */}
 		</div>
 	);
 };

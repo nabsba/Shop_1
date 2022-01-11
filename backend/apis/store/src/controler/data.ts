@@ -7,7 +7,6 @@ const router = Router();
 
 router.post('/', async (req: Request, res: Response): Promise<void> => {
   const result: Result = await handlePostData(req.body);
-  console.log(result);
   res.send(result);
 });
 

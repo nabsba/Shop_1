@@ -1,12 +1,15 @@
 // Those which are imported from home are those who the admin cannot update from his pannel.
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { resultTemplate, serverGet } from '../../bridge/common/requestServer';
-import URL_ADDRESSES from '../../bridge/url';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../Common/constant';
-import { logMessage } from '../../Common/function';
-import { Result } from '../../Common/type/type';
-import { REDUCER } from './constant';
-import * as informationDataBaseBackUp from '../dataBase/backup/informationDataBase.json';
+import {
+	resultTemplate,
+	serverGet,
+} from '../../../bridge/common/requestServer';
+import URL_ADDRESSES from '../../../bridge/url';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
+import { logMessage } from '../../../Common/function';
+import { Result } from '../../../Common/type/type';
+import { REDUCER } from '../constant';
+import * as informationDataBaseBackUp from '../backup/informationDataBase.json';
 
 const initialState = {
 	pending: false,
