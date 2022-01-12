@@ -2,18 +2,32 @@ type TColor = {
 	color_id: number;
 	name: string;
 };
+type TSize = {
+	size_id: number;
+	size: number;
+};
+
 type TProduct = {
 	product_id: number;
 	name: string;
 	color_id: number;
-};
-
-type TNewObjectWithMatchingColor = {
-	product_id: number;
-	name: string;
 	gender: string;
-	color_id: number;
-	color: string;
 	price: number;
 };
-export type { TColor, TProduct, TNewObjectWithMatchingColor };
+type TProductDetails = {
+	product_id: number;
+	name: string;
+	colorName: string;
+	color_id: number;
+	price: number;
+	category: string;
+	description: string;
+	gender: string;
+	product_has_color_id: number;
+	numberOfPics?: number | string;
+	sizesID: any[];
+	size: string;
+	type: string;
+};
+
+export type { TColor, TProduct, TProductDetails, TSize };

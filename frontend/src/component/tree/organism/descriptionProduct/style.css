@@ -14,3 +14,8 @@ padding:1rem
 .sub_description_product_bottom {
 	min-height:20vh;
 }
+
+.description_category_bottom_title .stars svg{
+	color:rgb(97, 97, 14);
+
+}

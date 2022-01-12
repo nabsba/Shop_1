@@ -5,6 +5,9 @@ import { generatorSQLSpecialCase } from '../../../Common/tools/database/sql';
 import { DATA_TYPE } from '../constant';
 import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
 import { logMessage } from '../../../../Common/function';
+import { type } from 'os';
+import path from 'path';
+import _ from 'lodash';
 
 const filterObject = (object: any, type: string, mode: string) => {
   if (mode === 'select' || mode === 'pagination') {
@@ -17,6 +20,33 @@ const filterObject = (object: any, type: string, mode: string) => {
     }
   }
   return object;
+};
+const filterDatas = (products: any[]) => {
+  switch (products[0].type) {
+    case 'shoes':
+      let concatRowsByTheirColorsAndConcatSizes = _.uniqWith(products, (pre, cur) => {
+        if (pre.product_has_color_id == cur.product_has_color_id) {
+          cur.size = cur.size + ',' + pre.size;
+          return true;
+        }
+        return false;
+      });
+      concatRowsByTheirColorsAndConcatSizes.map((prod) => {
+        const fs = require('fs');
+        const length = fs.readdirSync(
+          path.join(
+            __dirname +
+              `../../../../../../../../asset/image/product/${prod.type}/medium/${
+                prod.colorName
+              }/${prod.name.replace(/\s/g, '')}`,
+          ),
+        ).length;
+        prod.numberOfPics = length;
+      });
+      return concatRowsByTheirColorsAndConcatSizes;
+    default:
+      return products;
+  }
 };
 const handlePostData = async (objectSql: TObjectSql): Promise<Result> => {
   let result: Result = { ...resultTemplate };
@@ -40,17 +70,24 @@ const handleGetData = async (type: string, id: string | null): Promise<Result> =
       case DATA_TYPE.PRODUCT_DETAIL_BY_ID:
         sql = generatorSQLSpecialCase.informationProduct(Number(id));
         result = await queryDataBase(sql);
+        if (result.data && result.data.length > 0) {
+          result.data = filterDatas(result.data);
+        }
         break;
-      case DATA_TYPE.INFORMATION_DATA_BASE:
-        sql = generatorSQL.custom(SQL_SELECT[`${type}_PART_ONE`]);
+      case DATA_TYPE.PRODUCTS_ARRIVING: {
+        sql = generatorSQLSpecialCase.firstArriving();
         result = await queryDataBase(sql);
-        sql = generatorSQL.custom(SQL_SELECT[`${type}_PART_TWO`]);
-        const result2 = await queryDataBase(sql);
-        result.data = {
-          color: result.data,
-          size: result2.data,
-        };
+        if (result.data && result.data.length > 0) {
+          result.data = filterDatas(result.data);
+        }
         break;
+      }
+
+      case DATA_TYPE.PRODUCT_DETAIL_ALL_SIZE_BY_ID:
+        sql = generatorSQLSpecialCase.getAllSizesOfProduct(Number(id));
+        result = await queryDataBase(sql);
+        break;
+
       default:
         null;
     }

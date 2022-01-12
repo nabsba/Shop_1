@@ -13,10 +13,22 @@ const sqlValuesToInsert = (object: any, keys: string[], sqlOperation: string) =>
 };
 
 const generatorSQLSpecialCase = {
-  informationProduct: (id: number) => `SELECT product.product_id,product.name, color_id
+  informationProduct: (id: number) =>
+    `SELECT product.product_id,product.name, product_has_color.color_id, style.category, 
+product.type, style.description, style.gender,
+product_has_color.product_has_color_id, color.colorName, product_color_has_size.size_id, size.size
 FROM product
 INNER JOIN product_has_color ON product.product_id=product_has_color.product_id
- WHERE product_has_color.product_id=${id};`,
+INNER JOIN style ON product.product_id=style.product_id
+INNER JOIN color on product_has_color.color_id=color.color_id
+INNER JOIN product_color_has_size on product_has_color.color_id=product_color_has_size.product_has_color_id
+INNER JOIN size on product_color_has_size.size_id=size.size_id
+where product_has_color.product_id=${id};
+`,
+  getAllSizesOfProduct: (id: number) =>
+    `select * from product_color_has_size where product_has_color_id=${Number(id)};`,
+  firstArriving: () =>
+    'SELECT product.product_id,product.name, product_has_color.color_id, style.category, product.type, style.description, style.gender, product_has_color.product_has_color_id, color.colorName, product_color_has_size.size_id, size.size FROM product INNER JOIN product_has_color ON product.product_id=product_has_color.product_id INNER JOIN style ON product.product_id=style.product_id INNER JOIN color on product_has_color.color_id=color.color_id INNER JOIN product_color_has_size on product_has_color.color_id=product_color_has_size.product_has_color_id INNER JOIN size on product_color_has_size.size_id=size.size_id order by product_id desc limit 30;',
 };
 const generatorSQL: { [key: string]: any } = {
   custom: (object: TObjectSql) => {

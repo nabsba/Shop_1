@@ -19,7 +19,7 @@ export const SQL_SELECT: { [key: string]: TObjectSql } = {
   INFORMATION_DATA_BASE_PART_ONE: {
     type: 'color',
     mode: 'select',
-    object: ['color_id', 'name'],
+    object: ['color_id', 'colorName'],
     condition: { key: 'active', value: 1 },
   },
   INFORMATION_DATA_BASE_PART_TWO: {

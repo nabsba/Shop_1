@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import URL_ADDRESSES from '../../../../bridge/url';
 // import { useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
-import { generateNewArrayWithMatchingColor } from '../../../../service/pages/Common/logic/function';
-import { TNewObjectWithMatchingColor } from '../../../../service/pages/Common/type';
+import { TProductDetails } from '../../../../service/pages/Common/type';
 import { ImageAsComponent } from '../../atom';
 
 import { Eridanus, TEridanus } from '../../template';
@@ -26,7 +25,6 @@ const Home: React.FC = () => {
 			},
 			data,
 		},
-		informationDataBaseStore,
 	} = useSelector((state: TReducers) => state);
 
 	const eridanusData: TEridanus = {
@@ -49,38 +47,31 @@ const Home: React.FC = () => {
 		navigationHeader,
 		footer,
 	};
+
 	useEffect(() => {
-		if (
-			informationDataBaseStore.color &&
-			data.newArriving &&
-			data.newArriving.length > 0
-		) {
-			const productsWithMatchingColor: TNewObjectWithMatchingColor[] =
-				generateNewArrayWithMatchingColor(
-					informationDataBaseStore.color,
-					data.newArriving,
-				);
+		if (data.newArriving && data.newArriving.length > 0) {
 			const sliderVariantComponents: React.SetStateAction<any[]> = [];
-			productsWithMatchingColor.map(
-				(product: TNewObjectWithMatchingColor, index: number) =>
-					sliderVariantComponents.push(
-						<ImageAsComponent
-							key={index}
-							data={{
-								src: `${URL_ADDRESSES.fileManager.image.load(
-									`product/shoes/medium/${product.color}/${product.name.replace(
-										/\s/g,
-										'',
-									)}/${product.name.replace(/\s/g, '')}_1.png`,
-								)}`,
-								alt: product.name,
-							}}
-						/>,
-					),
+			data.newArriving.map((product: TProductDetails, index: number) =>
+				sliderVariantComponents.push(
+					<ImageAsComponent
+						key={index}
+						data={{
+							src: `${URL_ADDRESSES.fileManager.image.load(
+								`product/shoes/medium/${
+									product.colorName
+								}/${product.name.replace(/\s/g, '')}/${product.name.replace(
+									/\s/g,
+									'',
+								)}_1.png`,
+							)}`,
+							alt: product.name,
+						}}
+					/>,
+				),
 			);
 			setSliderVariant(sliderVariantComponents);
 		}
-	}, [informationDataBaseStore, data.newArriving]);
+	}, [data.newArriving]);
 
 	eridanusData.sliderVariant1.list = sliderVariant;
 	eridanusData.sliderVariant1.display =

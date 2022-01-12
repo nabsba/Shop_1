@@ -4,7 +4,6 @@ import './component/common/css/share.css';
 import { useDispatch } from 'react-redux';
 import { Home, Product, Products } from './component/tree/page';
 import { fetchFirstProducts } from './service/pages/Common/dataManagment/reducer';
-import fetchInformationDatabase from './service/dataBase/dataManagment/reducer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './component/Common/css/share.css';
 // Reminder: https://medium.com/@jenniferdobak/react-router-vs-switch-components-2af3a9fc72e
@@ -32,7 +31,6 @@ const App: React.FC = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchInformationDatabase());
 		dispatch(fetchFirstProducts());
 	}, [dispatch]);
 

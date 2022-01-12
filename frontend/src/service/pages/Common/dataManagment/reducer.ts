@@ -8,7 +8,7 @@ import URL_ADDRESSES from '../../../../bridge/url';
 import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
 import { logMessage } from '../../../../Common/function';
 import { Result } from '../../../../Common/type/type';
-import { SQL_OBJECT } from '../../../dataBase/constant';
+import { DATA_TYPE, SQL_OBJECT } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import homeData from '../../home/data';
 import { REDUCER } from '../constant';
@@ -27,11 +27,13 @@ const initialState = {
 export const fetchFirstProducts = createAsyncThunk(REDUCER.NAME, async () => {
 	let result: Result = { ...resultTemplate };
 	try {
-		const objectSql = SQL_OBJECT.ALL_SHOES;
-		result = await serverPost(URL_ADDRESSES.data.postData, objectSql);
+		result = await serverGet(
+			URL_ADDRESSES.data.getData(DATA_TYPE.PRODUCTS_ARRIVING, null),
+		);
 		if (result.data) {
 			result.data = _.uniqBy(result.data, 'product_id');
 		}
+
 		return result;
 	} catch (error) {
 		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(

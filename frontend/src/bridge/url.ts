@@ -8,7 +8,7 @@ const URL_ADDRESSES: {
 	default: string;
 	data: {
 		postData: string;
-		getData: (type: string, id: number | null) => string;
+		getData: (type: string, id: number | string | null) => string;
 	};
 	fileManager: {
 		default: string;

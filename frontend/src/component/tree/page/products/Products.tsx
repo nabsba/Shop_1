@@ -7,8 +7,7 @@ import {
 	fetchProductsByTypeAndGender,
 	TReducers,
 } from '../../../../service';
-import { generateNewArrayWithMatchingColor } from '../../../../service/pages/Common/logic/function';
-import { TNewObjectWithMatchingColor } from '../../../../service/pages/Common/type';
+import { TProductDetails } from '../../../../service/pages/Common/type';
 import { Cassiopeia } from '../../template';
 import './style.css';
 
@@ -27,7 +26,6 @@ const Products: React.FC = () => {
 				articleGroupOriginal,
 			},
 		},
-		informationDataBaseStore,
 	} = useSelector((state: TReducers) => state);
 	useEffect(() => {
 		if (type && gender)
@@ -35,22 +33,13 @@ const Products: React.FC = () => {
 	}, [dispatch, gender, type]);
 
 	useEffect(() => {
-		if (
-			informationDataBaseStore.color &&
-			data.products &&
-			data.products.length > 0
-		) {
-			const productsWithMatchingColor: TNewObjectWithMatchingColor[] =
-				generateNewArrayWithMatchingColor(
-					informationDataBaseStore.color,
-					data.products,
-				);
+		if (data.products && data.products.length > 0) {
 			const newArray: any[] = [];
-			productsWithMatchingColor.map((product: TNewObjectWithMatchingColor) => {
+			data.products.map((product: TProductDetails) => {
 				newArray.push({
 					imageAsComponent: {
 						src: `${URL_ADDRESSES.fileManager.image.load(
-							`product/shoes/medium/${product.color}/${product.name.replace(
+							`product/shoes/medium/${product.colorName}/${product.name.replace(
 								/\s/g,
 								'',
 							)}/${product.name.replace(/\s/g, '')}_1.png`,
@@ -69,7 +58,7 @@ const Products: React.FC = () => {
 			});
 			setArticleGroupOriginal(newArray);
 		}
-	}, [data.products, informationDataBaseStore.color]);
+	}, [data.products]);
 
 	const cassiopeiraData = {
 		navigationHeader,

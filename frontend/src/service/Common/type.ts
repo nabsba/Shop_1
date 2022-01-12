@@ -1,7 +1,9 @@
 import TPubVariant1 from '../../component/tree/molecule/banner/pubVariant1/type';
 import TFooter from '../../component/tree/organism/footer/type';
 import TNavigationHeader from '../../component/tree/organism/navigation/type';
-import TProducts from '../../component/tree/page/products/type';
+import { TProductDetails } from '../pages/Common/type';
+import TProduct from '../pages/product/type';
+import TProducts from '../pages/products/type';
 
 export type TReducers = {
 	dataPages: {
@@ -27,13 +29,16 @@ export type TReducers = {
 		error: false;
 		products: TProducts;
 		data: {
-			products: [];
+			products: TProductDetails[];
 		};
 	};
-	informationDataBaseStore: {
-		error: boolean;
-		pending: boolean;
-		color?: { color_id: number; name: string }[];
-		size?: { size_id: number; size: number }[];
+	dataProduct: {
+		pending: false;
+		error: false;
+		product: TProduct;
+		data: {
+			product: TProductDetails[];
+			productSelected: TProductDetails;
+		};
 	};
 };
