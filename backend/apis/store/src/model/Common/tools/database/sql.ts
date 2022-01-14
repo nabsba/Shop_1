@@ -14,7 +14,7 @@ const sqlValuesToInsert = (object: any, keys: string[], sqlOperation: string) =>
 
 const generatorSQLSpecialCase = {
   informationProduct: (id: number) =>
-    `SELECT product.product_id,product.name, product_has_color.color_id, style.category, 
+    `SELECT product.product_id,product.name, product.price, product_has_color.color_id, style.category, 
 product.type, style.description, style.gender,
 product_has_color.product_has_color_id, color.colorName, product_color_has_size.size_id, size.size
 FROM product

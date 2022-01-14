@@ -5,6 +5,7 @@ import TDescriptionProduct from '../../../component/tree/organism/descriptionPro
 import TFooter from '../../../component/tree/organism/footer/type';
 import TNavigationHeader from '../../../component/tree/organism/navigation/type';
 import TSliderVariant2 from '../../../component/tree/organism/slider/sliderVariant2/type';
+import { TProductDetails } from '../Common/type';
 
 type TProduct = {
 	navigationHeader: TNavigationHeader;
@@ -16,4 +17,14 @@ type TProduct = {
 	selectSizeData: TSelectSize;
 };
 
+type TProductReducer = {
+	pending: boolean;
+	error: boolean;
+	product: TProduct;
+	data: {
+		product: TProductDetails[];
+		productSelected: TProductDetails | any;
+	};
+};
 export default TProduct;
+export type { TProductReducer };

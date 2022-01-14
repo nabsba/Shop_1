@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './component/common/css/share.css';
 import { useDispatch } from 'react-redux';
-import { Home, Product, Products } from './component/tree/page';
-import { fetchFirstProducts } from './service/pages/Common/dataManagment/reducer';
+import { Bag, Home, Product, Products } from './component/tree/page';
+import { fetchFirstProducts } from './service/pages/home/dataManagment/reducer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './component/Common/css/share.css';
+import { INDEX_DB } from './service/pages/bag/constant';
+import {
+	initDatabase,
+	getBagInformations,
+} from './service/pages/bag/dataManagment/reducer';
 // Reminder: https://medium.com/@jenniferdobak/react-router-vs-switch-components-2af3a9fc72e
 
 const theme = createTheme({
@@ -31,6 +36,11 @@ const App: React.FC = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		dispatch(initDatabase({ type: INDEX_DB.ON_MESSAGE.INIT_BAG }));
+		dispatch(getBagInformations());
+	}, [dispatch]);
+
+	useEffect(() => {
 		dispatch(fetchFirstProducts());
 	}, [dispatch]);
 
@@ -41,6 +51,7 @@ const App: React.FC = () => {
 					<Route path="/" element={<Home />} />
 					<Route path="/product/:type/:gender" element={<Products />} />
 					<Route path="/product/:type/:gender/:id" element={<Product />} />
+					<Route path="/bag" element={<Bag />} />
 					{/* <Route path="/test/:id " element={<Home />} /> */}
 					{/* <ErrorServer />
 				</Route>

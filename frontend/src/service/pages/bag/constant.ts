@@ -1,0 +1,18 @@
+const REDUCER = {
+	NAME: 'DATA_BAG',
+	FETCH_END_POINT: '',
+};
+
+const INDEX_DB = {
+	VERSION: 1,
+	DATABASE_BAG: 'bag',
+	STORE_PRODUCTS: 'products',
+	ON_MESSAGE: {
+		INIT_BAG: 'INIT_BAG',
+		UPDATE_BAG_ADD_NEW_PRODUCT: 'UPDATE_BAG_ADD_NEW_PRODUCT',
+	},
+	KEYS: {
+		STORE_PRODUCTS: 'product_id',
+	},
+};
+export { REDUCER, INDEX_DB };

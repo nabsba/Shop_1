@@ -24,10 +24,12 @@ type TProductDetails = {
 	description: string;
 	gender: string;
 	product_has_color_id: number;
-	numberOfPics?: number | string;
+	numberOfPics: number | string;
 	sizesID: any[];
-	size: string;
+	size: number[];
 	type: string;
+	quantityWished: number;
+	sizeWished: number;
 };
 
 export type { TColor, TProduct, TProductDetails, TSize };

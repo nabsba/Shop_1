@@ -10,8 +10,8 @@ import { logMessage } from '../../../../Common/function';
 import { Result } from '../../../../Common/type/type';
 import { DATA_TYPE, SQL_OBJECT } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
-import homeData from '../../home/data';
-import { REDUCER } from '../constant';
+import homeData from '../data';
+import { REDUCER } from '../../Common/constant';
 import _ from 'lodash';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.

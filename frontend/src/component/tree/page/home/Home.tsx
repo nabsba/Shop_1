@@ -5,9 +5,7 @@ import URL_ADDRESSES from '../../../../bridge/url';
 import { TReducers } from '../../../../service';
 import { TProductDetails } from '../../../../service/pages/Common/type';
 import { ImageAsComponent } from '../../atom';
-
 import { Eridanus, TEridanus } from '../../template';
-
 import './style.css';
 // import THome from './type';
 

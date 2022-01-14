@@ -9,11 +9,16 @@ type Props = {
 	data: TSelectOriginal;
 };
 
-const SelectOriginal: React.FC<Props> = ({ data: { menus, label } }) => {
+const SelectOriginal: React.FC<Props> = ({
+	data: { menus, label, functionToCall, id },
+}) => {
 	const [value, setValue] = React.useState('');
 
 	const handleChange = (event: SelectChangeEvent) => {
 		setValue(event.target.value);
+		if (functionToCall) {
+			functionToCall(label, event.target.value, id);
+		}
 	};
 
 	return (
@@ -23,7 +28,7 @@ const SelectOriginal: React.FC<Props> = ({ data: { menus, label } }) => {
 				<Select
 					labelId="demo-simple-select-autowidth-label"
 					id="demo-simple-select-autowidth"
-					value={value}
+					value={value ? value : menus[0] + ''}
 					onChange={handleChange}
 					autoWidth
 					label={label}

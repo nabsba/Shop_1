@@ -42,6 +42,14 @@ const filterDatas = (products: any[]) => {
           ),
         ).length;
         prod.numberOfPics = length;
+        prod.quantityWished = 1;
+        prod.size = prod.size
+          .split(',')
+          .map(Number)
+          .sort((a: number, b: number) => {
+            return a - b;
+          });
+        prod.sizeWished = prod.size[0];
       });
       return concatRowsByTheirColorsAndConcatSizes;
     default:

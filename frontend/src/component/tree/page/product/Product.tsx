@@ -1,13 +1,10 @@
 import _ from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import URL_ADDRESSES from '../../../../bridge/url';
 import { TReducers } from '../../../../service';
-import {
-	fetchProductByID,
-	updateProductSelected,
-} from '../../../../service/pages/product/dataManagment/reducer';
+import { fetchProductByID } from '../../../../service/pages/product/dataManagment/reducer';
 import { ImageAsComponent } from '../../atom';
 import { Vega } from '../../template';
 import './style.css';
@@ -67,7 +64,7 @@ const Product: React.FC = () => {
 			}
 			vegaData.sliderVariant2.display = true;
 		}
-		vegaData.selectSize.sizes = productSelected.size.split(',').map(Number);
+		vegaData.selectSize.sizes = productSelected.size;
 		vegaData.descriptionProduct.descriptionData.description.title = `${productSelected.name}`;
 		vegaData.descriptionProduct.descriptionData.description.text = `${productSelected.description}`;
 		vegaData.descriptionProduct.descriptionData.detail.title = 'Detail';
