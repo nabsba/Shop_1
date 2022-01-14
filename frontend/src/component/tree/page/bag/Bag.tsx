@@ -5,6 +5,7 @@ import './style.css';
 import { Achernar } from '../../template';
 import _ from 'lodash';
 import { addNewproductToTheBag } from '../../../../service/pages/bag/dataManagment/reducer';
+import dataProduct from '../../../../service/pages/product/dataManagment/reducer';
 
 const Bag: React.FC = () => {
 	const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const Bag: React.FC = () => {
 	} = useSelector((state: TReducers) => state);
 
 	useEffect(() => {
-		dispatch(addNewproductToTheBag(productSelected));
+		if (productSelected.product_id) {
+			dispatch(addNewproductToTheBag(productSelected));
+		}
 	}, [dispatch, productSelected]);
 
 	const achernarData = {
@@ -28,9 +31,11 @@ const Bag: React.FC = () => {
 		footer,
 		articleGroupBag: _.cloneDeep(articleGroupBagData),
 	};
+
 	achernarData.articleGroupBag.display = true;
 	achernarData.articleGroupBag.products = products;
 	achernarData.articleGroupBag.totalPriceOfTheBag = totalPriceOfTheBag;
+
 	return (
 		<div className="bag">
 			<Achernar data={achernarData} />

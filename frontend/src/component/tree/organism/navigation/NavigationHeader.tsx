@@ -4,6 +4,8 @@ import { NavLinkAsComponent, Span } from '../../atom';
 import './style.css';
 import TNavigationHeader from './type';
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { TReducers } from '../../../../service';
 
 type Props = {
 	data: TNavigationHeader;
@@ -12,15 +14,17 @@ type Props = {
 const NavigationHeader: React.FC<Props> = ({
 	data: { menusHeader, menusBottom },
 }) => {
+	const {
+		dataBag: { numberOfItemsInTheBag },
+	} = useSelector((state: TReducers) => state);
 	const [isBurgerClicked, setIsBurgerClicked] = useState<boolean>(false);
 	const [isBagClicked, setIsBagClicked] = useState<boolean>(false);
-
 	const BurgerIcon = getIcon('Burger');
 	const BagIcon = getIcon('Bag');
 	const CrossIcon = getIcon('Close');
 	const TwitterIcon = getIcon('Twitter');
 	const FacebookIcon = getIcon('Facebook');
-	const NumberCircle = getIcon('NumberCircle', 1);
+	const NumberCircle = getIcon('NumberCircle', numberOfItemsInTheBag);
 
 	const handleScrollBar = (indice: boolean) => {
 		document.body.style.height = indice ? '100vh' : 'auto';
@@ -79,12 +83,12 @@ const NavigationHeader: React.FC<Props> = ({
 	const DoWeRedirectOrDisplayBagHTML = isBagClicked ? (
 		<Navigate
 			to={{
-				pathname: '/purchase',
+				pathname: '/bag',
 			}}
 		/>
 	) : (
 		<>
-			{NumberCircle}
+			{numberOfItemsInTheBag > 0 && NumberCircle}
 			{BagIcon}
 		</>
 	);
