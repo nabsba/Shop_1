@@ -1,4 +1,4 @@
-import { footer, navigationHeader } from '../Common/data';
+import { filteringCategories, footer, navigationHeader } from '../Common/data';
 import TProducts from './type';
 
 const productsData: TProducts = {
@@ -12,6 +12,7 @@ const productsData: TProducts = {
 		list: [],
 		display: false,
 	},
+	filteringCategories,
 };
 
 export default productsData;

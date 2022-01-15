@@ -7,38 +7,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { useImmer } from 'use-immer';
 import getIcon from '../../../factory/Icon';
 import _ from 'lodash';
-import { H3, Span } from '../../atom';
+import { Span } from '../../atom';
+import { fetchProductsFiltered } from '../../../../service/pages/products/dataManagment/reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { TReducers } from '../../../../service';
 
-type Props = {
-	data: TFilterProduct;
-};
-
-const elements = [
-	{
-		title: 'gender',
-		list: ['mal', 'femele'],
-	},
-	{
-		title: 'category',
-
-		list: [
-			'classics',
-			'running',
-			'lifestyle',
-			'hiking',
-			'basekball',
-			'football',
-		],
-	},
-	{
-		title: 'size',
-		list: [7, 8, 9, 10, 11, 12],
-	},
-	{
-		title: 'price',
-		list: ['under 50£', '50£-100£', '100£-200£'],
-	},
-];
+type Props = TFilterProduct;
 
 type TElementFilter = {
 	title: string;
@@ -47,20 +21,26 @@ type TElementFilter = {
 
 type TSelectionFilter = {
 	[key: string]: {
-		// selection: string[] | number[];
 		selection: any;
 	};
 };
-const FilterProduct: React.FC<Props> = ({ data }) => {
+const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
+	const dispatch = useDispatch();
+	const {
+		dataProducts: {
+			data: { type, gender },
+		},
+	} = useSelector((state: TReducers) => state);
 	const [appareance, setAppareance] = useImmer<{
 		[key: string]: boolean;
 	}>({
 		gender: false,
 		category: false,
 	});
+
 	const [selection, setSelection] = useImmer<TSelectionFilter>({});
 	const IconArrow = getIcon('Arrow');
-	const handleAppearance = (elementTitle: string) => {
+	const handleAppearance = async (elementTitle: string) => {
 		const object = {
 			...appareance,
 		};
@@ -71,6 +51,8 @@ const FilterProduct: React.FC<Props> = ({ data }) => {
 		const object: TSelectionFilter = {
 			...selection,
 		};
+
+		// We init the selection proprety
 		if (!object[`${elementTitle}`]) {
 			object[`${elementTitle}`] = {
 				selection: [],
@@ -82,20 +64,30 @@ const FilterProduct: React.FC<Props> = ({ data }) => {
 				return o === element;
 			},
 		);
-		const selectionArray = object[`${elementTitle}`].selection;
+		const elementsSelected = object[`${elementTitle}`].selection;
+		// We decide if we remove or add the element selected
 		if (isElementSelectedAlreadyInTheList > -1) {
-			selectionArray.splice(isElementSelectedAlreadyInTheList, 1);
+			elementsSelected.splice(isElementSelectedAlreadyInTheList, 1);
 		} else {
-			object[`${elementTitle}`].selection = [...selectionArray, element];
+			object[`${elementTitle}`].selection = [...elementsSelected, element];
 		}
+
+		// We remove any empty category
+		const categories = Object.keys(object);
+		categories.map((category) => {
+			if (object[category] && object[category].selection.length === 0) {
+				delete object[category];
+			}
+		});
+		dispatch(fetchProductsFiltered({ preference: object, type, gender }));
 		setSelection(object);
 	};
 	return (
-		<div className="filter_product filter_product">
-			{elements.map((element: TElementFilter) => (
+		<div className={`filter_product filter_product_nav_mobile`}>
+			{filteringCategories.map((element: TElementFilter) => (
 				<div
 					className={`sub_filter_product ${
-						appareance[element.title] ? 'apply_effects_sub_filter' : ''
+						!appareance[element.title] ? 'apply_effects_sub_filter' : ''
 					}`}
 					key={element.title}
 				>
@@ -109,7 +101,7 @@ const FilterProduct: React.FC<Props> = ({ data }) => {
 					</div>
 					<div
 						className={`sub_filter_product_bottom ${
-							appareance[element.title] ? 'apply_effects_sub_filter' : ''
+							!appareance[element.title] ? 'apply_effects_sub_filter' : ''
 						}`}
 					>
 						<FormGroup>

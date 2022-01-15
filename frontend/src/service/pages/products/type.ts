@@ -11,6 +11,7 @@ type TProducts = {
 		list: any[];
 		display: boolean;
 	};
+	filteringCategories: any;
 };
 
 type TProductsReducer = {
@@ -19,6 +20,8 @@ type TProductsReducer = {
 	products: TProducts;
 	data: {
 		products: TProductDetails[];
+		type: string;
+		gender: string;
 	};
 };
 

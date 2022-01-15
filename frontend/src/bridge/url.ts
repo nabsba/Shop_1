@@ -9,6 +9,7 @@ const URL_ADDRESSES: {
 	data: {
 		postData: string;
 		getData: (type: string, id: number | string | null) => string;
+		filterData: string;
 	};
 	fileManager: {
 		default: string;
@@ -19,6 +20,7 @@ const URL_ADDRESSES: {
 	data: {
 		postData: `${URL_ADDRESS}/data`,
 		getData: (type: string, id = null) => `${URL_ADDRESS}/data/${type}/${id}`,
+		filterData: `${URL_ADDRESS}/data/filterData`,
 	},
 	fileManager: {
 		default: `${URL_ADDRESS}/fileManager/file`,

@@ -62,5 +62,23 @@ const footer = {
 	icons: ['Twitter', 'Facebook'],
 	copyRightSentence: 'Copyright © 2021 Nabil - All Rights Reserved',
 };
+const filteringCategories = [
+	{
+		title: 'category',
 
-export { navigationHeader, footer };
+		list: ['classics', 'running', 'lifestyle', 'basketball', 'football'],
+	},
+	{
+		title: 'size',
+		list: [7, 8, 9, 10, 11, 12],
+	},
+	{
+		title: 'price',
+		list: ['under 50£', '50£-100£', '100£-200£'],
+	},
+	{
+		title: 'color',
+		list: ['green', 'white', 'blue', 'brown', 'black', 'grey', 'beige'],
+	},
+];
+export { navigationHeader, footer, filteringCategories };

@@ -24,6 +24,7 @@ const Products: React.FC = () => {
 				footer,
 				headerProduct,
 				articleGroupOriginal,
+				filteringCategories,
 			},
 		},
 	} = useSelector((state: TReducers) => state);
@@ -57,8 +58,10 @@ const Products: React.FC = () => {
 				});
 			});
 			setArticleGroupOriginal(newArray);
+		} else {
+			setArticleGroupOriginal([]);
 		}
-	}, [data.products]);
+	}, [articleGroupOriginal, data.products]);
 
 	const cassiopeiraData = {
 		navigationHeader,
@@ -68,6 +71,7 @@ const Products: React.FC = () => {
 			list: articleGroupOriginal.list,
 			display: articleGroupOriginal.display,
 		},
+		filteringCategories,
 	};
 
 	cassiopeiraData.articleGroupOriginal.list =

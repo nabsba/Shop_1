@@ -1,5 +1,5 @@
-import React from 'react';
-import URL_ADDRESSES from '../../../../bridge/url';
+import React, { useState } from 'react';
+import { H3 } from '../../atom';
 import {
 	ArticleGroupOriginal,
 	FilterProduct,
@@ -15,23 +15,44 @@ type Props = {
 };
 
 const Cassiopeia: React.FC<Props> = ({
-	data: { navigationHeader, footer, headerProduct, articleGroupOriginal },
+	data: {
+		navigationHeader,
+		footer,
+		headerProduct,
+		articleGroupOriginal,
+		filteringCategories,
+	},
 }) => {
+	const [displayFilterProduct, setDisplayFilterProduct] = useState(true);
+
+	const handleFilterProduct = () =>
+		setDisplayFilterProduct(!displayFilterProduct);
+
+	const headerProductWithFunction = {
+		...headerProduct,
+		functionToCall: handleFilterProduct,
+	};
+
 	return (
 		<div className="cassiopeia">
 			<section className="cassiopeia_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>
 			<section className="cassiopeia_section_2">
-				<HeaderProduct data={headerProduct} />
+				<HeaderProduct data={headerProductWithFunction} />
 			</section>
-			{articleGroupOriginal.display && (
-				<section className="cassiopeia_section_3">
-					{/* <FilterProduct data="k" /> */}
+			<section
+				className={`cassiopeia_section_3 ${
+					displayFilterProduct ? '' : 'cassiopeia_section_3_effect'
+				}`}
+			>
+				<FilterProduct data={{ filteringCategories }} />
+				{articleGroupOriginal.display ? (
 					<ArticleGroupOriginal data={articleGroupOriginal} />
-				</section>
-			)}
-
+				) : (
+					<H3 title={'No products'} />
+				)}
+			</section>
 			<section className="cassiopeia_section_4">
 				<Footer data={footer} />
 			</section>

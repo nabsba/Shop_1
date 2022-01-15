@@ -7,5 +7,6 @@ type TCassiopeia = {
 	footer: TFooter;
 	headerProduct: THeaderProduct;
 	articleGroupOriginal: any;
+	filteringCategories: any[];
 };
 export default TCassiopeia;

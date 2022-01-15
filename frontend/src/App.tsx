@@ -38,9 +38,6 @@ const App: React.FC = () => {
 	useEffect(() => {
 		dispatch(initDatabase({ type: INDEX_DB.ON_MESSAGE.INIT_BAG }));
 		dispatch(getBagInformations());
-	}, [dispatch]);
-
-	useEffect(() => {
 		dispatch(fetchFirstProducts());
 	}, [dispatch]);
 

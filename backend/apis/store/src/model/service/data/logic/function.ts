@@ -56,13 +56,13 @@ const filterDatas = (products: any[]) => {
       return products;
   }
 };
-const handlePostData = async (objectSql: TObjectSql): Promise<Result> => {
+const handlePostData = async (objectSql: TObjectSql, type?: string): Promise<Result> => {
   let result: Result = { ...resultTemplate };
   try {
     const sql = generatorSQL.custom(objectSql);
     result = await queryDataBase(sql);
-    if (result.state && result.data) {
-      result.data = filterObject(result.data, objectSql.type, objectSql.mode);
+    if (type === 'filter' && result.data) {
+      result.data = _.uniqBy(result.data, 'product_id');
     }
   } catch (error) {
     logMessage(`${ERROR_LOG_ASYNC_MESSAGE('managerData', 'handlePostData')}, ${error}`);
@@ -90,12 +90,6 @@ const handleGetData = async (type: string, id: string | null): Promise<Result> =
         }
         break;
       }
-
-      case DATA_TYPE.PRODUCT_DETAIL_ALL_SIZE_BY_ID:
-        sql = generatorSQLSpecialCase.getAllSizesOfProduct(Number(id));
-        result = await queryDataBase(sql);
-        break;
-
       default:
         null;
     }

@@ -1,80 +1,74 @@
 @import '../../../Common/css/variable.css';
 
 .filter_product {
-    opacity: 1;
-    position: absolute;
-    top: 3rem;
-    left: 0;
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--color-secondary-1);
-    z-index: 10;
-		padding: 1rem;
+	background-color: var(--color-secondary-1);
+	display: block;
+	height: 100vh;
+	width: 100%;
+	transform: translateY(0vw);
+	position: fixed;
+	z-index: 100;
+	transition: 200ms;
+	overflow:auto;
+	padding:1rem;
+	top:10rem;
+	left:0;
 }
+
 .filter_product h3 {
 	text-transform: uppercase;
 }
 
-.sub_filter_product_top svg {
-	opacity: 0;
-}
 .sub_filter_product_top {
 	width: 100%;
 }
+	.apply_effects_sub_filter {
+		max-height: 100% !important;
 
+	}
+
+	.sub_filter_product_bottom {
+		max-height: 0;
+		overflow: hidden;
+	}
+		.sub_filter_product_top svg {
+		opacity: 1;
+		font-size: var(--size-icon);
+		transform: rotate(-180deg);
+	}
+	.apply_effects_sub_filter svg {
+		transform: rotate(0deg);
+	}
 @media only screen and (min-width: 770px) {
 	.filter_product {
-		position:relative;
-		height:max-content;
-		height:100%;
-		top:0;
-		background-color:white;
-				padding: 0rem;
+		position: relative;
+		height: max-content;
+		height: 100%;
+		top: 0;
+		background-color: white;
+		padding: 0rem;
 	}
-.sub_filter_product_top svg {
-	opacity:1;
-	font-size: var(--size-icon);
-	transform: rotate(-180deg);
-}
-.apply_effects_sub_filter {
-max-height: 100% !important;
 
-}
-
-.sub_filter_product_bottom {
-	max-height: 0;
-	overflow: hidden;
-}
-
-.sub_filter_product_bottom div {
-	transform: translateY(-100%);
-	transition: all 200ms;
-}
-
-.apply_effects_sub_filter div {
-	transform: translateY(0%);
+	.sub_filter_product_bottom div {
+		transform: translateY(-100%);
 		transition: all 200ms;
-}
-.apply_effects_sub_filter  svg{
-transform: rotate(0deg);
-}
+	}
+
+	.apply_effects_sub_filter div {
+		transform: translateY(0%);
+		transition: all 200ms;
+	}
+
 }
 
-
-
-.sub_filter_product_top  span {
-	    font-weight: bold;
-    text-transform: capitalize;
+.sub_filter_product_top span {
+	font-weight: bold;
+	text-transform: capitalize;
 
 }
 
 @media only screen and (max-width: 770px) {
-.sub_filter_product_top  span {
-	font-size:1.5rem;
+	.sub_filter_product_top span {
+		font-size: 1.5rem;
+	}
 }
-}
-
-
-
-
-

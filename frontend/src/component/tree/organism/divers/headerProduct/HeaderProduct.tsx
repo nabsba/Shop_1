@@ -8,13 +8,24 @@ type Props = {
 	data: THeaderProduct;
 };
 
-const HeaderProduct: React.FC<Props> = ({ data: { h2, list } }) => {
+const HeaderProduct: React.FC<Props> = ({
+	data: { h2, list, functionToCall },
+}) => {
 	const FilterIcon = getIcon('Filter');
+
 	return (
 		<div className="header_product">
 			<div className="sub_header_product_top flex_row_between_align_center">
 				<H2 title={h2} />
-				{FilterIcon}
+				<div
+					onClick={() => {
+						if (functionToCall) {
+							functionToCall();
+						}
+					}}
+				>
+					{FilterIcon}
+				</div>
 			</div>
 			<div className="sub_header_product_bottom">
 				<ul className="flex_row">

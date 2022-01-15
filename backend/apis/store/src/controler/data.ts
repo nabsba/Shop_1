@@ -16,4 +16,10 @@ router.get('/:type/:id', async (req: Request, res: Response): Promise<void> => {
   res.send(result);
 });
 
+router.post('/filterData', async (req: Request, res: Response): Promise<void> => {
+  const { objectSql, type } = req.body;
+  const result: Result = await handlePostData(objectSql, type);
+  res.send(result);
+});
+
 export { router as data };
