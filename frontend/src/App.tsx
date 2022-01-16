@@ -46,9 +46,11 @@ const App: React.FC = () => {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/home" element={<Home />} />
 					<Route path="/product/:type/:gender" element={<Products />} />
 					<Route path="/product/:type/:gender/:id" element={<Product />} />
 					<Route path="/bag" element={<Bag />} />
+					<Route path="*" element={<Home />} />
 					{/* <Route path="/test/:id " element={<Home />} /> */}
 					{/* <ErrorServer />
 				</Route>
