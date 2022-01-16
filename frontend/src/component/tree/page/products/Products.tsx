@@ -43,7 +43,7 @@ const Products: React.FC = () => {
 							`product/shoes/medium/${product.colorName}/${product.name.replace(
 								/\s/g,
 								'',
-							)}/${product.name.replace(/\s/g, '')}_1.png`,
+							)}/${product.name.replace(/\s/g, '')}_1`,
 						)}`,
 						alt: product.name,
 					},

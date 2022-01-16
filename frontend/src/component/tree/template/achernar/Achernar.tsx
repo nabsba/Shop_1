@@ -17,7 +17,7 @@ const achernarData = {
 				key={1}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}
@@ -26,7 +26,7 @@ const achernarData = {
 				key={2}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}
@@ -35,7 +35,7 @@ const achernarData = {
 				key={3}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}
@@ -44,7 +44,7 @@ const achernarData = {
 				key={4}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}
@@ -53,7 +53,7 @@ const achernarData = {
 				key={1}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}
@@ -62,7 +62,7 @@ const achernarData = {
 				key={2}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}
@@ -71,7 +71,7 @@ const achernarData = {
 				key={1}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}
@@ -80,7 +80,7 @@ const achernarData = {
 				key={2}
 				data={{
 					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
+						'product/shoes/medium/blue/airzoom/airzoom_1',
 					)}`,
 					alt: 'airzoom',
 				}}

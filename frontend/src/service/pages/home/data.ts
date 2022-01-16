@@ -8,27 +8,27 @@ const homeData = {
 		list: [
 			{
 				src: URL_ADDRESSES.fileManager.image.load(
-					'product/shoes/medium/general/pic1.jpg',
+					'product/shoes/medium/general/pic1',
 				),
-				alt: 'pic1.jpg',
+				alt: 'pic1',
 			},
 			{
 				src: URL_ADDRESSES.fileManager.image.load(
-					'product/shoes/medium/general/pic2.jpg',
+					'product/shoes/medium/general/pic2',
 				),
-				alt: 'pic2.jpg',
+				alt: 'pic2',
 			},
 			{
 				src: URL_ADDRESSES.fileManager.image.load(
-					'product/shoes/medium/general/pic3.jpg',
+					'product/shoes/medium/general/pic3',
 				),
-				alt: 'pic3.jpg',
+				alt: 'pic3',
 			},
 			{
 				src: URL_ADDRESSES.fileManager.image.load(
-					'product/shoes/medium/general/pic4.jpg',
+					'product/shoes/medium/general/pic4',
 				),
-				alt: 'pic4.jpg',
+				alt: 'pic4',
 			},
 		],
 		className: 'slider_',
@@ -43,7 +43,7 @@ const homeData = {
 		{
 			imageAsComponent: {
 				src: `${URL_ADDRESSES.fileManager.image.load(
-					'product/shoes/medium/general/men.jpg',
+					'product/shoes/medium/general/men',
 				)}`,
 				alt: 'men',
 			},

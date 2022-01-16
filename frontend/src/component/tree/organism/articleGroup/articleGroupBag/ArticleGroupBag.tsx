@@ -69,7 +69,7 @@ const ArticleGroupBag: React.FC<Props> = ({
 										}/${product.name.replace(/\s/g, '')}/${product.name.replace(
 											/\s/g,
 											'',
-										)}_1.png`,
+										)}_1.`,
 									)}`,
 									alt: product.name,
 								},

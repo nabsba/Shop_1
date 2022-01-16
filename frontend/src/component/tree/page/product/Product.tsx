@@ -55,7 +55,7 @@ const Product: React.FC = () => {
 								}/${productSelected.name.replace(
 									/\s/g,
 									'',
-								)}/${productSelected.name.replace(/\s/g, '')}_${index + 1}.png`,
+								)}/${productSelected.name.replace(/\s/g, '')}_${index + 1}`,
 							)}`,
 							alt: productSelected.name,
 						}}

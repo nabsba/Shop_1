@@ -13,7 +13,7 @@ const eridanusData = {
 	pubVariant2: {
 		imageAsComponent: {
 			src: `${URL_ADDRESSES.fileManager.image.load(
-				'product/shoes/medium/blue/airzoom/airzoom_1.png',
+				'product/shoes/medium/blue/airzoom/airzoom_1',
 			)}`,
 			alt: 'airzoom',
 		},
