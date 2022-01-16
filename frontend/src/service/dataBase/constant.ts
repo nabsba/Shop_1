@@ -42,11 +42,31 @@ order by product_id desc limit 20;`,
 				'(' +
 					preference[category].selection.map(
 						(value: string | number | boolean, index2: number) => {
+							const generateConditionForPrice = (arrayObject: any[]) => {
+								if (arrayObject.length > 1) {
+									return `${arrayObject[0]} AND product.price <= ${arrayObject[1]} `;
+								} else {
+									return `0 AND product.price <= ${arrayObject[1]} `;
+								}
+							};
+
+							const extractNumberFromStringToArrayIfPrice =
+								category === 'price' && typeof value === 'string'
+									? value.match(/\d+/g)
+									: false;
+							const valuePrice = extractNumberFromStringToArrayIfPrice
+								? generateConditionForPrice(
+										extractNumberFromStringToArrayIfPrice,
+								  )
+								: false;
+
 							return `${TABLES_PER_CATEGORY_FILTERING[category]}.${
 								category === 'color' ? 'colorName' : category
-							}=${typeof value === 'string' ? `"${value}"` : value} ${
-								index2 < elementsSelected - 1 ? 'or ' : ' '
-							}`;
+							}${category === 'price' ? '>=' : '='}${
+								typeof value === 'string'
+									? `${category === 'price' ? valuePrice : `"${value}"`}`
+									: value
+							} ${index2 < elementsSelected - 1 ? 'or ' : ' '}`;
 						},
 					) +
 					`)${index < tablesLength - 1 ? 'AND ' : ''}`,
