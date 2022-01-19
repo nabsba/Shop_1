@@ -58,7 +58,7 @@ const data = createSlice({
 			/*eslint-disable-next-line  @typescript-eslint/no-explicit-any*/
 			(state, action: { payload: any }) => {
 				state.pending = false;
-				if (action.payload.error) {
+				if (action.payload.serverError) {
 					state.error = true;
 				} else {
 					state.data.product = action.payload.data;

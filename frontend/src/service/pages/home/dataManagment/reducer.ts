@@ -55,7 +55,7 @@ const data = createSlice({
 			(state, action: { payload: any }) => {
 				// Add user to the state array
 				state.pending = false;
-				if (action.payload.error) {
+				if (action.payload.serverError) {
 					state.error = true;
 				} else {
 					state.data.newArriving = action.payload.data;

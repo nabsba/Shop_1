@@ -56,14 +56,11 @@ const filterDatas = (products: any[]) => {
       return products;
   }
 };
-const handlePostData = async (objectSql: TObjectSql, type?: string): Promise<Result> => {
+const handlePostData = async (objectSql: TObjectSql): Promise<Result> => {
   let result: Result = { ...resultTemplate };
   try {
     const sql = generatorSQL.custom(objectSql);
     result = await queryDataBase(sql);
-    if (type === 'filter' && result.data) {
-      result.data = _.uniqBy(result.data, 'product_id');
-    }
   } catch (error) {
     logMessage(`${ERROR_LOG_ASYNC_MESSAGE('managerData', 'handlePostData')}, ${error}`);
   } finally {

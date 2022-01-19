@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { H3 } from '../../atom';
+import { CircularIndeterminate, H3 } from '../../atom';
 import {
 	ArticleGroupOriginal,
 	FilterProduct,
@@ -24,10 +24,8 @@ const Cassiopeia: React.FC<Props> = ({
 	},
 }) => {
 	const [displayFilterProduct, setDisplayFilterProduct] = useState(true);
-
 	const handleFilterProduct = () =>
 		setDisplayFilterProduct(!displayFilterProduct);
-
 	const headerProductWithFunction = {
 		...headerProduct,
 		functionToCall: handleFilterProduct,
@@ -46,8 +44,15 @@ const Cassiopeia: React.FC<Props> = ({
 					displayFilterProduct ? '' : 'cassiopeia_section_3_effect'
 				}`}
 			>
-				<FilterProduct data={{ filteringCategories }} />
-				{articleGroupOriginal.display ? (
+				{!articleGroupOriginal.pending.products && (
+					<FilterProduct data={{ filteringCategories }} />
+				)}
+				{articleGroupOriginal.pending.productsBeingFiltered ||
+				articleGroupOriginal.pending.products ? (
+					<div className="cassiopeia_loader">
+						<CircularIndeterminate />
+					</div>
+				) : articleGroupOriginal.display ? (
 					<ArticleGroupOriginal data={articleGroupOriginal} />
 				) : (
 					<H3 title={'No products'} />
@@ -59,4 +64,5 @@ const Cassiopeia: React.FC<Props> = ({
 		</div>
 	);
 };
+
 export default Cassiopeia;

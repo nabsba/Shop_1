@@ -93,7 +93,6 @@ const serverPost = async (
 	time?: number | null,
 ): Promise<Result> => {
 	let result: Result = { ...resultTemplate };
-	// let times = new Date().toLocaleTimeString();
 	try {
 		result = await axios.post(url, body, { timeout: time ? time : 15000 });
 	} catch (error) {
@@ -106,8 +105,6 @@ const serverPost = async (
 		result.serverError = true;
 		result.errorCodeServer = '500';
 	} finally {
-		// times = new Date().toLocaleTimeString();
-
 		result = result.data ? result.data : result;
 		return result;
 	}

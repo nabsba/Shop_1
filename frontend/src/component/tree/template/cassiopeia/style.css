@@ -45,7 +45,9 @@
 		transform: translateY(100vw);
 		transition: transform 200ms;
 	}
-
+		.cassiopeia_loader >div {
+			margin:auto;
+		}
 	@media only screen and (min-width: 770px) {
 		.cassiopeia {
 			grid-template-columns: repeat(12, 1fr);
@@ -81,5 +83,9 @@
 
 		.cassiopeia_section_3_effect .article_group_original {
 			grid-column: 1/12;
+		}
+		.cassiopeia_loader {
+					grid-column: 1/13;
+					display:flex;
 		}
 	}

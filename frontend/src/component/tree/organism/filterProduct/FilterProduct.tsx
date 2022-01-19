@@ -8,7 +8,10 @@ import { useImmer } from 'use-immer';
 import getIcon from '../../../factory/Icon';
 import _ from 'lodash';
 import { Span } from '../../atom';
-import { fetchProductsFiltered } from '../../../../service/pages/products/dataManagment/reducer';
+import {
+	fetchProductsFiltered,
+	updateFilteringCategories,
+} from '../../../../service/pages/products/dataManagment/reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { TReducers } from '../../../../service';
 
@@ -20,15 +23,14 @@ type TElementFilter = {
 };
 
 type TSelectionFilter = {
-	[key: string]: {
-		selection: any;
-	};
+	[key: string]: any[];
 };
 const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 	const dispatch = useDispatch();
 	const {
 		dataProducts: {
-			data: { type, gender },
+			productsFiltered: { type, gender },
+			productsFiltered,
 		},
 	} = useSelector((state: TReducers) => state);
 	const [appareance, setAppareance] = useImmer<{
@@ -40,77 +42,73 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 
 	const [selection, setSelection] = useImmer<TSelectionFilter>({});
 	const IconArrow = getIcon('Arrow');
-	const handleAppearance = async (elementTitle: string) => {
+	const handleAppearance = async (categoryName: string) => {
 		const object = {
 			...appareance,
 		};
-		_.set(object, `${elementTitle}`, !object[`${elementTitle}`]);
+		_.set(object, `${categoryName}`, !object[`${categoryName}`]);
 		setAppareance(object);
 	};
-	const handleChange = (elementTitle: string, element: string | number) => {
-		const object: TSelectionFilter = {
-			...selection,
-		};
-
-		// We init the selection proprety
-		if (!object[`${elementTitle}`]) {
-			object[`${elementTitle}`] = {
-				selection: [],
-			};
+	const handleChange = (categoryName: string, preference: string | number) => {
+		const object: TSelectionFilter = _.cloneDeep(selection);
+		// We init the category name
+		if (!object[`${categoryName}`]) {
+			object[`${categoryName}`] = [];
 		}
+
 		const isElementSelectedAlreadyInTheList = _.findIndex(
-			object[`${elementTitle}`].selection,
+			object[`${categoryName}`],
 			function (o) {
-				return o === element;
+				return o === preference;
 			},
 		);
-		const elementsSelected = object[`${elementTitle}`].selection;
-		// We decide if we remove or add the element selected
-		if (isElementSelectedAlreadyInTheList > -1) {
-			elementsSelected.splice(isElementSelectedAlreadyInTheList, 1);
-		} else {
-			object[`${elementTitle}`].selection = [...elementsSelected, element];
-		}
 
+		// We decide if we remove or add the preference selected
+		if (isElementSelectedAlreadyInTheList > -1) {
+			object[`${categoryName}`].splice(isElementSelectedAlreadyInTheList, 1);
+		} else {
+			object[`${categoryName}`] = [...object[`${categoryName}`], preference];
+		}
 		// We remove any empty category
 		const categories = Object.keys(object);
 		categories.map((category) => {
-			if (object[category] && object[category].selection.length === 0) {
+			if (object[category] && object[category].length === 0) {
 				delete object[category];
 			}
 		});
-		dispatch(fetchProductsFiltered({ preference: object, type, gender }));
+		dispatch(updateFilteringCategories(object));
+		dispatch(fetchProductsFiltered({ preference: object, type, gender, isFetchDueToScroll: false }));
 		setSelection(object);
 	};
 	return (
 		<div className={`filter_product filter_product_nav_mobile`}>
-			{filteringCategories.map((element: TElementFilter) => (
+			{filteringCategories.map((preference: TElementFilter) => (
 				<div
 					className={`sub_filter_product ${
-						!appareance[element.title] ? 'apply_effects_sub_filter' : ''
+						!appareance[preference.title] ? 'apply_effects_sub_filter' : ''
 					}`}
-					key={element.title}
+					key={preference.title}
 				>
 					<div
 						className="sub_filter_product_top flex_row_between_align_center"
-						onClick={() => handleAppearance(element.title)}
+						onClick={() => handleAppearance(preference.title)}
 					>
-						{/* <H3 title={element.title} /> */}
-						<Span data={element.title} />
+						{/* <H3 title={preference.title} /> */}
+						<Span data={preference.title} />
 						{IconArrow}
 					</div>
 					<div
 						className={`sub_filter_product_bottom ${
-							!appareance[element.title] ? 'apply_effects_sub_filter' : ''
+							!appareance[preference.title] ? 'apply_effects_sub_filter' : ''
 						}`}
 					>
 						<FormGroup>
-							{element.list.map((label) => (
+							{preference.list.map((label) => (
 								<FormControlLabel
 									key={label}
 									control={
 										<Checkbox
-											onChange={() => handleChange(element.title, label)}
+											onChange={() => handleChange(preference.title, label)}
 										/>
 									}
 									label={label}

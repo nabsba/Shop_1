@@ -8,45 +8,51 @@ const SQL_OBJECT:
 			[key: string]: TObjectSql;
 	  }
 	| any = {
-	ALL_SHOES: {
-		type: 'product',
-		mode: 'select',
-		object: {},
-		sql: 'SELECT product.product_id,product.name, product_has_color.color_id, style.category, product.type, style.description, style.gender, product_has_color.product_has_color_id, color.colorName, product_color_has_size.size_id, size.size FROM product INNER JOIN product_has_color ON product.product_id=product_has_color.product_id INNER JOIN style ON product.product_id=style.product_id INNER JOIN color on product_has_color.color_id=color.color_id INNER JOIN product_color_has_size on product_has_color.color_id=product_color_has_size.product_has_color_id INNER JOIN size on product_color_has_size.size_id=size.size_id order by product_id desc limit 30;',
-	},
-	PRODUCTS_PER_TYPE_AND_GENDER: (
+	// 	PRODUCTS_PER_TYPE_AND_GENDER: (
+	// 		type: string,
+	// 		gender: string,
+	// 		pagination?: string | number,
+	// 	) => {
+	// 		return {
+	// 			type: 'product',
+	// 			mode: 'select',
+	// 			object: {},
+	// 			sql: `SELECT SQL_CALC_FOUND_ROWS product.product_id, product.name, product.price, product.type, style.gender, color.colorName FROM product
+	// INNER JOIN product_has_color ON product.product_id=product_has_color.product_id AND product.type="${type}"
+	// INNER JOIN style on style.gender="${gender}" and product.product_id=style.product_id
+	// INNER JOIN color on product_has_color.color_id=color.color_id
+	// WHERE product.product_id > ${
+	// 				pagination
+	// 					? typeof pagination === 'string'
+	// 						? `"${pagination}"`
+	// 						: pagination
+	// 					: 0
+	// 			}
+	//  order by product_id asc limit 10;
+	//  			SELECT FOUND_ROWS();`,
+	// 		};
+	// 	},
+	PRODUCTS_FILTERED: (
+		preference: any,
 		type: string,
 		gender: string,
-		pagination?: string,
+		pagination?: number,
 	) => {
-		return {
-			type: 'product',
-			mode: 'select',
-			object: {},
-			sql: `SELECT product.product_id, product.name, product.price, product.type, style.gender, color.colorName FROM product 
-INNER JOIN product_has_color ON product.product_id=product_has_color.product_id AND product.type="${type}" 
-INNER JOIN style on style.gender="${gender}" and product.product_id=style.product_id 
-INNER JOIN color on product_has_color.color_id=color.color_id
-order by product_id desc limit 20;`,
-		};
-	},
-	PRODUCTS_FILTERED: (preference: any, type: string, gender: string) => {
 		const categories = Object.keys(preference);
 		const tablesLength = categories.length;
 		const conditions: string[] = [];
 		const isSizeRequired = categories.indexOf('size') > -1;
-
 		categories.map((category, index) => {
-			const elementsSelected = preference[category].selection.length;
+			const elementsSelected = preference[category].length;
 			conditions.push(
 				'(' +
-					preference[category].selection.map(
+					preference[category].map(
 						(value: string | number | boolean, index2: number) => {
 							const generateConditionForPrice = (arrayObject: any[]) => {
 								if (arrayObject.length > 1) {
 									return `${arrayObject[0]} AND product.price <= ${arrayObject[1]} `;
 								} else {
-									return `0 AND product.price <= ${arrayObject[1]} `;
+									return `0 AND product.price <= ${arrayObject[0]} `;
 								}
 							};
 
@@ -54,6 +60,7 @@ order by product_id desc limit 20;`,
 								category === 'price' && typeof value === 'string'
 									? value.match(/\d+/g)
 									: false;
+
 							const valuePrice = extractNumberFromStringToArrayIfPrice
 								? generateConditionForPrice(
 										extractNumberFromStringToArrayIfPrice,
@@ -75,19 +82,25 @@ order by product_id desc limit 20;`,
 		let conditionString = `${conditions.map((condition) => condition)}`;
 		conditionString = conditionString.replace(/,/g, '');
 
-		const sql = `SELECT product.product_id,product.name, product_has_color.color_id, ${
+		const sql = `SELECT SQL_CALC_FOUND_ROWS product.product_id,product.name, product_has_color.color_id, ${
 			isSizeRequired ? 'size.size, product_color_has_size.size_id,' : ''
 		} style.category, product.type, product.price, style.description, style.gender, product_has_color.product_has_color_id, color.colorName FROM product
-		 INNER JOIN product_has_color ON product.product_id=product_has_color.product_id  AND product.type="${type}" 
-		 INNER JOIN style ON product.product_id=style.product_id AND style.gender="${gender}" ${
+			 INNER JOIN product_has_color ON product.product_id=product_has_color.product_id AND product.type="${type}"
+			 INNER JOIN style ON product.product_id=style.product_id AND style.gender="${gender}" ${
 			isSizeRequired
 				? 'INNER JOIN product_color_has_size on product_has_color.color_id=product_color_has_size.product_has_color_id INNER JOIN size on product_color_has_size.size_id=size.size_id'
 				: ''
 		}
-		 INNER JOIN color on product_has_color.color_id=color.color_id 
-	 ${
-			conditionString && `where ${conditionString}`
-		} order by product_id desc limit 30;`;
+			 INNER JOIN color on product_has_color.color_id=color.color_id
+		 ${conditionString && `where ${conditionString}`} AND   product.product_id > ${
+			pagination
+				? typeof pagination === 'string'
+					? `"${pagination}"`
+					: pagination
+				: 0
+		} order by product_id asc limit 10;
+			SELECT FOUND_ROWS();`;
+
 		return {
 			type: 'product',
 			mode: 'select',

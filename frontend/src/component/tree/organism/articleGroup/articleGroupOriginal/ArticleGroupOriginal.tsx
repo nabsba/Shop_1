@@ -11,22 +11,24 @@ type Props = {
 
 const ArticleGroupOriginal: React.FC<Props> = ({ data: { list } }) => {
 	return (
-		<div className="article_group_original flex_row_wrap_evenly">
-			{list.map((element: TArticleOriginal, index: number) =>
-				element.link ? (
-					<NavLink
-						key={element.link.text}
-						data={{
-							text: element.link.text,
-							href: element.link.href,
-							asComponent: <ArticleOriginal key={index} data={element} />,
-						}}
-					/>
-				) : (
-					<ArticleOriginal key={index} data={element} />
-				),
-			)}
-		</div>
+		<>
+			<div className="article_group_original flex_row_wrap_evenly">
+				{list.map((element: TArticleOriginal, index: number) =>
+					element.link ? (
+						<NavLink
+							key={element.link.text + index}
+							data={{
+								text: element.link.text,
+								href: element.link.href,
+								asComponent: <ArticleOriginal key={index} data={element} />,
+							}}
+						/>
+					) : (
+						<ArticleOriginal key={index} data={element} />
+					),
+				)}
+			</div>
+		</>
 	);
 };
 export default ArticleGroupOriginal;
