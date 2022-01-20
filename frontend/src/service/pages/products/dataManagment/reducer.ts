@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit';
 import {
 	resultTemplate,
 	serverPost,
@@ -12,58 +12,49 @@ import * as dataBackup from '../../datas/backup/data.json';
 import _ from 'lodash';
 import productsData from '../data';
 import { REDUCER } from '../constant';
+import { TProductsReducer } from '../type';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
 
-const initialState = {
-	pending: false,
-	error: false,
-	products: productsData,
-	data: {
-		products: [],
+//todo: refactor state {productsByTypeAndGender: {...}, productsDataPage: {..}, productsFilterStatus: {..}}
+const initialState: TProductsReducer = {
+	productsDataPage: productsData,
+	productsFiltered: {
+		pending: false,
+		serverError: false,
+		filteringCategories: {},
+		doesClientFilterNewProducts: false,
 		type: '',
 		gender: '',
 	},
+	products: [],
+	totalRows: 0,
 };
-export const fetchProductsByTypeAndGender = createAsyncThunk(
-	REDUCER.NAME,
-	async ({ type, gender }: { type: string; gender: string }) => {
-		let result: Result = { ...resultTemplate };
-		try {
-			const objectSql = SQL_OBJECT.PRODUCTS_PER_TYPE_AND_GENDER(type, gender);
-			result = await serverPost(URL_ADDRESSES.data.postData, objectSql);
-			if (result.data) {
-				result.data.products = _.uniqBy(result.data, 'product_id');
-				result.data.type = type;
-				result.data.gender = gender;
-			}
-			return result;
-		} catch (error) {
-			logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
-				'dataManagment/reducer',
-				'fetchProductsByTypeAndGender',
-			)},
-			${error}`);
-		}
-	},
-);
+
 export const fetchProductsFiltered = createAsyncThunk(
 	`${REDUCER.NAME}/fetchProductsFiltered`,
-	async ({ preference, type, gender }: any) => {
+	async ({ preference, type, gender, pagination = null, isFetchDueToScroll  }: any) => {
 		let result: Result = { ...resultTemplate };
+	
 		try {
-			const objectSql = SQL_OBJECT.PRODUCTS_FILTERED(preference, type, gender);
-			result = await serverPost(URL_ADDRESSES.data.filterData, {
-				objectSql,
-				type: 'filter',
-			});
-			return result;
+			const objectSql = SQL_OBJECT.PRODUCTS_FILTERED(
+				preference,
+				type,
+				gender,
+				pagination,
+			);
+			result = await serverPost(URL_ADDRESSES.data.filterData, { objectSql });
+			result.data.isFetchDueToScroll = isFetchDueToScroll;
+			result.data.type = type;
+			result.data.gender = gender;
 		} catch (error) {
 			logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
 				'dataManagment/reducer',
 				'fetchProductsFiltered',
 			)},
 			${error}`);
+		} finally {
+			return result;
 		}
 	},
 );
@@ -71,46 +62,45 @@ export const fetchProductsFiltered = createAsyncThunk(
 const data = createSlice({
 	name: REDUCER.NAME,
 	initialState,
-	reducers: {},
+	reducers: {
+		updateFilteringCategories: (state, action: { payload: any }) => {
+			state.productsFiltered.doesClientFilterNewProducts = true;
+			state.productsFiltered.filteringCategories = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
-		builder.addCase(
-			fetchProductsByTypeAndGender.fulfilled,
-			/*eslint-disable-next-line  @typescript-eslint/no-explicit-any*/
-			(state, action: { payload: any }) => {
-				state.pending = false;
-				if (action.payload.error) {
-					state.error = true;
-				} else {
-					state.data.products = action.payload.data.products;
-					state.data.type = action.payload.data.type;
-					state.data.gender = action.payload.data.gender;
-				}
-			},
-		);
-		builder.addCase(fetchProductsByTypeAndGender.rejected, (state) => {
-			state.pending = false;
-			state.error = true;
-		});
-		builder.addCase(fetchProductsByTypeAndGender.pending, (state) => {
-			state.pending = true;
-		});
 		builder.addCase(
 			fetchProductsFiltered.fulfilled,
 			/*eslint-disable-next-line  @typescript-eslint/no-explicit-any*/
 			(state, action: { payload: any }) => {
-				// Add user to the state array
-				state.pending = false;
-				if (action.payload.error) {
-					state.error = true;
+				state.productsFiltered.pending = false;
+				if (action.payload.serverError) {
+					state.productsFiltered.serverError = true;
 				} else {
-					state.data.products = action.payload.data;
+					state.products = action.payload.data.isFetchDueToScroll
+						? 
+						 [...state.products, ...action.payload.data[0]] : action.payload.data[0];
+						 state.products = _.uniqBy(
+					state.products,
+						'product_id',
+					);
+					state.totalRows = action.payload.data[1][0]['FOUND_ROWS()'];
+						state.productsFiltered.type = action.payload.data.type;
+						state.productsFiltered.gender = action.payload.data.gender;
 				}
 			},
 		);
+		builder.addCase(fetchProductsFiltered.rejected, (state) => {
+			state.productsFiltered.pending = false;
+			state.productsFiltered.serverError = true;
+		});
+		builder.addCase(fetchProductsFiltered.pending, (state) => {
+			state.productsFiltered.pending = true;
+		});
 	},
 });
 
 const dataProducts = data.reducer;
-
+const { updateFilteringCategories } = data.actions;
 export default dataProducts;
-export { dataBackup };
+export { dataBackup, updateFilteringCategories };

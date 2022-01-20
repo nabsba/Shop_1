@@ -15,14 +15,17 @@ type TProducts = {
 };
 
 type TProductsReducer = {
-	pending: boolean;
-	error: boolean;
-	products: TProducts;
-	data: {
-		products: TProductDetails[];
-		type: string;
-		gender: string;
+	productsDataPage: TProducts;
+	productsFiltered: {
+		pending: boolean;
+		serverError: boolean;
+		filteringCategories: Record<string, unknown>;
+		doesClientFilterNewProducts: boolean;
+		type: string,
+		gender:string
 	};
+	products: TProductDetails[];
+	totalRows: number;
 };
 
 export default TProducts;

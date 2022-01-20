@@ -17,9 +17,6 @@ const getConfig = (type: string, allowMultipleStatements: boolean | undefined) =
       queueLimit: 0,
       multipleStatements: true,
     },
-
-    // //Turn it false for security reason when not needed.
-    // multipleStatements: allowMultipleStatements ? true : false,
   };
   return config[type];
 };

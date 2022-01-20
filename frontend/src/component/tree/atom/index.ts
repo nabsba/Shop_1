@@ -1,5 +1,6 @@
 import ImageAsComponent from './image/Image';
 import NavLinkAsComponent from './link/NavLink';
+import CircularIndeterminate from './loader/circular/Circular';
 import Paragraph from './paragraph/Paragraph';
 import Span from './span/Span';
 import SubText from './subText/SubText';
@@ -16,4 +17,5 @@ export {
 	SubText,
 	ImageAsComponent,
 	NavLinkAsComponent,
+	CircularIndeterminate,
 };

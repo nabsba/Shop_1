@@ -1,6 +1,21 @@
 import { generateObjectAsOneStringKeyValue, stringFromKeysObject, TObjectSql } from '../..';
 import { getTableDefinition } from '../../../repos';
 
+// const products = ['venture', 'waffle', 'zion', 'verona', 'exclusion', 'zoomx', 'nikeairtuned'];
+// const sql = (name: string) =>
+//   `START transaction; INSERT INTO product (name, type, price) values ('${name}', 'shoes', 150); INSERT INTO style (category, description, product_id, gender) values ('classics', 'perfect for a night out on the town ', LAST_INSERT_ID(), 'men'); INSERT INTO product_has_color (product_id, color_id) values ((select product_id from style where style_id=LAST_INSERT_ID()), 3); INSERT INTO product_color_has_size (product_has_color_id, size_id) values (LAST_INSERT_ID(), 3 ); COMMIT;`;
+// const populate = async () => {
+//   try {
+//     Promise.all(
+//       products.map(async (product) => {
+//         console.log(sql(product));
+//         const query = await queryDataBase(sql(product));
+//       }),
+//     );
+//   } catch (error) {}
+// };
+
+// populate();
 const sqlValuesToInsert = (object: any, keys: string[], sqlOperation: string) => {
   const columns: string[] = [];
   keys.map((key: string) => {
