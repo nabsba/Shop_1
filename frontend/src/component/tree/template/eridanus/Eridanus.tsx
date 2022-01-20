@@ -1,5 +1,8 @@
 import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import URL_ADDRESSES from '../../../../bridge/url';
+import { ERROR_CODE } from '../../../../Common/constant';
+import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
 import { PubVariant1, PubVariant2 } from '../../molecule';
 import { Footer, NavigationHeader, SliderOriginal } from '../../organism';
 import SliderVariant1 from '../../organism/slider/sliderVariant1/SliderVariant1';
@@ -40,11 +43,17 @@ const Eridanus: React.FC<Props> = ({
 			<section className="eridanus_section_2">
 				<SliderOriginal data={sliderOriginal} />
 			</section>
-			{sliderVariant1.display && (
-				<section className="eridanus_section_3">
-					<SliderVariant1 data={sliderVariant1} />
-				</section>
-			)}
+			<ErrorBoundary
+				fallbackRender={() => (
+					<ErrorBoundaryFallback type={'sliders'} code={ERROR_CODE.SLIDER} />
+				)}
+			>
+				{sliderVariant1.display && (
+					<section className="eridanus_section_3">
+						<SliderVariant1 data={sliderVariant1} />
+					</section>
+				)}
+			</ErrorBoundary>
 			<section className="eridanus_section_4">
 				{pubVariant1.map((pub) => (
 					<PubVariant1 key={pub.title} data={pub} />
