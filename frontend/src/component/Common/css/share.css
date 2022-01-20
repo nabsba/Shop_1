@@ -49,6 +49,11 @@ ul {
 	flex-wrap:wrap;
 	justify-content:center;
 }
+.flex_row_wrap_align_center{
+	display: flex;
+	flex-wrap:wrap;
+	align-items: center;
+}
 .flex_row_wrap_evenly{
 	display: flex;
 	flex-wrap:wrap;

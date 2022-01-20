@@ -12,7 +12,6 @@ type Props = {
 const SliderVariant1: React.FC<Props> = ({ data: { list, title } }) => {
 	const settings = {
 		// className: 'center',
-		centerMode: true,
 		infinite: true,
 		draggable: true,
 		slidesToShow: 3,

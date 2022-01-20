@@ -1,6 +1,21 @@
 import { generateObjectAsOneStringKeyValue, stringFromKeysObject, TObjectSql } from '../..';
 import { getTableDefinition } from '../../../repos';
 
+// const products = ['venture', 'waffle', 'zion', 'verona', 'exclusion', 'zoomx', 'nikeairtuned'];
+// const sql = (name: string) =>
+//   `START transaction; INSERT INTO product (name, type, price) values ('${name}', 'shoes', 150); INSERT INTO style (category, description, product_id, gender) values ('classics', 'perfect for a night out on the town ', LAST_INSERT_ID(), 'men'); INSERT INTO product_has_color (product_id, color_id) values ((select product_id from style where style_id=LAST_INSERT_ID()), 3); INSERT INTO product_color_has_size (product_has_color_id, size_id) values (LAST_INSERT_ID(), 3 ); COMMIT;`;
+// const populate = async () => {
+//   try {
+//     Promise.all(
+//       products.map(async (product) => {
+//         console.log(sql(product));
+//         const query = await queryDataBase(sql(product));
+//       }),
+//     );
+//   } catch (error) {}
+// };
+
+// populate();
 const sqlValuesToInsert = (object: any, keys: string[], sqlOperation: string) => {
   const columns: string[] = [];
   keys.map((key: string) => {
@@ -13,10 +28,20 @@ const sqlValuesToInsert = (object: any, keys: string[], sqlOperation: string) =>
 };
 
 const generatorSQLSpecialCase = {
-  informationProduct: (id: number) => `SELECT product.product_id,product.name, color_id
+  informationProduct: (id: number) =>
+    `SELECT product.product_id,product.name, product.price, product_has_color.color_id, style.category, 
+product.type, style.description, style.gender,
+product_has_color.product_has_color_id, color.colorName, product_color_has_size.size_id, size.size
 FROM product
 INNER JOIN product_has_color ON product.product_id=product_has_color.product_id
- WHERE product_has_color.product_id=${id};`,
+INNER JOIN style ON product.product_id=style.product_id
+INNER JOIN color on product_has_color.color_id=color.color_id
+INNER JOIN product_color_has_size on product_has_color.color_id=product_color_has_size.product_has_color_id
+INNER JOIN size on product_color_has_size.size_id=size.size_id
+where product_has_color.product_id=${id};
+`,
+  firstArriving: () =>
+    'SELECT product.product_id,product.name, product_has_color.color_id, style.category, product.type, style.description, style.gender, product_has_color.product_has_color_id, color.colorName, product_color_has_size.size_id, size.size FROM product INNER JOIN product_has_color ON product.product_id=product_has_color.product_id INNER JOIN style ON product.product_id=style.product_id INNER JOIN color on product_has_color.color_id=color.color_id INNER JOIN product_color_has_size on product_has_color.color_id=product_color_has_size.product_has_color_id INNER JOIN size on product_color_has_size.size_id=size.size_id order by product_id desc limit 30;',
 };
 const generatorSQL: { [key: string]: any } = {
   custom: (object: TObjectSql) => {

@@ -1,5 +1,5 @@
-import React from 'react';
-import URL_ADDRESSES from '../../../../bridge/url';
+import React, { useState } from 'react';
+import { CircularIndeterminate, H3 } from '../../atom';
 import {
 	ArticleGroupOriginal,
 	FilterProduct,
@@ -14,168 +14,49 @@ type Props = {
 	data: TCassiopeia;
 };
 
-const cassiopeiraData = {
-	navigationHeader: {
-		menusHeader: [
-			{
-				text: 'home',
-				href: '/home',
-			},
-			{
-				text: 'men',
-				href: '/men',
-			},
-			{
-				text: 'women',
-				href: '/women',
-			},
-			{
-				text: 'kids',
-				href: '/kids',
-			},
-		],
-		menusBottom: [
-			{
-				text: 'my account',
-				href: '/my account',
-				icon: 'Account',
-			},
-			{
-				text: 'store location',
-				href: '/store location',
-				icon: 'Location',
-			},
-			{
-				text: 'customer care',
-				href: '/customer care',
-				icon: 'Heart',
-			},
-			{
-				text: 'united kingdom',
-				href: '/location',
-				icon: 'Location',
-			},
-		],
+const Cassiopeia: React.FC<Props> = ({
+	data: {
+		navigationHeader,
+		footer,
+		headerProduct,
+		articleGroupOriginal,
+		filteringCategories,
 	},
-	headerProduct: {
-		h2: 'Men',
-		list: ['Classic', 'Running', 'Lifestyle', 'hiking', 'basketball'],
-	},
-	articleGroupOriginal: {
-		list: [
-			{
-				imageAsComponent: {
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				},
-				information: {
-					name: 'airzoom',
-					price: '50$',
-				},
-			},
-			{
-				imageAsComponent: {
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				},
-				information: {
-					name: 'airzoom',
-					price: '50$',
-				},
-			},
-			{
-				imageAsComponent: {
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				},
-				information: {
-					name: 'airzoom',
-					price: '50$',
-				},
-			},
-			{
-				imageAsComponent: {
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				},
-				information: {
-					name: 'airzoom',
-					price: '50$',
-				},
-			},
-			{
-				imageAsComponent: {
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				},
-				information: {
-					name: 'airzoom',
-					price: '50$',
-				},
-			},
-			{
-				imageAsComponent: {
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1.png',
-					)}`,
-					alt: 'airzoom',
-				},
-				information: {
-					name: 'airzoom',
-					price: '50$',
-				},
-			},
-		],
-	},
+}) => {
+	const [displayFilterProduct, setDisplayFilterProduct] = useState(true);
+	const handleFilterProduct = () =>
+		setDisplayFilterProduct(!displayFilterProduct);
+	const headerProductWithFunction = {
+		...headerProduct,
+		functionToCall: handleFilterProduct,
+	};
 
-	footer: {
-		menusFooter: [
-			{
-				text: 'home',
-				href: '/home',
-			},
-			{
-				text: 'men',
-				href: '/men',
-			},
-			{
-				text: 'women',
-				href: '/women',
-			},
-			{
-				text: 'kids',
-				href: '/kids',
-			},
-		],
-		icons: ['Twitter', 'Facebook'],
-		copyRightSentence: 'Copyright © 2021 Nabil - All Rights Reserved',
-	},
-};
-
-const Cassiopeia: React.FC<Props> = ({ data }) => {
-	const { navigationHeader, headerProduct, articleGroupOriginal, footer } =
-		cassiopeiraData;
 	return (
 		<div className="cassiopeia">
 			<section className="cassiopeia_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>
 			<section className="cassiopeia_section_2">
-				<HeaderProduct data={headerProduct} />
+				<HeaderProduct data={headerProductWithFunction} />
 			</section>
-			<section className="cassiopeia_section_3">
-				{/* <FilterProduct data="k" /> */}
-				<ArticleGroupOriginal data={articleGroupOriginal} />
+			<section
+				className={`cassiopeia_section_3 ${
+					displayFilterProduct ? '' : 'cassiopeia_section_3_effect'
+				}`}
+			>
+				{!articleGroupOriginal.pending.products && (
+					<FilterProduct data={{ filteringCategories }} />
+				)}
+				{articleGroupOriginal.pending.productsBeingFiltered ||
+				articleGroupOriginal.pending.products ? (
+					<div className="cassiopeia_loader">
+						<CircularIndeterminate />
+					</div>
+				) : articleGroupOriginal.display ? (
+					<ArticleGroupOriginal data={articleGroupOriginal} />
+				) : (
+					<H3 title={'No products'} />
+				)}
 			</section>
 			<section className="cassiopeia_section_4">
 				<Footer data={footer} />
@@ -183,4 +64,5 @@ const Cassiopeia: React.FC<Props> = ({ data }) => {
 		</div>
 	);
 };
+
 export default Cassiopeia;

@@ -1,0 +1,137 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema store
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema store
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `store` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `store` ;
+
+-- -----------------------------------------------------
+-- Table `store`.`color`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `store`.`color` (
+  `color_id` INT NOT NULL AUTO_INCREMENT,
+  `colorName` VARCHAR(100) NULL DEFAULT NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `active` INT NULL DEFAULT '1',
+  PRIMARY KEY (`color_id`),
+  UNIQUE INDEX `id_UNIQUE` (`color_id` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 15
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `store`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `store`.`product` (
+  `product_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `type` VARCHAR(30) NOT NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `price` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`product_id`),
+  UNIQUE INDEX `name` (`name` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 48
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `store`.`size`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `store`.`size` (
+  `size_id` INT NOT NULL AUTO_INCREMENT,
+  `size` INT NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `active` INT NULL DEFAULT '1',
+  PRIMARY KEY (`size_id`),
+  UNIQUE INDEX `id_UNIQUE` (`size_id` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 15
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `store`.`product_has_color`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `store`.`product_has_color` (
+  `product_has_color_id` INT NOT NULL AUTO_INCREMENT,
+  `product_id` INT NULL DEFAULT NULL,
+  `color_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`product_has_color_id`),
+  INDEX `product_id` (`product_id` ASC) VISIBLE,
+  INDEX `FK_ProductColor` (`color_id` ASC) VISIBLE,
+  CONSTRAINT `FK_ProductColor`
+    FOREIGN KEY (`color_id`)
+    REFERENCES `store`.`color` (`color_id`),
+  CONSTRAINT `product_has_color_ibfk_2`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `store`.`product` (`product_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 57
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `store`.`product_color_has_size`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `store`.`product_color_has_size` (
+  `product_color_has_size_id` INT NOT NULL AUTO_INCREMENT,
+  `product_has_color_id` INT NULL DEFAULT NULL,
+  `size_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`product_color_has_size_id`),
+  UNIQUE INDEX `id_UNIQUE` (`product_color_has_size_id` ASC) VISIBLE,
+  INDEX `size_id` (`size_id` ASC) VISIBLE,
+  INDEX `product_has_color_id` (`product_has_color_id` ASC) VISIBLE,
+  CONSTRAINT `product_color_has_size_ibfk_1`
+    FOREIGN KEY (`size_id`)
+    REFERENCES `store`.`size` (`size_id`),
+  CONSTRAINT `product_color_has_size_ibfk_2`
+    FOREIGN KEY (`product_has_color_id`)
+    REFERENCES `store`.`product_has_color` (`product_has_color_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 102
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `store`.`style`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `store`.`style` (
+  `style_id` INT NOT NULL AUTO_INCREMENT,
+  `category` VARCHAR(100) NULL DEFAULT NULL,
+  `description` VARCHAR(300) NULL DEFAULT NULL,
+  `product_id` INT NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `gender` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`style_id`),
+  INDEX `product_id` (`product_id` ASC) VISIBLE,
+  CONSTRAINT `style_ibfk_1`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `store`.`product` (`product_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 36
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

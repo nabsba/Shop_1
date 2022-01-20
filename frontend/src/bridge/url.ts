@@ -1,5 +1,5 @@
 // Local server
-const URL_ADDRESS = 'https://localhost:3001';
+ const URL_ADDRESS = 'http://localhost:3001';
 // fake api server
 // do not forget to write: npx json-server db.json --routes routes.json
 // const URL_ADDRESS = 'http://localhost:3000';
@@ -8,7 +8,8 @@ const URL_ADDRESSES: {
 	default: string;
 	data: {
 		postData: string;
-		getData: (type: string, id: number | null) => string;
+		getData: (type: string, id: number | string | null) => string;
+		filterData: string;
 	};
 	fileManager: {
 		default: string;
@@ -19,6 +20,7 @@ const URL_ADDRESSES: {
 	data: {
 		postData: `${URL_ADDRESS}/data`,
 		getData: (type: string, id = null) => `${URL_ADDRESS}/data/${type}/${id}`,
+		filterData: `${URL_ADDRESS}/data/filterData`,
 	},
 	fileManager: {
 		default: `${URL_ADDRESS}/fileManager/file`,

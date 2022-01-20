@@ -1,6 +1,8 @@
-import TArticleVariantBag from '../../../molecule/article/articleVariantBag/type';
+import { TProductDetails } from '../../../../../service/pages/Common/type';
 
 type TArticleGroupBag = {
-	list: TArticleVariantBag[];
+	totalPriceOfTheBag: number;
+	products: TProductDetails[];
+	display: boolean;
 };
 export default TArticleGroupBag;

@@ -6,6 +6,7 @@ import FilterProduct from './filterProduct/FilterProduct';
 import Footer from './footer/Footer';
 import NavigationHeader from './navigation/NavigationHeader';
 import SliderOriginal from './slider/sliderOriginal/SliderOriginal';
+import SliderVariant2 from './slider/sliderVariant2/SliderVariant2';
 
 export {
 	NavigationHeader,
@@ -16,4 +17,5 @@ export {
 	Footer,
 	DescriptionProduct,
 	ArticleGroupBag,
+	SliderVariant2,
 };

@@ -13,13 +13,10 @@ const getConfig = (type: string, allowMultipleStatements: boolean | undefined) =
       password: process.env.PASSWORD_STORE,
       database: process.env.DATA_BASE_NAME_STORE,
       waitForConnections: true,
-      connectionLimit: 10,
+      connectionLimit: 50,
       queueLimit: 0,
+      multipleStatements: true,
     },
-
-    // //Turn it false for security reason when not needed.
-    // multipleStatements: allowMultipleStatements ? true : false,
-    multipleStatements: true,
   };
   return config[type];
 };

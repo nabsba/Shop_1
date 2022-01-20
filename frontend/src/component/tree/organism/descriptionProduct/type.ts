@@ -13,7 +13,7 @@ type TDescriptionProduct = {
 			title: string;
 			text: string;
 			list: number[];
-		};
+		}[];
 	};
 };
 

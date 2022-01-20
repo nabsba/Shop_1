@@ -24,7 +24,9 @@ const DescriptionProduct: React.FC<Props> = ({
 			case 'detail':
 				return <Detail data={descriptionData.detail} />;
 			case 'review':
-				return <Review data={descriptionData.review} />;
+				return descriptionData.review.map((rev) => (
+					<Review key={rev.title} data={rev} />
+				));
 			default:
 				return null;
 		}

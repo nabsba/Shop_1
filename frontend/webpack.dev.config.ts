@@ -52,9 +52,6 @@ const config: Configuration = {
 				// test: /\.worker\.(c|m)?(js|ts)$/i,
 				test: /\.worker\.ts$/,
 				loader: 'worker-loader',
-				options: {
-					publicPath: './src/service/wpa/webWorkers/',
-				},
 			},
 			{
 				test: /\.(ts|tsx)$/,

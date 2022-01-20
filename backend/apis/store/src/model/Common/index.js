@@ -1,0 +1,12 @@
+"use strict";
+exports.__esModule = true;
+exports.generatorSQL = exports.stringFromKeysObject = exports.getConfig = exports.mysql = exports.generateObjectAsOneStringKeyValue = exports.deletePropretyFromObject = void 0;
+var sql_1 = require("./config/sql");
+exports.mysql = sql_1.mysql;
+exports.getConfig = sql_1.getConfig;
+var sql_2 = require("./tools/database/sql");
+exports.generatorSQL = sql_2.generatorSQL;
+var object_1 = require("./tools/function/object");
+exports.deletePropretyFromObject = object_1.deletePropretyFromObject;
+exports.generateObjectAsOneStringKeyValue = object_1.generateObjectAsOneStringKeyValue;
+exports.stringFromKeysObject = object_1.stringFromKeysObject;
