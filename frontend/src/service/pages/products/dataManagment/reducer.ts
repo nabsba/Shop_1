@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
 	resultTemplate,
 	serverPost,
@@ -29,13 +29,20 @@ const initialState: TProductsReducer = {
 	},
 	products: [],
 	totalRows: 0,
+	doWeGetMoreProducts: false,
 };
 
 export const fetchProductsFiltered = createAsyncThunk(
 	`${REDUCER.NAME}/fetchProductsFiltered`,
-	async ({ preference, type, gender, pagination = null, isFetchDueToScroll  }: any) => {
+	async ({
+		preference,
+		type,
+		gender,
+		pagination = null,
+		isFetchDueToScroll,
+	}: any) => {
 		let result: Result = { ...resultTemplate };
-	
+
 		try {
 			const objectSql = SQL_OBJECT.PRODUCTS_FILTERED(
 				preference,
@@ -67,6 +74,9 @@ const data = createSlice({
 			state.productsFiltered.doesClientFilterNewProducts = true;
 			state.productsFiltered.filteringCategories = action.payload;
 		},
+		updateDoWeGetMoreProducts: (state, action: { payload: boolean }) => {
+			state.doWeGetMoreProducts = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(
@@ -78,15 +88,12 @@ const data = createSlice({
 					state.productsFiltered.serverError = true;
 				} else {
 					state.products = action.payload.data.isFetchDueToScroll
-						? 
-						 [...state.products, ...action.payload.data[0]] : action.payload.data[0];
-						 state.products = _.uniqBy(
-					state.products,
-						'product_id',
-					);
+						? [...state.products, ...action.payload.data[0]]
+						: action.payload.data[0];
+					state.products = _.uniqBy(state.products, 'product_id');
 					state.totalRows = action.payload.data[1][0]['FOUND_ROWS()'];
-						state.productsFiltered.type = action.payload.data.type;
-						state.productsFiltered.gender = action.payload.data.gender;
+					state.productsFiltered.type = action.payload.data.type;
+					state.productsFiltered.gender = action.payload.data.gender;
 				}
 			},
 		);
@@ -101,6 +108,6 @@ const data = createSlice({
 });
 
 const dataProducts = data.reducer;
-const { updateFilteringCategories } = data.actions;
+const { updateFilteringCategories, updateDoWeGetMoreProducts } = data.actions;
 export default dataProducts;
-export { dataBackup, updateFilteringCategories };
+export { dataBackup, updateFilteringCategories, updateDoWeGetMoreProducts };

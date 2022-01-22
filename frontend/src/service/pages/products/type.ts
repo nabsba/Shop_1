@@ -21,11 +21,12 @@ type TProductsReducer = {
 		serverError: boolean;
 		filteringCategories: Record<string, unknown>;
 		doesClientFilterNewProducts: boolean;
-		type: string,
-		gender:string
+		type: string;
+		gender: string;
 	};
 	products: TProductDetails[];
 	totalRows: number;
+	doWeGetMoreProducts: boolean;
 };
 
 export default TProducts;
