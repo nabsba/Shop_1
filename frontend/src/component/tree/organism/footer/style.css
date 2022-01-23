@@ -74,8 +74,5 @@
 		margin-left:0;
 		order: 1;
 	}
-	.sub_footer_part_one ul::after {
-		bottom: 0rem;
-	}
 
 }
