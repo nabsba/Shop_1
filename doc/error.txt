@@ -1,0 +1,7 @@
+/* Errors Record */
+
+ Location: webpack.prod.conf
+
+- message error: Error: spawn /YOUR_PROJECT_PATH/node_modules/jpegtran-bin/vendor/jpegtran ENOENT
+- solution: yarn add --force jpegtran-bin  (using --force made the diff).
+- source: https://gist.github.com/welcoMattic/9f0991fa81a80096a3877ee42562c504
