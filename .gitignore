@@ -4,6 +4,5 @@ node_modules/
 .vscode/
 *.sw*
 *.env*
-dist/
-build/
+
 
