@@ -165,7 +165,7 @@
 	},
 	"scripts": {
 		"start": "webpack serve --config webpack.dev.config.ts",
-		"build": "webpack --config webpack.prod.config.ts",
+		"build": "cd frontend && webpack --config webpack.prod.config.ts",
 		"serve": "serve -s ./build -l 9000",
 		"lint": "yarn eslint",
 		"lint:fix": "yarn eslint src --fix",
