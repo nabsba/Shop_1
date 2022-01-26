@@ -2,13 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
 	resultTemplate,
 	serverGet,
-	serverPost,
 } from '../../../../bridge/common/requestServer';
 import URL_ADDRESSES from '../../../../bridge/url';
 import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
 import { logMessage } from '../../../../Common/function';
 import { Result } from '../../../../Common/type/type';
-import { DATA_TYPE, SQL_OBJECT } from '../../../dataBase/constant';
+import { DATA_TYPE } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import homeData from '../data';
 import { REDUCER } from '../../Common/constant';

@@ -30,7 +30,6 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 	const {
 		dataProducts: {
 			productsFiltered: { type, gender },
-			productsFiltered,
 		},
 	} = useSelector((state: TReducers) => state);
 	const [appareance, setAppareance] = useImmer<{
@@ -77,7 +76,14 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 			}
 		});
 		dispatch(updateFilteringCategories(object));
-		dispatch(fetchProductsFiltered({ preference: object, type, gender, isFetchDueToScroll: false }));
+		dispatch(
+			fetchProductsFiltered({
+				preference: object,
+				type,
+				gender,
+				isFetchDueToScroll: false,
+			}),
+		);
 		setSelection(object);
 	};
 	return (

@@ -6,12 +6,10 @@ Dependency: yarn add  react-slick  types/react-slick slick-carousel --save
 Doc: https://react-slick.neostack.com/
 */
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import './style.css';
 import Slider from 'react-slick';
 import TSliderOriginal from './type';
-import { ImageAsComponent } from '../../../atom';
-import URL_ADDRESSES from '../../../../../bridge/url';
 import getIcon from '../../../../factory/Icon';
 
 type Props = {

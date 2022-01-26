@@ -15,7 +15,6 @@ import { ERROR_CODE } from '../../../../Common/constant';
 import useOnScreen from '../../../../service/Common/hooks/isVisible';
 import { useDispatch } from 'react-redux';
 import { updateDoWeGetMoreProducts } from '../../../../service/pages/products/dataManagment/reducer';
-import useEnhancedEffect from '@mui/material/utils/useEnhancedEffect';
 type Props = {
 	data: TCassiopeia;
 };

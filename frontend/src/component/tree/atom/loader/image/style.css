@@ -1,5 +1,5 @@
-@import '../../../../common/css/variable.css';
-@import '../../../../common/css/animation.css';
+@import '../../../../Common/css/variable.css';
+@import '../../../../Common/css/animation.css';
 #loader-image {
 	height: 100%;
 	width: 100%;
