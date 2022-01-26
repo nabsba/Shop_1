@@ -1,5 +1,7 @@
 // Local server
-const URL_ADDRESS = 'https://localhost:3001';
+// const URL_ADDRESS = 'http://localhost:3001';
+// Heroku
+const URL_ADDRESS = 'http://localhost:80';
 // fake api server
 // do not forget to write: npx json-server db.json --routes routes.json
 // const URL_ADDRESS = 'http://localhost:3000';

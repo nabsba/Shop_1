@@ -1,7 +1,8 @@
-@import'../../../../Common/css/variable.css';
+@import '../../../../Common/css/variable.css';
 
-.select_variant1 label, .select_variant1  fieldset{
-	display:none;
+.select_variant1 label,
+.select_variant1 fieldset {
+	display: none;
 }
 
 .select_variant1 .css-2m9kme-MuiFormControl-root {

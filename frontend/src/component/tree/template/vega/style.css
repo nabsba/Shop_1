@@ -1,4 +1,4 @@
-@import'../../../Common/css/variable.css';
+@import '../../../Common/css/variable.css';
 
 .vega {
 	grid-template-columns: repeat(4, 1fr);
@@ -16,17 +16,16 @@
 
 .vega_section_4 {
 	grid-column: 2/4;
-
 }
 
 .vega_section_5 .button_variant1 {
-	width: 100%
+	width: 100%;
 }
 
 .vega_section_4,
 .vega_section_5,
 .vega_section_6,
-.vega_section_7{
+.vega_section_7 {
 	margin-top: var(--margin-section-top);
 }
 
@@ -45,11 +44,10 @@
 		grid-column: 1/13;
 	}
 	.vega_section_6 {
-	padding:2rem;
-	border-radius: var(--border-radius);
-}
+		padding: 2rem;
+		border-radius: var(--border-radius);
+	}
 	.vega_section_5 {
-				grid-column: 5/9;
-
+		grid-column: 5/9;
 	}
 }

@@ -4,22 +4,21 @@
 	width: 100%;
 }
 .article_original_image_wrapper {
-	position:relative;
-	height:8rem;
-
+	position: relative;
+	height: 8rem;
 }
 .article_original {
-		width:45vw;
+	width: 45vw;
 }
 
 @media only screen and (min-width: 770px) {
-.article_original {
-		width:25vw;
-}
+	.article_original {
+		width: 25vw;
+	}
 }
 
 @media only screen and (min-width: 1449px) {
-.article_original {
-		width:23vw;
-}
+	.article_original {
+		width: 23vw;
+	}
 }

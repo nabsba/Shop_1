@@ -124,7 +124,7 @@
 		"mini-css-extract-plugin": "^1.4.1",
 		"msw": "^0.35.0",
 		"postcss": "^8.3.1",
-		"postcss-loader": "^5.2.0",
+		"postcss-loader": "^6.2.1",
 		"postcss-preset-env": "^6.7.0",
 		"prettier": "^2.3.1",
 		"process": "^0.11.10",
@@ -136,7 +136,7 @@
 		"ts-jest": "^27.0.5",
 		"ts-loader": "^9.2.3",
 		"typescript": "^4.2.4",
-		"webpack-cli": "^4.8.0",
+		"webpack-cli": "^4.9.2",
 		"webpack-image-resize-loader": "^4.1.0",
 		"webpack-image-srcset-loader": "^5.0.4",
 		"webpack-sharp-loader": "^1.0.4",
@@ -164,13 +164,17 @@
 		]
 	},
 	"scripts": {
-		"start": "webpack serve --config webpack.dev.config.ts",
-		"build": "cd frontend && webpack --config webpack.prod.config.ts",
+		"heroku-postbuild": "cd backend/apis/store && yarn && cd ../../../frontend && yarn && yarn webpack --config webpack.prod.config.ts ",
+		"start": "node backend/apis/store/dist/app.js",
+		"dev": "webpack serve --config webpack.dev.config.ts",
 		"serve": "serve -s ./build -l 9000",
 		"lint": "yarn eslint",
 		"lint:fix": "yarn eslint src --fix",
 		"format": "prettier --write src",
 		"test": "jest -u"
+	},
+	"engines": {
+		"node": "16.13.0"
 	},
 	"browserslist": [
 		">0.2%",

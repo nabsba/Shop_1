@@ -5,14 +5,14 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	color:white;
+	color: white;
 }
 
 .pub_variant_2 #image-container {
 	z-index: -2;
 }
 
-.pub_variant_2 .button_original{
-	    position: absolute;
-    bottom: 1rem;
+.pub_variant_2 .button_original {
+	position: absolute;
+	bottom: 1rem;
 }

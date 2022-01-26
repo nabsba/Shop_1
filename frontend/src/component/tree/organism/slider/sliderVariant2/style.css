@@ -18,7 +18,7 @@
 }
 
 @media only screen and (min-width: 500px) {
-.slider_variant_2 .slick-dots li {
-	width: 15rem;
-}
+	.slider_variant_2 .slick-dots li {
+		width: 15rem;
+	}
 }

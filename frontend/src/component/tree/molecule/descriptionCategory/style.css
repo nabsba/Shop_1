@@ -1,13 +1,11 @@
-
-.description_category_bottom{
-	margin-top:2rem;
+.description_category_bottom {
+	margin-top: 2rem;
 }
 .description_category_description {
-	margin-top:2rem;
+	margin-top: 2rem;
 }
 .description_category_bottom_title {
-    margin-bottom: 1.5rem;
-    text-transform: capitalize;
-    font-weight: bold;
+	margin-bottom: 1.5rem;
+	text-transform: capitalize;
+	font-weight: bold;
 }
-

@@ -6,7 +6,7 @@ import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundar
 import { PubVariant1, PubVariant2 } from '../../molecule';
 import { Footer, NavigationHeader, SliderOriginal } from '../../organism';
 import SliderVariant1 from '../../organism/slider/sliderVariant1/SliderVariant1';
-import './style.css';
+// import './style.css';
 import TEridanus from './type';
 
 type Props = {

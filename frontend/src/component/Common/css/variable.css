@@ -1,7 +1,7 @@
 :root {
-	--color-primary-1: #9B3333;
+	--color-primary-1: #9b3333;
 	--color-primary-2: #830101;
-	--color-primary-3: #5B0000;
+	--color-primary-3: #5b0000;
 	--color-secondary-1: #f4f4f4;
 	--color-secondary-2: #d6d6d6;
 	--color-secondary-3: #a9a9a9;
@@ -12,20 +12,20 @@
 	--border-radius: 5px;
 	--margin-bottom-h1: 1.3rem;
 	--margin-bottom-h2: 1rem;
-	--margin-bottom-h3:.7rem;
+	--margin-bottom-h3: 0.7rem;
 	--margin-left-body: 1.2rem;
 	--margin-right-body: 1.2rem;
-	--margin-minor: .3rem;
+	--margin-minor: 0.3rem;
 	--margin-minor-2: 1rem;
 	--margin-section-top: 2rem;
 	--margin-section-side: 1rem;
 	--padding-button-side: 1.3rem;
-	--padding-button-top-bottom: .7rem;
+	--padding-button-top-bottom: 0.7rem;
 	--padding-button-variant1-side: 4rem;
-	--padding-button-variant1-top-bottom: .7rem;
+	--padding-button-variant1-top-bottom: 0.7rem;
 	--line-height-paragraph: 1.3em;
-	--letter-spacing-titles: .3rem;
+	--letter-spacing-titles: 0.3rem;
 	--font-weight: 800;
 	--size-icon: 1.5rem;
-	--box-shadow:5px 5px 4px -4px #000000;
+	--box-shadow: 5px 5px 4px -4px #000000;
 }

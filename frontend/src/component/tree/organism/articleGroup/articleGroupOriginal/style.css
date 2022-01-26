@@ -1,12 +1,12 @@
 .article_group_loader {
 	grid-column: 1/5;
-	display:flex;
+	display: flex;
 }
 .article_group_loader > div {
-	margin:auto;
+	margin: auto;
 }
 @media only screen and (min-width: 770px) {
-.article_group_loader {
-		grid-column: 1/13
-}
+	.article_group_loader {
+		grid-column: 1/13;
+	}
 }

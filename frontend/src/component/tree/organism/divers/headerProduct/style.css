@@ -1,21 +1,21 @@
-@import'../../../../Common/css/variable.css';
+@import '../../../../Common/css/variable.css';
 
 .sub_header_product_top {
-width: 100%;
-margin-top:1rem;
+	width: 100%;
+	margin-top: 1rem;
 }
 .sub_header_product_top svg {
-	font-size:2rem;
+	font-size: 2rem;
 }
 .sub_header_product_bottom {
-	overflow:scroll;
-	margin-top:.5rem;
-	margin-bottom:1rem;
-	display:none;
+	overflow: scroll;
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+	display: none;
 }
 
 .sub_header_product_bottom ul {
-	display:flex;
+	display: flex;
 }
 .sub_header_product_bottom ul li {
 	margin-left: 1rem;
