@@ -166,7 +166,7 @@
 	"scripts": {
 		"heroku-postbuild": "cd frontend && webpack --config webpack.prod.config.ts && cd ../backend/apis/store && yarn",
 		"start": "node backend/apis/store/dist/app.js",
-		"dev": "webpack serve --config webpack.dev.config.ts",
+		"dev": " cd frontend && webpack serve --config webpack.dev.config.ts",
 		"serve": "serve -s ./build -l 9000",
 		"lint": "yarn eslint",
 		"lint:fix": "yarn eslint src --fix",
