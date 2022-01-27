@@ -6,13 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getConfig = exports.mysql = void 0;
 const mysql2_1 = __importDefault(require("mysql2"));
 exports.mysql = mysql2_1.default;
+const constant_1 = require("../../repos/constant");
 const getConfig = (type, allowMultipleStatements) => {
+    const storeProprety = "REMOTE";
     const config = {
         store: {
-            host: 'localhost',
-            user: process.env.DB_USER_STORE,
-            password: process.env.PASSWORD_STORE,
-            database: process.env.DATA_BASE_NAME_STORE,
+            host: constant_1.DATA_BASE.STORE[`${storeProprety}`].HOST,
+            user: constant_1.DATA_BASE.STORE[`${storeProprety}`].USER,
+            password: constant_1.DATA_BASE.STORE[`${storeProprety}`].PASSWORD,
+            database: constant_1.DATA_BASE.STORE[`${storeProprety}`].DATABASE,
             waitForConnections: true,
             connectionLimit: 50,
             queueLimit: 0,
