@@ -54,8 +54,9 @@
 
 	.cassiopeia_section_2,
 	.cassiopeia_section_3 {
-		margin-left: Calc(var(--margin-section-side) + 2rem);
-		margin-right: Calc(var(--margin-section-side) + 2rem);
+			margin-left:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
+	  margin-right:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
+
 	}
 
 	.cassiopeia_section_1,

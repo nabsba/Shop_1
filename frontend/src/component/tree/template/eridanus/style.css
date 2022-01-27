@@ -50,7 +50,8 @@
 
 	.eridanus_section_4,
 	.eridanus_section_5 {
-		margin-left: Calc(var(--margin-section-side) + 2rem);
-		margin-right: Calc(var(--margin-section-side) + 2rem);
+		margin-left:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
+	  margin-right:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
 	}
 }
+	
