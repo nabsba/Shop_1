@@ -8,7 +8,7 @@ const mysql2_1 = __importDefault(require("mysql2"));
 exports.mysql = mysql2_1.default;
 const constant_1 = require("../../repos/constant");
 const getConfig = (type, allowMultipleStatements) => {
-    const storeProprety = "REMOTE";
+    const storeProprety = 'REMOTE';
     const config = {
         store: {
             host: constant_1.DATA_BASE.STORE[`${storeProprety}`].HOST,
