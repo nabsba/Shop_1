@@ -8,7 +8,7 @@ import {
 	HeaderProduct,
 	NavigationHeader,
 } from '../../organism';
-// import './style.css';
+import './style.css';
 import TCassiopeia from './type';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ERROR_CODE } from '../../../../Common/constant';
