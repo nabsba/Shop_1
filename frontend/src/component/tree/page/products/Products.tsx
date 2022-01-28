@@ -51,10 +51,12 @@ const Products: React.FC = () => {
 				newArray.push({
 					imageAsComponent: {
 						src: `${URL_ADDRESSES.fileManager.image.load(
-							`product/shoes/medium/${product.colorName}/${product.name.replace(
+							`product/${type}/medium/${
+								product.colorName
+							}/${product.name.replace(/\s/g, '')}/${product.name.replace(
 								/\s/g,
 								'',
-							)}/${product.name.replace(/\s/g, '')}_1`,
+							)}_1`,
 						)}`,
 						alt: product.name,
 					},
@@ -63,8 +65,9 @@ const Products: React.FC = () => {
 						price: product.price + CURRENCY.UK,
 					},
 					link: {
-						href: `${product.product_id}`,
+						href: `/product/${type}/${gender}/${product.product_id}`,
 						text: product.name,
+						state: { colorName: product.colorName },
 					},
 				});
 			});

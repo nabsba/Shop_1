@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import URL_ADDRESSES from '../../../../bridge/url';
 import { TReducers } from '../../../../service';
 import { fetchProductByID } from '../../../../service/pages/product/dataManagment/reducer';
@@ -11,6 +11,9 @@ import './style.css';
 
 const Product: React.FC = () => {
 	const dispatch = useDispatch();
+	const { id } = useParams();
+	const { state }: any = useLocation();
+
 	const {
 		dataProduct: {
 			product: {
@@ -25,7 +28,6 @@ const Product: React.FC = () => {
 			data: { productSelected },
 		},
 	} = useSelector((state: TReducers) => state);
-	const { id } = useParams();
 
 	useEffect(() => {
 		if (id) dispatch(fetchProductByID(id));
@@ -51,7 +53,7 @@ const Product: React.FC = () => {
 						data={{
 							src: `${URL_ADDRESSES.fileManager.image.load(
 								`product/${productSelected.type}/medium/${
-									productSelected.colorName
+									state.colorName ? state.colorName : productSelected.colorName
 								}/${productSelected.name.replace(
 									/\s/g,
 									'',

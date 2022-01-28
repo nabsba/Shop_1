@@ -19,6 +19,7 @@ const ArticleGroupOriginal: React.FC<Props> = ({ data: { list } }) => {
 						data={{
 							text: element.link.text,
 							href: element.link.href,
+							state: element.link.state,
 							asComponent: <ArticleOriginal key={index} data={element} />,
 						}}
 					/>
