@@ -1,3 +1,10 @@
+
+@import'../../../../Common/css/variable.css';
+
+.article_group_original a {
+	margin-bottom: var(--margin-minor-2);
+}
+
 .article_group_loader {
 	grid-column: 1/5;
 	display: flex;
