@@ -39,7 +39,6 @@ const homeData = {
 		display: false,
 	},
 	pubVariant1: [
-		// `../../../../../asset/image/product/${type}/${sizePic}/general/${namePic}`,
 		{
 			imageAsComponent: {
 				src: `${URL_ADDRESSES.fileManager.image.load(
@@ -50,7 +49,7 @@ const homeData = {
 			title: 'men',
 			link: {
 				text: 'men',
-				href: '/product/shoes/men',
+				href: '/products/shoes/men',
 			},
 		},
 	],

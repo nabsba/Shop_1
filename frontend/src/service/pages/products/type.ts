@@ -19,7 +19,9 @@ type TProductsReducer = {
 	productsFiltered: {
 		pending: boolean;
 		serverError: boolean;
-		filteringCategories: Record<string, unknown>;
+		filteringCategories: {
+			[key: string]: any[];
+		};
 		doesClientFilterNewProducts: boolean;
 		type: string;
 		gender: string;

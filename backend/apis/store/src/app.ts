@@ -43,9 +43,9 @@ app.use('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
 
-// const PORT = process.env.DEVELOPMENT === 'true' ? 3001 : null; // => local : namecheap web hosted
+const PORT = process.env.DEVELOPMENT === 'true' ? 3001 : null; // => local : namecheap web hosted
 // const PORT = '8080'; // => Centos
-const PORT = process.env.PORT || 80; // => heroku
+// const PORT = process.env.PORT || 80; // => heroku
 const isHTTPS = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true';
 const httpsServer = isHTTPS ? https.createServer(options, app) : createServer(app);
 

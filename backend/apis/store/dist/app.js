@@ -54,7 +54,7 @@ app.get('/test', (req, res) => {
 app.use('*', function (req, res) {
     res.sendFile(path_1.default.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
-const PORT = process.env.PORT || 80;
+const PORT = process.env.DEVELOPMENT === 'true' ? 3001 : null;
 const isHTTPS = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true';
 const httpsServer = isHTTPS ? https_1.default.createServer(options, app) : (0, http_1.createServer)(app);
 httpsServer.listen(PORT, () => {

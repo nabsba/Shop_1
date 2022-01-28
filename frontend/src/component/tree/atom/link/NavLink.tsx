@@ -8,10 +8,10 @@ type TProps = {
 };
 
 const NavLinkAsComponent: React.FC<TProps> = ({
-	data: { href, text, asComponent },
+	data: { href, text, asComponent, state },
 }) => {
 	return (
-		<NavLink to={href}>
+		<NavLink to={href} state={state}>
 			{asComponent ? (
 				asComponent
 			) : (
