@@ -27,7 +27,7 @@
 	width: 100%;
 	transform: translateX(0vw);
 	position: fixed;
-	z-index: 100;
+	z-index: 1000;
 	transition: 200ms;
 	background-color: var(--color-secondary-1);
 }
