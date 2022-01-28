@@ -22,7 +22,6 @@
 }
 
 .navigation_on {
-	display: block;
 	height: 100vh;
 	width: 100%;
 	transform: translateX(0vw);
@@ -80,7 +79,9 @@
 	height: var(--size-icon);
 	color: var(--color-secondary-3);
 }
-
+.sub_navigation_on_part_2_bottom_nav li {
+	display:flex;
+}
 @media only screen and (min-width: 760px) {
 	.navigation_header_mobile,
 	.navigation_off {
