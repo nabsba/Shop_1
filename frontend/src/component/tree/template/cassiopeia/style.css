@@ -3,6 +3,7 @@
 .cassiopeia {
 	grid-template-columns: repeat(4, 1fr);
 	display: grid;
+	min-height:100vh;
 }
 
 .cassiopeia_section_1,
