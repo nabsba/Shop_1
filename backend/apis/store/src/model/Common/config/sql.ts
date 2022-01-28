@@ -5,7 +5,7 @@ import mysql from 'mysql2';
 import { DATA_BASE } from '../../repos/constant';
 
 const getConfig = (type: string, allowMultipleStatements: boolean | undefined) => {
-  const storeProprety = 'REMOTE';
+  const storeProprety = 'LOCAL';
   const config: { [key: string]: {} } = {
     store: {
       host: DATA_BASE.STORE[`${storeProprety}`].HOST,
