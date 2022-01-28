@@ -25,13 +25,6 @@
 	margin-right: var(--margin-section-side);
 }
 
-.cassiopeia_section_3 .filter_product {
-	grid-column: 1/4;
-}
-
-.cassiopeia_section_3 .article_group_original {
-	grid-column: 4/13;
-}
 
 .cassiopeia_section_3_effect .filter_product_nav_mobile {
 	width: 100%;
@@ -39,6 +32,7 @@
 	position: fixed;
 	height: 100vh;
 	background-color: var(--color-secondary-1);
+	/* todo: translateY(115vw)*/
 	transform: translateY(100vw);
 	transition: transform 200ms;
 }
@@ -67,7 +61,6 @@
 	}
 
 	.cassiopeia_section_3 {
-		display: grid;
 		grid-template-columns: repeat(12, 1fr);
 	}
 
@@ -82,8 +75,11 @@
 
 	.cassiopeia_section_3_effect .article_group_original {
 		grid-column: 1/12;
+		flex:2;
 	}
-
+	.cassiopeia_section_3 .products_empty {
+		flex:2;
+	}
 	.cassiopeia_loader {
 		grid-column: 1/13;
 		display: flex;

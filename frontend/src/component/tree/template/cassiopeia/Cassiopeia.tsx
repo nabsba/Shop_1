@@ -60,7 +60,7 @@ const Cassiopeia: React.FC<Props> = ({
 				)}
 			>
 				<section
-					className={`cassiopeia_section_3 ${
+					className={`cassiopeia_section_3 flex_row ${
 						displayFilterProduct ? '' : 'cassiopeia_section_3_effect'
 					}`}
 				>
@@ -75,7 +75,9 @@ const Cassiopeia: React.FC<Props> = ({
 					) : articleGroupOriginal.display ? (
 						<ArticleGroupOriginal data={articleGroupOriginal} />
 					) : (
-						<H3 title={'No products'} />
+						<div className="products_empty">
+							<H3 title={'No products'} />
+						</div>
 					)}
 				</section>
 			</ErrorBoundary>
