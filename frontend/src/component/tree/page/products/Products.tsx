@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -16,7 +15,6 @@ import './style.css';
 const Products: React.FC = () => {
 	const dispatch = useDispatch();
 	const { type, gender } = useParams();
-	const divRef = React.useRef<HTMLDivElement>(null);
 	const [articleGroupOriginalAfterMatchingColor, setArticleGroupOriginal] =
 		useState<any[]>([]);
 
@@ -24,6 +22,7 @@ const Products: React.FC = () => {
 		dataProducts: {
 			products,
 			totalRows,
+			doWeGetMoreProducts,
 			productsDataPage: {
 				navigationHeader,
 				footer,
@@ -41,7 +40,7 @@ const Products: React.FC = () => {
 					preference: productsFiltered.filteringCategories,
 					type,
 					gender,
-					isFetchDueToScroll: false
+					isFetchDueToScroll: false,
 				}),
 			);
 	}, [dispatch, gender, productsFiltered.filteringCategories, type]);
@@ -75,31 +74,29 @@ const Products: React.FC = () => {
 		}
 	}, [articleGroupOriginal, products]);
 
-	const handleScroll = (): void => {
-		if (divRef.current &&  totalRows) {
-			const bodyPosition = divRef.current?.getBoundingClientRect().top;
-			const doWeGetNewPage = bodyPosition < 750;
-			if (doWeGetNewPage && products && products.length > 0) {
-				const length = products.length;
-				const lastArrayId = products[length - 1].product_id;
-				dispatch(
-					fetchProductsFiltered({
-						preference: productsFiltered.filteringCategories,
-						type,
-						gender,
-						pagination: lastArrayId,
-						isFetchDueToScroll: true
-					}),
-				);
-			}
-		}
-	};
 	useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
-		return (): void => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	});
+		if (totalRows && doWeGetMoreProducts && products && products.length > 0) {
+			const length = products.length;
+			const lastArrayId = products[length - 1].product_id;
+			dispatch(
+				fetchProductsFiltered({
+					preference: productsFiltered.filteringCategories,
+					type,
+					gender,
+					pagination: lastArrayId,
+					isFetchDueToScroll: true,
+				}),
+			);
+		}
+	}, [
+		dispatch,
+		doWeGetMoreProducts,
+		gender,
+		products,
+		productsFiltered.filteringCategories,
+		totalRows,
+		type,
+	]);
 
 	const cassiopeiraData = {
 		navigationHeader,
@@ -123,7 +120,6 @@ const Products: React.FC = () => {
 	return (
 		<div id="products">
 			<Cassiopeia data={cassiopeiraData} />
-			<div ref={divRef}> </div>
 		</div>
 	);
 };

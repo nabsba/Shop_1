@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './component/common/css/share.css';
+import './component/Common/css/share.css';
 import { useDispatch } from 'react-redux';
 import { Bag, Home, Product, Products } from './component/tree/page';
 import { fetchFirstProducts } from './service/pages/home/dataManagment/reducer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import './component/Common/css/share.css';
 import { INDEX_DB } from './service/pages/bag/constant';
 import {
 	initDatabase,
@@ -32,7 +31,6 @@ const theme = createTheme({
 });
 
 const App: React.FC = () => {
-	const [HomeComponent, setHomeComponent] = useState<React.ReactNode>();
 	const dispatch = useDispatch();
 
 	useEffect(() => {

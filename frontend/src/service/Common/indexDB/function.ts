@@ -116,7 +116,7 @@ const removeDataFromIndexDB = async (
 	version: number,
 	store: string,
 	id: string | number,
-) => {
+): Promise<void> => {
 	try {
 		const db = await openDB(database, version);
 		const transaction = db.transaction([store], 'readwrite');

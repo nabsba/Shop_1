@@ -5,7 +5,6 @@ import './style.css';
 import { Achernar } from '../../template';
 import _ from 'lodash';
 import { addNewproductToTheBag } from '../../../../service/pages/bag/dataManagment/reducer';
-import dataProduct from '../../../../service/pages/product/dataManagment/reducer';
 
 const Bag: React.FC = () => {
 	const dispatch = useDispatch();

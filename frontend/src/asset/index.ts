@@ -7,5 +7,5 @@
 const img: any = {
 	// banner,
 };
-const getImg = (category: string, name: string) => img[category][name];
+const getImg = (category: string, name: string): any => img[category][name];
 export default getImg;

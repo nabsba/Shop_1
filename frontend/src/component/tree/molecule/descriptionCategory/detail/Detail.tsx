@@ -1,5 +1,5 @@
 import React from 'react';
-import { H3, Span } from '../../../atom';
+import { Span } from '../../../atom';
 import './style.css';
 import '../style.css';
 import TDetail from './type';

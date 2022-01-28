@@ -1,4 +1,4 @@
-const ERROR_LOG_ASYNC_MESSAGE = (path: string, method: string) =>
+const ERROR_LOG_ASYNC_MESSAGE = (path: string, method: string): string =>
 	`*** file: ${path}, method: ${method}, error: `;
 
 const LOG_MESSAGE = {

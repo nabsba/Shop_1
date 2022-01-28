@@ -2,8 +2,7 @@ import React from 'react';
 import './style.css';
 import TSliderVariant1 from './type';
 import Slider from 'react-slick';
-import { H3, ImageAsComponent } from '../../../atom';
-import URL_ADDRESSES from '../../../../../bridge/url';
+import { H3 } from '../../../atom';
 
 type Props = {
 	data: TSliderVariant1;

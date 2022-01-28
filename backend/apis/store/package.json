@@ -20,8 +20,12 @@
     "typescript": "^4.2.4"
   },
   "scripts": {
+		"start": "node server.js",
     "tsc": "tsc --watch",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+  },
+	"engines": {
+    "node": "v16.13.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

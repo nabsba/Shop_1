@@ -1,5 +1,5 @@
 import React from 'react';
-import { H3, Paragraph, Span } from '../../../atom';
+import { Paragraph, Span } from '../../../atom';
 import './style.css';
 import '../style.css';
 import TDescription from './type';

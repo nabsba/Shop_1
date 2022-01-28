@@ -1,4 +1,4 @@
-@import '../../../common/css/variable.css';
+@import '../../../Common/css/variable.css';
 
 a {
 	color: var(--link-color);

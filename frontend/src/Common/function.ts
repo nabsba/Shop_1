@@ -1,4 +1,4 @@
-const logMessage = (message: string) => {
+const logMessage = (message: string): void => {
 	if (true) console.log(message);
 };
 

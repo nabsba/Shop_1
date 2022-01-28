@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
 import { CircularIndeterminate, H3 } from '../../atom';
 import {
@@ -12,6 +12,9 @@ import './style.css';
 import TCassiopeia from './type';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ERROR_CODE } from '../../../../Common/constant';
+import useOnScreen from '../../../../service/Common/hooks/isVisible';
+import { useDispatch } from 'react-redux';
+import { updateDoWeGetMoreProducts } from '../../../../service/pages/products/dataManagment/reducer';
 type Props = {
 	data: TCassiopeia;
 };
@@ -25,6 +28,9 @@ const Cassiopeia: React.FC<Props> = ({
 		filteringCategories,
 	},
 }) => {
+	const divRef = React.useRef<HTMLDivElement>(null);
+	const dispatch = useDispatch();
+
 	const [displayFilterProduct, setDisplayFilterProduct] = useState(true);
 	const handleFilterProduct = () =>
 		setDisplayFilterProduct(!displayFilterProduct);
@@ -32,6 +38,10 @@ const Cassiopeia: React.FC<Props> = ({
 		...headerProduct,
 		functionToCall: handleFilterProduct,
 	};
+	const doWeGetNewPage = useOnScreen(divRef);
+	useEffect(() => {
+		dispatch(updateDoWeGetMoreProducts(doWeGetNewPage));
+	}, [dispatch, doWeGetNewPage]);
 
 	return (
 		<div className="cassiopeia">
@@ -69,7 +79,7 @@ const Cassiopeia: React.FC<Props> = ({
 					)}
 				</section>
 			</ErrorBoundary>
-			<section className="cassiopeia_section_4">
+			<section className="cassiopeia_section_4" ref={divRef}>
 				<Footer data={footer} />
 			</section>
 		</div>
