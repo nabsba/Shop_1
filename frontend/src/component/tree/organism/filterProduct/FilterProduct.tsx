@@ -28,9 +28,7 @@ type TSelectionFilter = {
 const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 	const dispatch = useDispatch();
 	const {
-		dataProducts: {
-			productsFiltered: { type, gender },
-		},
+		dataProducts: { productsFiltered },
 	} = useSelector((state: TReducers) => state);
 	const [appareance, setAppareance] = useImmer<{
 		[key: string]: boolean;
@@ -38,7 +36,6 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 		gender: false,
 		category: false,
 	});
-
 	const [selection, setSelection] = useImmer<TSelectionFilter>({});
 	const IconArrow = getIcon('Arrow');
 	const handleAppearance = async (categoryName: string) => {
@@ -79,8 +76,8 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 		dispatch(
 			fetchProductsFiltered({
 				preference: object,
-				type,
-				gender,
+				type: productsFiltered.type,
+				gender: productsFiltered.gender,
 				isFetchDueToScroll: false,
 			}),
 		);
@@ -88,42 +85,50 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 	};
 	return (
 		<div className={`filter_product filter_product_nav_mobile`}>
-			{filteringCategories.map((preference: TElementFilter) => (
-				<div
-					className={`sub_filter_product ${
-						!appareance[preference.title] ? 'apply_effects_sub_filter' : ''
-					}`}
-					key={preference.title}
-				>
+			{filteringCategories.map((preference: TElementFilter) => {
+				return (
 					<div
-						className="sub_filter_product_top flex_row_between_align_center"
-						onClick={() => handleAppearance(preference.title)}
-					>
-						{/* <H3 title={preference.title} /> */}
-						<Span data={preference.title} />
-						{IconArrow}
-					</div>
-					<div
-						className={`sub_filter_product_bottom ${
+						className={`sub_filter_product ${
 							!appareance[preference.title] ? 'apply_effects_sub_filter' : ''
 						}`}
+						key={preference.title}
 					>
-						<FormGroup>
-							{preference.list.map((label) => (
-								<FormControlLabel
-									key={label}
-									control={
-										<Checkbox
-											onChange={() => handleChange(preference.title, label)}
-										/>
-									}
-									label={label}
-								/>
-							))}
-						</FormGroup>
+						<div
+							className="sub_filter_product_top flex_row_between_align_center"
+							onClick={() => handleAppearance(preference.title)}
+						>
+							<Span data={preference.title} />
+							{IconArrow}
+						</div>
+						<div
+							className={`sub_filter_product_bottom ${
+								!appareance[preference.title] ? 'apply_effects_sub_filter' : ''
+							}`}
+						>
+							<FormGroup>
+								{preference.list.map((label) => (
+									<FormControlLabel
+										key={label}
+										checked={
+											productsFiltered.filteringCategories[preference.title]
+												? productsFiltered.filteringCategories[
+														preference.title
+												  ].includes(label)
+												: false
+										}
+										control={
+											<Checkbox
+												onChange={() => handleChange(preference.title, label)}
+											/>
+										}
+										label={label}
+									/>
+								))}
+							</FormGroup>
+						</div>
 					</div>
-				</div>
-			))}
+				);
+			})}
 		</div>
 	);
 };
