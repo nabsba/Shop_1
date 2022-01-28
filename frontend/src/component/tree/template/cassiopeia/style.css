@@ -31,8 +31,7 @@
 	z-index: 100;
 	position: fixed;
 	height: 100vh;
-	/* todo: translateY(115vw)*/
-	transform: translateY(100vw);
+	transform: translateY(115vh);
 	transition: transform 200ms;
 }
 
