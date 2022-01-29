@@ -25,6 +25,9 @@ ul {
 	margin: 0;
 }
 
+path {
+fill:inherit;
+}
 /***Class***/
 /* Display */
 .flex_row {
