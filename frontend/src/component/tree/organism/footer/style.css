@@ -1,7 +1,7 @@
 @import '../../../Common/css/variable.css';
 
 #footer {
-	background-color: var(--color-secondary-1);
+	border-top:var(--border) solid var(	--color-secondary-2);
 	height:100%;
 }
 
@@ -29,7 +29,7 @@
 
 .sub_footer_part_one ul::after {
 	content: '';
-	border: 1px solid var(--color-secondary-3);
+	border: 1px solid var(--color-secondary-2);
 	position: absolute;
 	width: 15%;
 	bottom: -2rem;
