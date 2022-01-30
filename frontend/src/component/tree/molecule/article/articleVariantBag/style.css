@@ -1,24 +1,30 @@
 @import '../../../../Common/css/variable.css';
+
 .sub_article_variant_bag_part_1 {
 	position: relative;
 	height: var(--height-image-card-product-mobile);
 	width: 100vw;
 }
+
 .sub_article_variant_bag_part_1 img {
 	border-radius: var(--border-radius);
 }
+
 .sub_article_variant_bag_part_2_description {
 	margin-right: 1rem;
 }
+
 .sub_article_variant_bag_part_2_description span {
 	text-transform: capitalize;
 	margin-top: var(--margin-minor-2);
 }
+
 .sub_article_variant_bag_part_2_description span::before {
 	content: '\27A3';
 	width: 1rem;
 	margin-right: var(--margin-minor-2);
 }
+
 @media only screen and (min-width: 770px) {
 	.article_variant_bag {
 		align-items: center;
@@ -35,11 +41,15 @@
 	}
 }
 
-.sub_article_variant_bag_part_2_price_quantity div {
+.sub_article_variant_bag_part_2_price_quantity_remove div {
 	margin-right: var(--margin-minor-2);
 }
 
-.sub_article_variant_bag_part_2_price_quantity span {
+.sub_araticle_variant_bag_part_2_button_remove {
+	margin-top: var(--margin-minor-2);
+}
+
+.sub_article_variant_bag_part_2_price_quantity_remove span {
 	text-transform: capitalize;
 	margin-bottom: var(--margin-minor);
 	display: block;
