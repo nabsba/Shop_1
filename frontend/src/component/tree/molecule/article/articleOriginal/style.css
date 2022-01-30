@@ -8,6 +8,10 @@
 	position: relative;
 	height:var(--height-image-card-product-mobile);
 }
+
+.article_original_image_wrapper img {
+	border-radius:var(--border-radius);
+}
 .article_original {
 	width: 45vw;
 }

@@ -1,10 +1,12 @@
 @import '../../../../Common/css/variable.css';
 .sub_article_variant_bag_part_1 {
 	position: relative;
-	height: 30vh;
+	height: var(--height-image-card-product-mobile);
 	width: 100vw;
 }
-
+.sub_article_variant_bag_part_1 img {
+	border-radius: var(--border-radius);
+}
 .sub_article_variant_bag_part_2_description {
 	margin-right: 1rem;
 }
@@ -24,7 +26,7 @@
 
 	.sub_article_variant_bag_part_1 {
 		position: relative;
-		height: 30vh;
+		height: var(--height-image-card-product-desktop);
 		width: 40vw;
 	}
 
@@ -46,7 +48,6 @@
 @media only screen and (min-width: 1449px) {
 	.sub_article_variant_bag_part_1 {
 		position: relative;
-		height: 30vh;
 		width: 40vw;
 	}
 }
