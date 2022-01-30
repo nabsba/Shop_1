@@ -10,7 +10,7 @@
 
 .navigation_header_mobile,
 .navigation_header_desktop {
-	border-bottom: 1px solid var(--color-secondary-2);
+	border-bottom: var(--border) solid var(--color-secondary-2);
 }
 .navigation_header_mobile {
 	height: 4rem;
@@ -22,12 +22,11 @@
 }
 
 .navigation_on {
-	display: block;
 	height: 100vh;
 	width: 100%;
 	transform: translateX(0vw);
 	position: fixed;
-	z-index: 100;
+	z-index: 1000;
 	transition: 200ms;
 	background-color: var(--color-secondary-1);
 }
@@ -80,7 +79,9 @@
 	height: var(--size-icon);
 	color: var(--color-secondary-3);
 }
-
+.sub_navigation_on_part_2_bottom_nav li {
+	display:flex;
+}
 @media only screen and (min-width: 760px) {
 	.navigation_header_mobile,
 	.navigation_off {

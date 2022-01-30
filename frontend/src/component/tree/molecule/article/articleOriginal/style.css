@@ -1,3 +1,4 @@
+@import'../../../../Common/css/variable.css';
 .article_original_information {
 	display: flex;
 	justify-content: space-between;
@@ -5,7 +6,7 @@
 }
 .article_original_image_wrapper {
 	position: relative;
-	height: 8rem;
+	height:var(--height-image-card-product-mobile);
 }
 .article_original {
 	width: 45vw;
@@ -14,6 +15,9 @@
 @media only screen and (min-width: 770px) {
 	.article_original {
 		width: 25vw;
+	}
+	.article_original_image_wrapper {
+		height:var(--height-image-card-product-desktop);
 	}
 }
 

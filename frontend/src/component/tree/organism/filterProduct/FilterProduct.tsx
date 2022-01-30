@@ -110,6 +110,7 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 									<FormControlLabel
 										key={label}
 										checked={
+											//Check in the reducer if it's already selected (in case if the user check a shoes)
 											productsFiltered.filteringCategories[preference.title]
 												? productsFiltered.filteringCategories[
 														preference.title

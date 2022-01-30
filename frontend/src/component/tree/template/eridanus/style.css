@@ -18,8 +18,11 @@
 .eridanus_section_1,
 .eridanus_section_2 {
 	margin-top: 0;
+	
 }
-
+.eridanus_section_2 {
+	overflow: hidden;
+}
 .eridanus_section_4,
 .eridanus_section_5 {
 	margin-left: var(--margin-section-side);

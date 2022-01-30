@@ -18,9 +18,6 @@ html {
 /* ----------------------------------------------*/
 /* 01 Body 			                            		 */
 /* ----------------------------------------------*/
-#root {
-	overflow: hidden;
-}
 /*tag*/
 ul {
 	list-style: none;
@@ -28,6 +25,9 @@ ul {
 	margin: 0;
 }
 
+path {
+fill:inherit;
+}
 /***Class***/
 /* Display */
 .flex_row {

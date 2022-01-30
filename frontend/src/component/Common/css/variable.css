@@ -23,6 +23,8 @@
 	--padding-button-top-bottom: 0.7rem;
 	--padding-button-variant1-side: 4rem;
 	--padding-button-variant1-top-bottom: 0.7rem;
+	--height-image-card-product-mobile:  10rem;
+	--height-image-card-product-desktop: clamp(150px, 20rem, 400px);
 	--line-height-paragraph: 1.3em;
 	--letter-spacing-titles: 0.3rem;
 	--font-weight: 800;
