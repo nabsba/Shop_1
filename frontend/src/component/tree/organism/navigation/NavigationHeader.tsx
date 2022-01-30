@@ -6,6 +6,7 @@ import TNavigationHeader from './type';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { TReducers } from '../../../../service';
+import { useStyles } from '../../page/home/Home';
 
 type Props = {
 	data: TNavigationHeader;
@@ -14,6 +15,7 @@ type Props = {
 const NavigationHeader: React.FC<Props> = ({
 	data: { menusHeader, menusBottom },
 }) => {
+	const classes = useStyles();
 	const {
 		dataBag: { numberOfItemsInTheBag },
 	} = useSelector((state: TReducers) => state);
@@ -35,11 +37,11 @@ const NavigationHeader: React.FC<Props> = ({
 		<div
 			className={`flex_column ${
 				isBurgerClicked ? 'navigation_on' : 'navigation_off'
-			}`}
+			} ${classes.root}`}
 		>
 			<div className="sub_navigation_on_part_1 flex_column">
 				<div
-					className="sub_navigation_on_part_1_header flex_row_end"
+					className={`sub_navigation_on_part_1_header flex_row_end ${classes.iconNeutral}`}
 					onClick={() => {
 						setIsBurgerClicked(false);
 						handleScrollBar(false);
@@ -68,7 +70,7 @@ const NavigationHeader: React.FC<Props> = ({
 					<ul className="sub_navigation_on_part_2_bottom_nav flex_column_evenly ">
 						{menusBottom.map((menu) => (
 							<li key={menu.text}>
-								{getIcon(menu.icon)}
+								<div className={classes.iconNeutral}>{getIcon(menu.icon)}</div>
 								<NavLinkAsComponent
 									data={{ text: menu.text, href: menu.href }}
 								/>
@@ -95,7 +97,7 @@ const NavigationHeader: React.FC<Props> = ({
 
 	const BadAndNumberCirle = (
 		<div
-			className="bag_and_number_circle"
+			className={`bag_and_number_circle ${classes.iconNeutral}`}
 			onClick={() => setIsBagClicked(true)}
 		>
 			{DoWeRedirectOrDisplayBagHTML}
@@ -106,7 +108,7 @@ const NavigationHeader: React.FC<Props> = ({
 			{NavigationOnClick}
 			<div className="navigation_header_mobile flex_row_between_align_center">
 				<div
-					className="sub_navigation_header_mobile_part_1 flex_row_align_items_center"
+					className={`sub_navigation_header_mobile_part_1 flex_row_align_items_center ${classes.iconNeutral}`}
 					onClick={() => {
 						setIsBurgerClicked(true);
 						handleScrollBar(true);

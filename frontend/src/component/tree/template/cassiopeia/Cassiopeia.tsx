@@ -15,6 +15,7 @@ import { ERROR_CODE } from '../../../../Common/constant';
 import useOnScreen from '../../../../service/Common/hooks/isVisible';
 import { useDispatch } from 'react-redux';
 import { updateDoWeGetMoreProducts } from '../../../../service/pages/products/dataManagment/reducer';
+import { useStyles } from '../../page/home/Home';
 type Props = {
 	data: TCassiopeia;
 };
@@ -30,6 +31,7 @@ const Cassiopeia: React.FC<Props> = ({
 }) => {
 	const divRef = React.useRef<HTMLDivElement>(null);
 	const dispatch = useDispatch();
+	const classes = useStyles();
 
 	const [displayFilterProduct, setDisplayFilterProduct] = useState(true);
 	const handleFilterProduct = () =>
@@ -44,7 +46,7 @@ const Cassiopeia: React.FC<Props> = ({
 	}, [dispatch, doWeGetNewPage]);
 
 	return (
-		<div className="cassiopeia">
+		<div className={`cassiopeia ${classes.root}`}>
 			<section className="cassiopeia_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>

@@ -7,6 +7,7 @@ type TBag = {
 	navigationHeader: TNavigationHeader;
 	footer: TFooter;
 	articleGroupBagData: TArticleGroupBag;
+	sliderVariant1Data: { list: any };
 };
 
 type TBagReducer = {

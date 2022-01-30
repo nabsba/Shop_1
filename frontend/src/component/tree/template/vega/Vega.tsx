@@ -7,6 +7,7 @@ import {
 	NavigationHeader,
 	SliderVariant2,
 } from '../../organism';
+import { useStyles } from '../../page/home/Home';
 import './style.css';
 import TVega from './type';
 
@@ -25,8 +26,9 @@ const Vega: React.FC<Props> = ({
 		selectSize,
 	},
 }) => {
+	const classes = useStyles();
 	return (
-		<div className="vega">
+		<div className={`vega ${classes.root}`}>
 			<section className="vega_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>

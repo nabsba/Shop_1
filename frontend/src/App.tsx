@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './component/Common/css/share.css';
+import './component/Common/css/variable.css';
 import { useDispatch } from 'react-redux';
 import { Bag, Home, Product, Products } from './component/tree/page';
 import { fetchFirstProducts } from './service/pages/home/dataManagment/reducer';
@@ -10,25 +11,58 @@ import {
 	initDatabase,
 	getBagInformations,
 } from './service/pages/bag/dataManagment/reducer';
-// Reminder: https://medium.com/@jenniferdobak/react-router-vs-switch-components-2af3a9fc72e
+import { PaletteMode } from '@mui/material';
 
-const theme = createTheme({
-	// palette: {
-	// 	mode: 'dark',
-	// },
+// mui.com/customization/dark-mode
+export const getDesignTokens = (
+	mode: PaletteMode,
+): Record<string, unknown> => ({
 	palette: {
-		primary: {
-			light: '#9B3333',
-			main: '#830101',
-			dark: '#5B0000',
-		},
-		secondary: {
-			light: '#f4f4f4',
-			main: '#d6d6d6',
-			dark: '#a9a9a9',
-		},
+		mode,
+		...(mode === 'light'
+			? {
+					// palette values for light mode
+					primary: {
+						light: '#9B3333',
+						main: '#830101',
+						dark: '#5B0000',
+					},
+					secondary: {
+						light: '#f4f4f4',
+						main: '#d6d6d6',
+						dark: '#a9a9a9',
+					},
+					neutral: {
+						light: '#ffffff',
+						main: '#a9a9a9',
+						dark: '#000000',
+					},
+			  }
+			: {
+					// palette values for dark mode
+					neutral: {
+						light: '#1F2128',
+						main: '#a9a9a9',
+						dark: '#ffffff',
+					},
+			  }),
+	},
+	typography: {
+		fontFamily: [
+			'-apple-system',
+			'BlinkMacSystemFont',
+			'"Segoe UI"',
+			'Roboto',
+			'"Helvetica Neue"',
+			'Arial',
+			'sans-serif',
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"',
+		].join(','),
 	},
 });
+const theme = createTheme(getDesignTokens('dark'));
 
 const App: React.FC = () => {
 	const dispatch = useDispatch();

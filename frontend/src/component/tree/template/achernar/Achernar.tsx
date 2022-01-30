@@ -1,8 +1,7 @@
 import React from 'react';
-import URL_ADDRESSES from '../../../../bridge/url';
-import { ImageAsComponent } from '../../atom';
 import { ArticleGroupBag, Footer, NavigationHeader } from '../../organism';
 import SliderVariant1 from '../../organism/slider/sliderVariant1/SliderVariant1';
+import { useStyles } from '../../page/home/Home';
 import './style.css';
 import TAchernar from './type';
 
@@ -10,91 +9,13 @@ type Props = {
 	data: TAchernar;
 };
 
-const achernarData = {
-	sliderVariant1: {
-		list: [
-			<ImageAsComponent
-				key={1}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={2}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={3}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={4}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={1}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={2}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={1}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-			<ImageAsComponent
-				key={2}
-				data={{
-					src: `${URL_ADDRESSES.fileManager.image.load(
-						'product/shoes/medium/blue/airzoom/airzoom_1',
-					)}`,
-					alt: 'airzoom',
-				}}
-			/>,
-		],
-		title: 'Our suggestion',
-	},
-};
 const Achernar: React.FC<Props> = ({
-	data: { footer, navigationHeader, articleGroupBag },
+	data: { footer, navigationHeader, articleGroupBag, sliderVariant1 },
 }) => {
-	const { sliderVariant1 } = achernarData;
+	const classes = useStyles();
+
 	return (
-		<div className="achernar">
+		<div className={`achernar ${classes.root}`}>
 			<section className="achernar_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>

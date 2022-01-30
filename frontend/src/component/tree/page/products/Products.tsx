@@ -8,7 +8,6 @@ import {
 	TReducers,
 } from '../../../../service';
 import { TProductDetails } from '../../../../service/pages/Common/type';
-
 import { Cassiopeia } from '../../template';
 import './style.css';
 

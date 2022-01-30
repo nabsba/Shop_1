@@ -14,6 +14,7 @@ import {
 } from '../../../../service/pages/products/dataManagment/reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { TReducers } from '../../../../service';
+import { useStyles } from '../../page/home/Home';
 
 type Props = TFilterProduct;
 
@@ -27,6 +28,7 @@ type TSelectionFilter = {
 };
 const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 	const dispatch = useDispatch();
+	const classes = useStyles();
 	const {
 		dataProducts: { productsFiltered },
 	} = useSelector((state: TReducers) => state);
@@ -83,8 +85,9 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 		);
 		setSelection(object);
 	};
+
 	return (
-		<div className={`filter_product filter_product_nav_mobile`}>
+		<div className={`filter_product filter_product_nav_mobile ${classes.root}`}>
 			{filteringCategories.map((preference: TElementFilter) => {
 				return (
 					<div
@@ -94,11 +97,11 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 						key={preference.title}
 					>
 						<div
-							className="sub_filter_product_top flex_row_between_align_center"
+							className={`sub_filter_product_top flex_row_between_align_center ${classes.textColorSpan}`}
 							onClick={() => handleAppearance(preference.title)}
 						>
 							<Span data={preference.title} />
-							{IconArrow}
+							<div className={classes.iconNeutral}>{IconArrow}</div>
 						</div>
 						<div
 							className={`sub_filter_product_bottom ${
@@ -108,6 +111,7 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 							<FormGroup>
 								{preference.list.map((label) => (
 									<FormControlLabel
+										className={classes.textColorSpan}
 										key={label}
 										checked={
 											//Check in the reducer if it's already selected (in case if the user check a shoes)

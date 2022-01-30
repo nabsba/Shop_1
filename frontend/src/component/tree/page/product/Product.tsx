@@ -13,7 +13,6 @@ const Product: React.FC = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const { state }: any = useLocation();
-
 	const {
 		dataProduct: {
 			product: {

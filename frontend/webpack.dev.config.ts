@@ -1,20 +1,20 @@
 import path from 'path';
 import webpack from 'webpack';
-import { Configuration as WebpackConfiguration } from 'webpack';
-import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+// import { Configuration as WebpackConfiguration } from 'webpack';
+// import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 // import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import WorkboxPlugin from 'workbox-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-interface Configuration extends WebpackConfiguration {
-	devServer?: WebpackDevServerConfiguration;
-}
+// interface Configuration extends WebpackConfiguration {
+// 	devServer?: WebpackDevServerConfiguration;
+// }
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 
-const config: Configuration = {
+const config: any = {
 	entry: './src/index.tsx',
 	mode: 'development',
 	output: {

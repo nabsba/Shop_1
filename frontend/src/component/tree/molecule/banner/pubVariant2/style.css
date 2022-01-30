@@ -1,6 +1,8 @@
+@import'../../../../Common/css/variable.css';
+
 .pub_variant_2 {
 	position: relative;
-	height: 40rem;
+	height: var(--banner-height);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

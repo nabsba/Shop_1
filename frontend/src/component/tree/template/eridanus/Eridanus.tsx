@@ -6,6 +6,7 @@ import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundar
 import { PubVariant1, PubVariant2 } from '../../molecule';
 import { Footer, NavigationHeader, SliderOriginal } from '../../organism';
 import SliderVariant1 from '../../organism/slider/sliderVariant1/SliderVariant1';
+import { useStyles } from '../../page/home/Home';
 import './style.css';
 import TEridanus from './type';
 
@@ -35,8 +36,10 @@ const Eridanus: React.FC<Props> = ({
 		pubVariant1,
 	},
 }) => {
+	const classes = useStyles();
+
 	return (
-		<div className="eridanus">
+		<div className={`eridanus ${classes.root}`}>
 			<section className="eridanus_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>

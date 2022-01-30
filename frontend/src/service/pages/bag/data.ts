@@ -9,6 +9,18 @@ const bagData: TBag = {
 		display: false,
 		totalPriceOfTheBag: 0,
 	},
+	sliderVariant1Data: {
+		list: [
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+			{ src: 'product/shoes/medium/blue/airzoom/airzoom_1', alt: 'air zoom' },
+		],
+	},
 };
 
 export default bagData;
