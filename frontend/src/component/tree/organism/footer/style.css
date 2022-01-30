@@ -46,14 +46,22 @@
 	margin-top: 4rem;
 	margin-bottom: 0.5rem;
 }
+.sub_footer_part_two p {
+	font-size: 1rem;
+}
 
 @media only screen and (min-width: 770px) {
 	.sub_footer_part_one {
 		flex-direction: column;
-		height: 15vh;
 		margin-top: 0rem;
-	}
 
+	}
+	.sub_footer_part_two p {
+	font-size: 1.5rem;
+}
+.sub_footer_part_two {
+	margin-top:10rem;
+}
 	.sub_footer_part_one ul {
 		order: 2;
 		display: flex;
@@ -71,5 +79,7 @@
 		flex-direction: row !important;
 		margin-left: 0;
 		order: 1;
+	  margin-top:1rem;
+		margin-bottom: 4rem;
 	}
 }
