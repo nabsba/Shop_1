@@ -32,4 +32,14 @@ type TProductDetails = {
 	sizeWished: number;
 };
 
-export type { TColor, TProduct, TProductDetails, TSize };
+// type TPagesInformationsReducer = {
+// 	historyTree: { path: string; title: string }[];
+// };
+
+export type {
+	TColor,
+	TProduct,
+	TProductDetails,
+	TSize,
+	// TPagesInformationsReducer,
+};

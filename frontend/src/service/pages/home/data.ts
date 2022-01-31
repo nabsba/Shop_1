@@ -1,7 +1,8 @@
 import URL_ADDRESSES from '../../../bridge/url';
 import { footer, navigationHeader } from '../Common/data';
+import { THome } from './type';
 
-const homeData = {
+const homeData: THome = {
 	navigationHeader,
 	footer,
 	sliderOriginalData: {

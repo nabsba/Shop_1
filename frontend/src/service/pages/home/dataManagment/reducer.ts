@@ -10,12 +10,13 @@ import { Result } from '../../../../Common/type/type';
 import { DATA_TYPE } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import homeData from '../data';
-import { REDUCER } from '../../Common/constant';
 import _ from 'lodash';
+import { REDUCER } from '../constant';
+import THomeReducer from '../type';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
 
-const initialState = {
+const initialState: THomeReducer = {
 	pending: false,
 	error: false,
 	home: homeData,
@@ -70,7 +71,7 @@ const data = createSlice({
 		});
 	},
 });
-const dataPages = data.reducer;
+const dataHome = data.reducer;
 
-export default dataPages;
+export default dataHome;
 export { dataBackup };

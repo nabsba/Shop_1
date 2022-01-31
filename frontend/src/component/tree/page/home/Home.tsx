@@ -37,7 +37,7 @@ export const useStyles = makeStyles(
 const Home: React.FC = () => {
 	const [sliderVariant, setSliderVariant] = useState<any[]>([]);
 	const {
-		dataPages: {
+		dataHome: {
 			home: {
 				navigationHeader,
 				footer,
