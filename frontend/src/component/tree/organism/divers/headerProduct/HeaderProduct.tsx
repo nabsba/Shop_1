@@ -1,6 +1,7 @@
 import React from 'react';
 import getIcon from '../../../../factory/Icon';
 import { H2 } from '../../../atom';
+import { useStyles } from '../../../page/home/Home';
 import './style.css';
 import THeaderProduct from './type';
 
@@ -12,6 +13,7 @@ const HeaderProduct: React.FC<Props> = ({
 	data: { h2, list, functionToCall },
 }) => {
 	const FilterIcon = getIcon('Filter');
+	const classes = useStyles();
 
 	return (
 		<div className="header_product">
@@ -23,6 +25,7 @@ const HeaderProduct: React.FC<Props> = ({
 							functionToCall();
 						}
 					}}
+					className={classes.iconNeutral}
 				>
 					{FilterIcon}
 				</div>

@@ -6,5 +6,6 @@ type TAchernar = {
 	navigationHeader: TNavigationHeader;
 	footer: TFooter;
 	articleGroupBag: TArticleGroupBag;
+	sliderVariant1: { list: { src: string; alt: string }[] };
 };
 export default TAchernar;

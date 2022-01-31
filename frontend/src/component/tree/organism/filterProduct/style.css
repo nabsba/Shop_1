@@ -1,7 +1,6 @@
 @import '../../../Common/css/variable.css';
 
 .filter_product {
-	background-color: var(--color-secondary-1);
 	display: block;
 	height: 100vh;
 	width: 100%;
@@ -43,7 +42,6 @@
 	.filter_product {
 	  position: sticky;
 		top: 0;
-		background-color: white;
 		padding: 0rem;
 		overflow:scroll;
 	}

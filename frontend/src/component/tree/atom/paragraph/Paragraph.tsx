@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStyles } from '../../page/home/Home';
 import './style.css';
 import { TParagraph } from './type';
 
@@ -7,6 +8,7 @@ type Props = {
 };
 
 const Paragraph: React.FC<Props> = ({ data }) => {
-	return <p>{data}</p>;
+	const classes = useStyles();
+	return <p className={classes.textColorParagraph}>{data}</p>;
 };
 export default Paragraph;

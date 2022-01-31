@@ -69,7 +69,7 @@ const ArticleGroupBag: React.FC<Props> = ({
 										}/${product.name.replace(/\s/g, '')}/${product.name.replace(
 											/\s/g,
 											'',
-										)}_1.`,
+										)}_1`,
 									)}`,
 									alt: product.name,
 								},
@@ -96,7 +96,7 @@ const ArticleGroupBag: React.FC<Props> = ({
 						<Span data={totalPriceOfTheBag} />{' '}
 					</>
 				) : (
-					'No product'
+					<Span data={'No products'} />
 				)}
 			</div>
 		</div>

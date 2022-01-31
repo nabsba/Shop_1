@@ -5,6 +5,8 @@ import './style.css';
 import { Achernar } from '../../template';
 import _ from 'lodash';
 import { addNewproductToTheBag } from '../../../../service/pages/bag/dataManagment/reducer';
+import { ImageAsComponent } from '../../atom';
+import URL_ADDRESSES from '../../../../bridge/url';
 
 const Bag: React.FC = () => {
 	const dispatch = useDispatch();
@@ -13,7 +15,12 @@ const Bag: React.FC = () => {
 			data: { productSelected },
 		},
 		dataBag: {
-			bag: { navigationHeader, footer, articleGroupBagData },
+			bag: {
+				navigationHeader,
+				footer,
+				articleGroupBagData,
+				sliderVariant1Data,
+			},
 			products,
 			totalPriceOfTheBag,
 		},
@@ -29,14 +36,28 @@ const Bag: React.FC = () => {
 		navigationHeader,
 		footer,
 		articleGroupBag: _.cloneDeep(articleGroupBagData),
+		sliderVariant1: _.cloneDeep(sliderVariant1Data),
 	};
 
+	const array: React.ReactNode[] = [];
+	achernarData.sliderVariant1.list.map((slide: { src: string; alt: string }) =>
+		array.push(
+			<ImageAsComponent
+				key={2}
+				data={{
+					src: `${URL_ADDRESSES.fileManager.image.load(slide.src)}`,
+					alt: slide.alt,
+				}}
+			/>,
+		),
+	);
+	achernarData.sliderVariant1.list = array;
 	achernarData.articleGroupBag.display = true;
 	achernarData.articleGroupBag.products = products;
 	achernarData.articleGroupBag.totalPriceOfTheBag = totalPriceOfTheBag;
 
 	return (
-		<div className="bag">
+		<div>
 			<Achernar data={achernarData} />
 		</div>
 	);

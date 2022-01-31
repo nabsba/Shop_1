@@ -3,10 +3,11 @@
 #footer {
 	border-top: var(--border) solid var(--color-secondary-2);
 	height: 100%;
-
-
 }
-
+.footer {
+	padding-left: clamp(1rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
+	padding-right: clamp(1rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
+}
 .sub_footer_part_one {
 	margin: auto;
 	width: 100%;
@@ -16,8 +17,6 @@
 
 .sub_footer_part_one_wrapper_icon {
 	margin-left: 1rem;
-		padding-left: clamp(1rem, calc(var(--margin-section-side) + 2rem), 3.1rem);
-	padding-right: clamp(1rem, calc(var(--margin-section-side) + 2rem), 3.1rem);
 }
 
 .sub_footer_part_one_wrapper_icon svg {
@@ -46,10 +45,6 @@
 .sub_footer_part_two {
 	margin-top: 4rem;
 	margin-bottom: 0.5rem;
-}
-
-.sub_footer_part_two {
-	margin-left: var(--margin-section-side);
 }
 
 @media only screen and (min-width: 770px) {

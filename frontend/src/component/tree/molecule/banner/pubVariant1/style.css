@@ -2,7 +2,7 @@
 
 .pub_variant_1 {
 	position: relative;
-	height: 40rem;
+	height: var(--banner-height);
 }
 
 .pub_variant_1 a {
