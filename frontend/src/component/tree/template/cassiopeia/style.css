@@ -35,7 +35,10 @@
 	transform: translateY(115vh);
 	transition: transform 200ms;
 }
-
+.cassiopeia_loader {
+    flex: 3;
+    height: max-content;
+}
 .cassiopeia_loader > div {
 	margin: auto;
 }
@@ -81,6 +84,5 @@
 	}
 	.cassiopeia_loader {
 		grid-column: 1/13;
-		display: flex;
 	}
 }

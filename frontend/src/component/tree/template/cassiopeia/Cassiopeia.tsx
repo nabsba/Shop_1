@@ -33,12 +33,13 @@ const Cassiopeia: React.FC<Props> = ({
 	const dispatch = useDispatch();
 	const classes = useStyles();
 
-	const [displayFilterProduct, setDisplayFilterProduct] = useState(true);
+	const [displayFilterProduct, setDisplayFilterProduct] = useState(false);
 	const handleFilterProduct = () =>
 		setDisplayFilterProduct(!displayFilterProduct);
 	const headerProductWithFunction = {
 		...headerProduct,
 		functionToCall: handleFilterProduct,
+		doWeDisplayHideNotice: displayFilterProduct,
 	};
 
 	const doWeGetNewPage = useOnScreen(divRef);
@@ -76,8 +77,9 @@ const Cassiopeia: React.FC<Props> = ({
 						/>
 					)}
 					{articleGroupOriginal.pending.productsBeingFiltered ||
-					articleGroupOriginal.pending.products ? (
-						<div className="cassiopeia_loader">
+					articleGroupOriginal.pending.products ||
+					!articleGroupOriginal.display ? (
+						<div className="cassiopeia_loader flex_row">
 							<CircularIndeterminate />
 						</div>
 					) : articleGroupOriginal.display ? (

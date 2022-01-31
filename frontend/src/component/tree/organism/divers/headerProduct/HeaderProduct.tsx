@@ -1,6 +1,6 @@
 import React from 'react';
 import getIcon from '../../../../factory/Icon';
-import { H2 } from '../../../atom';
+import { H2, Span } from '../../../atom';
 import { useStyles } from '../../../page/home/Home';
 import './style.css';
 import THeaderProduct from './type';
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const HeaderProduct: React.FC<Props> = ({
-	data: { h2, list, functionToCall },
+	data: { h2, list, doWeDisplayHideNotice, functionToCall },
 }) => {
 	const FilterIcon = getIcon('Filter');
 	const classes = useStyles();
@@ -25,8 +25,9 @@ const HeaderProduct: React.FC<Props> = ({
 							functionToCall();
 						}
 					}}
-					className={classes.iconNeutral}
+					className={`${classes.iconNeutral} header_product_icons flex_row_wrap_align_center`}
 				>
+					<Span data={doWeDisplayHideNotice ? 'Hide filter' : 'Show filter'} />
 					{FilterIcon}
 				</div>
 			</div>

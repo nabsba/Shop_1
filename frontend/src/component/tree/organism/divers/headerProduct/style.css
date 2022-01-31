@@ -4,12 +4,17 @@
 	width: 100%;
 	margin-top: 1rem;
 }
+
+.header_product_icons span {
+	margin-right:  var(--margin-minor);
+	height:max-content;
+}
 .sub_header_product_top svg {
 	font-size: 2rem;
 }
 .sub_header_product_bottom {
 	overflow: scroll;
-	margin-top: 0.5rem;
+	margin-top: var(--margin-minor-2);
 	margin-bottom: 1rem;
 	display: none;
 }
@@ -21,3 +26,4 @@
 	margin-left: 1rem;
 	margin-right: 1rem;
 }
+

@@ -7,6 +7,7 @@ const productsData: TProducts = {
 	headerProduct: {
 		h2: 'Men',
 		list: ['Classic', 'Running', 'Lifestyle', 'hiking', 'basketball'],
+		doWeDisplayHideNotice: true,
 	},
 	articleGroupOriginal: {
 		list: [],
