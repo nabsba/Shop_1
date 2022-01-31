@@ -24,7 +24,9 @@ ul {
 	padding: 0;
 	margin: 0;
 }
-
+svg:hover {
+cursor: pointer;
+}
 path {
 fill:inherit;
 }

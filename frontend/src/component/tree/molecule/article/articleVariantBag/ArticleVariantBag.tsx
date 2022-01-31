@@ -26,19 +26,21 @@ const ArticleVariantBag: React.FC<Props> = ({
 						<Span key={index} data={element} />
 					))}
 				</div>
-				<div className="sub_article_variant_bag_part_2_price_quantity flex_row">
-					{selectOriginal.map((element, index) => (
-						<div key={index}>
-							<Span data={element.label} />
-							<SelectOriginal data={element} />
-						</div>
-					))}
-				</div>
-				<div
-					className="sub_article_variant_bag_part_2_price_quantity flex_row"
-					onClick={() => functionToCall(Number(selectOriginal[0].id))}
-				>
-					<ButtonOriginal data="remove" />
+				<div className="sub_article_variant_bag_part_2_price_quantity_remove flex_column ">
+					<div className="flex_row">
+						{selectOriginal.map((element, index) => (
+							<div key={index}>
+								<Span data={element.label} />
+								<SelectOriginal data={element} />
+							</div>
+						))}
+					</div>
+					<div
+						className="sub_araticle_variant_bag_part_2_button_remove"
+						onClick={() => functionToCall(Number(selectOriginal[0].id))}
+					>
+						<ButtonOriginal data="remove" />
+					</div>
 				</div>
 			</div>
 		</div>

@@ -18,7 +18,12 @@
 .filter_product h3 {
 	text-transform: uppercase;
 }
-
+.sub_filter_product {
+	margin-top: var(--margin-minor-2);
+}
+.sub_filter_product:first-child {
+	margin-top:0;
+}
 .sub_filter_product_top {
 	width: 100%;
 }

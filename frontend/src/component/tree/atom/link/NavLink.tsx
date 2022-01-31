@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { TNavLink } from './type';
 import './navLink.css';
 import { useStyles } from '../../page/home/Home';
+import { Span } from '..';
 
 type TProps = {
 	data: TNavLink;
@@ -17,7 +18,9 @@ const NavLinkAsComponent: React.FC<TProps> = ({
 			{asComponent ? (
 				asComponent
 			) : (
-				<div className="nav_link_as_component"> {text}</div>
+				<div className="nav_link_as_component">
+					<Span data={text} />
+				</div>
 			)}
 		</NavLink>
 	);

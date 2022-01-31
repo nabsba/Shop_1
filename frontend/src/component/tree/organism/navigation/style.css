@@ -77,8 +77,8 @@
 .bag_and_number_circle svg {
 	height: var(--size-icon);
 }
-.sub_navigation_on_part_2_bottom_nav li {
-	display:flex;
+.sub_navigation_on_part_2_bottom_nav li div {
+height:max-content;
 }
 @media only screen and (min-width: 760px) {
 	.navigation_header_mobile,
