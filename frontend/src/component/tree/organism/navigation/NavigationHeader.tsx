@@ -69,7 +69,7 @@ const NavigationHeader: React.FC<Props> = ({
 				<div className="sub_navigation_on_part_2_bottom flex_row">
 					<ul className="sub_navigation_on_part_2_bottom_nav flex_column_evenly ">
 						{menusBottom.map((menu) => (
-							<li key={menu.text}>
+							<li key={menu.text} className="flex_row_wrap_align_center">
 								<div className={classes.iconNeutral}>{getIcon(menu.icon)}</div>
 								<NavLinkAsComponent
 									data={{ text: menu.text, href: menu.href }}
