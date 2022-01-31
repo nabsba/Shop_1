@@ -40,7 +40,10 @@ fill:inherit;
 	display: flex;
 	flex-direction: column;
 }
-
+.flex_row_justify_end {
+	display:flex;
+	justify-content: flex-end;
+}
 .flex_row_wrap {
 	display: flex;
 	flex-wrap: wrap;

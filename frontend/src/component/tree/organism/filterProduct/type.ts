@@ -1,7 +1,6 @@
 type TFilterProduct = {
-	data: {
-		filteringCategories: any[];
-	};
+	filteringCategories: any[];
+	functionToCall?: () => void;
 };
 
 export default TFilterProduct;

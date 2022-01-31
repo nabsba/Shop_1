@@ -18,12 +18,14 @@
 .filter_product h3 {
 	text-transform: uppercase;
 }
+<<<<<<< Updated upstream
 .sub_filter_product {
 	margin-top: var(--margin-minor-2);
 }
 .sub_filter_product:first-child {
 	margin-top:0;
 }
+=======
 
 .filter_product_close {
 	margin-bottom: 2rem;
@@ -33,6 +35,7 @@
 	font-size: var(--size-icon);
 }
 
+>>>>>>> Stashed changes
 .sub_filter_product_top {
 	width: 100%;
 }

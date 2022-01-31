@@ -40,6 +40,7 @@ const Cassiopeia: React.FC<Props> = ({
 		...headerProduct,
 		functionToCall: handleFilterProduct,
 	};
+
 	const doWeGetNewPage = useOnScreen(divRef);
 	useEffect(() => {
 		dispatch(updateDoWeGetMoreProducts(doWeGetNewPage));
@@ -67,7 +68,12 @@ const Cassiopeia: React.FC<Props> = ({
 					}`}
 				>
 					{!articleGroupOriginal.pending.products && (
-						<FilterProduct data={{ filteringCategories }} />
+						<FilterProduct
+							data={{
+								filteringCategories,
+								functionToCall: handleFilterProduct,
+							}}
+						/>
 					)}
 					{articleGroupOriginal.pending.productsBeingFiltered ||
 					articleGroupOriginal.pending.products ? (

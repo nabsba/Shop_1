@@ -16,7 +16,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TReducers } from '../../../../service';
 import { useStyles } from '../../page/home/Home';
 
-type Props = TFilterProduct;
+type Props = {
+	data: TFilterProduct;
+};
 
 type TElementFilter = {
 	title: string;
@@ -26,7 +28,9 @@ type TElementFilter = {
 type TSelectionFilter = {
 	[key: string]: any[];
 };
-const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
+const FilterProduct: React.FC<Props> = ({
+	data: { filteringCategories, functionToCall },
+}) => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const {
@@ -85,9 +89,19 @@ const FilterProduct: React.FC<Props> = ({ data: { filteringCategories } }) => {
 		);
 		setSelection(object);
 	};
-
+	const IconCross = getIcon('Close');
 	return (
 		<div className={`filter_product filter_product_nav_mobile ${classes.root}`}>
+			<div
+				className={`filter_product_close ${classes.iconNeutral} flex_row_justify_end`}
+				onClick={() => {
+					if (functionToCall) {
+						functionToCall();
+					}
+				}}
+			>
+				{IconCross}
+			</div>
 			{filteringCategories.map((preference: TElementFilter) => {
 				return (
 					<div
