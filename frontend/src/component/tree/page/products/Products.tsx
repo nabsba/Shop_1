@@ -74,7 +74,7 @@ const Products: React.FC = () => {
 		} else {
 			setArticleGroupOriginal([]);
 		}
-	}, [articleGroupOriginal, products]);
+	}, [articleGroupOriginal, gender, products, type]);
 
 	useEffect(() => {
 		if (totalRows && doWeGetMoreProducts && products && products.length > 0) {
