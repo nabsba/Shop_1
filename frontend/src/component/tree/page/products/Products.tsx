@@ -8,6 +8,7 @@ import {
 	TReducers,
 } from '../../../../service';
 import { TProductDetails } from '../../../../service/pages/Common/type';
+import { updateDisplayFilteringComponent } from '../../../../service/pages/products/dataManagment/reducer';
 import { Cassiopeia } from '../../template';
 import './style.css';
 
@@ -16,7 +17,6 @@ const Products: React.FC = () => {
 	const { type, gender } = useParams();
 	const [articleGroupOriginalAfterMatchingColor, setArticleGroupOriginal] =
 		useState<any[]>([]);
-
 	const {
 		dataProducts: {
 			products,
@@ -28,6 +28,7 @@ const Products: React.FC = () => {
 				headerProduct,
 				articleGroupOriginal,
 				filteringCategories,
+				infosTemplate,
 			},
 			productsFiltered,
 		},
@@ -75,7 +76,6 @@ const Products: React.FC = () => {
 			setArticleGroupOriginal([]);
 		}
 	}, [articleGroupOriginal, gender, products, type]);
-
 	useEffect(() => {
 		if (totalRows && doWeGetMoreProducts && products && products.length > 0) {
 			const length = products.length;
@@ -99,25 +99,32 @@ const Products: React.FC = () => {
 		totalRows,
 		type,
 	]);
-
 	const cassiopeiraData = {
 		navigationHeader,
 		footer,
 		headerProduct,
 		articleGroupOriginal: {
 			list: articleGroupOriginal.list,
-			display: articleGroupOriginal.display,
-			pending: {
-				productsBeingFiltered: productsFiltered.pending,
-			},
+			pending: productsFiltered.pending,
+			isServerFaulty: productsFiltered.serverError,
+			infosTemplate: articleGroupOriginal.infosTemplate,
 		},
 		filteringCategories,
+		infosTemplate,
+	};
+	cassiopeiraData.headerProduct = {
+		...cassiopeiraData.headerProduct,
+		functionToCall: () =>
+			dispatch(
+				updateDisplayFilteringComponent(
+					!productsFiltered.doWedisplayFilteringComponent,
+				),
+			),
+		doWedisplayFilteringComponent:
+			productsFiltered.doWedisplayFilteringComponent,
 	};
 	cassiopeiraData.articleGroupOriginal.list =
 		articleGroupOriginalAfterMatchingColor;
-	cassiopeiraData.articleGroupOriginal.display =
-		articleGroupOriginalAfterMatchingColor &&
-		articleGroupOriginalAfterMatchingColor.length > 0;
 
 	return (
 		<div id="products">

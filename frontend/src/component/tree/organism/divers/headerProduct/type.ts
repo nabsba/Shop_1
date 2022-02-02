@@ -1,7 +1,7 @@
 type THeaderProduct = {
 	h2: string;
 	list: string[];
-	doWeDisplayHideNotice: boolean;
+	doWedisplayFilteringComponent: boolean;
 	functionToCall?: () => void;
 };
 export default THeaderProduct;

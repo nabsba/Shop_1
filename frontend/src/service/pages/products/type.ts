@@ -1,17 +1,16 @@
+import TArticleGroupOriginal from '../../../component/tree/organism/articleGroup/articleGroupOriginal/type';
 import THeaderProduct from '../../../component/tree/organism/divers/headerProduct/type';
 import TFooter from '../../../component/tree/organism/footer/type';
 import TNavigationHeader from '../../../component/tree/organism/navigation/type';
-import { TProductDetails } from '../Common/type';
+import { TInfosTemplate, TProductDetails } from '../Common/type';
 
 type TProducts = {
 	navigationHeader: TNavigationHeader;
 	footer: TFooter;
 	headerProduct: THeaderProduct;
-	articleGroupOriginal: {
-		list: any[];
-		display: boolean;
-	};
+	articleGroupOriginal: TArticleGroupOriginal;
 	filteringCategories: any;
+	infosTemplate: TInfosTemplate;
 };
 
 type TProductsReducer = {
@@ -25,6 +24,7 @@ type TProductsReducer = {
 		doesClientFilterNewProducts: boolean;
 		type: string;
 		gender: string;
+		doWedisplayFilteringComponent: boolean;
 	};
 	products: TProductDetails[];
 	totalRows: number;

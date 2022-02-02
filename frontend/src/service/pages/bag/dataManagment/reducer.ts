@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
-import { logMessage } from '../../../../Common/function';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
+import { logMessage } from '../../../Common/funtions';
+
 import {
 	createDBIndexDB,
 	removeDataFromIndexDB,

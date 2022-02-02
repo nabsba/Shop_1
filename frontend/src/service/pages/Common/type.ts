@@ -32,6 +32,10 @@ type TProductDetails = {
 	sizeWished: number;
 };
 
+type TInfosTemplate = {
+	type: string;
+	errorCode: number;
+};
 // type TPagesInformationsReducer = {
 // 	historyTree: { path: string; title: string }[];
 // };
@@ -41,5 +45,6 @@ export type {
 	TProduct,
 	TProductDetails,
 	TSize,
+	TInfosTemplate,
 	// TPagesInformationsReducer,
 };

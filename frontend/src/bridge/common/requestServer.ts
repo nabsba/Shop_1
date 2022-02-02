@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../Common/constant';
-import { logMessage } from '../../Common/function';
-import { Result } from '../../Common/type/type';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../service/Common/constant';
+import { logMessage } from '../../service/Common/funtions';
+import { Result } from '../../service/Common/type';
 
 const resultTemplate: Result = {
 	state: false,

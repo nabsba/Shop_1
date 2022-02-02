@@ -1,3 +1,4 @@
+import { TInfosTemplate } from '../../../../service/pages/Common/type';
 import TArticleGroupOriginal from '../../organism/articleGroup/articleGroupOriginal/type';
 import THeaderProduct from '../../organism/divers/headerProduct/type';
 import TFilterProduct from '../../organism/filterProduct/type';
@@ -10,5 +11,6 @@ type TCassiopeia = {
 	headerProduct: THeaderProduct;
 	articleGroupOriginal: TArticleGroupOriginal;
 	filteringCategories: TFilterProduct[];
+	infosTemplate: TInfosTemplate;
 };
 export default TCassiopeia;

@@ -1,10 +1,10 @@
+import { TInfosTemplate } from '../../../../../service/pages/Common/type';
 import TArticleOriginal from '../../../molecule/article/articleOriginal/type';
 
 type TArticleGroupOriginal = {
 	list: TArticleOriginal[];
-	display: boolean;
-	pending: {
-		[key: string]: boolean;
-	};
+	pending: boolean;
+	infosTemplate: TInfosTemplate;
+	isServerFaulty?: boolean;
 };
 export default TArticleGroupOriginal;

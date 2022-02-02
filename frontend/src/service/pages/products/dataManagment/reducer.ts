@@ -4,19 +4,16 @@ import {
 	serverPost,
 } from '../../../../bridge/common/requestServer';
 import URL_ADDRESSES from '../../../../bridge/url';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
-import { logMessage } from '../../../../Common/function';
-import { Result } from '../../../../Common/type/type';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
 import { SQL_OBJECT } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import _ from 'lodash';
 import productsData from '../data';
 import { REDUCER } from '../constant';
 import { TProductsReducer } from '../type';
+import { Result } from '../../../Common/type';
+import { logMessage } from '../../../Common/funtions';
 
-// Those which are imported from home are those who the admin cannot update from his pannel.
-
-//todo: refactor state {productsByTypeAndGender: {...}, productsDataPage: {..}, productsFilterStatus: {..}}
 const initialState: TProductsReducer = {
 	productsDataPage: productsData,
 	productsFiltered: {
@@ -26,6 +23,7 @@ const initialState: TProductsReducer = {
 		doesClientFilterNewProducts: false,
 		type: '',
 		gender: '',
+		doWedisplayFilteringComponent: false,
 	},
 	products: [],
 	totalRows: 0,
@@ -77,6 +75,9 @@ const data = createSlice({
 		updateDoWeGetMoreProducts: (state, action: { payload: boolean }) => {
 			state.doWeGetMoreProducts = action.payload;
 		},
+		updateDisplayFilteringComponent: (state, action: { payload: boolean }) => {
+			state.productsFiltered.doWedisplayFilteringComponent = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(
@@ -90,10 +91,10 @@ const data = createSlice({
 					state.products = action.payload.data.isFetchDueToScroll
 						? [...state.products, ...action.payload.data[0]]
 						: action.payload.data[0];
-					state.products = _.uniqBy(state.products, 'product_id');
 					state.totalRows = action.payload.data[1][0]['FOUND_ROWS()'];
 					state.productsFiltered.type = action.payload.data.type;
 					state.productsFiltered.gender = action.payload.data.gender;
+					state.doWeGetMoreProducts = false;
 				}
 			},
 		);
@@ -108,6 +109,15 @@ const data = createSlice({
 });
 
 const dataProducts = data.reducer;
-const { updateFilteringCategories, updateDoWeGetMoreProducts } = data.actions;
+const {
+	updateFilteringCategories,
+	updateDoWeGetMoreProducts,
+	updateDisplayFilteringComponent,
+} = data.actions;
 export default dataProducts;
-export { dataBackup, updateFilteringCategories, updateDoWeGetMoreProducts };
+export {
+	dataBackup,
+	updateFilteringCategories,
+	updateDoWeGetMoreProducts,
+	updateDisplayFilteringComponent,
+};

@@ -1,5 +1,5 @@
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
-import { logMessage } from '../../../../Common/function';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
+import { logMessage } from '../../../Common/funtions';
 import { addDataToIndexDB, createDBIndexDB } from '../commun';
 
 const addDashboardUserToIDB = async (

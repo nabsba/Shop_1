@@ -1,7 +1,7 @@
 import { deleteDB, openDB } from 'idb';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
-import { logMessage } from '../../../Common/function';
-import { TAnyValues } from '../../../Common/type/type';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../Common/constant';
+import { logMessage } from '../../Common/funtions';
+import { TAnyValues } from '../../Common/type';
 
 const createDBIndexDB = (
 	database: string,

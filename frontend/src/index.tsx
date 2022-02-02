@@ -3,10 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
-import { LOG_MESSAGE } from './Common/constant';
-import { logMessage } from './Common/function';
+import { LOG_MESSAGE } from './service/Common/constant';
+
 import './component/Common/css/share.css';
 import { DATA_TYPE_SERVICE_WORKER, reducers } from './service';
+import { logMessage } from './service/Common/funtions';
 
 if (
 	'serviceWorker' in navigator &&

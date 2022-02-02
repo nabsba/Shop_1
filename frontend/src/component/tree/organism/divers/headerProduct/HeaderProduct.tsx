@@ -10,7 +10,7 @@ type Props = {
 };
 
 const HeaderProduct: React.FC<Props> = ({
-	data: { h2, list, doWeDisplayHideNotice, functionToCall },
+	data: { h2, list, doWedisplayFilteringComponent, functionToCall },
 }) => {
 	const FilterIcon = getIcon('Filter');
 	const classes = useStyles();
@@ -27,7 +27,9 @@ const HeaderProduct: React.FC<Props> = ({
 					}}
 					className={`${classes.iconNeutral} header_product_icons flex_row_wrap_align_center`}
 				>
-					<Span data={doWeDisplayHideNotice ? 'Hide filter' : 'Show filter'} />
+					<Span
+						data={doWedisplayFilteringComponent ? 'Hide filter' : 'Show filter'}
+					/>
 					{FilterIcon}
 				</div>
 			</div>

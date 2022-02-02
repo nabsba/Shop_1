@@ -42,7 +42,7 @@ const FilterProduct: React.FC<Props> = ({
 		gender: false,
 		category: false,
 	});
-	const [selection, setSelection] = useImmer<TSelectionFilter>({});
+
 	const IconArrow = getIcon('Arrow');
 	const handleAppearance = async (categoryName: string) => {
 		const object = {
@@ -52,19 +52,19 @@ const FilterProduct: React.FC<Props> = ({
 		setAppareance(object);
 	};
 	const handleChange = (categoryName: string, preference: string | number) => {
-		const object: TSelectionFilter = _.cloneDeep(selection);
+		const object: TSelectionFilter = _.cloneDeep(
+			productsFiltered.filteringCategories,
+		);
 		// We init the category name
 		if (!object[`${categoryName}`]) {
 			object[`${categoryName}`] = [];
 		}
-
 		const isElementSelectedAlreadyInTheList = _.findIndex(
 			object[`${categoryName}`],
 			function (o) {
 				return o === preference;
 			},
 		);
-
 		// We decide if we remove or add the preference selected
 		if (isElementSelectedAlreadyInTheList > -1) {
 			object[`${categoryName}`].splice(isElementSelectedAlreadyInTheList, 1);
@@ -87,7 +87,6 @@ const FilterProduct: React.FC<Props> = ({
 				isFetchDueToScroll: false,
 			}),
 		);
-		setSelection(object);
 	};
 	const IconCross = getIcon('Close');
 	return (

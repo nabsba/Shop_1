@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
-import { CircularIndeterminate, H3 } from '../../atom';
 import {
 	ArticleGroupOriginal,
 	FilterProduct,
@@ -11,10 +10,6 @@ import {
 import './style.css';
 import TCassiopeia from './type';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ERROR_CODE } from '../../../../Common/constant';
-import useOnScreen from '../../../../service/Common/hooks/isVisible';
-import { useDispatch } from 'react-redux';
-import { updateDoWeGetMoreProducts } from '../../../../service/pages/products/dataManagment/reducer';
 import { useStyles } from '../../page/home/Home';
 type Props = {
 	data: TCassiopeia;
@@ -27,71 +22,44 @@ const Cassiopeia: React.FC<Props> = ({
 		headerProduct,
 		articleGroupOriginal,
 		filteringCategories,
+		infosTemplate,
 	},
 }) => {
-	const divRef = React.useRef<HTMLDivElement>(null);
-	const dispatch = useDispatch();
 	const classes = useStyles();
-
-	const [displayFilterProduct, setDisplayFilterProduct] = useState(false);
-	const handleFilterProduct = () =>
-		setDisplayFilterProduct(!displayFilterProduct);
-	const headerProductWithFunction = {
-		...headerProduct,
-		functionToCall: handleFilterProduct,
-		doWeDisplayHideNotice: displayFilterProduct,
-	};
-
-	const doWeGetNewPage = useOnScreen(divRef);
-	useEffect(() => {
-		dispatch(updateDoWeGetMoreProducts(doWeGetNewPage));
-	}, [dispatch, doWeGetNewPage]);
-
 	return (
 		<div className={`cassiopeia ${classes.root}`}>
 			<section className="cassiopeia_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>
 			<section className="cassiopeia_section_2">
-				<HeaderProduct data={headerProductWithFunction} />
+				<HeaderProduct data={headerProduct} />
 			</section>
 			<ErrorBoundary
 				fallbackRender={() => (
 					<ErrorBoundaryFallback
-						type={'products'}
-						code={ERROR_CODE.FETCH_PRODUCTS}
+						type={infosTemplate.type}
+						code={infosTemplate.errorCode}
 					/>
 				)}
 			>
 				<section
 					className={`cassiopeia_section_3 flex_row ${
-						displayFilterProduct ? '' : 'cassiopeia_section_3_effect'
+						headerProduct.doWedisplayFilteringComponent
+							? ''
+							: 'cassiopeia_section_3_effect'
 					}`}
 				>
-					{!articleGroupOriginal.pending.products && (
+					{articleGroupOriginal.list && articleGroupOriginal.list.length > 0 && (
 						<FilterProduct
 							data={{
 								filteringCategories,
-								functionToCall: handleFilterProduct,
 							}}
 						/>
 					)}
-					{articleGroupOriginal.pending.productsBeingFiltered ||
-					articleGroupOriginal.pending.products ||
-					!articleGroupOriginal.display ? (
-						<div className="cassiopeia_loader flex_row">
-							<CircularIndeterminate />
-						</div>
-					) : articleGroupOriginal.display ? (
-						<ArticleGroupOriginal data={articleGroupOriginal} />
-					) : (
-						<div className="products_empty">
-							<H3 title={'No products'} />
-						</div>
-					)}
+					<ArticleGroupOriginal data={articleGroupOriginal} />
 				</section>
 			</ErrorBoundary>
-			<section className="cassiopeia_section_4" ref={divRef}>
+			<section className="cassiopeia_section_4">
 				<Footer data={footer} />
 			</section>
 		</div>

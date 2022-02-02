@@ -1,0 +1,16 @@
+const ERROR_LOG_ASYNC_MESSAGE = (path: string, method: string): string =>
+	`*** file: ${path}, method: ${method}, error: `;
+
+const LOG_MESSAGE = {
+	SERVICE_WORKER_SUCCESS: 'SERVICE WORKER SUCCESS REGISTRATION',
+	SERVICE_WORKER_FAILED: 'SERVICE WORKER FAILED REGISTRATION',
+};
+
+const ADMINISTRATION = {
+	EMAIL: 'admin@example.com',
+};
+const ERROR_CODE = {
+	FETCH_PRODUCTS: 100,
+	SLIDER: 200,
+};
+export { ERROR_LOG_ASYNC_MESSAGE, LOG_MESSAGE, ADMINISTRATION, ERROR_CODE };
