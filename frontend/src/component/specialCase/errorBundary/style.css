@@ -1,0 +1,21 @@
+
+@import'../../Common/css/variable.css';
+
+#error-bundary {
+	grid-column: 1/5;
+		margin-left: var(--margin-section-side);
+	margin-right: var(--margin-section-side);
+}
+#error-bundary h3 {
+	margin-left: 0rem !important;
+}
+/* #error-bundary p {
+	margin-top: 
+} */
+@media only screen and (min-width: 770px) { 
+	#error-bundary {
+	grid-column: 1/13;
+			margin-left:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
+	  margin-right:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
+}
+}
