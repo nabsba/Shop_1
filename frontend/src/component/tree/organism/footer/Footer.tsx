@@ -14,8 +14,8 @@ const Footer: React.FC<Props> = ({
 }) => {
 	const classes = useStyles();
 	return (
-		<div id="footer" className={`flex_column ${classes.root}`}>
-			<div className="footer">
+		<div id="footer" className={`${classes.root}`}>
+			<div className="footer flex_column">
 				<div className="sub_footer_part_one flex_row_center">
 					<ul>
 						{menusFooter.map((menu, index) => (
