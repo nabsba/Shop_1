@@ -94,7 +94,9 @@ const FilterProduct: React.FC<Props> = ({
 			<div
 				className={`filter_product_close ${classes.iconNeutral} flex_row_justify_end`}
 				onClick={() => {
+					console.log(functionToCall, 'call');
 					if (functionToCall) {
+						console.log('fired');
 						functionToCall();
 					}
 				}}

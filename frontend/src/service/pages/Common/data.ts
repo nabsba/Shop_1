@@ -65,7 +65,6 @@ const footer = {
 const filteringCategories = [
 	{
 		title: 'category',
-
 		list: ['classics', 'running', 'lifestyle', 'basketball', 'football'],
 	},
 	{

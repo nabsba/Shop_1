@@ -21,7 +21,7 @@ const Cassiopeia: React.FC<Props> = ({
 		footer,
 		headerProduct,
 		articleGroupOriginal,
-		filteringCategories,
+		filterProduct,
 		infosTemplate,
 	},
 }) => {
@@ -49,13 +49,10 @@ const Cassiopeia: React.FC<Props> = ({
 							: 'cassiopeia_section_3_effect'
 					}`}
 				>
-					{articleGroupOriginal.list && articleGroupOriginal.list.length > 0 && (
-						<FilterProduct
-							data={{
-								filteringCategories,
-							}}
-						/>
-					)}
+					{articleGroupOriginal.list &&
+						articleGroupOriginal.list.length > 0 && (
+							<FilterProduct data={filterProduct} />
+						)}
 					<ArticleGroupOriginal data={articleGroupOriginal} />
 				</section>
 			</ErrorBoundary>

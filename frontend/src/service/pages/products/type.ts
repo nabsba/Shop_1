@@ -1,5 +1,6 @@
 import TArticleGroupOriginal from '../../../component/tree/organism/articleGroup/articleGroupOriginal/type';
 import THeaderProduct from '../../../component/tree/organism/divers/headerProduct/type';
+import TFilterProduct from '../../../component/tree/organism/filterProduct/type';
 import TFooter from '../../../component/tree/organism/footer/type';
 import TNavigationHeader from '../../../component/tree/organism/navigation/type';
 import { TInfosTemplate, TProductDetails } from '../Common/type';
@@ -9,7 +10,7 @@ type TProducts = {
 	footer: TFooter;
 	headerProduct: THeaderProduct;
 	articleGroupOriginal: TArticleGroupOriginal;
-	filteringCategories: any;
+	filterProduct: TFilterProduct;
 	infosTemplate: TInfosTemplate;
 };
 

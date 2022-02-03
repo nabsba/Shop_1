@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -7,6 +8,7 @@ import {
 	fetchProductsFiltered,
 	TReducers,
 } from '../../../../service';
+import { filteringCategories } from '../../../../service/pages/Common/data';
 import { TProductDetails } from '../../../../service/pages/Common/type';
 import { updateDisplayFilteringComponent } from '../../../../service/pages/products/dataManagment/reducer';
 import { Cassiopeia } from '../../template';
@@ -27,7 +29,7 @@ const Products: React.FC = () => {
 				footer,
 				headerProduct,
 				articleGroupOriginal,
-				filteringCategories,
+				filterProduct,
 				infosTemplate,
 			},
 			productsFiltered,
@@ -109,7 +111,7 @@ const Products: React.FC = () => {
 			isServerFaulty: productsFiltered.serverError,
 			infosTemplate: articleGroupOriginal.infosTemplate,
 		},
-		filteringCategories,
+		filterProduct: _.cloneDeep(filterProduct),
 		infosTemplate,
 	};
 	cassiopeiraData.headerProduct = {
@@ -125,7 +127,12 @@ const Products: React.FC = () => {
 	};
 	cassiopeiraData.articleGroupOriginal.list =
 		articleGroupOriginalAfterMatchingColor;
-
+	cassiopeiraData.filterProduct.functionToCall = () =>
+		dispatch(
+			updateDisplayFilteringComponent(
+				!productsFiltered.doWedisplayFilteringComponent,
+			),
+		);
 	return (
 		<div id="products">
 			<Cassiopeia data={cassiopeiraData} />

@@ -18,7 +18,9 @@ const productsData: TProducts = {
 			errorCode: ERROR_CODE.FETCH_PRODUCTS,
 		},
 	},
-	filteringCategories,
+	filterProduct: {
+		filteringCategories,
+	},
 	infosTemplate: {
 		type: 'products',
 		errorCode: ERROR_CODE.FETCH_PRODUCTS,

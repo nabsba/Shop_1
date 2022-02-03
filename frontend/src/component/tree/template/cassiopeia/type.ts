@@ -10,7 +10,7 @@ type TCassiopeia = {
 	footer: TFooter;
 	headerProduct: THeaderProduct;
 	articleGroupOriginal: TArticleGroupOriginal;
-	filteringCategories: TFilterProduct[];
+	filterProduct: TFilterProduct;
 	infosTemplate: TInfosTemplate;
 };
 export default TCassiopeia;
