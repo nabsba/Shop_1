@@ -78,12 +78,12 @@ const SQL_OBJECT:
 		// 	SELECT FOUND_ROWS();`;
 
 		const sql = `SELECT SQL_CALC_FOUND_ROWS product.product_id, product.name, product_has_color.color_id, ${
-			isSizeRequired ? 'size.size, produit_color_has_size.size_id,' : ''
+			isSizeRequired ? 'size.size, product_color_has_size.size_id,' : ''
 		} style.category, product.type, product.price, style.description, style.gender, product_has_color.product_has_color_id, color.colorName FROM product 
 			 INNER JOIN product_has_color ON product.product_id=product_has_color.product_id AND product.type="${type}"
 			 INNER JOIN style ON product.product_id=style.product_id AND style.gender="${gender}" ${
 			isSizeRequired
-				? 'INNER JOIN product_color_has_size  on product_has_color.color_id=produit_color_has_size.product_has_color_id INNER JOIN size on produit_color_has_size.size_id=size.size_id'
+				? 'INNER JOIN product_color_has_size  on product_has_color.color_id=product_color_has_size.product_has_color_id INNER JOIN size on product_color_has_size.size_id=size.size_id'
 				: ''
 		}
 			 INNER JOIN color on product_has_color.color_id=color.color_id
