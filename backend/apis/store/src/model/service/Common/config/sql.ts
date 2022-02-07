@@ -5,13 +5,15 @@ import mysql from 'mysql2';
 import { DATA_BASE } from '../../../repos/constant';
 
 const getConfig = (type: string, allowMultipleStatements: boolean | undefined) => {
-  const storeProprety = 'LOCAL';
+  const whichHostForDataBase = process.env.HOST_FOR_DATA_BASE
+    ? process.env.HOST_FOR_DATA_BASE
+    : 'LOCAL';
   const config: { [key: string]: {} } = {
     store: {
-      host: DATA_BASE.STORE[`${storeProprety}`].HOST,
-      user: DATA_BASE.STORE[`${storeProprety}`].USER,
-      password: DATA_BASE.STORE[`${storeProprety}`].PASSWORD,
-      database: DATA_BASE.STORE[`${storeProprety}`].DATABASE,
+      host: DATA_BASE.STORE[`${whichHostForDataBase}`].HOST,
+      user: DATA_BASE.STORE[`${whichHostForDataBase}`].USER,
+      password: DATA_BASE.STORE[`${whichHostForDataBase}`].PASSWORD,
+      database: DATA_BASE.STORE[`${whichHostForDataBase}`].DATABASE,
       waitForConnections: true,
       connectionLimit: 50,
       queueLimit: 0,
