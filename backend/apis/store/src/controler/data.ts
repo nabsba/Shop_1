@@ -1,6 +1,6 @@
 import Router from 'express';
 import { Request, Response } from 'express';
-import { Result } from '../model/Common';
+import { Result } from '../model/service/Common';
 import { handleGetData, handlePostData } from '../model/service';
 
 const router = Router();

@@ -1,5 +1,5 @@
 import { generateObjectAsOneStringKeyValue, stringFromKeysObject, TObjectSql } from '../..';
-import { getTableDefinition } from '../../../repos';
+import { getTableDefinition } from '../../../../repos';
 
 // const products = ['venture', 'waffle', 'zion', 'verona', 'exclusion', 'zoomx', 'nikeairtuned'];
 // const sql = (name: string) =>

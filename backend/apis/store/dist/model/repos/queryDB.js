@@ -10,9 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.queryDataBase = exports.resultTemplate = void 0;
-const sql_1 = require("../Common/config/sql");
-const constant_1 = require("../../Common/constant");
-const function_1 = require("../../Common/function");
+const sql_1 = require("../service/Common/config/sql");
+const function_1 = require("../service/Common/logic/functions/function");
 exports.resultTemplate = {
     state: false,
     data: null,
@@ -38,7 +37,7 @@ const queryDataBase = (sql, allowMultipleStatements, Type) => __awaiter(void 0, 
         result.serverError = false;
     }
     catch (error) {
-        (0, function_1.logMessage)(`${(0, constant_1.ERROR_LOG_ASYNC_MESSAGE)('repos/queryDB', 'queryDataBase')},
+        (0, function_1.logMessage)(`${ERROR_LOG_ASYNC_MESSAGE('repos/queryDB', 'queryDataBase')},
 			${error}`);
         result.state = false;
         result.serverError = true;
@@ -50,3 +49,6 @@ const queryDataBase = (sql, allowMultipleStatements, Type) => __awaiter(void 0, 
     }
 });
 exports.queryDataBase = queryDataBase;
+function ERROR_LOG_ASYNC_MESSAGE(arg0, arg1) {
+    throw new Error('Function not implemented.');
+}

@@ -3,7 +3,7 @@ import redis from 'redis';
 import connectRedis from 'connect-redis';
 import session from 'express-session';
 import { LOG_MESSAGE } from '../constant';
-import { logMessage } from '../../../Common/function';
+import { logMessage } from '../logic/functions/function';
 //Terminal: redis-cli/CONFIG SET requirepass yourpassword
 const redisStore = connectRedis(session);
 const redisClient = redis.createClient({

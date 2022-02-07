@@ -14,8 +14,8 @@ exports.DATA_BASE = {
             USER: process.env.DB_USER_STORE_REMOTE,
             PASSWORD: process.env.PASSWORD_STORE_REMOTE,
             DATABASE: process.env.DATA_BASE_NAME_STORE_REMOTE,
-        }
-    }
+        },
+    },
 };
 exports.SQL_SELECT = {
     INFORMATION_DATA_BASE_PART_ONE: {
@@ -24,7 +24,7 @@ exports.SQL_SELECT = {
         object: ['color_id', 'colorName'],
         condition: {
             key: 'active',
-            value: 1
+            value: 1,
         },
     },
     INFORMATION_DATA_BASE_PART_TWO: {
@@ -33,7 +33,7 @@ exports.SQL_SELECT = {
         object: ['size_id', 'size'],
         condition: {
             key: 'active',
-            value: 1
+            value: 1,
         },
     },
 };

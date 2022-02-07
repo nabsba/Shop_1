@@ -2,7 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 //  yarn add mysql2 --save
 import mysql from 'mysql2';
-import { DATA_BASE } from '../../repos/constant';
+import { DATA_BASE } from '../../../repos/constant';
 
 const getConfig = (type: string, allowMultipleStatements: boolean | undefined) => {
   const storeProprety = 'LOCAL';

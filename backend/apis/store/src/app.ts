@@ -10,8 +10,8 @@ import { createServer } from 'http';
 import https from 'https';
 import fs from 'fs';
 import { data, fileManager } from './controler';
-import { logMessage } from './Common/function';
-import { LOG_MESSAGE } from './Common/constant';
+import { LOG_MESSAGE } from './model/service/Common/constant';
+import { logMessage } from './model/service/Common/logic/functions/function';
 // yarn add socket.io --save
 
 //Config

@@ -2,10 +2,10 @@ import path from 'path';
 import { promises as fsAsync } from 'fs';
 import fs from 'fs';
 import { promises as fsPromise } from 'fs';
-import { resultTemplate } from '../../../repos/queryDB';
+import { resultTemplate } from '../../../../repos/queryDB';
 import { Result, TFolderPath } from '../..';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
-import { logMessage } from '../../../../Common/function';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../constant';
+import { logMessage } from '../functions/function';
 
 const paths: { [key: string]: string } = {
   ['data.json']: path.join(__dirname, '../../../../../../upload/data/adminDashboard/data.json'),

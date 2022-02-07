@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.logMessage = void 0;
-var logMessage = function (message) {
+const logMessage = (message) => {
     if (true)
         console.log(message);
 };

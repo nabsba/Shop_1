@@ -13,14 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handlePostData = exports.handleGetData = void 0;
-const Common_1 = require("../../../Common");
+const Common_1 = require("../../Common");
 const repos_1 = require("../../../repos");
-const sql_1 = require("../../../Common/tools/database/sql");
+const sql_1 = require("../../Common/logic/database/sql");
 const constant_1 = require("../constant");
-const constant_2 = require("../../../../Common/constant");
-const function_1 = require("../../../../Common/function");
 const path_1 = __importDefault(require("path"));
 const lodash_1 = __importDefault(require("lodash"));
+const constant_2 = require("../../Common/constant");
+const function_1 = require("../../Common/logic/functions/function");
 const filterObject = (object, type, mode) => {
     if (mode === 'select' || mode === 'pagination') {
         switch (type) {

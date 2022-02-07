@@ -1,12 +1,12 @@
 import { mysql, getConfig } from './config/sql';
-import { generatorSQL } from './tools/database/sql';
+import { generatorSQL } from './logic/database/sql';
 import {
   deletePropretyFromObject,
   generateObjectAsOneStringKeyValue,
   stringFromKeysObject,
-} from './tools/function/object';
+} from './logic/functions/object';
 
-import { Result, SQLParameter, TFolderPath, TObjectSql } from './type/type';
+import { Result, SQLParameter, TFolderPath, TObjectSql } from './type';
 
 export {
   deletePropretyFromObject,

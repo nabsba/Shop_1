@@ -1,13 +1,13 @@
-import { deletePropretyFromObject, generatorSQL, Result, TObjectSql } from '../../../Common';
+import { deletePropretyFromObject, generatorSQL, Result, TObjectSql } from '../../Common';
 import { getTableDefinition, queryDataBase, resultTemplate } from '../../../repos';
 import { SQL_SELECT } from '../../../repos/constant';
-import { generatorSQLSpecialCase } from '../../../Common/tools/database/sql';
+import { generatorSQLSpecialCase } from '../../Common/logic/database/sql';
 import { DATA_TYPE } from '../constant';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../../Common/constant';
-import { logMessage } from '../../../../Common/function';
 import { type } from 'os';
 import path from 'path';
 import _ from 'lodash';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../Common/constant';
+import { logMessage } from '../../Common/logic/functions/function';
 
 const filterObject = (object: any, type: string, mode: string) => {
   if (mode === 'select' || mode === 'pagination') {

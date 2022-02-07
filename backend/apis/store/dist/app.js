@@ -31,8 +31,8 @@ const http_1 = require("http");
 const https_1 = __importDefault(require("https"));
 const fs_1 = __importDefault(require("fs"));
 const controler_1 = require("./controler");
-const function_1 = require("./Common/function");
-const constant_1 = require("./Common/constant");
+const constant_1 = require("./model/service/Common/constant");
+const function_1 = require("./model/service/Common/logic/functions/function");
 const app = (0, express_1.default)();
 const options = process.env.DEVELOPMENT && process.env.HTTPS_LOCAL === 'true'
     ? {
