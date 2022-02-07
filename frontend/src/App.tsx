@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './component/Common/css/share.css';
 import './component/Common/css/variable.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Bag, Home, Product, Products } from './component/tree/page';
 import { fetchFirstProducts } from './service/pages/home/dataManagment/reducer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -12,10 +12,13 @@ import {
 	getBagInformations,
 } from './service/pages/bag/dataManagment/reducer';
 import { PaletteMode } from '@mui/material';
+import { TReducers } from './service';
+import { TInfoDevice } from './service/device/type';
+import { updateInfoDevice } from './service/device/dataMangment/reducer';
 
 // mui.com/customization/dark-mode
 export const getDesignTokens = (
-	mode: PaletteMode,
+	mode: PaletteMode | string,
 ): Record<string, unknown> => ({
 	palette: {
 		mode,
@@ -62,19 +65,55 @@ export const getDesignTokens = (
 		].join(','),
 	},
 });
-const theme = createTheme(getDesignTokens('dark'));
 
 const App: React.FC = () => {
+	const {
+		infoDevice: { modeChosen },
+	} = useSelector((state: TReducers) => state);
 	const dispatch = useDispatch();
-
+	// // Check storage of the client.
+	// let storage: { used: number | undefined; available: number | undefined } = {
+	// 	used: 0,
+	// 	available: 0,
+	// };
+	// if ('storage' in navigator && 'estimate' in navigator.storage) {
+	// 	navigator.storage.estimate().then(({ usage, quota }) => {
+	// 		storage = { used: usage, available: quota };
+	// 	});
+	// }
+	// // Check if the browser support the hover.
+	// const isHoverSupported = !matchMedia('(hover: none)').matches;
+	// // Check if the browser support webworker (We will also need this information to fetchDashboard)
+	// const isBrowserSupportWebWorker = typeof Worker !== 'undefined';
+	// const isBrowserSupportServiceWorker = 'serviceWorker' in navigator;
+	// https://caniuse.com/?search=indexDB
+	const isIndexDbSupported = true;
 	useEffect(() => {
+		// Not needed
+		// const infoDevice: TInfoDevice = {
+		// 	isHover: isHoverSupported,
+		// 	isWebWorker: isBrowserSupportWebWorker,
+		// 	isServiceWorker: isBrowserSupportServiceWorker,
+		// 	isWebService: false,
+		// 	isIndexDB: isIndexDbSupported,
+		// 	storageClient: storage,
+		// 	modeChosen,
+		// };
+		// dispatch(updateInfoDevice(infoDevice));
 		dispatch(initDatabase({ type: INDEX_DB.ON_MESSAGE.INIT_BAG }));
 		dispatch(getBagInformations());
 		dispatch(fetchFirstProducts());
-	}, [dispatch]);
-
+	}, [
+		dispatch,
+		// isBrowserSupportServiceWorker,
+		// isBrowserSupportWebWorker,
+		// isHoverSupported,
+		isIndexDbSupported,
+		modeChosen,
+		// storage,
+	]);
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={createTheme(getDesignTokens(modeChosen))}>
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home />} />

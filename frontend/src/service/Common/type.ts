@@ -1,3 +1,4 @@
+import { TInfoDevice } from '../device/type';
 import { TBagReducer } from '../pages/bag/type';
 // import { TPagesInformationsReducer } from '../pages/Common/type';
 import THomeReducer from '../pages/home/type';
@@ -9,6 +10,7 @@ export type TReducers = {
 	dataProducts: TProductsReducer;
 	dataProduct: TProductReducer;
 	dataBag: TBagReducer;
+	infoDevice: TInfoDevice;
 	// pagesInformations: TPagesInformationsReducer;
 };
 

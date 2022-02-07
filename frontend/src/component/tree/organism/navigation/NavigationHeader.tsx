@@ -4,21 +4,25 @@ import { NavLinkAsComponent, Span } from '../../atom';
 import './style.css';
 import TNavigationHeader from './type';
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TReducers } from '../../../../service';
 import { useStyles } from '../../page/home/Home';
+import { updateModeChosen } from '../../../../service/device/dataMangment/reducer';
+import { SwitchMUI } from '../../molecule';
 
 type Props = {
 	data: TNavigationHeader;
 };
 
 const NavigationHeader: React.FC<Props> = ({
-	data: { menusHeader, menusBottom },
+	data: { menusHeader, menusBottom, modeChosen },
 }) => {
+	const dispatch = useDispatch();
 	const classes = useStyles();
 	const {
 		dataBag: { numberOfItemsInTheBag },
 	} = useSelector((state: TReducers) => state);
+	const [isItDarkMode, setIsItDarkMode] = useState<boolean>(false);
 	const [isBurgerClicked, setIsBurgerClicked] = useState<boolean>(false);
 	const [isBagClicked, setIsBagClicked] = useState<boolean>(false);
 	const BurgerIcon = getIcon('Burger');
@@ -32,7 +36,10 @@ const NavigationHeader: React.FC<Props> = ({
 		document.body.style.height = indice ? '100vh' : 'auto';
 		document.body.style.overflow = indice ? 'hidden' : 'unset';
 	};
-
+	const handleChangeModeLightOrDark = () => {
+		setIsItDarkMode(!isItDarkMode);
+		dispatch(updateModeChosen(modeChosen[isItDarkMode ? 0 : 1]));
+	};
 	const NavigationOnClick = (
 		<div
 			className={`flex_column ${
@@ -103,6 +110,7 @@ const NavigationHeader: React.FC<Props> = ({
 			{DoWeRedirectOrDisplayBagHTML}
 		</div>
 	);
+
 	return (
 		<div className="navigation_header">
 			{NavigationOnClick}
@@ -134,6 +142,9 @@ const NavigationHeader: React.FC<Props> = ({
 				</div>
 				{BadAndNumberCirle}
 			</div>
+			<SwitchMUI
+				data={{ functionToCall: handleChangeModeLightOrDark, isItDarkMode }}
+			/>
 		</div>
 	);
 };

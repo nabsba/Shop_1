@@ -1,4 +1,6 @@
-const navigationHeader = {
+import TNavigationHeader from '../../../component/tree/organism/navigation/type';
+
+const navigationHeader: TNavigationHeader = {
 	menusHeader: [
 		{
 			text: 'home',
@@ -39,6 +41,7 @@ const navigationHeader = {
 			icon: 'Location',
 		},
 	],
+	modeChosen: ['light', 'dark'],
 };
 const footer = {
 	menusFooter: [

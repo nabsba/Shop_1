@@ -1,4 +1,5 @@
 type TNavigationHeader = {
+	modeChosen: string[];
 	menusHeader: {
 		text: string;
 		href: string;
