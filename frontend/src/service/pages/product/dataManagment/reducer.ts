@@ -1,10 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {
-	resultTemplate,
-	serverGet,
-} from '../../../../bridge/common/requestServer';
-import URL_ADDRESSES from '../../../../bridge/url';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
+import URL_ADDRESSES, {
+	ERROR_LOG_ASYNC_MESSAGE,
+} from '../../../Common/constant';
 import { DATA_TYPE } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import productData from '../data';
@@ -12,7 +9,8 @@ import { REDUCER } from '../constant';
 import { TProductDetails } from '../../Common/type';
 import { TProductReducer } from '../type';
 import { Result } from '../../../Common/type';
-import { logMessage } from '../../../Common/funtions';
+import { logMessage } from '../../../Common/logic/funtions';
+import { resultTemplate, serverGet } from '../../../Common/logic/requestServer';
 
 // Those which are imported from home are those who the admin cannot update from his pannel.
 

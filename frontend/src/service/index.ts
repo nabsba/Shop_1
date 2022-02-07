@@ -1,4 +1,4 @@
-import reducers from './Common/reducer';
+import reducers from './Common/dataMangment/reducer';
 import { TReducers } from './Common/type';
 import { CURRENCY } from './pages/Common/constant';
 import { fetchProductsFiltered } from './pages/products/dataManagment/reducer';

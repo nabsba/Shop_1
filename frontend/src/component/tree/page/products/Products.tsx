@@ -2,13 +2,12 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import URL_ADDRESSES from '../../../../bridge/url';
 import {
 	CURRENCY,
 	fetchProductsFiltered,
 	TReducers,
 } from '../../../../service';
-import { filteringCategories } from '../../../../service/pages/Common/data';
+import URL_ADDRESSES from '../../../../service/Common/constant';
 import { TProductDetails } from '../../../../service/pages/Common/type';
 import { updateDisplayFilteringComponent } from '../../../../service/pages/products/dataManagment/reducer';
 import { Cassiopeia } from '../../template';

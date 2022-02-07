@@ -7,7 +7,7 @@ import { LOG_MESSAGE } from './service/Common/constant';
 
 import './component/Common/css/share.css';
 import { DATA_TYPE_SERVICE_WORKER, reducers } from './service';
-import { logMessage } from './service/Common/funtions';
+import { logMessage } from './service/Common/logic/funtions';
 
 if (
 	'serviceWorker' in navigator &&

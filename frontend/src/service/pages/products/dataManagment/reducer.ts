@@ -1,18 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {
-	resultTemplate,
-	serverPost,
-} from '../../../../bridge/common/requestServer';
-import URL_ADDRESSES from '../../../../bridge/url';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
+import URL_ADDRESSES, {
+	ERROR_LOG_ASYNC_MESSAGE,
+} from '../../../Common/constant';
 import { SQL_OBJECT } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
-import _ from 'lodash';
 import productsData from '../data';
 import { REDUCER } from '../constant';
 import { TProductsReducer } from '../type';
 import { Result } from '../../../Common/type';
-import { logMessage } from '../../../Common/funtions';
+import { logMessage } from '../../../Common/logic/funtions';
+import {
+	resultTemplate,
+	serverPost,
+} from '../../../Common/logic/requestServer';
 
 const initialState: TProductsReducer = {
 	productsDataPage: productsData,

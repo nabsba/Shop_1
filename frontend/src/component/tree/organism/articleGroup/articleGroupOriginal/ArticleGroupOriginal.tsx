@@ -7,7 +7,7 @@ import NavLink from '../../../atom/link/NavLink';
 import { useDispatch } from 'react-redux';
 import useOnScreen from '../../../../../service/Common/hooks/isVisible';
 import { updateDoWeGetMoreProducts } from '../../../../../service/pages/products/dataManagment/reducer';
-import { CircularIndeterminate, Paragraph } from '../../../atom';
+import { CircularIndeterminate } from '../../../atom';
 import ErrorBoundaryFallback from '../../../../specialCase/errorBundary/ErrorBundaryFallback';
 
 type Props = {

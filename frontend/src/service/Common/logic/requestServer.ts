@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { ERROR_LOG_ASYNC_MESSAGE } from '../../service/Common/constant';
-import { logMessage } from '../../service/Common/funtions';
-import { Result } from '../../service/Common/type';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../constant';
+import { Result } from '../type';
+import { logMessage } from './funtions';
 
 const resultTemplate: Result = {
 	state: false,
@@ -97,7 +97,7 @@ const serverPost = async (
 		result = await axios.post(url, body, { timeout: time ? time : 15000 });
 	} catch (error) {
 		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
-			'bridge/requestServer',
+			'Service/Common/logic/requestServer',
 			'serverPost',
 		)},
 			${error}`);

@@ -1,4 +1,4 @@
-import URL_ADDRESSES from '../../../bridge/url';
+import URL_ADDRESSES from '../../Common/constant';
 import { footer, navigationHeader } from '../Common/data';
 import { THome } from './type';
 
