@@ -2,7 +2,7 @@ import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TReducers } from '../../../../service';
-import URL_ADDRESSES from '../../../../service/Common/constant';
+import { URL_ADDRESSES } from '../../../../service/Common/constant';
 import { TProductDetails } from '../../../../service/pages/Common/type';
 import { ImageAsComponent } from '../../atom';
 import { Eridanus, TEridanus } from '../../template';

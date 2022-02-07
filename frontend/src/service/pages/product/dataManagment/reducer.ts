@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import URL_ADDRESSES, {
+import {
+	URL_ADDRESSES,
 	ERROR_LOG_ASYNC_MESSAGE,
 } from '../../../Common/constant';
 import { DATA_TYPE } from '../../../dataBase/constant';

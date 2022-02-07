@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { CURRENCY } from '../../../../../service';
-import URL_ADDRESSES from '../../../../../service/Common/constant';
+import { URL_ADDRESSES } from '../../../../../service/Common/constant';
 import {
 	removeProductFromTheBag,
 	updatePropretyOfProduct,

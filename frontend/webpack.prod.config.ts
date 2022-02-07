@@ -139,7 +139,15 @@ const config: webpack.Configuration = {
 		new CopyWebpackPlugin({
 			patterns: [{ from: path.resolve(__dirname, './public') }],
 		}),
-		new Dotenv(),
+		// Heroku variables must be predefined here.
+		new webpack.DefinePlugin({
+			'process.env': {
+				DEVELOPMENT: JSON.stringify(process.env.DEVELOPMENT),
+				HOST: JSON.stringify(process.env.HOST),
+			},
+		}),
+		// Local: create .env and add yours variables.
+		// new Dotenv(),
 	],
 };
 

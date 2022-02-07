@@ -7,7 +7,7 @@ import {
 	fetchProductsFiltered,
 	TReducers,
 } from '../../../../service';
-import URL_ADDRESSES from '../../../../service/Common/constant';
+import { URL_ADDRESSES } from '../../../../service/Common/constant';
 import { TProductDetails } from '../../../../service/pages/Common/type';
 import { updateDisplayFilteringComponent } from '../../../../service/pages/products/dataManagment/reducer';
 import { Cassiopeia } from '../../template';

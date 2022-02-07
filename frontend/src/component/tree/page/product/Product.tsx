@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
-import URL_ADDRESSES from '../../../../service/Common/constant';
+import { URL_ADDRESSES } from '../../../../service/Common/constant';
 import { fetchProductByID } from '../../../../service/pages/product/dataManagment/reducer';
 import { ImageAsComponent } from '../../atom';
 import { Vega } from '../../template';

@@ -6,7 +6,7 @@ import { Achernar } from '../../template';
 import _ from 'lodash';
 import { addNewproductToTheBag } from '../../../../service/pages/bag/dataManagment/reducer';
 import { ImageAsComponent } from '../../atom';
-import URL_ADDRESSES from '../../../../service/Common/constant';
+import { URL_ADDRESSES } from '../../../../service/Common/constant';
 
 const Bag: React.FC = () => {
 	const dispatch = useDispatch();

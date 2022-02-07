@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import URL_ADDRESSES, { ERROR_CODE } from '../../../../service/Common/constant';
+import { ERROR_CODE, URL_ADDRESSES } from '../../../../service/Common/constant';
 import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
 import { PubVariant1, PubVariant2 } from '../../molecule';
 import { Footer, NavigationHeader, SliderOriginal } from '../../organism';
