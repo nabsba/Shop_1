@@ -10,7 +10,7 @@ import { createServer } from 'http';
 import https from 'https';
 import fs from 'fs';
 import { data, fileManager } from './controler';
-import { LOG_MESSAGE } from './model/service/Common/constant';
+import { LOG_MESSAGE, PORTS } from './model/service/Common/constant';
 import { logMessage } from './model/service/Common/logic/functions/function';
 // yarn add socket.io --save
 
@@ -43,9 +43,7 @@ app.use('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
 
-const PORT = process.env.DEVELOPMENT === 'true' ? 3001 : null; // => local : namecheap web hosted
-// const PORT = '8080'; // => Centos
-// const PORT = process.env.PORT || 80; // => heroku
+const PORT = process.env.HOST_PORT ? PORTS[process.env.HOST_PORT] : null;
 const isHTTPS = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true';
 const httpsServer = isHTTPS ? https.createServer(options, app) : createServer(app);
 
