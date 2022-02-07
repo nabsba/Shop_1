@@ -40,7 +40,7 @@ const NavigationHeader: React.FC<Props> = ({
 		setIsItDarkMode(!isItDarkMode);
 		dispatch(updateModeChosen(modeChosen[isItDarkMode ? 0 : 1]));
 	};
-	const NavigationOnClick = (
+	const IfBurgerClickedWeDisplayNavigationHTML = (
 		<div
 			className={`flex_column ${
 				isBurgerClicked ? 'navigation_on' : 'navigation_off'
@@ -102,7 +102,7 @@ const NavigationHeader: React.FC<Props> = ({
 		</>
 	);
 
-	const BadAndNumberCirle = (
+	const BagAndNumberCircle = (
 		<div
 			className={`bag_and_number_circle ${classes.iconNeutral}`}
 			onClick={() => setIsBagClicked(true)}
@@ -113,7 +113,7 @@ const NavigationHeader: React.FC<Props> = ({
 
 	return (
 		<div className="navigation_header">
-			{NavigationOnClick}
+			{IfBurgerClickedWeDisplayNavigationHTML}
 			<div className="navigation_header_mobile flex_row_between_align_center">
 				<div
 					className={`sub_navigation_header_mobile_part_1 flex_row_align_items_center ${classes.iconNeutral}`}
@@ -125,11 +125,29 @@ const NavigationHeader: React.FC<Props> = ({
 					{BurgerIcon}
 					<Span data="menu" />
 				</div>
-				{BadAndNumberCirle}
+				<div className="flex_row_wrap_align_center">
+					<div className="switch_mode">
+						<SwitchMUI
+							data={{
+								functionToCall: handleChangeModeLightOrDark,
+								isItDarkMode,
+							}}
+						/>
+					</div>
+					{BagAndNumberCircle}
+				</div>
 			</div>
 			<div className="navigation_header_desktop flex_row_between_align_center">
 				<div className="sub_navigation_header_desktop_part_0"></div>
 				<div className="sub_navigation_header_desktop_part_1">
+					<div className="switch_mode">
+						<SwitchMUI
+							data={{
+								functionToCall: handleChangeModeLightOrDark,
+								isItDarkMode,
+							}}
+						/>
+					</div>
 					<ul className="flex_row">
 						{menusHeader.map((menu) => (
 							<li key={menu.text}>
@@ -140,11 +158,8 @@ const NavigationHeader: React.FC<Props> = ({
 						))}
 					</ul>
 				</div>
-				{BadAndNumberCirle}
+				{BagAndNumberCircle}
 			</div>
-			<SwitchMUI
-				data={{ functionToCall: handleChangeModeLightOrDark, isItDarkMode }}
-			/>
 		</div>
 	);
 };

@@ -4,8 +4,13 @@
 	position: relative;
 	overflow: hidden;
 }
+
 ::-webkit-scrollbar {
 	display: none;
+}
+
+.navigation_header_mobile .switch_mode {
+
 }
 
 .navigation_header_mobile,
@@ -13,6 +18,7 @@
 	border-bottom: var(--border) solid var(--color-secondary-2);
 	padding: clamp(0.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
 }
+
 .navigation_header_mobile {
 	height: 4rem;
 }
@@ -41,9 +47,11 @@
 	transform: translateX(100vw);
 	transition: transform 200ms;
 }
+
 .sub_navigation_header_mobile_part_1 {
 	margin-left: var(--margin-section-side);
 }
+
 .sub_navigation_header_mobile_part_1 span {
 	margin-left: 3rem;
 	text-transform: uppercase;
@@ -77,10 +85,18 @@
 .bag_and_number_circle svg {
 	height: var(--size-icon);
 }
+
 .sub_navigation_on_part_2_bottom_nav li div {
-height:max-content;
+	height: max-content;
 }
+
 @media only screen and (min-width: 760px) {
+.navigation_header_desktop .switch_mode {
+		position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: clamp(0.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem)
+ }
 	.navigation_header_mobile,
 	.navigation_off {
 		display: none !important;

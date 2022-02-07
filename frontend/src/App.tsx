@@ -13,8 +13,6 @@ import {
 } from './service/pages/bag/dataManagment/reducer';
 import { PaletteMode } from '@mui/material';
 import { TReducers } from './service';
-import { TInfoDevice } from './service/device/type';
-import { updateInfoDevice } from './service/device/dataMangment/reducer';
 
 // mui.com/customization/dark-mode
 export const getDesignTokens = (

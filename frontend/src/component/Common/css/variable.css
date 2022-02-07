@@ -1,3 +1,4 @@
+/*  toimprove: use same variable's names from theme's palette of MUI */
 :root {
 	--color-primary-1: #9b3333;
 	--color-primary-2: #830101;
@@ -8,6 +9,7 @@
 	--color-neutral-1: #ffffff;
 	--color-neutral-2: #a9a9a9;
 	--color-neutral-3: #000000;
+	--color-neutrak-dark-1:#1F2128;
 	--border: 2px;
 	--border-radius: 5px;
 	--margin-bottom-h1: 1.3rem;
