@@ -41,7 +41,6 @@ export const fetchProductsFiltered = createAsyncThunk(
 		isFetchDueToScroll,
 	}: any) => {
 		let result: Result = { ...resultTemplate };
-
 		try {
 			const objectSql = SQL_OBJECT.PRODUCTS_FILTERED(
 				preference,
@@ -89,13 +88,15 @@ const data = createSlice({
 				if (action.payload.serverError) {
 					state.productsFiltered.serverError = true;
 				} else {
-					state.products = action.payload.data.isFetchDueToScroll
-						? [...state.products, ...action.payload.data[0]]
-						: action.payload.data[0];
-					state.totalRows = action.payload.data[1][0]['FOUND_ROWS()'];
-					state.productsFiltered.type = action.payload.data.type;
-					state.productsFiltered.gender = action.payload.data.gender;
-					state.doWeGetMoreProducts = false;
+					if (action.payload.data) {
+						state.products = action.payload.data.isFetchDueToScroll
+							? [...state.products, ...action.payload.data[0]]
+							: action.payload.data[0];
+						state.totalRows = action.payload.data[1][0]['FOUND_ROWS()'];
+						state.productsFiltered.type = action.payload.data.type;
+						state.productsFiltered.gender = action.payload.data.gender;
+						state.doWeGetMoreProducts = false;
+					}
 				}
 			},
 		);
