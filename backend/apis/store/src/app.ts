@@ -43,7 +43,11 @@ app.use('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
 
-const PORT = process.env.HOST_PORT ? PORTS[process.env.HOST_PORT] : null;
+const PORT = process.env.PORT
+  ? process.env.PORT
+  : process.env.HOST_PORT
+  ? PORTS[process.env.HOST_PORT]
+  : null;
 const isHTTPS = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true';
 const httpsServer = isHTTPS ? https.createServer(options, app) : createServer(app);
 
