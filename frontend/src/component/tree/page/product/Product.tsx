@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
@@ -28,6 +28,8 @@ const Product: React.FC = () => {
 		},
 	} = useSelector((state: TReducers) => state);
 
+	// // const previousID = useMemo(() => id, [id]);
+	// if (id) dispatch(fetchProductByID(id));
 	useEffect(() => {
 		if (id) dispatch(fetchProductByID(id));
 	}, [dispatch, id]);
@@ -41,8 +43,7 @@ const Product: React.FC = () => {
 		selectSize: _.cloneDeep(selectSizeData),
 		pub,
 	};
-
-	if (productSelected && productSelected.type) {
+	if (productSelected.product_id == id) {
 		const numberOfPics = productSelected.numberOfPics;
 		if (numberOfPics) {
 			for (let index = 0; index < numberOfPics; index++) {
@@ -77,7 +78,8 @@ const Product: React.FC = () => {
 
 	return (
 		<div id="product">
-			<Vega data={vegaData} />
+			{vegaData.sliderVariant2.list &&
+				vegaData.sliderVariant2.list.length > 0 && <Vega data={vegaData} />}
 		</div>
 	);
 };
