@@ -16,8 +16,6 @@ import './style.css';
 const Products: React.FC = () => {
 	const dispatch = useDispatch();
 	const { type, gender } = useParams();
-	const [articleGroupOriginalAfterMatchingColor, setArticleGroupOriginal] =
-		useState<any[]>([]);
 	const {
 		dataProducts: {
 			products,
@@ -45,38 +43,33 @@ const Products: React.FC = () => {
 				}),
 			);
 	}, [dispatch, gender, productsFiltered.filteringCategories, type]);
-	useEffect(() => {
-		if (products && products.length > 0) {
-			const newArray: any[] = [];
-			products.map((product: TProductDetails) => {
-				newArray.push({
-					imageAsComponent: {
-						src: `${URL_ADDRESSES.fileManager.image.load(
-							`product/${type}/medium/${
-								product.colorName
-							}/${product.name.replace(/\s/g, '')}/${product.name.replace(
-								/\s/g,
-								'',
-							)}_1`,
-						)}`,
-						alt: product.name,
-					},
-					information: {
-						name: product.name,
-						price: product.price + CURRENCY.UK,
-					},
-					link: {
-						href: `/product/${type}/${gender}/${product.product_id}`,
-						text: product.name,
-						state: { colorName: product.colorName },
-					},
-				});
+
+	const productsArticles: any[] = [];
+	if (products && products.length > 0) {
+		products.map((product: TProductDetails) => {
+			productsArticles.push({
+				imageAsComponent: {
+					src: `${URL_ADDRESSES.fileManager.image.load(
+						`product/${type}/medium/${product.colorName}/${product.name.replace(
+							/\s/g,
+							'',
+						)}/${product.name.replace(/\s/g, '')}_1`,
+					)}`,
+					alt: product.name,
+				},
+				information: {
+					name: product.name,
+					price: product.price + CURRENCY.UK,
+				},
+				link: {
+					href: `/product/${type}/${gender}/${product.product_id}`,
+					text: product.name,
+					state: { colorName: product.colorName },
+				},
 			});
-			setArticleGroupOriginal(newArray);
-		} else {
-			setArticleGroupOriginal([]);
-		}
-	}, [articleGroupOriginal, gender, products, type]);
+		});
+	}
+
 	useEffect(() => {
 		if (totalRows && doWeGetMoreProducts && products && products.length > 0) {
 			const length = products.length;
@@ -124,8 +117,7 @@ const Products: React.FC = () => {
 		doWedisplayFilteringComponent:
 			productsFiltered.doWedisplayFilteringComponent,
 	};
-	cassiopeiraData.articleGroupOriginal.list =
-		articleGroupOriginalAfterMatchingColor;
+	cassiopeiraData.articleGroupOriginal.list = productsArticles;
 	cassiopeiraData.filterProduct.functionToCall = () =>
 		dispatch(
 			updateDisplayFilteringComponent(
