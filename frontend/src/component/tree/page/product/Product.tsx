@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { TReducers } from '../../../../service';
@@ -15,6 +15,8 @@ const Product: React.FC = () => {
 	const { state }: any = useLocation();
 	const {
 		dataProduct: {
+			pending,
+			errorServer,
 			product: {
 				navigationHeader,
 				footer,
@@ -23,24 +25,26 @@ const Product: React.FC = () => {
 				descriptionProductData,
 				pub,
 				selectSizeData,
+				infosTemplate,
 			},
 			data: { productSelected },
 		},
 	} = useSelector((state: TReducers) => state);
 
-	// // const previousID = useMemo(() => id, [id]);
-	// if (id) dispatch(fetchProductByID(id));
 	useEffect(() => {
 		if (id) dispatch(fetchProductByID(id));
 	}, [dispatch, id]);
 
 	const vegaData = {
+		pending,
+		errorServer,
 		navigationHeader,
 		footer,
 		sliderVariant2: _.cloneDeep(sliderVariant2Data),
 		butttonVariant1,
 		descriptionProduct: _.cloneDeep(descriptionProductData),
 		selectSize: _.cloneDeep(selectSizeData),
+		infosTemplate,
 		pub,
 	};
 	if (productSelected.product_id == id) {
@@ -64,7 +68,6 @@ const Product: React.FC = () => {
 					/>,
 				);
 			}
-			vegaData.sliderVariant2.display = true;
 		}
 		vegaData.selectSize.sizes = productSelected.size;
 		vegaData.descriptionProduct.descriptionData.description.title = `${productSelected.name}`;
@@ -78,8 +81,7 @@ const Product: React.FC = () => {
 
 	return (
 		<div id="product">
-			{vegaData.sliderVariant2.list &&
-				vegaData.sliderVariant2.list.length > 0 && <Vega data={vegaData} />}
+			<Vega data={vegaData} />
 		</div>
 	);
 };

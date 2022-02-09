@@ -6,7 +6,6 @@ const productData: TProduct = {
 	footer,
 	sliderVariant2Data: {
 		list: [],
-		display: false,
 	},
 	butttonVariant1: 'buy',
 	descriptionProductData: {
@@ -38,6 +37,10 @@ const productData: TProduct = {
 	selectSizeData: {
 		sizes: [7, 8, 9, 10, 11, 12, 13],
 		title: 'Select size',
+	},
+	infosTemplate: {
+		type: 'product',
+		errorCode: 120,
 	},
 };
 

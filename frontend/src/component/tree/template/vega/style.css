@@ -51,3 +51,10 @@
 		grid-column: 5/9;
 	}
 }
+
+.vega_loader {
+    height: 40rem;
+}
+.vega_loader > div {
+	margin: auto;
+}

@@ -16,11 +16,11 @@ import { resultTemplate, serverGet } from '../../../Common/logic/requestServer';
 // Those which are imported from home are those who the admin cannot update from his pannel.
 
 const initialState: TProductReducer = {
+	state: false,
 	pending: false,
-	error: false,
+	errorServer: false,
 	product: productData,
 	data: {
-		product: [],
 		productSelected: {},
 	},
 };
@@ -33,6 +33,7 @@ export const fetchProductByID = createAsyncThunk(
 			result = await serverGet(
 				URL_ADDRESSES.data.getData(DATA_TYPE.PRODUCT_DETAIL_BY_ID, id),
 			);
+
 			return result;
 		} catch (error) {
 			logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
@@ -58,16 +59,20 @@ const data = createSlice({
 			(state, action: { payload: any }) => {
 				state.pending = false;
 				if (action.payload.serverError) {
-					state.error = true;
+					state.errorServer = true;
 				} else {
-					state.data.product = action.payload.data;
-					state.data.productSelected = action.payload.data[0];
+					if (action.payload.state) {
+						state.state = action.payload.state;
+						state.data.productSelected = action.payload.data[0];
+					} else {
+						state.state = false;
+					}
 				}
 			},
 		);
 		builder.addCase(fetchProductByID.rejected, (state) => {
 			state.pending = false;
-			state.error = true;
+			state.errorServer = true;
 		});
 		builder.addCase(fetchProductByID.pending, (state) => {
 			state.pending = true;
