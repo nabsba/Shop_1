@@ -1,0 +1,7 @@
+@import '../../../Common/css/variable.css';
+
+a {
+	color: var(--link-color);
+	text-decoration: none;
+	text-transform: capitalize;
+}

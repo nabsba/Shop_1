@@ -3,8 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
-import './component/common/css/share.css';
+import { LOG_MESSAGE } from './service/Common/constant';
+
+import './component/Common/css/share.css';
 import { DATA_TYPE_SERVICE_WORKER, reducers } from './service';
+import { logMessage } from './service/Common/logic/funtions';
 
 if (
 	'serviceWorker' in navigator &&
@@ -15,10 +18,11 @@ if (
 		navigator.serviceWorker
 			.register('./service-worker.js')
 			.then(function (registration) {
+				logMessage(LOG_MESSAGE.SERVICE_WORKER_SUCCESS);
 				console.log('Service Worker Registered', registration);
 			})
-			.catch(function (err) {
-				console.log('Service Worker Failed to Register', err);
+			.catch(function () {
+				logMessage(LOG_MESSAGE.SERVICE_WORKER_FAILED);
 			});
 	});
 	navigator.serviceWorker.ready.then((registration) => {

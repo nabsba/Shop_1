@@ -1,0 +1,56 @@
+@import'../../../Common/css/variable.css';
+
+.achernar {
+	min-height: 100vh;
+	grid-template-columns: repeat(4, 1fr);
+	display: grid;
+}
+
+.achernar_section_1,
+.achernar_section_2,
+.achernar_section_3,
+.achernar_section_4 {
+	grid-column: 1/5;
+
+
+}
+
+.achernar_section_2,
+.achernar_section_3,
+.achernar_section_4 {
+	margin-top: var(--margin-section-top);
+}
+
+.achernar_section_2,
+.achernar_section_3 {
+	margin-left: var(--margin-section-side);
+	margin-right: var(--margin-section-side);
+}
+
+.achernar_section_3 {
+	position: relative;
+}
+
+@media only screen and (min-width: 770px) {
+	.achernar {
+		grid-template-columns: repeat(12, 1fr);
+	}
+
+	.achernar_section_1,
+	.achernar_section_2,
+	.achernar_section_3 {
+		grid-column: 1/13;
+
+	}
+
+	.achernar_section_2,
+	.achernar_section_3 {
+		margin-left: clamp(1rem, calc(var(--margin-section-side) + 2rem), 3.1rem);
+		margin-right: clamp(1rem, calc(var(--margin-section-side) + 2rem), 3.1rem);
+	}
+
+	.achernar_section_4 {
+		grid-column: 1/13;
+
+	}
+}

@@ -1,0 +1,20 @@
+.subText p {
+	font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 500px) {
+	.subText p {
+		font-size: 1rem;
+	}
+}
+@media only screen and (min-width: 770px) {
+	.subText p {
+		font-size: 1rem;
+	}
+}
+
+@media only screen and (min-width: 1449px) {
+	.subText p {
+		font-size: 1.7rem;
+	}
+}

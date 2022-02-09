@@ -1,0 +1,15 @@
+.select_original fieldset,
+.select_original label {
+	display: none;
+}
+
+.select_original > div {
+	border: 1px solid black;
+	width: 100%;
+	margin: 0 !important;
+	min-width: 0px !important;
+}
+
+.select_original .css-5va0lx-MuiInputBase-root-MuiOutlinedInput-root {
+	font-size: inherit !important;
+}

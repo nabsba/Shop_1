@@ -1,0 +1,17 @@
+@import '../../../../Common/css/variable.css';
+
+.button_variant1 {
+	padding: var(--padding-button-variant1-top-bottom)
+		var(--padding-button-variant1-side)
+		var(--padding-button-variant1-top-bottom)
+		var(--padding-button-variant1-side);
+	font-weight: var(--font-weight);
+	background-color: var(--color-neutral-2);
+	color: var(--color-secondary-1);
+	border: none;
+}
+
+.button_variant1 span {
+	color: inherit;
+	text-transform: uppercase;
+}

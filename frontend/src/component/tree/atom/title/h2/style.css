@@ -1,0 +1,23 @@
+@import '../../../../Common/css/variable.css';
+
+h2 {
+	font-size: 2rem;
+	font-weight: 200;
+}
+
+@media only screen and (min-width: 500px) {
+	h2 {
+		font-size: 2.5rem;
+	}
+}
+@media only screen and (min-width: 770px) {
+	h2 {
+		font-size: 3.5rem;
+	}
+}
+
+@media only screen and (min-width: 1449px) {
+	h2 {
+		font-size: 5rem;
+	}
+}

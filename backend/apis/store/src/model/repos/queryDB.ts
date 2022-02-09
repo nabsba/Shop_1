@@ -1,5 +1,6 @@
-import { Result } from '../Common/type/type';
-import { mysql, getConfig } from '../Common/config/sql';
+import { Result } from '../service/Common/type';
+import { mysql, getConfig } from '../service/Common/config/sql';
+import { logMessage } from '../service/Common/logic/functions/function';
 
 export const resultTemplate: Result = {
   state: false,
@@ -25,7 +26,6 @@ const queryDataBase = async (
     promisePool = pool.promise();
     //Query
     const query = await promisePool.query(sql);
-    console.log(query);
     result.state =
       query[0].length || (query[0] && query[0].affectedRows) || (query[0] && query[0].insertId)
         ? true
@@ -33,7 +33,8 @@ const queryDataBase = async (
     result.data = query[0];
     result.serverError = false;
   } catch (error: any) {
-    console.log('*** file: queryDB, method: queryDB, error: ', error);
+    logMessage(`${ERROR_LOG_ASYNC_MESSAGE('repos/queryDB', 'queryDataBase')},
+			${error}`);
     result.state = false;
     result.serverError = true;
     result.errorMessage = error.sqlMessage ? error.sqlMessage : ' ';
@@ -44,3 +45,6 @@ const queryDataBase = async (
 };
 
 export { queryDataBase };
+function ERROR_LOG_ASYNC_MESSAGE(arg0: string, arg1: string) {
+  throw new Error('Function not implemented.');
+}

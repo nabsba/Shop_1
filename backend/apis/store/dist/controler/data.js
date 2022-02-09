@@ -14,10 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.data = void 0;
 const express_1 = __importDefault(require("express"));
-const Common_1 = require("../model/Common");
+const service_1 = require("../model/service");
 const router = (0, express_1.default)();
 exports.data = router;
 router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield (0, Common_1.handleObject)(req.body);
+    const result = yield (0, service_1.handlePostData)(req.body);
+    res.send(result);
+}));
+router.get('/:type/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { type, id } = req.params;
+    const result = yield (0, service_1.handleGetData)(type, id);
+    res.send(result);
+}));
+router.post('/filterData', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { objectSql } = req.body;
+    const result = yield (0, service_1.handlePostData)(objectSql);
     res.send(result);
 }));

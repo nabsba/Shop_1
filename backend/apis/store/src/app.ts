@@ -9,8 +9,9 @@ import path from 'path';
 import { createServer } from 'http';
 import https from 'https';
 import fs from 'fs';
-import { data } from './controler';
-import { queryDataBase } from './model/repos';
+import { data, fileManager } from './controler';
+import { LOG_MESSAGE, PORTS } from './model/service/Common/constant';
+import { logMessage } from './model/service/Common/logic/functions/function';
 // yarn add socket.io --save
 
 //Config
@@ -22,7 +23,8 @@ const options =
         cert: fs.readFileSync(path.join(__dirname, '../security/cert.pem')),
       }
     : {};
-
+// to receive post data from clients
+app.use(express.json());
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../../../../frontend/build/')));
 app.use(cors());
@@ -32,6 +34,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
 app.use('/data', data);
+app.use('/fileManager', fileManager);
 app.get('/test', (req, res) => {
   res.send('Your test has worked');
 });
@@ -40,14 +43,15 @@ app.use('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
 
-const PORT = process.env.DEVELOPMENT === 'true' ? 3001 : null; // => local : namecheap web hosted
-// const PORT = '8080'; // => Centos
-const httpsServer =
-  process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true'
-    ? https.createServer(options, app)
-    : createServer(app);
+const PORT = process.env.PORT
+  ? process.env.PORT
+  : process.env.HOST_PORT
+  ? PORTS[process.env.HOST_PORT]
+  : null;
+const isHTTPS = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true';
+const httpsServer = isHTTPS ? https.createServer(options, app) : createServer(app);
 
 httpsServer.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log('server started on port' + PORT);
+  logMessage(`${LOG_MESSAGE.SERVER_ON} ${PORT} using ${isHTTPS ? 'https' : 'http'}`);
 });

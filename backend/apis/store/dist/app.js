@@ -31,6 +31,8 @@ const http_1 = require("http");
 const https_1 = __importDefault(require("https"));
 const fs_1 = __importDefault(require("fs"));
 const controler_1 = require("./controler");
+const constant_1 = require("./model/service/Common/constant");
+const function_1 = require("./model/service/Common/logic/functions/function");
 const app = (0, express_1.default)();
 const options = process.env.DEVELOPMENT && process.env.HTTPS_LOCAL === 'true'
     ? {
@@ -38,22 +40,23 @@ const options = process.env.DEVELOPMENT && process.env.HTTPS_LOCAL === 'true'
         cert: fs_1.default.readFileSync(path_1.default.join(__dirname, '../security/cert.pem')),
     }
     : {};
+app.use(express_1.default.json());
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../../../frontend/build/')));
 app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
     res.sendFile(path_1.default.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
 app.use('/data', controler_1.data);
+app.use('/fileManager', controler_1.fileManager);
 app.get('/test', (req, res) => {
     res.send('Your test has worked');
 });
 app.use('*', function (req, res) {
     res.sendFile(path_1.default.join(__dirname, '../../../../frontend/build/', 'index.html'));
 });
-const PORT = process.env.DEVELOPMENT === 'true' ? 3001 : null;
-const httpsServer = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true'
-    ? https_1.default.createServer(options, app)
-    : (0, http_1.createServer)(app);
+const PORT = process.env.HOST_PORT ? constant_1.PORTS[process.env.HOST_PORT] : null;
+const isHTTPS = process.env.HTTPS_LOCAL === 'true' && process.env.DEVELOPMENT === 'true';
+const httpsServer = isHTTPS ? https_1.default.createServer(options, app) : (0, http_1.createServer)(app);
 httpsServer.listen(PORT, () => {
-    console.log('server started on port' + PORT);
+    (0, function_1.logMessage)(`${constant_1.LOG_MESSAGE.SERVER_ON} ${PORT} using ${isHTTPS ? 'https' : 'http'}`);
 });

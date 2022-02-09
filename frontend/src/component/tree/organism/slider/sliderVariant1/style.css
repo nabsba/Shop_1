@@ -1,0 +1,27 @@
+@import '../../../../Common/css/variable.css';
+
+.slider_variant_1 {
+	position: relative;
+}
+.slider_varian1_wrapper {
+	height: var(--height-image-card-product-mobile);
+	position: relative;
+	padding: 1rem;
+}
+.slider_varian1_wrapper img {
+	border-radius: var(	--border-radius)
+}
+
+.slider_variant_1 h3 {
+	margin-left: var(--margin-section-side);
+}
+
+.slider_varian1_wrapper #image-container {
+	padding: 0.5rem;
+}
+
+@media only screen and (min-width: 770px) {
+	.slider_varian1_wrapper {
+	height: var(--height-image-card-product-desktop);
+	}
+}

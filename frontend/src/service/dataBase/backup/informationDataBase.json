@@ -1,0 +1,20 @@
+{
+	"color": [
+		{ "color_id": 1, "name": "green" },
+		{ "color_id": 2, "name": "white" },
+		{ "color_id": 3, "name": "blue" },
+		{ "color_id": 4, "name": "brown" },
+		{ "color_id": 5, "name": "black" },
+		{ "color_id": 6, "name": "grey" },
+		{ "color_id": 7, "name": "beige" }
+	],
+	"size": [
+		{ "size_id": 1, "size": 12 },
+		{ "size_id": 2, "size": 9 },
+		{ "size_id": 3, "size": 13 },
+		{ "size_id": 4, "size": 10 },
+		{ "size_id": 5, "size": 11 },
+		{ "size_id": 6, "size": 7 },
+		{ "size_id": 7, "size": 8 }
+	]
+}

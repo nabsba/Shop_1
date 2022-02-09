@@ -1,3 +1,5 @@
+import { ERROR_LOG_ASYNC_MESSAGE } from '../../../Common/constant';
+import { logMessage } from '../../../Common/logic/funtions';
 import { addDataToIndexDB, createDBIndexDB } from '../commun';
 
 const addDashboardUserToIDB = async (
@@ -13,10 +15,11 @@ const addDashboardUserToIDB = async (
 			throw 'Dashboard has not been created yet.';
 		}
 	} catch (error) {
-		console.log(
-			'*** file: indexDB/dashboard, method: getDashboardUser, error: ',
-			error,
-		);
+		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
+			'indexDB/dashboard',
+			'addDashboardUserToIDB',
+		)},
+			${error}`);
 	}
 };
 

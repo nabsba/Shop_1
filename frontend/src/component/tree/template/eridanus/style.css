@@ -1,0 +1,66 @@
+@import '../../../Common/css/variable.css';
+
+.eridanus {
+	grid-template-columns: repeat(4, 1fr);
+	display: grid;
+}
+
+.eridanus_section_1,
+.eridanus_section_2,
+.eridanus_section_3,
+.eridanus_section_4,
+.eridanus_section_5,
+.eridanus_section_6 {
+	grid-column: 1/5;
+	margin-top: var(--margin-section-top);
+}
+
+.eridanus_section_1,
+.eridanus_section_2 {
+	margin-top: 0;
+
+}
+
+.eridanus_section_2 {
+	overflow: hidden;
+}
+
+/* .eridanus_section_4,
+.eridanus_section_5 {
+	margin-left: var(--margin-section-side);
+	margin-right: var(--margin-section-side);
+} */
+
+/* @media only screen and (min-width: 760px)  {
+
+
+} */
+.eridanus_section_3 {
+	position: relative;
+}
+
+@media only screen and (min-width: 770px) {
+	.eridanus {
+		grid-template-columns: repeat(12, 1fr);
+	}
+
+	.eridanus_section_1,
+	.eridanus_section_2,
+	.eridanus_section_3,
+	.eridanus_section_4,
+	.eridanus_section_5,
+	.eridanus_section_6 {
+		grid-column: 1/13;
+	}
+
+	.eridanus_section_3 {
+		margin-left: clamp(.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
+		margin-right: clamp(.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
+	}
+
+	/* .eridanus_section_4,
+	.eridanus_section_5 {
+		margin-left:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
+	  margin-right:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
+	} */
+}

@@ -10,7 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.queryDataBase = exports.resultTemplate = void 0;
-const sql_1 = require("../Common/config/sql");
+const sql_1 = require("../service/Common/config/sql");
+const function_1 = require("../service/Common/logic/functions/function");
 exports.resultTemplate = {
     state: false,
     data: null,
@@ -28,7 +29,6 @@ const queryDataBase = (sql, allowMultipleStatements, Type) => __awaiter(void 0, 
         const pool = sql_1.mysql.createPool(config);
         promisePool = pool.promise();
         const query = yield promisePool.query(sql);
-        console.log(query);
         result.state =
             query[0].length || (query[0] && query[0].affectedRows) || (query[0] && query[0].insertId)
                 ? true
@@ -37,7 +37,8 @@ const queryDataBase = (sql, allowMultipleStatements, Type) => __awaiter(void 0, 
         result.serverError = false;
     }
     catch (error) {
-        console.log('*** file: queryDB, method: queryDB, error: ', error);
+        (0, function_1.logMessage)(`${ERROR_LOG_ASYNC_MESSAGE('repos/queryDB', 'queryDataBase')},
+			${error}`);
         result.state = false;
         result.serverError = true;
         result.errorMessage = error.sqlMessage ? error.sqlMessage : ' ';
@@ -48,3 +49,6 @@ const queryDataBase = (sql, allowMultipleStatements, Type) => __awaiter(void 0, 
     }
 });
 exports.queryDataBase = queryDataBase;
+function ERROR_LOG_ASYNC_MESSAGE(arg0, arg1) {
+    throw new Error('Function not implemented.');
+}

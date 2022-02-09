@@ -1,0 +1,19 @@
+@import '../../../Common/css/variable.css';
+
+.select_size h3 {
+	margin-left: var(--margin-section-side);
+}
+.select_size .button_original {
+	width: 15vw;
+	height: 10vw;
+	margin: 0.2rem;
+	border-radius: var(--border-radius);
+	padding: 0;
+}
+
+@media only screen and (min-width: 770px) {
+	.select_size div {
+		width: 50%;
+		margin: auto;
+	}
+}
