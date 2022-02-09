@@ -17,7 +17,7 @@ type Props = {
 };
 
 const ArticleGroupBag: React.FC<Props> = ({
-	data: { products, totalPriceOfTheBag },
+	data: { products, totalPriceOfTheBag, labels },
 }) => {
 	const dispatch = useDispatch();
 	const getSelectValueAndLabel = (
@@ -46,21 +46,21 @@ const ArticleGroupBag: React.FC<Props> = ({
 								selectOriginal: [
 									{
 										menus: product.size,
-										label: 'size',
+										label: labels.size,
 										functionToCall: getSelectValueAndLabel,
 										id: product.product_id,
 									},
 									{
 										menus: [1, 2, 3, 4, 5],
-										label: 'quantity',
+										label: labels.quantity,
 										functionToCall: getSelectValueAndLabel,
 										id: product.product_id,
 									},
 								],
 								list: [
-									`Type: ${product.type}`,
-									`Color: ${product.colorName}`,
-									`Size: ${product.sizeWished.toString()}`,
+									`${labels.type}: ${product.type}`,
+									`${labels.color}: ${product.colorName}`,
+									`${labels.size}: ${product.sizeWished.toString()}`,
 								],
 								imageAsComponent: {
 									src: `${URL_ADDRESSES.fileManager.image.load(
@@ -78,7 +78,7 @@ const ArticleGroupBag: React.FC<Props> = ({
 						/>
 					</div>
 					<div className="sub_article_group_bag_part_2">
-						<Span data="Price" />
+						<Span data={labels.price} />
 						<Span
 							data={
 								product.price *
@@ -92,11 +92,12 @@ const ArticleGroupBag: React.FC<Props> = ({
 			<div className="sub_article_group_bag_part_3">
 				{totalPriceOfTheBag ? (
 					<>
-						<Span data="Total price" />
-						<Span data={totalPriceOfTheBag} />{' '}
+						<Span data={labels.totalPrice} />
+						<Span data={totalPriceOfTheBag} />
+						{labels.devise}
 					</>
 				) : (
-					<Span data={'No products'} />
+					<Span data={labels.emptyBag} />
 				)}
 			</div>
 		</div>

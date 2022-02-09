@@ -1,3 +1,4 @@
+import { CURRENCY } from '../Common/constant';
 import { footer, navigationHeader } from '../Common/data';
 import TBag from './type';
 
@@ -8,6 +9,16 @@ const bagData: TBag = {
 		products: [],
 		display: false,
 		totalPriceOfTheBag: 0,
+		labels: {
+			price: 'Price',
+			totalPrice: 'Total price',
+			emptyBag: 'Empty bag',
+			devise: CURRENCY.UK,
+			color: 'Color',
+			quantity: 'Quantity',
+			size: 'Size',
+			type: 'Type',
+		},
 	},
 	sliderVariant1Data: {
 		list: [
