@@ -79,10 +79,12 @@ const Vega: React.FC<Props> = ({
 						code={infosTemplate.errorCode}
 					/>
 				)}
-				{pending && (
-					<div className="vega_loader flex_row">
-						<CircularIndeterminate />
-					</div>
+				{true && (
+					<section className="vega_section_2">
+						<div className="vega_loader flex_row">
+							<CircularIndeterminate />
+						</div>
+					</section>
 				)}
 				{(sliderVariant2.list && sliderVariant2.list.length > 0) ||
 				pending ||

@@ -28,6 +28,7 @@ const ImageAsComponent: React.FC<Props> = ({
 			alt={alt}
 		/>
 	);
+
 	const loaderImage = (
 		<div
 			className={
@@ -40,7 +41,8 @@ const ImageAsComponent: React.FC<Props> = ({
 	return (
 		<div id="image-container">
 			<div id="sub-image-container-wrapper">
-				{(() => (src ? imgHTML : loaderImage))()}
+				{loaderImage}
+				{imgHTML}
 			</div>
 		</div>
 	);
