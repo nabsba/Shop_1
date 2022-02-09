@@ -1,3 +1,4 @@
+@import'../../../../Common/css/variable.css';
 .slider_variant_2_wrapper {
 	height: 70vh;
 	position: relative;
@@ -16,7 +17,9 @@
 	width: 100%;
 	margin: 0.2rem;
 }
-
+.slick-thumb img {
+	border-radius: var(--border-radius);
+}
 @media only screen and (min-width: 500px) {
 	.slider_variant_2 .slick-dots li {
 		width: 15rem;

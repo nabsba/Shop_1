@@ -34,9 +34,6 @@ const Vega: React.FC<Props> = ({
 	const classes = useStyles();
 	return (
 		<div className={`vega ${classes.root}`}>
-			<section className="vega_section_1">
-				<NavigationHeader data={navigationHeader} />
-			</section>
 			<ErrorBoundary
 				fallbackRender={() => (
 					<ErrorBoundaryFallback
@@ -45,6 +42,9 @@ const Vega: React.FC<Props> = ({
 					/>
 				)}
 			>
+				<section className="vega_section_1">
+					<NavigationHeader data={navigationHeader} />
+				</section>
 				{sliderVariant2.list &&
 					sliderVariant2.list.length > 0 &&
 					!pending &&
@@ -84,10 +84,16 @@ const Vega: React.FC<Props> = ({
 						<CircularIndeterminate />
 					</div>
 				)}
+				{(sliderVariant2.list && sliderVariant2.list.length > 0) ||
+				pending ||
+				errorServer ? (
+					<section className="vega_section_7">
+						<Footer data={footer} />
+					</section>
+				) : (
+					<></>
+				)}
 			</ErrorBoundary>
-			<section className="vega_section_7">
-				<Footer data={footer} />
-			</section>
 		</div>
 	);
 };

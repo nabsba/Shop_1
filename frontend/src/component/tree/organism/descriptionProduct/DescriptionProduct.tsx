@@ -1,3 +1,4 @@
+import { useTheme } from '@mui/styles';
 import React, { useState } from 'react';
 import { Span } from '../../atom';
 import { Description, Detail, Review } from '../../molecule';
@@ -16,7 +17,7 @@ const DescriptionProduct: React.FC<Props> = ({
 	const handleMenuSelected = (menu: string) => {
 		setMenuSelected(menu);
 	};
-
+	const theme: any = useTheme();
 	const getDescriptionBottom = (menuSelected: string) => {
 		switch (menuSelected) {
 			case 'description':
@@ -42,6 +43,9 @@ const DescriptionProduct: React.FC<Props> = ({
 							}
 							key={menu}
 							onClick={() => handleMenuSelected(menu)}
+							style={{
+								borderBottom: `1px solid ${theme.palette.neutral.dark}`,
+							}}
 						>
 							<li>
 								<Span data={menu} />
