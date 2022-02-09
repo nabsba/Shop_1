@@ -32,8 +32,9 @@ const Products: React.FC = () => {
 			productsFiltered,
 		},
 	} = useSelector((state: TReducers) => state);
+
 	useEffect(() => {
-		if (type && gender)
+		if (type && gender && products && products.length === 0)
 			dispatch(
 				fetchProductsFiltered({
 					preference: productsFiltered.filteringCategories,
@@ -42,7 +43,7 @@ const Products: React.FC = () => {
 					isFetchDueToScroll: false,
 				}),
 			);
-	}, [dispatch, gender, productsFiltered.filteringCategories, type]);
+	}, [dispatch, gender, products, productsFiltered.filteringCategories, type]);
 
 	const productsArticles: any[] = [];
 	if (products && products.length > 0) {
