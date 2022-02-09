@@ -1,6 +1,6 @@
 {
 	"name": "shop",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "store",
 	"license": "UNLICENSED",
 	"keywords": [],
@@ -170,7 +170,7 @@
 		"prod": "cd frontend && webpack --config webpack.prod.config.ts",
 		"dev": " cd frontend && webpack serve --config webpack.dev.config.ts",
 		"serve": "cd frontend && serve -s ./build -l 9000",
-	  "lint": "cd frontend && yarn eslint src",
+		"lint": "cd frontend && yarn eslint src",
 		"lint:fix": "cd frontend && yarn eslint ./frontend/src --fix",
 		"format": "prettier --write src",
 		"test": "jest -u"
