@@ -6,6 +6,7 @@ This repo houses the assets used to build the [**shop**](https://shop-ns.herokua
 
 - Design website: [**Figma**](https://www.figma.com/).
 - Main library: [**React**](https://reactjs.org/docs/getting-started.html).
+- Redux:[**Redux**](https://redux.js.org/).
 - Bundler: [**Webpack**](https://webpack.js.org/).
 - Linter: [**Eslint**](https://eslint.org/).  
 - Typing: [**Typescript**](https://www.typescriptlang.org/). 
