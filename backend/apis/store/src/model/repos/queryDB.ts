@@ -1,6 +1,7 @@
 import { Result } from '../service/Common/type';
 import { mysql, getConfig } from '../service/Common/config/sql';
 import { logMessage } from '../service/Common/logic/functions/function';
+import { ERROR_LOG_ASYNC_MESSAGE } from '../service/Common/constant';
 
 export const resultTemplate: Result = {
   state: false,
@@ -45,6 +46,3 @@ const queryDataBase = async (
 };
 
 export { queryDataBase };
-function ERROR_LOG_ASYNC_MESSAGE(arg0: string, arg1: string) {
-  throw new Error('Function not implemented.');
-}
