@@ -79,7 +79,7 @@ const Vega: React.FC<Props> = ({
 						code={infosTemplate.errorCode}
 					/>
 				)}
-				{true && (
+				{pending && (
 					<section className="vega_section_2">
 						<div className="vega_loader flex_row">
 							<CircularIndeterminate />
