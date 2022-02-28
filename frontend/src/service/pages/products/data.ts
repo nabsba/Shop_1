@@ -1,4 +1,4 @@
-import { ERROR_CODE } from '../../Common/constant';
+import { ERROR_BOUNDARY } from '../../Common/constant';
 import { filteringCategories, footer, navigationHeader } from '../Common/data';
 import TProducts from './type';
 
@@ -14,16 +14,16 @@ const productsData: TProducts = {
 		list: [],
 		pending: false,
 		infosTemplate: {
-			type: 'products',
-			errorCode: ERROR_CODE.FETCH_PRODUCTS,
+			type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,
+			errorCode: ERROR_BOUNDARY.FETCH_PRODUCTS.code,
 		},
 	},
 	filterProduct: {
 		filteringCategories,
 	},
 	infosTemplate: {
-		type: 'products',
-		errorCode: ERROR_CODE.FETCH_PRODUCTS,
+		type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,
+		errorCode: ERROR_BOUNDARY.FETCH_PRODUCTS.code,
 	},
 };
 

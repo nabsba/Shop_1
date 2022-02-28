@@ -9,9 +9,11 @@ const LOG_MESSAGE = {
 const ADMINISTRATION = {
 	EMAIL: 'admin@example.com',
 };
-const ERROR_CODE = {
-	FETCH_PRODUCTS: 100,
-	SLIDER: 200,
+const ERROR_BOUNDARY = {
+	FETCH_PRODUCTS: { type: 'Products', code: 100 },
+	SLIDER: { type: 'Sliders', code: 200 },
+	FETCH_PRODUCT: { type: 'Products', code: 300 },
+	BAG: { type: 'Bag', code: 400 },
 };
 // Local server
 const URL_ADDRESS: { [key: string]: string } = {
@@ -67,6 +69,6 @@ export {
 	ERROR_LOG_ASYNC_MESSAGE,
 	LOG_MESSAGE,
 	ADMINISTRATION,
-	ERROR_CODE,
+	ERROR_BOUNDARY,
 	URL_ADDRESSES,
 };
