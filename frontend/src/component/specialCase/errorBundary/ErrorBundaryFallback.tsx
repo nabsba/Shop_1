@@ -1,7 +1,6 @@
 import React from 'react';
 import { ADMINISTRATION } from '../../../service/Common/constant';
 import { H3, Paragraph, Span } from '../../tree/atom';
-import NavLink from '../../tree/atom/link/NavLink';
 import './style.css';
 import TErrorBundaryFallBack from './type';
 
@@ -15,16 +14,14 @@ const ErrorBoundaryFallback: React.FC<TErrorBundaryFallBack> = ({
 	return (
 		<div id="error-bundary">
 			<H3
-				title={`${type} should have been displayed but we are encountering some
+				title={`${type} should have been displayed but we are facing some
 				issues...`}
 			/>
 			<Paragraph
-				data={
-					'In case if the issue is not corrected within 24 hours, please send us a message to'
-				}
+				data={`In case if the issue is not corrected within 24 hours, please send us an email at ${ADMINISTRATION.EMAIL}`}
 			/>
-			<NavLink data={{ text: 'email', href: ADMINISTRATION.EMAIL }} />
-			<Paragraph data={`including the code: "${code}" as reference.`} />
+			<Paragraph data={`Including the code: "${code}" as reference.`} />
+
 			<Span data={'Thank you'} />
 		</div>
 	);
