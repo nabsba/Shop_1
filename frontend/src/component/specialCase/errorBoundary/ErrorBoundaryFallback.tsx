@@ -2,9 +2,9 @@ import React from 'react';
 import { ADMINISTRATION } from '../../../service/Common/constant';
 import { H3, Paragraph, Span } from '../../tree/atom';
 import './style.css';
-import TErrorBundaryFallBack from './type';
+import TErrorBoundaryFallBack from './type';
 
-const ErrorBoundaryFallback: React.FC<TErrorBundaryFallBack> = ({
+const ErrorBoundaryFallback: React.FC<TErrorBoundaryFallBack> = ({
 	type,
 	code,
 }: {
@@ -12,7 +12,7 @@ const ErrorBoundaryFallback: React.FC<TErrorBundaryFallBack> = ({
 	code: number;
 }) => {
 	return (
-		<div id="error-bundary">
+		<div id="error-boundary">
 			<H3
 				title={`${type} should have been displayed but we are facing some
 				issues...`}

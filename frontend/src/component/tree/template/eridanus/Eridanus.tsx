@@ -4,7 +4,7 @@ import {
 	ERROR_BOUNDARY,
 	URL_ADDRESSES,
 } from '../../../../service/Common/constant';
-import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
+import ErrorBoundaryFallback from '../../../specialCase/errorBoundary/ErrorBoundaryFallback';
 import { PubVariant1, PubVariant2 } from '../../molecule';
 import { Footer, NavigationHeader, SliderOriginal } from '../../organism';
 import SliderVariant1 from '../../organism/slider/sliderVariant1/SliderVariant1';
