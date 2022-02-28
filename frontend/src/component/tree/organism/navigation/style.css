@@ -9,10 +9,6 @@
 	display: none;
 }
 
-.navigation_header_mobile .switch_mode {
-
-}
-
 .navigation_header_mobile,
 .navigation_header_desktop {
 	border-bottom: var(--border) solid var(--color-secondary-2);
