@@ -122,26 +122,25 @@ const displayRoute = (object: {
 	errorBoundaryFallback: { type: string; code: number };
 	component: any;
 }) => (
-	<>
-		<Route
-			path={object.path}
-			element={
-				<ErrorBoundary
-					fallbackRender={() => (
-						<Whirlpool
-							data={{
-								navigationHeader: navigationHeader,
-								footer: footer,
-								errorBoundary: object.errorBoundaryFallback,
-							}}
-						/>
-					)}
-				>
-					{object.component}
-				</ErrorBoundary>
-			}
-		/>
-	</>
+	<Route
+		key={object.path}
+		path={object.path}
+		element={
+			<ErrorBoundary
+				fallbackRender={() => (
+					<Whirlpool
+						data={{
+							navigationHeader: navigationHeader,
+							footer: footer,
+							errorBoundary: object.errorBoundaryFallback,
+						}}
+					/>
+				)}
+			>
+				{object.component}
+			</ErrorBoundary>
+		}
+	/>
 );
 const App: React.FC = () => {
 	const {
