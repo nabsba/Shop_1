@@ -31,9 +31,6 @@ const Cassiopeia: React.FC<Props> = ({
 			<section className="cassiopeia_section_1">
 				<NavigationHeader data={navigationHeader} />
 			</section>
-			<section className="cassiopeia_section_2">
-				<HeaderProduct data={headerProduct} />
-			</section>
 			<ErrorBoundary
 				fallbackRender={() => (
 					<ErrorBoundaryFallback
@@ -42,6 +39,10 @@ const Cassiopeia: React.FC<Props> = ({
 					/>
 				)}
 			>
+				<section className="cassiopeia_section_2">
+					<HeaderProduct data={headerProduct} />
+				</section>
+
 				<section
 					className={`cassiopeia_section_3 flex_row ${
 						headerProduct.doWedisplayFilteringComponent

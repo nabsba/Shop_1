@@ -47,6 +47,7 @@ const Products: React.FC = () => {
 
 	const productsArticles: any[] = [];
 	if (products && products.length > 0) {
+		console.log(products, 'Your products');
 		products.map((product: TProductDetails) => {
 			productsArticles.push({
 				imageAsComponent: {

@@ -55,12 +55,12 @@ const ArticleGroupOriginal: React.FC<Props> = ({
 					),
 				)}
 			</div>
-			{isServerFaulty && (
-				<ErrorBoundaryFallback
-					type={infosTemplate.type}
-					code={infosTemplate.errorCode}
-				/>
-			)}
+			{(() => {
+				if (isServerFaulty) {
+					// Throw error to trigger the error boundary of his parent.
+					throw new Error('The server is faulty');
+				}
+			})()}
 			<div>
 				{pending && (
 					<div className="cassiopeia_loader flex_row">
