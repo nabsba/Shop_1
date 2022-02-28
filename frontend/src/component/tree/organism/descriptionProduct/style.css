@@ -11,10 +11,16 @@
 .description_product_effect {
 	border-bottom: var(--border) solid var(--color-neutral-3);
 }
+.sub_description_product_top_menus_wrapper li:hover {
+cursor:pointer;
+}
 .sub_description_product_bottom {
 	min-height: 20vh;
 }
 
 .description_category_bottom_title .stars svg {
 	color: rgb(97, 97, 14);
+}
+.sub_description_product_bottom p {
+		text-transform: capitalize;
 }
