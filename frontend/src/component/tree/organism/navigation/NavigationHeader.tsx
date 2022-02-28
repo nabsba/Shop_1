@@ -9,6 +9,7 @@ import { TReducers } from '../../../../service';
 import { useStyles } from '../../page/home/Home';
 import { updateModeChosen } from '../../../../service/device/dataMangment/reducer';
 import { SwitchMUI } from '../../molecule';
+import { useTheme } from '@mui/styles';
 
 type Props = {
 	data: TNavigationHeader;
@@ -19,6 +20,8 @@ const NavigationHeader: React.FC<Props> = ({
 }) => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
+	const theme: any = useTheme();
+
 	const {
 		dataBag: { numberOfItemsInTheBag },
 	} = useSelector((state: TReducers) => state);
@@ -112,7 +115,10 @@ const NavigationHeader: React.FC<Props> = ({
 	);
 
 	return (
-		<div className="navigation_header">
+		<div
+			className="navigation_header"
+			style={{ backgroundColor: theme.palette.neutral.light }}
+		>
 			{IfBurgerClickedWeDisplayNavigationHTML}
 			<div className="navigation_header_mobile flex_row_between_align_center">
 				<div

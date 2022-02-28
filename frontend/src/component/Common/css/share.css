@@ -84,6 +84,11 @@ fill:inherit;
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
+.flex_column_space_between {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
 
 .flex_column_evenly {
 	display: flex;

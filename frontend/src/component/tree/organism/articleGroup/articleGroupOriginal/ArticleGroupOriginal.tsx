@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import useOnScreen from '../../../../../service/Common/hooks/isVisible';
 import { updateDoWeGetMoreProducts } from '../../../../../service/pages/products/dataManagment/reducer';
 import { CircularIndeterminate } from '../../../atom';
-import ErrorBoundaryFallback from '../../../../specialCase/errorBundary/ErrorBundaryFallback';
+import ErrorBoundaryFallback from '../../../../specialCase/errorBoundary/ErrorBoundaryFallback';
 
 type Props = {
 	data: TArticleGroupOriginal;

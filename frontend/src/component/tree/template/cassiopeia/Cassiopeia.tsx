@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
+import ErrorBoundaryFallback from '../../../specialCase/errorBoundary/ErrorBoundaryFallback';
 import {
 	ArticleGroupOriginal,
 	FilterProduct,

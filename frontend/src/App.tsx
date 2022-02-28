@@ -13,6 +13,10 @@ import {
 } from './service/pages/bag/dataManagment/reducer';
 import { PaletteMode } from '@mui/material';
 import { TReducers } from './service';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ERROR_BOUNDARY } from './service/Common/constant';
+import { Whirlpool } from './component/tree/template';
+import { footer, navigationHeader } from './service/pages/Common/data';
 
 // mui.com/customization/dark-mode
 export const getDesignTokens = (
@@ -36,7 +40,7 @@ export const getDesignTokens = (
 					neutral: {
 						light: '#ffffff',
 						main: '#a9a9a9',
-						dark: '#000000',
+						dark: '#464646',
 					},
 			  }
 			: {
@@ -63,70 +67,98 @@ export const getDesignTokens = (
 		].join(','),
 	},
 });
-
+const ROUTES = [
+	{
+		path: '/',
+		errorBoundaryFallback: {
+			type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,
+			code: ERROR_BOUNDARY.FETCH_PRODUCTS.code,
+		},
+		component: <Home />,
+	},
+	{
+		path: '/home',
+		errorBoundaryFallback: {
+			type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,
+			code: ERROR_BOUNDARY.FETCH_PRODUCTS.code,
+		},
+		component: <Home />,
+	},
+	{
+		path: '/products/:type/:gender',
+		errorBoundaryFallback: {
+			type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,
+			code: ERROR_BOUNDARY.FETCH_PRODUCTS.code,
+		},
+		component: <Products />,
+	},
+	{
+		path: '/products/:type/:gender/:id',
+		errorBoundaryFallback: {
+			type: ERROR_BOUNDARY.FETCH_PRODUCT.type,
+			code: ERROR_BOUNDARY.FETCH_PRODUCT.code,
+		},
+		component: <Product />,
+	},
+	{
+		path: '/bag',
+		errorBoundaryFallback: {
+			type: ERROR_BOUNDARY.FETCH_PRODUCT.type,
+			code: ERROR_BOUNDARY.FETCH_PRODUCT.code,
+		},
+		component: <Bag />,
+	},
+	{
+		path: '*',
+		errorBoundaryFallback: {
+			type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,
+			code: ERROR_BOUNDARY.FETCH_PRODUCTS.code,
+		},
+		component: <Home />,
+	},
+];
+const displayRoute = (object: {
+	path: string;
+	errorBoundaryFallback: { type: string; code: number };
+	component: any;
+}) => (
+	<>
+		<Route
+			path={object.path}
+			element={
+				<ErrorBoundary
+					fallbackRender={() => (
+						<Whirlpool
+							data={{
+								navigationHeader: navigationHeader,
+								footer: footer,
+								errorBoundary: object.errorBoundaryFallback,
+							}}
+						/>
+					)}
+				>
+					{object.component}
+				</ErrorBoundary>
+			}
+		/>
+	</>
+);
 const App: React.FC = () => {
 	const {
 		infoDevice: { modeChosen },
 	} = useSelector((state: TReducers) => state);
 	const dispatch = useDispatch();
-	// // Check storage of the client.
-	// let storage: { used: number | undefined; available: number | undefined } = {
-	// 	used: 0,
-	// 	available: 0,
-	// };
-	// if ('storage' in navigator && 'estimate' in navigator.storage) {
-	// 	navigator.storage.estimate().then(({ usage, quota }) => {
-	// 		storage = { used: usage, available: quota };
-	// 	});
-	// }
-	// // Check if the browser support the hover.
-	// const isHoverSupported = !matchMedia('(hover: none)').matches;
-	// // Check if the browser support webworker (We will also need this information to fetchDashboard)
-	// const isBrowserSupportWebWorker = typeof Worker !== 'undefined';
-	// const isBrowserSupportServiceWorker = 'serviceWorker' in navigator;
-	// https://caniuse.com/?search=indexDB
 	const isIndexDbSupported = true;
 	useEffect(() => {
-		// Not needed
-		// const infoDevice: TInfoDevice = {
-		// 	isHover: isHoverSupported,
-		// 	isWebWorker: isBrowserSupportWebWorker,
-		// 	isServiceWorker: isBrowserSupportServiceWorker,
-		// 	isWebService: false,
-		// 	isIndexDB: isIndexDbSupported,
-		// 	storageClient: storage,
-		// 	modeChosen,
-		// };
-		// dispatch(updateInfoDevice(infoDevice));
 		dispatch(initDatabase({ type: INDEX_DB.ON_MESSAGE.INIT_BAG }));
 		dispatch(getBagInformations());
 		dispatch(fetchFirstProducts());
-	}, [
-		dispatch,
-		// isBrowserSupportServiceWorker,
-		// isBrowserSupportWebWorker,
-		// isHoverSupported,
-		isIndexDbSupported,
-		modeChosen,
-		// storage,
-	]);
+	}, [dispatch, isIndexDbSupported, modeChosen]);
+
 	return (
 		<ThemeProvider theme={createTheme(getDesignTokens(modeChosen))}>
 			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/home" element={<Home />} />
-					<Route path="/products/:type/:gender" element={<Products />} />
-					<Route path="/product/:type/:gender/:id" element={<Product />} />
-					<Route path="/bag" element={<Bag />} />
-					<Route path="*" element={<Home />} />
-					{/* <Route path="/test/:id " element={<Home />} /> */}
-					{/* <ErrorServer />
-				</Route>
-				<Route path="*">
-					<ErrorPath /> */}
-					{/* </Route> */}
-				</Routes>
+				<Routes>{ROUTES.map((route) => displayRoute(route))}</Routes>
 			</BrowserRouter>
 		</ThemeProvider>
 	);
