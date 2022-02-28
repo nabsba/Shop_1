@@ -93,7 +93,7 @@ const ROUTES = [
 		component: <Products />,
 	},
 	{
-		path: '/products/:type/:gender/:id',
+		path: '/product/:type/:gender/:id',
 		errorBoundaryFallback: {
 			type: ERROR_BOUNDARY.FETCH_PRODUCT.type,
 			code: ERROR_BOUNDARY.FETCH_PRODUCT.code,
