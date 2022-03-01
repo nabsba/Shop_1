@@ -1,4 +1,4 @@
-@import'../../../Common/css/variable.css';
+@import '../../../Common/css/variable.css';
 
 .achernar {
 	min-height: 100vh;
@@ -11,8 +11,6 @@
 .achernar_section_3,
 .achernar_section_4 {
 	grid-column: 1/5;
-
-
 }
 
 .achernar_section_2,
@@ -40,7 +38,6 @@
 	.achernar_section_2,
 	.achernar_section_3 {
 		grid-column: 1/13;
-
 	}
 
 	.achernar_section_2,
@@ -51,6 +48,5 @@
 
 	.achernar_section_4 {
 		grid-column: 1/13;
-
 	}
 }

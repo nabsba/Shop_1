@@ -6,7 +6,6 @@ import {
 import { DATA_TYPE } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import homeData from '../data';
-import _ from 'lodash';
 import { REDUCER } from '../constant';
 import THomeReducer from '../type';
 import { logMessage } from '../../../Common/logic/funtions';
@@ -23,25 +22,26 @@ const initialState: THomeReducer = {
 		newArriving: [],
 	},
 };
-export const fetchFirstProducts = createAsyncThunk(REDUCER.NAME, async () => {
-	let result: Result = { ...resultTemplate };
-	try {
-		result = await serverGet(
-			URL_ADDRESSES.data.getData(DATA_TYPE.PRODUCTS_ARRIVING, null),
-		);
-		if (result.data) {
-			result.data = _.uniqBy(result.data, 'product_id');
-		}
-
-		return result;
-	} catch (error) {
-		logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
-			'dataManagment/reducer',
-			'fetchFirstProducts',
-		)},
+export const fetchFirstProductsFromDataBase = createAsyncThunk(
+	REDUCER.NAME,
+	async () => {
+		let result: Result = { ...resultTemplate };
+		try {
+			result = await serverGet(
+				URL_ADDRESSES.data.getData(DATA_TYPE.PRODUCTS_ARRIVING, null),
+			);
+			return result;
+		} catch (error) {
+			logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
+				'dataManagment/reducer',
+				'fetchFirstProductsFromDataBase',
+			)},
 			${error}`);
-	}
-});
+			result.state = false;
+			result.serverError = true;
+		}
+	},
+);
 
 const data = createSlice({
 	name: REDUCER.NAME,
@@ -49,7 +49,7 @@ const data = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(
-			fetchFirstProducts.fulfilled,
+			fetchFirstProductsFromDataBase.fulfilled,
 			/*eslint-disable-next-line  @typescript-eslint/no-explicit-any*/
 			(state, action: { payload: any }) => {
 				// Add user to the state array
@@ -61,11 +61,11 @@ const data = createSlice({
 				}
 			},
 		);
-		builder.addCase(fetchFirstProducts.rejected, (state) => {
+		builder.addCase(fetchFirstProductsFromDataBase.rejected, (state) => {
 			state.pending = false;
 			state.error = true;
 		});
-		builder.addCase(fetchFirstProducts.pending, (state) => {
+		builder.addCase(fetchFirstProductsFromDataBase.pending, (state) => {
 			state.pending = true;
 		});
 	},

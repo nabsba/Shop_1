@@ -1,5 +1,4 @@
-
-@import'../../../../Common/css/variable.css';
+@import '../../../../Common/css/variable.css';
 
 .article_group_original a {
 	margin-bottom: var(--margin-minor-2);
@@ -14,7 +13,7 @@
 }
 @media only screen and (min-width: 770px) {
 	.article_group_original {
-		flex:3;
+		flex: 3;
 	}
 	.article_group_loader {
 		grid-column: 1/13;

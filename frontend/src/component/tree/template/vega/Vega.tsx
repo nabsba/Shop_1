@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
+import ErrorBoundaryFallback from '../../../specialCase/errorBoundary/ErrorBoundaryFallback';
 import { CircularIndeterminate, NavLinkAsComponent } from '../../atom';
 import { ButtonVariant1, Pub, SelectSize } from '../../molecule';
 import {
@@ -79,7 +79,7 @@ const Vega: React.FC<Props> = ({
 						code={infosTemplate.errorCode}
 					/>
 				)}
-				{true && (
+				{pending && (
 					<section className="vega_section_2">
 						<div className="vega_loader flex_row">
 							<CircularIndeterminate />

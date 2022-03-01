@@ -1,17 +1,17 @@
-@import'../../../../Common/css/variable.css';
+@import '../../../../Common/css/variable.css';
 .article_original_information {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	margin-top:var(--margin-minor);
+	margin-top: var(--margin-minor);
 }
 .article_original_image_wrapper {
 	position: relative;
-	height:var(--height-image-card-product-mobile);
+	height: var(--height-image-card-product-mobile);
 }
 
 .article_original_image_wrapper img {
-	border-radius:var(--border-radius);
+	border-radius: var(--border-radius);
 }
 .article_original {
 	width: 45vw;
@@ -22,7 +22,7 @@
 		width: 25vw;
 	}
 	.article_original_image_wrapper {
-		height:var(--height-image-card-product-desktop);
+		height: var(--height-image-card-product-desktop);
 	}
 }
 

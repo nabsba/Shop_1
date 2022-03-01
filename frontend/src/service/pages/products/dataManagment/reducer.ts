@@ -28,7 +28,7 @@ const initialState: TProductsReducer = {
 	},
 	products: [],
 	totalRows: 0,
-	doWeGetMoreProducts: false,
+	isUserHasScrolled: false,
 };
 
 export const fetchProductsFiltered = createAsyncThunk(
@@ -73,12 +73,13 @@ const data = createSlice({
 			state.productsFiltered.filteringCategories = action.payload;
 		},
 		updateDoWeGetMoreProducts: (state, action: { payload: boolean }) => {
-			state.doWeGetMoreProducts = action.payload;
+			state.isUserHasScrolled = action.payload;
 		},
 		updateDisplayFilteringComponent: (state, action: { payload: boolean }) => {
 			state.productsFiltered.doWedisplayFilteringComponent = action.payload;
 		},
 	},
+
 	extraReducers: (builder) => {
 		builder.addCase(
 			fetchProductsFiltered.fulfilled,
@@ -95,7 +96,7 @@ const data = createSlice({
 						state.totalRows = action.payload.data[1][0]['FOUND_ROWS()'];
 						state.productsFiltered.type = action.payload.data.type;
 						state.productsFiltered.gender = action.payload.data.gender;
-						state.doWeGetMoreProducts = false;
+						state.isUserHasScrolled = false;
 					}
 				}
 			},

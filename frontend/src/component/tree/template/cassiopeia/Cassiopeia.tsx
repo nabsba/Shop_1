@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
+import ErrorBoundaryFallback from '../../../specialCase/errorBoundary/ErrorBoundaryFallback';
 import {
 	ArticleGroupOriginal,
 	FilterProduct,
@@ -11,6 +11,7 @@ import './style.css';
 import TCassiopeia from './type';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useStyles } from '../../page/home/Home';
+import { Paragraph } from '../../atom';
 type Props = {
 	data: TCassiopeia;
 };
@@ -23,16 +24,21 @@ const Cassiopeia: React.FC<Props> = ({
 		articleGroupOriginal,
 		filterProduct,
 		infosTemplate,
+		paragraph,
 	},
 }) => {
 	const classes = useStyles();
+
+	const doWeHaveEmptyReturnedProducts =
+		!articleGroupOriginal.pending &&
+		articleGroupOriginal.list &&
+		articleGroupOriginal.list.length === 0 &&
+		!articleGroupOriginal.isServerFaulty;
+
 	return (
 		<div className={`cassiopeia ${classes.root}`}>
 			<section className="cassiopeia_section_1">
 				<NavigationHeader data={navigationHeader} />
-			</section>
-			<section className="cassiopeia_section_2">
-				<HeaderProduct data={headerProduct} />
 			</section>
 			<ErrorBoundary
 				fallbackRender={() => (
@@ -42,6 +48,9 @@ const Cassiopeia: React.FC<Props> = ({
 					/>
 				)}
 			>
+				<section className="cassiopeia_section_2">
+					<HeaderProduct data={headerProduct} />
+				</section>
 				<section
 					className={`cassiopeia_section_3 flex_row ${
 						headerProduct.doWedisplayFilteringComponent
@@ -49,10 +58,8 @@ const Cassiopeia: React.FC<Props> = ({
 							: 'cassiopeia_section_3_effect'
 					}`}
 				>
-					{articleGroupOriginal.list &&
-						articleGroupOriginal.list.length > 0 && (
-							<FilterProduct data={filterProduct} />
-						)}
+					<FilterProduct data={filterProduct} />
+					{doWeHaveEmptyReturnedProducts && <Paragraph data={paragraph} />}
 					<ArticleGroupOriginal data={articleGroupOriginal} />
 				</section>
 			</ErrorBoundary>

@@ -25,10 +25,10 @@ ul {
 	margin: 0;
 }
 svg:hover {
-cursor: pointer;
+	cursor: pointer;
 }
 path {
-fill:inherit;
+	fill: inherit;
 }
 /***Class***/
 /* Display */
@@ -41,7 +41,7 @@ fill:inherit;
 	flex-direction: column;
 }
 .flex_row_justify_end {
-	display:flex;
+	display: flex;
 	justify-content: flex-end;
 }
 .flex_row_wrap {
@@ -83,6 +83,11 @@ fill:inherit;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+}
+.flex_column_space_between {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .flex_column_evenly {

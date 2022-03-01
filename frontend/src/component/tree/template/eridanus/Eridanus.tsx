@@ -1,7 +1,10 @@
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ERROR_CODE, URL_ADDRESSES } from '../../../../service/Common/constant';
-import ErrorBoundaryFallback from '../../../specialCase/errorBundary/ErrorBundaryFallback';
+import {
+	ERROR_BOUNDARY,
+	URL_ADDRESSES,
+} from '../../../../service/Common/constant';
+import ErrorBoundaryFallback from '../../../specialCase/errorBoundary/ErrorBoundaryFallback';
 import { PubVariant1, PubVariant2 } from '../../molecule';
 import { Footer, NavigationHeader, SliderOriginal } from '../../organism';
 import SliderVariant1 from '../../organism/slider/sliderVariant1/SliderVariant1';
@@ -47,7 +50,10 @@ const Eridanus: React.FC<Props> = ({
 			</section>
 			<ErrorBoundary
 				fallbackRender={() => (
-					<ErrorBoundaryFallback type={'sliders'} code={ERROR_CODE.SLIDER} />
+					<ErrorBoundaryFallback
+						type={ERROR_BOUNDARY.SLIDER.type}
+						code={ERROR_BOUNDARY.SLIDER.code}
+					/>
 				)}
 			>
 				{sliderVariant1.display && (

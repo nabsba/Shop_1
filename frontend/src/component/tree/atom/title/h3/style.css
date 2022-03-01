@@ -4,7 +4,7 @@ h3 {
 	font-size: 1.5rem;
 	text-transform: capitalize;
 	font-weight: 200;
-	margin-bottom:var(--margin-bottom-h3) ;
+	margin-bottom: var(--margin-bottom-h3);
 }
 
 @media only screen and (min-width: 500px) {

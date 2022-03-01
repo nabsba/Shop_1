@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
@@ -20,7 +20,7 @@ const Products: React.FC = () => {
 		dataProducts: {
 			products,
 			totalRows,
-			doWeGetMoreProducts,
+			isUserHasScrolled,
 			productsDataPage: {
 				navigationHeader,
 				footer,
@@ -28,13 +28,21 @@ const Products: React.FC = () => {
 				articleGroupOriginal,
 				filterProduct,
 				infosTemplate,
+				paragraph,
 			},
 			productsFiltered,
 		},
 	} = useSelector((state: TReducers) => state);
 
+	const doWeFetchProducts = type && gender && products && products.length === 0;
+	const doWeNeedToLoadMoreProductsOnScroll =
+		totalRows &&
+		totalRows !== products.length &&
+		isUserHasScrolled &&
+		products &&
+		products.length > 0;
 	useEffect(() => {
-		if (type && gender && products && products.length === 0)
+		if (doWeFetchProducts)
 			dispatch(
 				fetchProductsFiltered({
 					preference: productsFiltered.filteringCategories,
@@ -43,7 +51,13 @@ const Products: React.FC = () => {
 					isFetchDueToScroll: false,
 				}),
 			);
-	}, [dispatch, gender, products, productsFiltered.filteringCategories, type]);
+	}, [
+		dispatch,
+		doWeFetchProducts,
+		gender,
+		productsFiltered.filteringCategories,
+		type,
+	]);
 
 	const productsArticles: any[] = [];
 	if (products && products.length > 0) {
@@ -72,7 +86,7 @@ const Products: React.FC = () => {
 	}
 
 	useEffect(() => {
-		if (totalRows && doWeGetMoreProducts && products && products.length > 0) {
+		if (doWeNeedToLoadMoreProductsOnScroll) {
 			const length = products.length;
 			const lastArrayId = products[length - 1].product_id;
 			dispatch(
@@ -87,7 +101,8 @@ const Products: React.FC = () => {
 		}
 	}, [
 		dispatch,
-		doWeGetMoreProducts,
+		isUserHasScrolled,
+		doWeNeedToLoadMoreProductsOnScroll,
 		gender,
 		products,
 		productsFiltered.filteringCategories,
@@ -106,6 +121,7 @@ const Products: React.FC = () => {
 		},
 		filterProduct: _.cloneDeep(filterProduct),
 		infosTemplate,
+		paragraph,
 	};
 	cassiopeiraData.headerProduct = {
 		...cassiopeiraData.headerProduct,
@@ -125,6 +141,8 @@ const Products: React.FC = () => {
 				!productsFiltered.doWedisplayFilteringComponent,
 			),
 		);
+	cassiopeiraData.filterProduct.areProductsBeingFetched =
+		productsFiltered.pending;
 	return (
 		<div id="products">
 			<Cassiopeia data={cassiopeiraData} />

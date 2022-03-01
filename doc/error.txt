@@ -5,3 +5,10 @@
 - message error: Error: spawn /YOUR_PROJECT_PATH/node_modules/jpegtran-bin/vendor/jpegtran ENOENT
 - solution: yarn add --force jpegtran-bin  (using --force made the diff).
 - source: https://gist.github.com/welcoMattic/9f0991fa81a80096a3877ee42562c504
+
+ Location: backend config/sql.ts
+
+ - error: 'connection refused' despite the creditentiels were rights.
+ - solution: I had to swift 'localhost' to '127.0.0.1' in the .env file.
+ - source: https://stackoverflow.com/questions/30266221/node-js-mysql-error-connect-econnrefused
+ 
