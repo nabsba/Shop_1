@@ -141,6 +141,8 @@ const Products: React.FC = () => {
 				!productsFiltered.doWedisplayFilteringComponent,
 			),
 		);
+	cassiopeiraData.filterProduct.areProductsBeingFetched =
+		productsFiltered.pending;
 	return (
 		<div id="products">
 			<Cassiopeia data={cassiopeiraData} />

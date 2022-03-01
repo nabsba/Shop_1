@@ -20,6 +20,7 @@ const productsData: TProducts = {
 	},
 	filterProduct: {
 		filteringCategories,
+		areProductsBeingFetched: false,
 	},
 	infosTemplate: {
 		type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,

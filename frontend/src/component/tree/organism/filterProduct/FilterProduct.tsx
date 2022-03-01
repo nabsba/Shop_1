@@ -29,7 +29,7 @@ type TSelectionFilter = {
 	[key: string]: any[];
 };
 const FilterProduct: React.FC<Props> = ({
-	data: { filteringCategories, functionToCall },
+	data: { filteringCategories, functionToCall, areProductsBeingFetched },
 }) => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
@@ -94,9 +94,7 @@ const FilterProduct: React.FC<Props> = ({
 			<div
 				className={`filter_product_close ${classes.iconNeutral} flex_row_justify_end`}
 				onClick={() => {
-					console.log(functionToCall, 'call');
 					if (functionToCall) {
-						console.log('fired');
 						functionToCall();
 					}
 				}}
@@ -128,6 +126,7 @@ const FilterProduct: React.FC<Props> = ({
 									<FormControlLabel
 										className={classes.textColorSpan}
 										key={label}
+										disabled={areProductsBeingFetched}
 										checked={
 											//Check in the reducer if it's already selected (in case if the user check a shoes)
 											productsFiltered.filteringCategories[preference.title]
