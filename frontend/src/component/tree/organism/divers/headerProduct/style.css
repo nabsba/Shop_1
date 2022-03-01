@@ -6,8 +6,8 @@
 }
 
 .header_product_icons span {
-	margin-right:  var(--margin-minor);
-	height:max-content;
+	margin-right: var(--margin-minor);
+	height: max-content;
 }
 .sub_header_product_top svg {
 	font-size: 2rem;
@@ -26,4 +26,3 @@
 	margin-left: 1rem;
 	margin-right: 1rem;
 }
-

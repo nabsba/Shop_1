@@ -18,7 +18,6 @@
 .eridanus_section_1,
 .eridanus_section_2 {
 	margin-top: 0;
-
 }
 
 .eridanus_section_2 {
@@ -54,8 +53,12 @@
 	}
 
 	.eridanus_section_3 {
-		margin-left: clamp(.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
-		margin-right: clamp(.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
+		margin-left: clamp(0.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
+		margin-right: clamp(
+			0.5rem,
+			calc(var(--margin-section-side) + 1rem),
+			3.1rem
+		);
 	}
 
 	/* .eridanus_section_4,

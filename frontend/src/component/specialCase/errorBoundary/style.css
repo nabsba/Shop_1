@@ -1,4 +1,4 @@
-@import'../../Common/css/variable.css';
+@import '../../Common/css/variable.css';
 
 #error-boundary {
 	grid-column: 1/5;
@@ -8,12 +8,11 @@
 
 #error-boundary h3 {
 	margin-left: 0rem !important;
-	text-transform:inherit;
+	text-transform: inherit;
 }
 
 #error-boundary p {
-	padding: .5rem 0 .5rem 0;
-
+	padding: 0.5rem 0 0.5rem 0;
 }
 
 /* #error-boundary p {

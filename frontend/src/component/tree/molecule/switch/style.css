@@ -1,8 +1,10 @@
-@import'../../../Common/css/variable.css';
+@import '../../../Common/css/variable.css';
 
-.css-jltx0t-MuiSwitch-root .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
-	background-color:var(--color-neutral-1)!important;
+.css-jltx0t-MuiSwitch-root
+	.MuiSwitch-switchBase.Mui-checked
+	+ .MuiSwitch-track {
+	background-color: var(--color-neutral-1) !important;
 }
 .css-1yjjitx-MuiSwitch-track {
-	background-color:var(--color-neutrak-dark-1) !important;
+	background-color: var(--color-neutrak-dark-1) !important;
 }

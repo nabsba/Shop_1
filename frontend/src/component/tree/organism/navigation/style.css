@@ -87,12 +87,12 @@
 }
 
 @media only screen and (min-width: 760px) {
-.navigation_header_desktop .switch_mode {
+	.navigation_header_desktop .switch_mode {
 		position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	left: clamp(0.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem)
- }
+		top: 50%;
+		transform: translateY(-50%);
+		left: clamp(0.5rem, calc(var(--margin-section-side) + 1rem), 3.1rem);
+	}
 	.navigation_header_mobile,
 	.navigation_off {
 		display: none !important;

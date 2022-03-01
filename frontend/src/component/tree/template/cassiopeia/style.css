@@ -3,7 +3,7 @@
 .cassiopeia {
 	grid-template-columns: repeat(4, 1fr);
 	display: grid;
-	min-height:100vh;
+	min-height: 100vh;
 }
 
 .cassiopeia_section_1,
@@ -26,7 +26,6 @@
 	margin-right: var(--margin-section-side);
 }
 
-
 .cassiopeia_section_3_effect .filter_product_nav_mobile {
 	width: 100%;
 	z-index: 100;
@@ -36,8 +35,8 @@
 	transition: transform 200ms;
 }
 .cassiopeia_loader {
-    flex: 3;
-    height: max-content;
+	flex: 3;
+	height: max-content;
 }
 .cassiopeia_loader > div {
 	margin: auto;
@@ -50,9 +49,8 @@
 
 	.cassiopeia_section_2,
 	.cassiopeia_section_3 {
-			margin-left:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
-	  margin-right:clamp(1rem,  calc(var(--margin-section-side) + 2rem), 3.1rem);
-
+		margin-left: clamp(1rem, calc(var(--margin-section-side) + 2rem), 3.1rem);
+		margin-right: clamp(1rem, calc(var(--margin-section-side) + 2rem), 3.1rem);
 	}
 
 	.cassiopeia_section_1,
@@ -77,10 +75,10 @@
 
 	.cassiopeia_section_3_effect .article_group_original {
 		grid-column: 1/12;
-		flex:2;
+		flex: 2;
 	}
 	.cassiopeia_section_3 .products_empty {
-		flex:2;
+		flex: 2;
 	}
 	.cassiopeia_loader {
 		grid-column: 1/13;

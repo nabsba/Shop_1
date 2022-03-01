@@ -1,4 +1,4 @@
-@import'../../../../Common/css/variable.css';
+@import '../../../../Common/css/variable.css';
 
 .pub_variant_2 {
 	position: relative;
@@ -12,7 +12,7 @@
 
 .pub_variant_2 h3 {
 	z-index: 2;
-	color:white !important;
+	color: white !important;
 }
 .pub_variant_2 #image-container {
 	z-index: 0;
