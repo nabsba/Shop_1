@@ -8,8 +8,8 @@ import { fetchFirstProductsFromDataBase } from './service/pages/home/dataManagme
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { INDEX_DB } from './service/pages/bag/constant';
 import {
-	initDatabase,
-	getBagInformations,
+	initDatabaseInIndexDB,
+	getBagInformationsFromIndexDB,
 } from './service/pages/bag/dataManagment/reducer';
 import { PaletteMode } from '@mui/material';
 import { TReducers } from './service';
@@ -149,8 +149,8 @@ const App: React.FC = () => {
 	const dispatch = useDispatch();
 	const isIndexDbSupported = true;
 	useEffect(() => {
-		dispatch(initDatabase({ type: INDEX_DB.ON_MESSAGE.INIT_BAG }));
-		dispatch(getBagInformations());
+		dispatch(initDatabaseInIndexDB({ type: INDEX_DB.ON_MESSAGE.INIT_BAG }));
+		dispatch(getBagInformationsFromIndexDB());
 		dispatch(fetchFirstProductsFromDataBase());
 	}, [dispatch, isIndexDbSupported, modeChosen]);
 

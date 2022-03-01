@@ -25,19 +25,25 @@ const initialState: TBagReducer = {
 	totalPriceOfTheBag: 0,
 	numberOfItemsInTheBag: 0,
 };
-export const getBagInformations = createAsyncThunk(REDUCER.NAME, async () => {
-	try {
-		const products = await getAllDatas(
-			INDEX_DB.DATABASE_BAG,
-			INDEX_DB.VERSION,
-			INDEX_DB.STORE_PRODUCTS,
-		);
-		return products;
-	} catch (error) {
-		logMessage(`${ERROR_LOG_ASYNC_MESSAGE('bag/reducer', 'getBagInformations')},
+export const getBagInformationsFromIndexDB = createAsyncThunk(
+	REDUCER.NAME,
+	async () => {
+		try {
+			const products = await getAllDatas(
+				INDEX_DB.DATABASE_BAG,
+				INDEX_DB.VERSION,
+				INDEX_DB.STORE_PRODUCTS,
+			);
+			return products;
+		} catch (error) {
+			logMessage(`${ERROR_LOG_ASYNC_MESSAGE(
+				'bag/reducer',
+				'getBagInformationsFromIndexDB',
+			)},
 			${error}`);
-	}
-});
+		}
+	},
+);
 
 const data = createSlice({
 	name: REDUCER.NAME,
@@ -94,7 +100,7 @@ const data = createSlice({
 				}
 			});
 		},
-		initDatabase: (state, action: { payload: { type: string } }) => {
+		initDatabaseInIndexDB: (state, action: { payload: { type: string } }) => {
 			switch (action.payload.type) {
 				case INDEX_DB.ON_MESSAGE.INIT_BAG:
 					createDBIndexDB(
@@ -111,7 +117,7 @@ const data = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(
-			getBagInformations.fulfilled,
+			getBagInformationsFromIndexDB.fulfilled,
 			/*eslint-disable-next-line  @typescript-eslint/no-explicit-any*/
 			(state, action: { payload: any }) => {
 				state.pending = false;
@@ -130,11 +136,11 @@ const data = createSlice({
 				}
 			},
 		);
-		builder.addCase(getBagInformations.rejected, (state) => {
+		builder.addCase(getBagInformationsFromIndexDB.rejected, (state) => {
 			state.pending = false;
 			state.error = true;
 		});
-		builder.addCase(getBagInformations.pending, (state) => {
+		builder.addCase(getBagInformationsFromIndexDB.pending, (state) => {
 			state.pending = true;
 		});
 	},
@@ -145,7 +151,7 @@ const dataBag = data.reducer;
 const {
 	addNewproductToTheBag,
 	updatePropretyOfProduct,
-	initDatabase,
+	initDatabaseInIndexDB,
 	removeProductFromTheBag,
 } = data.actions;
 
@@ -154,6 +160,6 @@ export {
 	dataBackup,
 	addNewproductToTheBag,
 	updatePropretyOfProduct,
-	initDatabase,
+	initDatabaseInIndexDB,
 	removeProductFromTheBag,
 };
