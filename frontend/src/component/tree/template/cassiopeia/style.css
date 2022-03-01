@@ -19,7 +19,9 @@
 .cassiopeia_section_4 {
 	margin-top: var(--margin-section-top);
 }
-
+.cassiopeia_section_3 p {
+	margin-left:2rem;
+}
 .cassiopeia_section_2,
 .cassiopeia_section_3 {
 	margin-left: var(--margin-section-side);
