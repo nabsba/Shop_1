@@ -14,7 +14,6 @@ import {
 	resultTemplate,
 	serverPost,
 } from '../../../Common/logic/requestServer';
-import _ from 'lodash';
 
 const initialState: TProductsReducer = {
 	productsDataPage: productsData,

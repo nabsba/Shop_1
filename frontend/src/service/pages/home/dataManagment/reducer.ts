@@ -6,7 +6,6 @@ import {
 import { DATA_TYPE } from '../../../dataBase/constant';
 import * as dataBackup from '../../datas/backup/data.json';
 import homeData from '../data';
-import _ from 'lodash';
 import { REDUCER } from '../constant';
 import THomeReducer from '../type';
 import { logMessage } from '../../../Common/logic/funtions';
