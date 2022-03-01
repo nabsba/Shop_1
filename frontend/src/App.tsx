@@ -4,7 +4,7 @@ import './component/Common/css/share.css';
 import './component/Common/css/variable.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Bag, Home, Product, Products } from './component/tree/page';
-import { fetchFirstProducts } from './service/pages/home/dataManagment/reducer';
+import { fetchFirstProductsFromDataBase } from './service/pages/home/dataManagment/reducer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { INDEX_DB } from './service/pages/bag/constant';
 import {
@@ -151,7 +151,7 @@ const App: React.FC = () => {
 	useEffect(() => {
 		dispatch(initDatabase({ type: INDEX_DB.ON_MESSAGE.INIT_BAG }));
 		dispatch(getBagInformations());
-		dispatch(fetchFirstProducts());
+		dispatch(fetchFirstProductsFromDataBase());
 	}, [dispatch, isIndexDbSupported, modeChosen]);
 
 	return (

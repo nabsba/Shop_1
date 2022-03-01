@@ -1,4 +1,5 @@
 import { TInfosTemplate } from '../../../../service/pages/Common/type';
+import { TParagraph } from '../../atom/paragraph/type';
 import TArticleGroupOriginal from '../../organism/articleGroup/articleGroupOriginal/type';
 import THeaderProduct from '../../organism/divers/headerProduct/type';
 import TFilterProduct from '../../organism/filterProduct/type';
@@ -12,5 +13,6 @@ type TCassiopeia = {
 	articleGroupOriginal: TArticleGroupOriginal;
 	filterProduct: TFilterProduct;
 	infosTemplate: TInfosTemplate;
+	paragraph: TParagraph;
 };
 export default TCassiopeia;

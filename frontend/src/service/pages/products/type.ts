@@ -1,3 +1,4 @@
+import { TParagraph } from '../../../component/tree/atom/paragraph/type';
 import TArticleGroupOriginal from '../../../component/tree/organism/articleGroup/articleGroupOriginal/type';
 import THeaderProduct from '../../../component/tree/organism/divers/headerProduct/type';
 import TFilterProduct from '../../../component/tree/organism/filterProduct/type';
@@ -12,6 +13,7 @@ type TProducts = {
 	articleGroupOriginal: TArticleGroupOriginal;
 	filterProduct: TFilterProduct;
 	infosTemplate: TInfosTemplate;
+	paragraph: TParagraph;
 };
 
 type TProductsReducer = {
@@ -29,7 +31,7 @@ type TProductsReducer = {
 	};
 	products: TProductDetails[];
 	totalRows: number;
-	doWeGetMoreProducts: boolean;
+	isUserHasScrolled: boolean;
 };
 
 export default TProducts;

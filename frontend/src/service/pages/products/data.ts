@@ -25,6 +25,7 @@ const productsData: TProducts = {
 		type: ERROR_BOUNDARY.FETCH_PRODUCTS.type,
 		errorCode: ERROR_BOUNDARY.FETCH_PRODUCTS.code,
 	},
+	paragraph: 'No products available with those criterias...',
 };
 
 export default productsData;
