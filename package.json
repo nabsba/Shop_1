@@ -172,7 +172,7 @@
 		"serve": "cd frontend && serve -s ./build -l 9000",
 		"lint": "cd frontend && yarn eslint src",
 		"lint:fix": "cd frontend && yarn eslint ./frontend/src --fix",
-		"format": "prettier --write src",
+		"format": "prettier --write ./frontend/src",
 		"test": "jest -u"
 	},
 	"engines": {
